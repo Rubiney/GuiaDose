@@ -150,6 +150,9 @@ main{padding:12px 14px 80px}
 .hidden{display:none!important}
 
 [data-theme="dark"] .white-bg{background:var(--white)}
+.port-btn{display:flex;align-items:center;gap:6px;background:#C9A84C;border:none;border-radius:99px;padding:7px 16px;color:#0A1628;font-size:11px;font-family:var(--mono);font-weight:700;text-decoration:none;white-space:nowrap;cursor:pointer;flex-shrink:0;transition:all 0.15s;margin-left:auto}
+.port-btn:hover{background:#E8C97A}
+.port-btn svg{width:13px;height:13px;stroke:#0A1628;stroke-width:2.5;fill:none}
 </style>
 </head>
 <body>
@@ -485,31 +488,69 @@ main{padding:12px 14px 80px}
 </div>
 
 <!-- MÓDULO INJETÁVEIS -->
-<div class="injetaveis-sec" id="secInjetaveis">
-  <div class="inj-hdr">
-    <div class="inj-icon">
-      <svg viewBox="0 0 24 24"><path d="M19.5 5.5L18 4l-1.5 1.5L15 4l-1.5 1.5L12 4l-1.5 1.5L9 4 7.5 5.5 6 4 4 6v14a2 2 0 002 2h12a2 2 0 002-2V6l-2-1.5z"/></svg>
+<div id="secInjetaveis">
+  <!-- Pasta Injetáveis ADULTO -->
+  <div class="pasta" id="pastaInjA">
+    <div class="pasta-hdr" onclick="togglePasta('injA','aberta')">
+      <div class="pasta-ico" style="background:#FEE2E2">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#B91C1C" stroke-width="2"><path d="M19 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/></svg>
+      </div>
+      <span class="pasta-nome">Injetáveis — Hospitalar</span>
+      <span class="pasta-count">10</span>
+      <span class="pasta-arr" id="arrInjA">›</span>
     </div>
-    <div>
-      <div class="inj-title">💉 Antibióticos Injetáveis</div>
-      <div style="font-size:10px;color:var(--text3);margin-top:1px">Módulo hospitalar · próxima fase</div>
+    <div class="pasta-body" id="bodyInjA">
+      <a href="ceftriaxona.html" class="drug ativo-t" data-search="ceftriaxona cef3 iv im pneumonia meningite sepse gonorreia">
+        <span class="drug-dot" style="background:#B91C1C"></span>
+        <div class="drug-info"><div class="drug-nome">Ceftriaxona</div><div class="drug-dose">500mg · 1g · 2g IV/IM</div></div>
+        <span class="drug-arr">›</span>
+      </a>
+      <a href="oxacilina.html" class="drug ativo-t" data-search="oxacilina mssa staph aureus iv pele celulite osteomielite">
+        <span class="drug-dot" style="background:#B91C1C"></span>
+        <div class="drug-info"><div class="drug-nome">Oxacilina</div><div class="drug-dose">500mg · 1g IV</div></div>
+        <span class="drug-arr">›</span>
+      </a>
+      <a href="ampicilina.html" class="drug ativo-t" data-search="ampicilina iv im meningite sepse listeria itu">
+        <span class="drug-dot" style="background:#B91C1C"></span>
+        <div class="drug-info"><div class="drug-nome">Ampicilina</div><div class="drug-dose">500mg · 1g IV/IM</div></div>
+        <span class="drug-arr">›</span>
+      </a>
+      <a href="ampicilina_sulbactam.html" class="drug ativo-t" data-search="ampicilina sulbactam iv pneumonia pele abdominal gineco">
+        <span class="drug-dot" style="background:#B91C1C"></span>
+        <div class="drug-info"><div class="drug-nome">Ampicilina+Sulbactam</div><div class="drug-dose">3g IV/IM</div></div>
+        <span class="drug-arr">›</span>
+      </a>
+      <a href="cefazolina.html" class="drug ativo-t" data-search="cefazolina cef1 iv im profilaxia cirurgica pele staph">
+        <span class="drug-dot" style="background:#B91C1C"></span>
+        <div class="drug-info"><div class="drug-nome">Cefazolina</div><div class="drug-dose">1g · 2g IV/IM</div></div>
+        <span class="drug-arr">›</span>
+      </a>
+      <a href="gentamicina.html" class="drug ativo-t" data-search="gentamicina aminoglicosideo iv im sepse gram negativo endocardite">
+        <span class="drug-dot" style="background:#B91C1C"></span>
+        <div class="drug-info"><div class="drug-nome">Gentamicina</div><div class="drug-dose">Dose estendida 24h IV/IM</div></div>
+        <span class="drug-arr">›</span>
+      </a>
+      <a href="vancomicina.html" class="drug ativo-t" data-search="vancomicina mrsa iv glicopeptideo endocardite meningite">
+        <span class="drug-dot" style="background:#B91C1C"></span>
+        <div class="drug-info"><div class="drug-nome">Vancomicina</div><div class="drug-dose">500mg · 1g IV</div></div>
+        <span class="drug-arr">›</span>
+      </a>
+      <a href="clindamicina.html" class="drug ativo-t" data-search="clindamicina iv im anaerob pele pneumonia toxoplasma gineco">
+        <span class="drug-dot" style="background:#B91C1C"></span>
+        <div class="drug-info"><div class="drug-nome">Clindamicina</div><div class="drug-dose">150mg/mL IV/IM</div></div>
+        <span class="drug-arr">›</span>
+      </a>
+      <a href="meropenem.html" class="drug ativo-t" data-search="meropenem carbapenem iv sepse pneumonia meningite pseudomonas">
+        <span class="drug-dot" style="background:#B91C1C"></span>
+        <div class="drug-info"><div class="drug-nome">Meropeném</div><div class="drug-dose">500mg · 1g IV</div></div>
+        <span class="drug-arr">›</span>
+      </a>
+      <a href="piperacilina_tazobactam.html" class="drug ativo-t" data-search="piperacilina tazobactam pip tazo iv sepse pneumonia neutropenia">
+        <span class="drug-dot" style="background:#B91C1C"></span>
+        <div class="drug-info"><div class="drug-nome">Pip+Tazobactam</div><div class="drug-dose">4,5g IV</div></div>
+        <span class="drug-arr">›</span>
+      </a>
     </div>
-    <span class="inj-badge">Em dev.</span>
-  </div>
-  <div class="inj-grid">
-    <div class="inj-card"><div class="inj-name">Ceftriaxona IV/IM</div><div class="inj-dose">500mg · 1g · 2g</div></div>
-    <div class="inj-card"><div class="inj-name">Vancomicina IV</div><div class="inj-dose">TDM · ajuste renal</div></div>
-    <div class="inj-card"><div class="inj-name">Oxacilina IV</div><div class="inj-dose">500mg · 1g</div></div>
-    <div class="inj-card"><div class="inj-name">Gentamicina IV</div><div class="inj-dose">Dose estendida 24h</div></div>
-    <div class="inj-card"><div class="inj-name">Meropeném IV</div><div class="inj-dose">500mg · 1g · 2g</div></div>
-    <div class="inj-card"><div class="inj-name">Pip+Tazobactam</div><div class="inj-dose">4,5g · 4/4h</div></div>
-  </div>
-  <div class="inj-pills">
-    <span class="fpill">Ampicilina</span>
-    <span class="fpill">Cefazolina</span>
-    <span class="fpill">Cefepima</span>
-    <span class="fpill">Clindamicina</span>
-    <span class="fpill">Azitromicina IV</span>
   </div>
 </div>
 
@@ -520,7 +561,7 @@ main{padding:12px 14px 80px}
     <div class="dnm">Rubiney Alves</div>
     <div class="dcg">Farmácia Clínica · Gestão Comercial · Tecnologia em Saúde</div>
   </div>
-  <a href="https://rubiney-alves.vercel.app" target="_blank" class="dlk">portfólio →</a>
+  <a href="https://rubiney-alves.vercel.app" target="_blank" class="port-btn">Portfólio <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
 </div>
 <div class="version">GUIADOSE v1.0 · guiadose.vercel.app · Rubiney Alves</div>
 
