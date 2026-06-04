@@ -8,6 +8,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="GUIADOSE">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="icons/icon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -405,18 +406,44 @@ main{padding:12px 14px 80px}
         <span class="pasta-arr" id="arrMucA"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span>
       </div>
       <div class="pasta-body" id="bodyMucA">
-        <div class="drug" style="opacity:0.5;cursor:default">
-          <span class="drug-dot" style="background:#1A7F5A"></span>
-          <div class="drug-info"><div class="drug-nome">Ambroxol</div><div class="drug-dose">Em desenvolvimento</div></div>
+        <a href="mucolítico.html" class="drug ativo-t" data-search="ambroxol mucolítico tosse bronquite dpoc 30mg">
+          <span class="drug-dot t"></span>
+          <div class="drug-info"><div class="drug-nome">Ambroxol</div><div class="drug-dose">30mg 3×/dia · xarope 15mg/5mL</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+        <a href="mucolítico.html" class="drug ativo-t" data-search="carbocisteína mucolítico tosse bronquite 750mg">
+          <span class="drug-dot t"></span>
+          <div class="drug-info"><div class="drug-nome">Carbocisteína</div><div class="drug-dose">750mg 3×/dia · xarope 250mg/5mL</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+        <a href="mucolítico.html" class="drug ativo-t" data-search="acetilcisteína nac mucolítico tosse 600mg efervescente">
+          <span class="drug-dot t"></span>
+          <div class="drug-info"><div class="drug-nome">Acetilcisteína</div><div class="drug-dose">600mg 1×/dia · sachê efervescente</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="pasta" id="pastaCortA">
+      <div class="pasta-hdr" onclick="togglePasta('cortA','aberta')">
+        <div class="pasta-ico" style="background:#FEE2E2">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#B91C1C" stroke-width="2"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
         </div>
-        <div class="drug" style="opacity:0.5;cursor:default">
-          <span class="drug-dot" style="background:#1A7F5A"></span>
-          <div class="drug-info"><div class="drug-nome">Carbocisteína</div><div class="drug-dose">Em desenvolvimento</div></div>
-        </div>
-        <div class="drug" style="opacity:0.5;cursor:default">
-          <span class="drug-dot" style="background:#1A7F5A"></span>
-          <div class="drug-info"><div class="drug-nome">Acetilcisteína</div><div class="drug-dose">Em desenvolvimento</div></div>
-        </div>
+        <span class="pasta-nome">Corticoides</span>
+        <span class="pasta-count">3</span>
+        <span class="pasta-arr" id="arrCortA"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span>
+      </div>
+      <div class="pasta-body" id="bodyCortA">
+        <a href="corticoide.html" class="drug ativo-t" data-search="prednisona prednisolona corticoide asma dpoc urticaria artrite lupus croup">
+          <span class="drug-dot t"></span>
+          <div class="drug-info"><div class="drug-nome">Prednisona / Prednisolona</div><div class="drug-dose">Comp. 5/20mg · 1–2mg/kg/dia</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+        <a href="corticoide.html" class="drug ativo-t" data-search="dexametasona corticoide croup laringite dose unica 0.15mg/kg">
+          <span class="drug-dot t"></span>
+          <div class="drug-info"><div class="drug-nome">Dexametasona</div><div class="drug-dose">0,15–0,6mg/kg · croup dose única</div></div>
+          <span class="drug-arr">›</span>
+        </a>
       </div>
     </div>
     <div class="pasta" id="pastaProbA">
@@ -644,18 +671,44 @@ main{padding:12px 14px 80px}
         <span class="pasta-arr" id="arrMucP"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span>
       </div>
       <div class="pasta-body" id="bodyMucP">
-        <div class="drug" style="opacity:0.5;cursor:default">
+        <a href="mucolítico.html" class="drug ativo-b" data-search="ambroxol ped mucolítico tosse 1.2mg/kg">
           <span class="drug-dot b"></span>
-          <div class="drug-info"><div class="drug-nome">Ambroxol</div><div class="drug-dose">Em desenvolvimento</div></div>
-        </div>
-        <div class="drug" style="opacity:0.5;cursor:default">
+          <div class="drug-info"><div class="drug-nome">Ambroxol</div><div class="drug-dose">1,2mg/kg/dia · xarope 3mg/mL</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+        <a href="mucolítico.html" class="drug ativo-b" data-search="carbocisteína ped mucolítico tosse 10mg/kg">
           <span class="drug-dot b"></span>
-          <div class="drug-info"><div class="drug-nome">Carbocisteína</div><div class="drug-dose">Em desenvolvimento</div></div>
-        </div>
-        <div class="drug" style="opacity:0.5;cursor:default">
+          <div class="drug-info"><div class="drug-nome">Carbocisteína</div><div class="drug-dose">10mg/kg/dia · xarope 50mg/mL</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+        <a href="mucolítico.html" class="drug ativo-b" data-search="acetilcisteína ped mucolítico tosse 10mg/kg">
           <span class="drug-dot b"></span>
-          <div class="drug-info"><div class="drug-nome">Acetilcisteína</div><div class="drug-dose">Em desenvolvimento</div></div>
+          <div class="drug-info"><div class="drug-nome">Acetilcisteína</div><div class="drug-dose">10mg/kg/dia · sachê/comprimido</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="pasta" id="pastaCortP">
+      <div class="pasta-hdr" onclick="togglePasta('cortP','aberta-ped')">
+        <div class="pasta-ico" style="background:#FEE2E2">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#B91C1C" stroke-width="2"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
         </div>
+        <span class="pasta-nome">Corticoides</span>
+        <span class="pasta-count">3</span>
+        <span class="pasta-arr" id="arrCortP"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span>
+      </div>
+      <div class="pasta-body" id="bodyCortP">
+        <a href="corticoide.html" class="drug ativo-b" data-search="prednisona ped asma 1mg/kg urticaria nefrose corticoide">
+          <span class="drug-dot b"></span>
+          <div class="drug-info"><div class="drug-nome">Prednisona / Prednisolona</div><div class="drug-dose">1–2mg/kg/dia · máx 60mg</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+        <a href="corticoide.html" class="drug ativo-b" data-search="dexametasona ped croup laringite 0.6mg/kg dose unica">
+          <span class="drug-dot b"></span>
+          <div class="drug-info"><div class="drug-nome">Dexametasona</div><div class="drug-dose">0,15–0,6mg/kg · croup dose única ⭐</div></div>
+          <span class="drug-arr">›</span>
+        </a>
       </div>
     </div>
     <div class="pasta" id="pastaProbP">
