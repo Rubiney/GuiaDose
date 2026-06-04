@@ -210,6 +210,69 @@ main{padding:12px 14px 80px}
     </div>
 
     <!-- Pasta Antibióticos ADULTO -->
+    <div class="pasta" id="pastaInjA">
+    <div class="pasta-hdr" onclick="togglePasta('injA','aberta')">
+      <div class="pasta-ico" style="background:#FEE2E2">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#B91C1C" stroke-width="2"><path d="M19 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/></svg>
+      </div>
+      <span class="pasta-nome">Injetáveis — Hospitalar</span>
+      <span class="pasta-count">10</span>
+      <span class="pasta-arr" id="arrInjA"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span>
+    </div>
+    <div class="pasta-body" id="bodyInjA">
+      <a href="ceftriaxona.html" class="drug ativo-t" data-search="ceftriaxona cef3 iv im pneumonia meningite sepse gonorreia">
+        <span class="drug-dot" style="background:#B91C1C"></span>
+        <div class="drug-info"><div class="drug-nome">Ceftriaxona</div><div class="drug-dose">500mg · 1g · 2g IV/IM</div></div>
+        <span class="drug-arr">›</span>
+      </a>
+      <a href="oxacilina.html" class="drug ativo-t" data-search="oxacilina mssa staph aureus iv pele celulite osteomielite">
+        <span class="drug-dot" style="background:#B91C1C"></span>
+        <div class="drug-info"><div class="drug-nome">Oxacilina</div><div class="drug-dose">500mg · 1g IV</div></div>
+        <span class="drug-arr">›</span>
+      </a>
+      <a href="ampicilina.html" class="drug ativo-t" data-search="ampicilina iv im meningite sepse listeria itu">
+        <span class="drug-dot" style="background:#B91C1C"></span>
+        <div class="drug-info"><div class="drug-nome">Ampicilina</div><div class="drug-dose">500mg · 1g IV/IM</div></div>
+        <span class="drug-arr">›</span>
+      </a>
+      <a href="ampicilina_sulbactam.html" class="drug ativo-t" data-search="ampicilina sulbactam iv pneumonia pele abdominal gineco">
+        <span class="drug-dot" style="background:#B91C1C"></span>
+        <div class="drug-info"><div class="drug-nome">Ampicilina+Sulbactam</div><div class="drug-dose">3g IV/IM</div></div>
+        <span class="drug-arr">›</span>
+      </a>
+      <a href="cefazolina.html" class="drug ativo-t" data-search="cefazolina cef1 iv im profilaxia cirurgica pele staph">
+        <span class="drug-dot" style="background:#B91C1C"></span>
+        <div class="drug-info"><div class="drug-nome">Cefazolina</div><div class="drug-dose">1g · 2g IV/IM</div></div>
+        <span class="drug-arr">›</span>
+      </a>
+      <a href="gentamicina.html" class="drug ativo-t" data-search="gentamicina aminoglicosideo iv im sepse gram negativo endocardite">
+        <span class="drug-dot" style="background:#B91C1C"></span>
+        <div class="drug-info"><div class="drug-nome">Gentamicina</div><div class="drug-dose">Dose estendida 24h IV/IM</div></div>
+        <span class="drug-arr">›</span>
+      </a>
+      <a href="vancomicina.html" class="drug ativo-t" data-search="vancomicina mrsa iv glicopeptideo endocardite meningite">
+        <span class="drug-dot" style="background:#B91C1C"></span>
+        <div class="drug-info"><div class="drug-nome">Vancomicina</div><div class="drug-dose">500mg · 1g IV</div></div>
+        <span class="drug-arr">›</span>
+      </a>
+      <a href="clindamicina.html" class="drug ativo-t" data-search="clindamicina iv im anaerob pele pneumonia toxoplasma gineco">
+        <span class="drug-dot" style="background:#B91C1C"></span>
+        <div class="drug-info"><div class="drug-nome">Clindamicina</div><div class="drug-dose">150mg/mL IV/IM</div></div>
+        <span class="drug-arr">›</span>
+      </a>
+      <a href="meropenem.html" class="drug ativo-t" data-search="meropenem carbapenem iv sepse pneumonia meningite pseudomonas">
+        <span class="drug-dot" style="background:#B91C1C"></span>
+        <div class="drug-info"><div class="drug-nome">Meropeném</div><div class="drug-dose">500mg · 1g IV</div></div>
+        <span class="drug-arr">›</span>
+      </a>
+      <a href="piperacilina_tazobactam.html" class="drug ativo-t" data-search="piperacilina tazobactam pip tazo iv sepse pneumonia neutropenia">
+        <span class="drug-dot" style="background:#B91C1C"></span>
+        <div class="drug-info"><div class="drug-nome">Pip+Tazobactam</div><div class="drug-dose">4,5g IV</div></div>
+        <span class="drug-arr">›</span>
+      </a>
+    </div>
+  </div>
+
     <div class="pasta" id="pastaAntibA">
       <div class="pasta-hdr" onclick="togglePasta('antibA','aberta')">
         <div class="pasta-ico teal">
@@ -485,7 +548,6 @@ main{padding:12px 14px 80px}
         </a>
       </div>
     </div>
-  </div>
 
     <div class="pasta" id="pastaDescA">
       <div class="pasta-hdr" onclick="togglePasta('descA','aberta')">
@@ -534,6 +596,69 @@ main{padding:12px 14px 80px}
     </div>
 
     <!-- Pasta Antibióticos PED -->
+    <div class="pasta" id="pastaInjP">
+    <div class="pasta-hdr" onclick="togglePasta('injP','aberta-ped')">
+      <div class="pasta-ico" style="background:#FEE2E2">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#B91C1C" stroke-width="2"><path d="M19 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/></svg>
+      </div>
+      <span class="pasta-nome">Injetáveis — Hospitalar</span>
+      <span class="pasta-count">10</span>
+      <span class="pasta-arr" id="arrInjP"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span>
+    </div>
+    <div class="pasta-body" id="bodyInjP">
+      <a href="ceftriaxona.html" class="drug ativo-b" data-search="ceftriaxona cef3 iv im pneumonia meningite sepse gonorreia">
+        <span class="drug-dot" style="background:#B91C1C"></span>
+        <div class="drug-info"><div class="drug-nome">Ceftriaxona</div><div class="drug-dose">500mg · 1g · 2g IV/IM</div></div>
+        <span class="drug-arr">›</span>
+      </a>
+      <a href="oxacilina.html" class="drug ativo-b" data-search="oxacilina mssa staph aureus iv pele celulite osteomielite">
+        <span class="drug-dot" style="background:#B91C1C"></span>
+        <div class="drug-info"><div class="drug-nome">Oxacilina</div><div class="drug-dose">500mg · 1g IV</div></div>
+        <span class="drug-arr">›</span>
+      </a>
+      <a href="ampicilina.html" class="drug ativo-b" data-search="ampicilina iv im meningite sepse listeria itu">
+        <span class="drug-dot" style="background:#B91C1C"></span>
+        <div class="drug-info"><div class="drug-nome">Ampicilina</div><div class="drug-dose">500mg · 1g IV/IM</div></div>
+        <span class="drug-arr">›</span>
+      </a>
+      <a href="ampicilina_sulbactam.html" class="drug ativo-b" data-search="ampicilina sulbactam iv pneumonia pele abdominal gineco">
+        <span class="drug-dot" style="background:#B91C1C"></span>
+        <div class="drug-info"><div class="drug-nome">Ampicilina+Sulbactam</div><div class="drug-dose">3g IV/IM</div></div>
+        <span class="drug-arr">›</span>
+      </a>
+      <a href="cefazolina.html" class="drug ativo-b" data-search="cefazolina cef1 iv im profilaxia cirurgica pele staph">
+        <span class="drug-dot" style="background:#B91C1C"></span>
+        <div class="drug-info"><div class="drug-nome">Cefazolina</div><div class="drug-dose">1g · 2g IV/IM</div></div>
+        <span class="drug-arr">›</span>
+      </a>
+      <a href="gentamicina.html" class="drug ativo-b" data-search="gentamicina aminoglicosideo iv im sepse gram negativo endocardite">
+        <span class="drug-dot" style="background:#B91C1C"></span>
+        <div class="drug-info"><div class="drug-nome">Gentamicina</div><div class="drug-dose">Dose estendida 24h IV/IM</div></div>
+        <span class="drug-arr">›</span>
+      </a>
+      <a href="vancomicina.html" class="drug ativo-b" data-search="vancomicina mrsa iv glicopeptideo endocardite meningite">
+        <span class="drug-dot" style="background:#B91C1C"></span>
+        <div class="drug-info"><div class="drug-nome">Vancomicina</div><div class="drug-dose">500mg · 1g IV</div></div>
+        <span class="drug-arr">›</span>
+      </a>
+      <a href="clindamicina.html" class="drug ativo-b" data-search="clindamicina iv im anaerob pele pneumonia toxoplasma gineco">
+        <span class="drug-dot" style="background:#B91C1C"></span>
+        <div class="drug-info"><div class="drug-nome">Clindamicina</div><div class="drug-dose">150mg/mL IV/IM</div></div>
+        <span class="drug-arr">›</span>
+      </a>
+      <a href="meropenem.html" class="drug ativo-b" data-search="meropenem carbapenem iv sepse pneumonia meningite pseudomonas">
+        <span class="drug-dot" style="background:#B91C1C"></span>
+        <div class="drug-info"><div class="drug-nome">Meropeném</div><div class="drug-dose">500mg · 1g IV</div></div>
+        <span class="drug-arr">›</span>
+      </a>
+      <a href="piperacilina_tazobactam.html" class="drug ativo-b" data-search="piperacilina tazobactam pip tazo iv sepse pneumonia neutropenia">
+        <span class="drug-dot" style="background:#B91C1C"></span>
+        <div class="drug-info"><div class="drug-nome">Pip+Tazobactam</div><div class="drug-dose">4,5g IV</div></div>
+        <span class="drug-arr">›</span>
+      </a>
+    </div>
+  </div>
+
     <div class="pasta" id="pastaAntibP">
       <div class="pasta-hdr" onclick="togglePasta('antibP','aberta-ped')">
         <div class="pasta-ico blue">
@@ -826,155 +951,3 @@ main{padding:12px 14px 80px}
   <p>Nenhum resultado encontrado.<br>Tente outro nome ou indicação.</p>
 </div>
 
-<!-- MÓDULO INJETÁVEIS -->
-<div id="secInjetaveis">
-  <!-- Pasta Injetáveis ADULTO -->
-  <div class="pasta" id="pastaInjA">
-    <div class="pasta-hdr" onclick="togglePasta('injA','aberta')">
-      <div class="pasta-ico" style="background:#FEE2E2">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#B91C1C" stroke-width="2"><path d="M19 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/></svg>
-      </div>
-      <span class="pasta-nome">Injetáveis — Hospitalar</span>
-      <span class="pasta-count">10</span>
-      <span class="pasta-arr" id="arrInjA"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span>
-    </div>
-    <div class="pasta-body" id="bodyInjA">
-      <a href="ceftriaxona.html" class="drug ativo-t" data-search="ceftriaxona cef3 iv im pneumonia meningite sepse gonorreia">
-        <span class="drug-dot" style="background:#B91C1C"></span>
-        <div class="drug-info"><div class="drug-nome">Ceftriaxona</div><div class="drug-dose">500mg · 1g · 2g IV/IM</div></div>
-        <span class="drug-arr">›</span>
-      </a>
-      <a href="oxacilina.html" class="drug ativo-t" data-search="oxacilina mssa staph aureus iv pele celulite osteomielite">
-        <span class="drug-dot" style="background:#B91C1C"></span>
-        <div class="drug-info"><div class="drug-nome">Oxacilina</div><div class="drug-dose">500mg · 1g IV</div></div>
-        <span class="drug-arr">›</span>
-      </a>
-      <a href="ampicilina.html" class="drug ativo-t" data-search="ampicilina iv im meningite sepse listeria itu">
-        <span class="drug-dot" style="background:#B91C1C"></span>
-        <div class="drug-info"><div class="drug-nome">Ampicilina</div><div class="drug-dose">500mg · 1g IV/IM</div></div>
-        <span class="drug-arr">›</span>
-      </a>
-      <a href="ampicilina_sulbactam.html" class="drug ativo-t" data-search="ampicilina sulbactam iv pneumonia pele abdominal gineco">
-        <span class="drug-dot" style="background:#B91C1C"></span>
-        <div class="drug-info"><div class="drug-nome">Ampicilina+Sulbactam</div><div class="drug-dose">3g IV/IM</div></div>
-        <span class="drug-arr">›</span>
-      </a>
-      <a href="cefazolina.html" class="drug ativo-t" data-search="cefazolina cef1 iv im profilaxia cirurgica pele staph">
-        <span class="drug-dot" style="background:#B91C1C"></span>
-        <div class="drug-info"><div class="drug-nome">Cefazolina</div><div class="drug-dose">1g · 2g IV/IM</div></div>
-        <span class="drug-arr">›</span>
-      </a>
-      <a href="gentamicina.html" class="drug ativo-t" data-search="gentamicina aminoglicosideo iv im sepse gram negativo endocardite">
-        <span class="drug-dot" style="background:#B91C1C"></span>
-        <div class="drug-info"><div class="drug-nome">Gentamicina</div><div class="drug-dose">Dose estendida 24h IV/IM</div></div>
-        <span class="drug-arr">›</span>
-      </a>
-      <a href="vancomicina.html" class="drug ativo-t" data-search="vancomicina mrsa iv glicopeptideo endocardite meningite">
-        <span class="drug-dot" style="background:#B91C1C"></span>
-        <div class="drug-info"><div class="drug-nome">Vancomicina</div><div class="drug-dose">500mg · 1g IV</div></div>
-        <span class="drug-arr">›</span>
-      </a>
-      <a href="clindamicina.html" class="drug ativo-t" data-search="clindamicina iv im anaerob pele pneumonia toxoplasma gineco">
-        <span class="drug-dot" style="background:#B91C1C"></span>
-        <div class="drug-info"><div class="drug-nome">Clindamicina</div><div class="drug-dose">150mg/mL IV/IM</div></div>
-        <span class="drug-arr">›</span>
-      </a>
-      <a href="meropenem.html" class="drug ativo-t" data-search="meropenem carbapenem iv sepse pneumonia meningite pseudomonas">
-        <span class="drug-dot" style="background:#B91C1C"></span>
-        <div class="drug-info"><div class="drug-nome">Meropeném</div><div class="drug-dose">500mg · 1g IV</div></div>
-        <span class="drug-arr">›</span>
-      </a>
-      <a href="piperacilina_tazobactam.html" class="drug ativo-t" data-search="piperacilina tazobactam pip tazo iv sepse pneumonia neutropenia">
-        <span class="drug-dot" style="background:#B91C1C"></span>
-        <div class="drug-info"><div class="drug-nome">Pip+Tazobactam</div><div class="drug-dose">4,5g IV</div></div>
-        <span class="drug-arr">›</span>
-      </a>
-    </div>
-  </div>
-</div>
-
-<!-- RODAPÉ -->
-<div class="dev-footer">
-  <div class="dav">RA</div>
-  <div>
-    <div class="dnm">Rubiney Alves</div>
-    <div class="dcg">Farmácia Clínica · Gestão Comercial · Tecnologia em Saúde</div>
-  </div>
-  <a href="https://rubiney-alves.vercel.app" target="_blank" class="port-btn">Portfólio <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-</div>
-<div class="version">GUIADOSE v1.0 · guiadose.vercel.app · Rubiney Alves</div>
-
-</main>
-
-<script>
-// ── TOGGLE PASTA ──
-function togglePasta(id, classeAberta) {
-  const body = document.getElementById('body' + id[0].toUpperCase() + id.slice(1));
-  const arr  = document.getElementById('arr'  + id[0].toUpperCase() + id.slice(1));
-  const pasta = body.closest('.pasta');
-  const aberta = body.classList.toggle('open');
-  arr.classList.toggle('open', aberta);
-  if (aberta) {
-    pasta.classList.add(classeAberta);
-  } else {
-    pasta.classList.remove(classeAberta);
-    pasta.classList.remove('aberta');
-    pasta.classList.remove('aberta-ped');
-  }
-}
-
-// ── BUSCA ──
-function buscar() {
-  const q = document.getElementById('searchInput').value.toLowerCase().trim();
-  const drugs  = document.querySelectorAll('.drug[data-search]');
-  const breves = document.querySelectorAll('.pasta-breve[data-search]');
-  let vis = 0;
-
-  if (!q) {
-    // Restaurar tudo
-    drugs.forEach(d  => d.classList.remove('hidden'));
-    breves.forEach(b => b.classList.remove('hidden'));
-    // pastas fechadas por padrão
-    document.getElementById('emptyS').style.display = 'none';
-    document.getElementById('colsMain').style.display = 'grid';
-    document.getElementById('secInjetaveis').style.display = 'block';
-    return;
-  }
-
-  // Abrir todas as pastas durante busca
-  // todas pastas fechadas por padrão
-
-  drugs.forEach(d => {
-    const tags = (d.dataset.search || '').toLowerCase();
-    const nome = d.querySelector('.drug-nome')?.textContent.toLowerCase() || '';
-    const dose = d.querySelector('.drug-dose')?.textContent.toLowerCase() || '';
-    const ok   = tags.includes(q) || nome.includes(q) || dose.includes(q);
-    d.classList.toggle('hidden', !ok);
-    if (ok) vis++;
-  });
-  breves.forEach(b => {
-    const tags = (b.dataset.search || '').toLowerCase();
-    const nome = b.querySelector('.pasta-breve-nome')?.textContent.toLowerCase() || '';
-    const ok   = tags.includes(q) || nome.includes(q);
-    b.classList.toggle('hidden', !ok);
-    if (ok) vis++;
-  });
-
-  document.getElementById('emptyS').style.display = vis ? 'none' : 'block';
-  document.getElementById('secInjetaveis').style.display = vis ? 'none' : 'none';
-}
-
-// ── DARK MODE ──
-function toggleDark() {
-  const d = document.documentElement;
-  d.getAttribute('data-theme') === 'dark'
-    ? d.removeAttribute('data-theme')
-    : d.setAttribute('data-theme', 'dark');
-}
-
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
-}
-</script>
-</body>
-</html>
