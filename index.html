@@ -90,9 +90,9 @@ main{padding:12px 14px 80px}
 .pasta-ico.teal svg{fill:var(--teal)}
 .pasta-ico.blue svg{fill:var(--blue)}
 .pasta-nome{font-size:12px;font-weight:600;color:var(--text);flex:1;line-height:1.2}
-.pasta-count{font-size:9px;color:var(--text3);font-family:var(--mono);background:var(--surface2);padding:2px 5px;border-radius:4px}
-.pasta-arr{font-size:14px;color:var(--text3);transition:transform 0.2s;margin-left:3px;line-height:1}
-.pasta-arr.open{transform:rotate(90deg)}
+
+
+
 .pasta-body{display:none;border-top:1px solid var(--border);padding:5px 6px}
 .pasta-body.open{display:block}
 
@@ -153,6 +153,12 @@ main{padding:12px 14px 80px}
 .port-btn{display:flex;align-items:center;gap:6px;background:#C9A84C;border:none;border-radius:99px;padding:7px 16px;color:#0A1628;font-size:11px;font-family:var(--mono);font-weight:700;text-decoration:none;white-space:nowrap;cursor:pointer;flex-shrink:0;transition:all 0.15s;margin-left:auto}
 .port-btn:hover{background:#E8C97A;transform:translateY(-1px)}
 .port-btn svg{width:13px;height:13px;stroke:#0A1628;stroke-width:2.5;fill:none;flex-shrink:0}
+.pasta-count{display:inline-flex;align-items:center;justify-content:center;min-width:24px;height:20px;padding:0 7px;background:var(--gold);color:var(--navy3);font-size:10px;font-weight:700;font-family:var(--mono);border-radius:99px;letter-spacing:0.3px;flex-shrink:0}
+.pasta-arr{width:24px;height:24px;display:flex;align-items:center;justify-content:center;background:var(--navy);border-radius:7px;flex-shrink:0;transition:all 0.18s;flex-shrink:0}
+.pasta-arr svg{width:13px;height:13px;stroke:var(--gold);stroke-width:2.5;fill:none;transition:transform 0.2s}
+.pasta-arr.open svg{transform:rotate(90deg)}
+.pasta.aberta .pasta-arr{background:var(--navy2)}
+.pasta.aberta-ped .pasta-arr{background:var(--navy2)}
 </style>
 </head>
 <body>
@@ -286,7 +292,7 @@ main{padding:12px 14px 80px}
         </div>
         <span class="pasta-nome">Analgésicos e Antitérmicos</span>
         <span class="pasta-count">3</span>
-        <span class="pasta-arr" id="arrAnalA">›</span>
+        <span class="pasta-arr" id="arrAnalA"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span>
       </div>
       <div class="pasta-body" id="bodyAnalA">
         <a href="paracetamol.html" class="drug ativo-t" data-search="paracetamol dor febre tylenol gotas comp hepatopatia">
@@ -348,7 +354,7 @@ main{padding:12px 14px 80px}
         </div>
         <span class="pasta-nome">Antibióticos</span>
         <span class="pasta-count">13</span>
-        <span class="pasta-arr" id="arrAntibP">›</span>
+        <span class="pasta-arr" id="arrAntibP"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span>
       </div>
       <div class="pasta-body" id="bodyAntibP">
         <a href="amoxicalc.html" class="drug ativo-b" data-search="amoxicilina ped penicilina otite resp">
@@ -428,7 +434,7 @@ main{padding:12px 14px 80px}
         </div>
         <span class="pasta-nome">Analgésicos e Antitérmicos</span>
         <span class="pasta-count">3</span>
-        <span class="pasta-arr" id="arrAnalP">›</span>
+        <span class="pasta-arr" id="arrAnalP"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span>
       </div>
       <div class="pasta-body" id="bodyAnalP">
         <a href="paracetamol.html" class="drug ativo-b" data-search="paracetamol ped dor febre gotas 1gota/kg">

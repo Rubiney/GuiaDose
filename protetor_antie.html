@@ -1,17 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
-<meta name="theme-color" content="#0F3460">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<link rel="manifest" href="manifest.json">
-<link rel="apple-touch-icon" href="icons/icon-192.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="theme-color" content="#0F3460"><meta name="mobile-web-app-capable" content="yes">
+<link rel="manifest" href="manifest.json"><link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
-<title>DoxiCalc — GUIADOSE</title>
+<title>GastroCalc — GUIADOSE</title>
 <style>
 :root{--navy:#0F3460;--navy2:#16213E;--navy3:#0A1628;--gold:#C9A84C;--gold2:#E8C97A;--white:#FFFFFF;--surface:#F7F9FC;--surface2:#EEF2F7;--border:#D8E2EF;--text:#1A2540;--text2:#4A5878;--text3:#8A97B0;--green:#1A7F5A;--green-bg:#E6F7F1;--amber:#92560A;--amber-bg:#FEF3E2;--red:#B91C1C;--red-bg:#FEF2F2;--blue:#1549A0;--blue-bg:#EBF2FF;--radius:12px;--radius-sm:8px;--shadow:0 2px 12px rgba(15,52,96,0.10);--font:'DM Sans',sans-serif;--mono:'DM Mono',monospace}
 [data-theme="dark"]{--white:#1A2540;--surface:#111827;--surface2:#1F2A3C;--border:#2D3E5A;--text:#E8EDF5;--text2:#A0AEBF;--text3:#5A6A80;--blue-bg:#1A2A4A;--blue:#7AABF0;--amber-bg:#2A1F0A;--amber:#F0C070;--red-bg:#2A1010;--red:#F08080;--green-bg:#0A2018;--green:#60C090}
@@ -122,8 +117,8 @@ select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/
   <div class="app-header-top">
     <a href="guiadose.html" class="back-btn"><svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg><span>MENU</span></a>
     <div class="hdr-divider"></div>
-    <div class="app-logo"><svg viewBox="0 0 24 24"><path d="M9 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2h-4M9 3a2 2 0 002 2h2a2 2 0 002-2M9 3a2 2 0 012-2h2a2 2 0 012 2"/></svg></div>
-    <div><div class="app-title">DoxiCalc</div><div class="app-subtitle">Doxiciclina · Adulto ≥8 anos</div></div>
+    <div class="app-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0016.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 002 8.5c0 2.3 1.5 4.05 3 5.5l7 7 7-7z"/></svg></div>
+    <div><div class="app-title">GastroCalc</div><div class="app-subtitle">Protetores & Antieméticos · Adulto & Pediátrico</div></div>
     <button class="dark-btn" onclick="toggleDark()">🌙</button>
   </div>
   <div class="pbar">
@@ -131,18 +126,42 @@ select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/
     <button class="pb" id="btnP" onclick="setPerfil('ped')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M8 12v2a4 4 0 008 0v-2"/></svg>Pediátrico</button>
   </div>
   <div class="apres-bar">
-    <span class="apres-lbl">Suspensão:</span>
-    <div id="apres_btns"></div>
+    <span class="apres-lbl">Classe:</span>
+    <button class="abtn on" id="aIBP" onclick="setClasse('ibp')">IBP</button>
+    <button class="abtn" id="aAnti" onclick="setClasse('anti')">Antiemético</button>
     <div class="tw"><button class="tbtn" onclick="toggleTip(this)">⚠️</button>
-    <div class="tbox" id="tipBox"><div style="font-size:10px;font-weight:700;color:var(--gold);margin-bottom:5px">⚠️ Advertência</div>Ferramenta educacional. Não substitui prescrição médica. Bula ANVISA.</div></div>
+    <div class="tbox" id="tipBox"><div style="font-size:10px;font-weight:700;color:var(--gold);margin-bottom:5px">⚠️ Advertência</div>IBP: tomar 30min antes do café. Antieméticos: verificar contraindicações. Não substitui prescrição médica. Bula ANVISA.</div></div>
   </div>
 </header>
-<div id="toast" class="toast"></div>
 <div class="page active" id="pageCalc"><main>
 <div id="fA">
-  <div class="card"><div class="ct" id="ctA">Adulto</div>
-    <label class="fl">Indicação</label>
-    <select id="dA" onchange="updA()"><option value="">Selecione...</option><option value="resp">Infecção respiratória — 7–14 dias</option><option value="sinusite">Sinusite bacteriana — 10 dias</option><option value="clamydia">Clamídia / uretrite — 7 dias</option><option value="sifilis">Sífilis (alérgico penicilina) — 14–28 dias</option><option value="acne">Acne inflamatória — 8–12 semanas</option><option value="pele">Infecções de pele — 7–10 dias</option><option value="lyme">Doença de Lyme — 14–21 dias</option><option value="malaria">Profilaxia malária — contínuo</option></select>
+  <div class="card">
+    <div class="ct" id="ctA">Adulto — Protetores Gástricos (IBP)</div>
+    <label class="fl">Medicamento / Indicação</label>
+    <select id="dA" onchange="updA()">
+      <option value="">Selecione...</option>
+      <optgroup label="IBP — Inibidores da Bomba de Prótons">
+        <option value="omeprazol_20">Omeprazol 20mg — DRGE / profilaxia AINE</option>
+        <option value="omeprazol_40">Omeprazol 40mg — úlcera péptica / H. pylori</option>
+        <option value="pantoprazol_20">Pantoprazol 20mg — DRGE leve</option>
+        <option value="pantoprazol_40">Pantoprazol 40mg — úlcera / H. pylori</option>
+        <option value="lansoprazol_15">Lansoprazol 15mg — DRGE manutenção</option>
+        <option value="lansoprazol_30">Lansoprazol 30mg — úlcera péptica</option>
+        <option value="esomeprazol_20">Esomeprazol 20mg — DRGE</option>
+        <option value="esomeprazol_40">Esomeprazol 40mg — úlcera / H. pylori</option>
+      </optgroup>
+      <optgroup label="Antiácidos adjuvantes">
+        <option value="sucralfato">Sucralfato 1g — proteção mucosa</option>
+        <option value="hidro_alum">Hidróxido Al+Mg — alívio sintomático</option>
+      </optgroup>
+      <optgroup label="Antieméticos — adulto">
+        <option value="ondansetrona_a">Ondansetrona 8mg — náusea/vômito</option>
+        <option value="metoclop_a">Metoclopramida 10mg — náusea/vômito/RGE</option>
+        <option value="domperidon_a">Domperidona 10mg — náusea/vômito/estase</option>
+        <option value="dimenid_a">Dimenidrinato 50mg — cinetose / labirintite</option>
+        <option value="bromoprida_a">Bromoprida 10mg — náusea/vômito</option>
+      </optgroup>
+    </select>
     <div class="rh" id="rhA"></div>
   </div>
   <div class="rcrd" id="resA">
@@ -152,20 +171,34 @@ select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/
     <div class="acoes">
       <button class="ba" onclick="cp(txtA)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copiar</button>
       <button class="ba" onclick="wa(txtA)"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.118 1.524 5.845L0 24l6.324-1.501A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.882a9.875 9.875 0 01-5.022-1.368l-.361-.214-3.741.981.999-3.648-.235-.374A9.859 9.859 0 012.118 12C2.118 6.533 6.533 2.118 12 2.118c5.467 0 9.882 4.415 9.882 9.882 0 5.467-4.415 9.882-9.882 9.882z"/></svg>WhatsApp</button>
-      <button class="ba" onclick="pr('DoxiCalc',txtA)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>Imprimir</button>
+      <button class="ba" onclick="pr('GastroCalc',txtA)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>Imprimir</button>
     </div>
     <div id="alA"></div>
   </div>
   <div id="emA"><div class="empty-state"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg><p>Selecione a indicação</p></div></div>
 </div>
 <div id="fP" style="display:none">
-  <div class="card"><div class="ct">Pediátrico — Suspensão oral</div>
-    <div class="al ai" style="margin-bottom:12px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg>Concentração: <strong id="cncLbl">—</strong></div>
-    <label class="fl">Indicação</label>
-    <select id="dP" onchange="updP()"><option value="">Selecione...</option></select>
+  <div class="card">
+    <div class="ct">Pediátrico — Dose por peso</div>
+    <div class="al ai" style="margin-bottom:12px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg>Classe: <strong id="classeLbl">IBP</strong>. Dose por peso. Bula ANVISA.</div>
+    <label class="fl">Medicamento / Indicação</label>
+    <select id="dP" onchange="updP()">
+      <option value="">Selecione...</option>
+      <optgroup label="IBP Pediátrico">
+        <option value="p_omeprazol">Omeprazol — DRGE / esofagite</option>
+        <option value="p_pantoprazol">Pantoprazol — DRGE / úlcera</option>
+        <option value="p_lansoprazol">Lansoprazol — DRGE</option>
+      </optgroup>
+      <optgroup label="Antieméticos Pediátrico">
+        <option value="p_ondansetrona">Ondansetrona — náusea/vômito</option>
+        <option value="p_metoclop">Metoclopramida — náusea/vômito/RGE</option>
+        <option value="p_domperidon">Domperidona — náusea/vômito/estase</option>
+        <option value="p_dimenid">Dimenidrinato — cinetose / labirintite</option>
+      </optgroup>
+    </select>
     <div class="rh" id="rhP"></div>
     <label class="fl">Peso (kg)</label>
-    <input type="number" id="peso" placeholder="Ex: 15" min="3" max="60" step="0.1" oninput="calcP()">
+    <input type="number" id="peso" placeholder="Ex: 15" min="2" max="80" step="0.1" oninput="calcP()">
   </div>
   <div class="rcrd" id="resP">
     <div class="rhead"><div class="rico"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div><div><div class="rdnc" id="rdP">—</div><div class="rrgm" id="rrP">—</div></div></div>
@@ -174,18 +207,25 @@ select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/
     <div class="acoes">
       <button class="ba" onclick="cp(txtP)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copiar</button>
       <button class="ba" onclick="wa(txtP)"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.118 1.524 5.845L0 24l6.324-1.501A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.882a9.875 9.875 0 01-5.022-1.368l-.361-.214-3.741.981.999-3.648-.235-.374A9.859 9.859 0 012.118 12C2.118 6.533 6.533 2.118 12 2.118c5.467 0 9.882 4.415 9.882 9.882 0 5.467-4.415 9.882-9.882 9.882z"/></svg>WhatsApp</button>
-      <button class="ba" onclick="pr('DoxiCalc',txtP)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>Imprimir</button>
+      <button class="ba" onclick="pr('GastroCalc',txtP)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>Imprimir</button>
     </div>
     <div id="alP"></div>
   </div>
-  <div id="emP"><div class="empty-state"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg><p>Informe o peso e a indicação</p></div></div>
+  <div id="emP"><div class="empty-state"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg><p>Selecione a indicação</p></div></div>
 </div>
-<div class="card"><div class="ct">Indicações — Bula ANVISA</div><ul class="il"><li><span class="idot" style="background:#1549A0"></span>Infecções respiratórias<span class="ict">Resp.</span></li><li><span class="idot" style="background:#B91C1C"></span>Clamídia / sífilis / IST<span class="ict">IST</span></li><li><span class="idot" style="background:#7C3AED"></span>Acne inflamatória<span class="ict">Derm.</span></li><li><span class="idot" style="background:#C9A84C"></span>Profilaxia malária<span class="ict">Profilaxia</span></li><li><span class="idot" style="background:#1A7F5A"></span>Doença de Lyme<span class="ict">Sistêmico</span></li></ul></div>
+<div class="card"><div class="ct">Indicações — Bula ANVISA</div><ul class="il">
+  <li><span class="idot" style="background:#B91C1C"></span>DRGE · esofagite de refluxo · úlcera péptica<span class="ict">IBP ⭐</span></li>
+  <li><span class="idot" style="background:#1549A0"></span>Profilaxia de úlcera por AINEs<span class="ict">IBP</span></li>
+  <li><span class="idot" style="background:#1A7F5A"></span>H. pylori (associado a ATB)<span class="ict">IBP</span></li>
+  <li><span class="idot" style="background:#7C3AED"></span>Náusea / vômito pós-quimio / cirurgia<span class="ict">Antiemético ⭐</span></li>
+  <li><span class="idot" style="background:#C9A84C"></span>Cinetose / labirintite<span class="ict">Antiemético</span></li>
+</ul></div>
 </main></div>
+<div id="toast" class="toast"></div>
 <div class="page" id="pageHist"><main><div class="card"><div class="ct" style="justify-content:space-between;display:flex"><span>Histórico</span><button onclick="limH()" style="background:none;border:none;font-size:11px;color:var(--red);cursor:pointer;font-family:var(--font)">Limpar</button></div><div id="histLista"><div class="hvz">Nenhum cálculo ainda.</div></div></div></main></div>
 <div class="page" id="pageInfo"><main>
-  <div class="card"><div class="ct">⚖️ Aviso Legal</div><p style="font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:10px">Ferramenta educacional. Contraindicado &lt;8 anos e gestantes. Tomar com água, não deitar 30min. Não substitui prescrição médica. Bula ANVISA.</p></div>
-  <div class="card"><div class="ct">📋 Sobre</div><p style="font-size:13px;color:var(--text2);line-height:1.7">DoxiCalc v2.0 · GUIADOSE SAFE RELEASE® · Doxiciclina · Caps. 100mg · Bula ANVISA 2024.</p></div>
+  <div class="card"><div class="ct">⚖️ Aviso Legal</div><p style="font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:10px">Ferramenta educacional. IBP: tomar 30min antes do café. Antieméticos: verificar contraindicações e duração máxima. Não substitui prescrição médica. Bula ANVISA.</p></div>
+  <div class="card"><div class="ct">📋 Sobre</div><p style="font-size:13px;color:var(--text2);line-height:1.7">GastroCalc v1.0 · GUIADOSE · IBP (Omeprazol, Pantoprazol, Lansoprazol, Esomeprazol) · Antieméticos (Ondansetrona, Metoclopramida, Domperidona, Dimenidrinato) · Bula ANVISA 2024.</p></div>
 </main></div>
 <div class="dev-footer"><div class="dav">RA</div><div><div class="dnm">Rubiney Alves</div><div class="dcg">Farmácia Clínica · Gestão Comercial · Tecnologia em Saúde</div></div><a href="https://rubiney-alves.vercel.app" target="_blank" class="port-btn">Portfólio <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
 <div class="fav"><svg viewBox="0 0 24 24"><path d="M12 9v4m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>GUIADOSE · Posologia baseada em evidências · Bula ANVISA. Não substitui prescrição médica.</div>
@@ -195,22 +235,12 @@ select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/
   <button class="tb" onclick="irP('pageInfo',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg>Sobre</button>
 </nav>
 <script>
-let perfil='adulto',txtA='',txtP='';
-let hist=JSON.parse(localStorage.getItem('doxi_hist')||'[]');
-let concAtual=100;
-const cfgA={
-  resp:   {l:'Infecção respiratória',mg:100,freq:2,int:'12/12h',dur:'7–14 dias'},
-  sinusite:{l:'Sinusite bacteriana',mg:100,freq:2,int:'12/12h',dur:'10 dias'},
-  clamydia:{l:'Clamídia / uretrite',mg:100,freq:2,int:'12/12h',dur:'7 dias'},
-  sifilis: {l:'Sífilis (alérgico penicilina)',mg:100,freq:2,int:'12/12h',dur:'14–28 dias'},
-  acne:   {l:'Acne inflamatória',mg:100,freq:1,int:'1× ao dia',dur:'8–12 semanas'},
-  pele:   {l:'Infecções de pele',mg:100,freq:2,int:'12/12h',dur:'7–10 dias'},
-  lyme:   {l:'Doença de Lyme',mg:100,freq:2,int:'12/12h',dur:'14–21 dias'},
-  malaria:{l:'Profilaxia malária',mg:100,freq:1,int:'1× ao dia',dur:'contínuo'},
-};
-const cfgP={};
-function hor(i){if(i==='8/8h')return '7h · 15h · 23h';if(i==='12/12h')return '7h · 19h';if(i==='6/6h')return '6h · 12h · 18h · 0h';if(i==='única'||i==='dose única')return 'dose única';return '1× ao dia';}
-function setConc(c){concAtual=c;}
+let perfil='adulto', txtA='', txtP='';
+let hist=JSON.parse(localStorage.getItem('gastro_hist')||'[]');
+function salvarH(d,r,det){hist.unshift({d,r,det,hora:new Date().toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'})});if(hist.length>20)hist=hist.slice(0,20);localStorage.setItem('gastro_hist',JSON.stringify(hist));}
+function renderH(){const el=document.getElementById('histLista');if(!hist.length){el.innerHTML='<div class="hvz">Nenhum cálculo ainda.</div>';return;}el.innerHTML=hist.map(h=>`<div class="hi"><div class="hit"><span class="hn">${h.d}</span><span class="hhr">${h.hora}</span></div><div class="hd">${h.r} · ${h.det}</div></div>`).join('');}
+function limH(){hist=[];localStorage.removeItem('gastro_hist');renderH();}
+
 function mk(l,v,u,full){return `<div class="di${full?' full':''}"><div class="dil">${l}</div><div class="div">${v}<span class="diu">${u}</span></div></div>`;}
 function showR(id,dnc,rgm,grid,fArr,al){
   document.getElementById('rd'+id).textContent=dnc;
@@ -224,53 +254,8 @@ function showR(id,dnc,rgm,grid,fArr,al){
   document.getElementById('em'+id).style.display='none';
 }
 function hideR(id){document.getElementById('res'+id).classList.remove('vis');document.getElementById('em'+id).style.display='block';}
-function updA(){
-  const d=document.getElementById('dA').value,rh=document.getElementById('rhA');
-  hideR('A');txtA='';
-  if(!d){rh.classList.remove('vis');return;}
-  const c=cfgA[d],mgDia=c.mg*c.freq;
-  rh.textContent=c.l+' · '+c.mg+'mg de '+c.int+' · '+c.dur+' · Bula ANVISA';rh.classList.add('vis');
-  const grid=mk('Dose',c.mg,'mg')+mk('Freq.',c.freq+'×','ao dia')+mk('Intervalo',c.int,'')+mk('Duração',c.dur,'');
-  const fArr=[
-    `Dose: <strong>${c.mg} mg</strong> de ${c.int}`,
-    `Total diário: <strong>${mgDia} mg/dia</strong>`,
-    `⏱ Duração: <strong>${c.dur}</strong>`,
-    `🕐 Horários: <strong>${hor(c.int)}</strong>`,
-  ];
-  showR('A',c.l,c.int+' · '+c.dur+' · ANVISA',grid,fArr,'');
-  txtA=`DoxiCalc — ${c.l}\n${c.mg}mg de ${c.int} · ${c.dur}\nTotal: ${mgDia}mg/dia\nHorários: ${hor(c.int)}\n\nNão substitui prescrição médica.`;
-  salvarH(c.l,c.dur,c.mg+'mg '+c.int);
-}
-function updP(){
-  const rh=document.getElementById('rhP');
-  rh.textContent=document.getElementById('dP').selectedOptions[0]?.text||'';
-  rh.classList.add('vis');rh.style.display='block';calcP();
-}
-function calcP(){
-  const d=document.getElementById('dP').value,peso=parseFloat(document.getElementById('peso').value);
-  hideR('P');txtP='';
-  if(!d||isNaN(peso)||peso<=0)return;
-  if(peso<3){showR('P','Peso insuficiente','—',mk('Peso',peso,'kg',true),null,'<div class="al ad"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4m0 4h.01"/></svg>Peso abaixo de 3 kg. Consulte o pediatra.</div>');return;}
-  if(peso>=40){showR('P','≥40kg — usar dose adulta','—',mk('Peso',peso,'kg',true),null,'<div class="al ai"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg>Peso ≥40 kg: selecione o perfil Adulto.</div>');return;}
-  const c=cfgP[d],C=concAtual/5;
-  const mgDose=parseFloat(Math.min(peso*(c.mgKgDia/c.freq),c.max).toFixed(1));
-  const ml=parseFloat((mgDose/C).toFixed(2));
-  const mgDia=parseFloat((mgDose*c.freq).toFixed(1));
-  const grid=mk('Dose/tomada',mgDose,'mg')+mk('Volume',ml,'mL/dose')+mk('Freq.',c.freq+'×','ao dia')+mk('Duração',c.dur,'');
-  const fArr=[
-    `Peso: <strong>${peso} kg</strong>`,
-    `${c.mgKgDia}mg/kg/dia ÷ ${c.freq}× = ${(c.mgKgDia/c.freq).toFixed(1)}mg/kg/dose`,
-    `${(c.mgKgDia/c.freq).toFixed(1)} × ${peso} = <strong>${mgDose} mg/dose</strong> (máx ${c.max}mg)`,
-    `${mgDose} ÷ ${C} mg/mL = <strong>${ml} mL/dose</strong>`,
-    `Concentração: <strong>${concAtual}mg/5mL</strong>`,
-    `⏱ Duração: <strong>${c.dur}</strong>`,
-    `🕐 Horários: <strong>${hor(c.int)}</strong>`,
-  ];
-  showR('P',c.l,c.int+' · '+c.dur+' · ANVISA',grid,fArr,'');
-  txtP=`DoxiCalc — ${c.l}\nPeso:${peso}kg · ${concAtual}mg/5mL\n${ml}mL de ${c.int} · ${c.dur}\nHorários: ${hor(c.int)}\n\nNão substitui prescrição médica.`;
-  salvarH(c.l,c.dur,ml+'mL '+c.int);
-}
-function setPerfil(p){perfil=p;document.getElementById('btnA').classList.toggle('on',p==='adulto');document.getElementById('btnP').classList.toggle('on',p==='ped');document.getElementById('fA').style.display=p==='adulto'?'block':'none';document.getElementById('fP').style.display=p==='ped'?'block':'none';}
+function hor(i){if(i==='6/6h')return '6h · 12h · 18h · 0h';if(i==='8/8h')return '7h · 15h · 23h';if(i==='12/12h')return '7h · 19h';if(i==='1×/dia')return 'mesma hora todos os dias';if(i==='2×/dia')return '7h · 19h';if(i==='3×/dia')return '7h · 13h · 19h';if(i==='SOS')return 'conforme necessidade';return i;}
+function setPerfil(p){document.getElementById('btnA').classList.toggle('on',p==='adulto');document.getElementById('btnP').classList.toggle('on',p==='ped');document.getElementById('fA').style.display=p==='adulto'?'block':'none';document.getElementById('fP').style.display=p==='ped'?'block':'none';}
 function irP(p,btn){document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.tb').forEach(b=>b.classList.remove('on'));document.getElementById(p).classList.add('active');btn.classList.add('on');if(p==='pageHist')renderH();}
 function showToast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2000);}
 function cp(txt){if(!txt)return;navigator.clipboard.writeText(txt).then(()=>showToast('✓ Copiado!')).catch(()=>showToast('Use WhatsApp'));}
@@ -278,10 +263,86 @@ function wa(txt){if(!txt)return;window.open('https://wa.me/?text='+encodeURIComp
 function pr(titulo,txt){if(!txt)return;const w=window.open('','_blank');w.document.write(`<html><head><title>${titulo}</title><style>body{font-family:Arial,sans-serif;padding:20px;max-width:400px}h2{color:#0F3460}pre{background:#f5f5f5;padding:12px;border-radius:8px;white-space:pre-wrap;font-size:13px}footer{margin-top:18px;font-size:10px;color:#888}</style></head><body><h2>${titulo} — GUIADOSE</h2><pre>${txt}</pre><footer>Rubiney Alves · guiadose.vercel.app · Não substitui prescrição médica</footer></body></html>`);w.document.close();w.print();}
 function toggleDark(){const d=document.documentElement;d.getAttribute('data-theme')==='dark'?d.removeAttribute('data-theme'):d.setAttribute('data-theme','dark');}
 function toggleTip(btn){const b=document.getElementById('tipBox');b.classList.toggle('vis');if(b.classList.contains('vis')){document.addEventListener('click',function c(e){if(!e.target.closest('.tw')){b.classList.remove('vis');document.removeEventListener('click',c);}});}}
-function salvarH(d,r,det){hist.unshift({d,r,det,hora:new Date().toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'})});if(hist.length>20)hist=hist.slice(0,20);localStorage.setItem('doxi_hist',JSON.stringify(hist));}
-function renderH(){const el=document.getElementById('histLista');if(!hist.length){el.innerHTML='<div class="hvz">Nenhum cálculo ainda.</div>';return;}el.innerHTML=hist.map(h=>`<div class="hi"><div class="hit"><span class="hn">${h.d}</span><span class="hhr">${h.hora}</span></div><div class="hd">${h.r} · ${h.det}</div></div>`).join('');}
-function limH(){hist=[];localStorage.removeItem('doxi_hist');renderH();}
 if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));}
+
+
+let classeAtual='ibp';
+const cfgA = {
+  omeprazol_20:    {l:'Omeprazol 20mg — DRGE',         mg:20,  freq:1,int:'1×/dia',dur:'4–8 semanas',obs:'Tomar 30min antes do café da manhã'},
+  omeprazol_40:    {l:'Omeprazol 40mg — úlcera/H.pylori',mg:40,freq:1,int:'1×/dia',dur:'4–8 semanas',obs:'H. pylori: associar ATB + bismuto'},
+  pantoprazol_20:  {l:'Pantoprazol 20mg — DRGE leve',   mg:20,  freq:1,int:'1×/dia',dur:'4–8 semanas',obs:'Tomar 30min antes do café'},
+  pantoprazol_40:  {l:'Pantoprazol 40mg — úlcera',      mg:40,  freq:1,int:'1×/dia',dur:'4–8 semanas',obs:'Tomar 30min antes do café'},
+  lansoprazol_15:  {l:'Lansoprazol 15mg — manutenção',  mg:15,  freq:1,int:'1×/dia',dur:'manutenção contínua',obs:'Tomar 30min antes do café'},
+  lansoprazol_30:  {l:'Lansoprazol 30mg — úlcera',      mg:30,  freq:1,int:'1×/dia',dur:'4–8 semanas',obs:'Tomar 30min antes do café'},
+  esomeprazol_20:  {l:'Esomeprazol 20mg — DRGE',        mg:20,  freq:1,int:'1×/dia',dur:'4–8 semanas',obs:'Tomar 30min antes do café'},
+  esomeprazol_40:  {l:'Esomeprazol 40mg — úlcera',      mg:40,  freq:1,int:'1×/dia',dur:'4–8 semanas',obs:'H. pylori: associar ATB'},
+  sucralfato:      {l:'Sucralfato 1g — proteção mucosa', mg:1000,freq:4,int:'6/6h',dur:'4–8 semanas',obs:'Tomar 1h antes das refeições, em jejum'},
+  hidro_alum:      {l:'Hidróxido Al+Mg — alívio',       mg:0,   freq:4,int:'SOS',dur:'SOS',obs:'1–2 comprimidos ou 10–20mL após refeições'},
+  ondansetrona_a:  {l:'Ondansetrona 8mg',               mg:8,   freq:3,int:'8/8h',dur:'conforme necessidade',obs:'Pós-quimio: iniciar 30min antes'},
+  metoclop_a:      {l:'Metoclopramida 10mg',             mg:10,  freq:3,int:'8/8h',dur:'até 5 dias',obs:'Não usar >5 dias (risco discinesia)'},
+  domperidon_a:    {l:'Domperidona 10mg',                mg:10,  freq:3,int:'8/8h',dur:'até 4 semanas'},
+  dimenid_a:       {l:'Dimenidrinato 50mg',              mg:50,  freq:3,int:'8/8h',dur:'enquanto necessário',obs:'Pode causar sonolência'},
+  bromoprida_a:    {l:'Bromoprida 10mg',                 mg:10,  freq:3,int:'8/8h',dur:'até 5 dias',obs:'Não usar >5 dias'},
+};
+const cfgP = {
+  p_omeprazol:   {l:'Omeprazol — DRGE pediátrica',   mgKgDia:0.7,freq:1,int:'1×/dia',dur:'4–8 semanas',max:20,obs:'Tomar 30min antes do café. Máx 20mg/dia'},
+  p_pantoprazol: {l:'Pantoprazol — DRGE pediátrica',  mgKgDia:0.8,freq:1,int:'1×/dia',dur:'4–8 semanas',max:20,obs:'Tomar 30min antes do café. Máx 20mg/dia'},
+  p_lansoprazol: {l:'Lansoprazol — DRGE pediátrica',  mgKgDia:0.7,freq:1,int:'1×/dia',dur:'4–8 semanas',max:15,obs:'Tomar 30min antes do café. ≥1 ano'},
+  p_ondansetrona:{l:'Ondansetrona — náusea/vômito',   mgKgDia:0.15,freq:3,int:'8/8h',dur:'conforme necessidade',max:8,obs:'Máx 8mg/dose · ≥6 meses'},
+  p_metoclop:    {l:'Metoclopramida — náusea/vômito',  mgKgDia:0.15,freq:3,int:'8/8h',dur:'até 5 dias',max:10,obs:'Não usar >5 dias. Risco discinesia'},
+  p_domperidon:  {l:'Domperidona — náusea/vômito',    mgKgDia:0.25,freq:3,int:'8/8h',dur:'até 4 semanas',max:10,obs:'Dose máx: 0,25mg/kg/dose'},
+  p_dimenid:     {l:'Dimenidrinato — cinetose',        mgKgDia:1.25,freq:3,int:'8/8h',dur:'enquanto necessário',max:25,obs:'≥2 anos. Pode causar sonolência'},
+};
+function updA(){
+  const d=document.getElementById('dA').value,rh=document.getElementById('rhA');
+  hideR('A');txtA='';
+  if(!d){rh.classList.remove('vis');return;}
+  const c=cfgA[d];
+  const doseStr=c.mg>0?c.mg+'mg':'conforme produto';
+  rh.textContent=c.l+' · '+doseStr+' · '+c.int+' · '+c.dur+' · Bula ANVISA';rh.classList.add('vis');
+  const grid=mk('Dose',doseStr,'')+mk('Freq.',c.freq+'×','ao dia')+mk('Intervalo',c.int,'')+mk('Duração',c.dur,'');
+  const fArr=[
+    `Dose: <strong>${doseStr}</strong>`,
+    `Frequência: <strong>${c.freq}× ao dia</strong>`,
+    ...(c.obs?[`⚠️ <strong>${c.obs}</strong>`]:[]),
+    `⏱ Duração: <strong>${c.dur}</strong>`,
+    `🕐 Horários: <strong>${hor(c.int)}</strong>`,
+  ];
+  const alIBP=d.includes('omeprazol')||d.includes('pantoprazol')||d.includes('lansoprazol')||d.includes('esomeprazol')
+    ?'<div class="al ai"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg>IBP: tomar <strong>30 minutos antes do café da manhã</strong>, em jejum.</div>':'';
+  showR('A',c.l,doseStr+' · '+c.int+' · ANVISA',grid,fArr,alIBP);
+  txtA=`GastroCalc — ${c.l}\n${doseStr} · ${c.int} · ${c.dur}\n${c.obs||''}\nHorários: ${hor(c.int)}\n\nNão substitui prescrição médica.`;
+  salvarH(c.l,c.dur,doseStr);
+}
+function updP(){document.getElementById('rhP').textContent=document.getElementById('dP').selectedOptions[0]?.text||'';document.getElementById('rhP').classList.add('vis');calcP();}
+function calcP(){
+  const d=document.getElementById('dP').value,peso=parseFloat(document.getElementById('peso').value);
+  hideR('P');txtP='';
+  if(!d||isNaN(peso)||peso<=0)return;
+  if(peso<2){showR('P','Peso insuficiente','—',mk('Peso',peso,'kg',true),null,'<div class="al ad"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4m0 4h.01"/></svg>Peso abaixo de 2kg. Consulte o médico.</div>');return;}
+  const c=cfgP[d];
+  const mgDose=parseFloat(Math.min(peso*(c.mgKgDia),c.max).toFixed(2));
+  const mgDia=parseFloat((mgDose*c.freq).toFixed(2));
+  const grid=mk('Dose',mgDose,'mg/dose')+mk('Total/dia',mgDia,'mg/dia')+mk('Freq.',c.freq+'×','ao dia')+mk('Duração',c.dur,'');
+  const fArr=[
+    `Peso: <strong>${peso} kg</strong>`,
+    `${c.mgKgDia}mg/kg × ${peso} = <strong>${mgDose} mg/dose</strong> (máx ${c.max}mg)`,
+    `Total diário: <strong>${mgDia} mg/dia</strong>`,
+    ...(c.obs?[`⚠️ <strong>${c.obs}</strong>`]:[]),
+    `⏱ Duração: <strong>${c.dur}</strong>`,
+    `🕐 Horários: <strong>${hor(c.int)}</strong>`,
+  ];
+  showR('P',c.l,mgDose+'mg · '+c.int+' · ANVISA',grid,fArr,'');
+  txtP=`GastroCalc — ${c.l}\nPeso:${peso}kg · ${mgDose}mg de ${c.int} · ${c.dur}\n${c.obs||''}\nHorários: ${hor(c.int)}\n\nNão substitui prescrição médica.`;
+  salvarH(c.l,c.dur,mgDose+'mg');
+}
+function setClasse(c){
+  classeAtual=c;
+  document.getElementById('aIBP').classList.toggle('on',c==='ibp');
+  document.getElementById('aAnti').classList.toggle('on',c==='anti');
+  document.getElementById('classeLbl').textContent=c==='ibp'?'IBP (Protetor Gástrico)':'Antiemético';
+  document.getElementById('ctA').textContent=c==='ibp'?'Adulto — Protetores Gástricos (IBP)':'Adulto — Antieméticos';
+}
 </script>
 </body>
 </html>

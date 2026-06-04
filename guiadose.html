@@ -90,9 +90,9 @@ main{padding:12px 14px 80px}
 .pasta-ico.teal svg{fill:var(--teal)}
 .pasta-ico.blue svg{fill:var(--blue)}
 .pasta-nome{font-size:12px;font-weight:600;color:var(--text);flex:1;line-height:1.2}
-.pasta-count{font-size:9px;color:var(--text3);font-family:var(--mono);background:var(--surface2);padding:2px 5px;border-radius:4px}
-.pasta-arr{font-size:14px;color:var(--text3);transition:transform 0.2s;margin-left:3px;line-height:1}
-.pasta-arr.open{transform:rotate(90deg)}
+
+
+
 .pasta-body{display:none;border-top:1px solid var(--border);padding:5px 6px}
 .pasta-body.open{display:block}
 
@@ -138,7 +138,7 @@ main{padding:12px 14px 80px}
 .dav{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--gold),#F0D080);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:700;color:var(--navy);font-size:12px}
 .dnm{font-size:12px;font-weight:600;color:var(--gold2)}
 .dcg{font-size:10px;color:rgba(255,255,255,0.45);margin-top:1px}
-.dlk{margin-left:auto;font-size:10px;color:var(--gold);text-decoration:none;font-family:var(--mono)}
+
 .version{text-align:center;font-size:10px;color:var(--text3);padding:8px 0 2px;font-family:var(--mono)}
 
 /* EMPTY BUSCA */
@@ -153,6 +153,12 @@ main{padding:12px 14px 80px}
 .port-btn{display:flex;align-items:center;gap:6px;background:#C9A84C;border:none;border-radius:99px;padding:7px 16px;color:#0A1628;font-size:11px;font-family:var(--mono);font-weight:700;text-decoration:none;white-space:nowrap;cursor:pointer;flex-shrink:0;transition:all 0.15s;margin-left:auto}
 .port-btn:hover{background:#E8C97A}
 .port-btn svg{width:13px;height:13px;stroke:#0A1628;stroke-width:2.5;fill:none}
+.pasta-count{display:inline-flex;align-items:center;justify-content:center;min-width:24px;height:20px;padding:0 7px;background:var(--gold);color:var(--navy3);font-size:10px;font-weight:700;font-family:var(--mono);border-radius:99px;letter-spacing:0.3px;flex-shrink:0}
+.pasta-arr{width:24px;height:24px;display:flex;align-items:center;justify-content:center;background:var(--navy);border-radius:7px;flex-shrink:0;transition:all 0.18s;flex-shrink:0}
+.pasta-arr svg{width:13px;height:13px;stroke:var(--gold);stroke-width:2.5;fill:none;transition:transform 0.2s}
+.pasta-arr.open svg{transform:rotate(90deg)}
+.pasta.aberta .pasta-arr{background:var(--navy2)}
+.pasta.aberta-ped .pasta-arr{background:var(--navy2)}
 </style>
 </head>
 <body>
@@ -210,7 +216,7 @@ main{padding:12px 14px 80px}
         </div>
         <span class="pasta-nome">Antibióticos</span>
         <span class="pasta-count">13</span>
-        <span class="pasta-arr" id="arrAntibA">›</span>
+        <span class="pasta-arr" id="arrAntibA"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span>
       </div>
       <div class="pasta-body" id="bodyAntibA">
         <a href="amoxicalc.html" class="drug ativo-t" data-search="amoxicilina penicilina itu resp pele amigdalite otite">
@@ -290,7 +296,7 @@ main{padding:12px 14px 80px}
         </div>
         <span class="pasta-nome">Analgésicos e Antitérmicos</span>
         <span class="pasta-count">3</span>
-        <span class="pasta-arr" id="arrAnalA">›</span>
+        <span class="pasta-arr" id="arrAnalA"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span>
       </div>
       <div class="pasta-body" id="bodyAnalA">
         <a href="paracetamol.html" class="drug ativo-t" data-search="paracetamol dor febre tylenol gotas comp hepatopatia">
@@ -317,7 +323,7 @@ main{padding:12px 14px 80px}
         </div>
         <span class="pasta-nome">Anti-inflamatórios</span>
         <span class="pasta-count">5</span>
-        <span class="pasta-arr" id="arrAntiA">›</span>
+        <span class="pasta-arr" id="arrAntiA"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span>
       </div>
       <div class="pasta-body" id="bodyAntiA">
         <a href="nimesulida.html" class="drug ativo-t" data-search="nimesulida cox2 dor dismenorreia artrose tendinite">
@@ -354,7 +360,7 @@ main{padding:12px 14px 80px}
         </div>
         <span class="pasta-nome">Broncodilatadores</span>
         <span class="pasta-count">6</span>
-        <span class="pasta-arr" id="arrBroncoA">›</span>
+        <span class="pasta-arr" id="arrBroncoA"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span>
       </div>
       <div class="pasta-body" id="bodyBroncoA">
         <a href="salbutamol.html" class="drug ativo-t" data-search="salbutamol albuterol saba crise asma dpoc nebulizacao spray">
@@ -396,7 +402,7 @@ main{padding:12px 14px 80px}
         </div>
         <span class="pasta-nome">Mucolíticos</span>
         <span class="pasta-count">3</span>
-        <span class="pasta-arr" id="arrMucA">›</span>
+        <span class="pasta-arr" id="arrMucA"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span>
       </div>
       <div class="pasta-body" id="bodyMucA">
         <div class="drug" style="opacity:0.5;cursor:default">
@@ -420,7 +426,7 @@ main{padding:12px 14px 80px}
         </div>
         <span class="pasta-nome">Probióticos</span>
         <span class="pasta-count">5 cepas</span>
-        <span class="pasta-arr" id="arrProbA">›</span>
+        <span class="pasta-arr" id="arrProbA"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span>
       </div>
       <div class="pasta-body" id="bodyProbA">
         <a href="probiotico.html" class="drug ativo-t" data-search="probiotico lactobacillus saccharomyces bifidobacterium bacillus diarreia flora sii">
@@ -437,7 +443,7 @@ main{padding:12px 14px 80px}
         </div>
         <span class="pasta-nome">Protetores e Antieméticos</span>
         <span class="pasta-count">8</span>
-        <span class="pasta-arr" id="arrGastroA">›</span>
+        <span class="pasta-arr" id="arrGastroA"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span>
       </div>
       <div class="pasta-body" id="bodyGastroA">
         <a href="protetor_antie.html" class="drug ativo-t" data-search="omeprazol pantoprazol lansoprazol esomeprazol ibp drge ulcera ondansetrona metoclopramida domperidona dimenidrinato antiemetico nausea vomito">
@@ -469,7 +475,7 @@ main{padding:12px 14px 80px}
         </div>
         <span class="pasta-nome">Antibióticos</span>
         <span class="pasta-count">13</span>
-        <span class="pasta-arr" id="arrAntibP">›</span>
+        <span class="pasta-arr" id="arrAntibP"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span>
       </div>
       <div class="pasta-body" id="bodyAntibP">
         <a href="amoxicalc.html" class="drug ativo-b" data-search="amoxicilina ped penicilina otite resp">
@@ -549,7 +555,7 @@ main{padding:12px 14px 80px}
         </div>
         <span class="pasta-nome">Analgésicos e Antitérmicos</span>
         <span class="pasta-count">3</span>
-        <span class="pasta-arr" id="arrAnalP">›</span>
+        <span class="pasta-arr" id="arrAnalP"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span>
       </div>
       <div class="pasta-body" id="bodyAnalP">
         <a href="paracetamol.html" class="drug ativo-b" data-search="paracetamol ped dor febre gotas 1gota/kg">
@@ -576,7 +582,7 @@ main{padding:12px 14px 80px}
         </div>
         <span class="pasta-nome">Anti-inflamatórios</span>
         <span class="pasta-count">3</span>
-        <span class="pasta-arr" id="arrAntiP">›</span>
+        <span class="pasta-arr" id="arrAntiP"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span>
       </div>
       <div class="pasta-body" id="bodyAntiP">
         <a href="diclofenaco.html" class="drug ativo-b" data-search="diclofenaco ped artrite juvenil dor inflamacao">
@@ -603,7 +609,7 @@ main{padding:12px 14px 80px}
         </div>
         <span class="pasta-nome">Broncodilatadores</span>
         <span class="pasta-count">4</span>
-        <span class="pasta-arr" id="arrBroncoP">›</span>
+        <span class="pasta-arr" id="arrBroncoP"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span>
       </div>
       <div class="pasta-body" id="bodyBroncoP">
         <a href="salbutamol.html" class="drug ativo-b" data-search="salbutamol ped saba crise asma sibilancia nebulizacao espaçador">
@@ -635,7 +641,7 @@ main{padding:12px 14px 80px}
         </div>
         <span class="pasta-nome">Mucolíticos</span>
         <span class="pasta-count">3</span>
-        <span class="pasta-arr" id="arrMucP">›</span>
+        <span class="pasta-arr" id="arrMucP"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span>
       </div>
       <div class="pasta-body" id="bodyMucP">
         <div class="drug" style="opacity:0.5;cursor:default">
@@ -659,7 +665,7 @@ main{padding:12px 14px 80px}
         </div>
         <span class="pasta-nome">Probióticos</span>
         <span class="pasta-count">5 cepas</span>
-        <span class="pasta-arr" id="arrProbP">›</span>
+        <span class="pasta-arr" id="arrProbP"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span>
       </div>
       <div class="pasta-body" id="bodyProbP">
         <a href="probiotico.html" class="drug ativo-b" data-search="probiotico ped lactobacillus saccharomyces bacillus diarreia colica flora">
@@ -676,7 +682,7 @@ main{padding:12px 14px 80px}
         </div>
         <span class="pasta-nome">Protetores e Antieméticos</span>
         <span class="pasta-count">7</span>
-        <span class="pasta-arr" id="arrGastroP">›</span>
+        <span class="pasta-arr" id="arrGastroP"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span>
       </div>
       <div class="pasta-body" id="bodyGastroP">
         <a href="protetor_antie.html" class="drug ativo-b" data-search="omeprazol ped pantoprazol lansoprazol ibp drge refluxo 0.7mg/kg">
@@ -716,7 +722,7 @@ main{padding:12px 14px 80px}
       </div>
       <span class="pasta-nome">Injetáveis — Hospitalar</span>
       <span class="pasta-count">10</span>
-      <span class="pasta-arr" id="arrInjA">›</span>
+      <span class="pasta-arr" id="arrInjA"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span>
     </div>
     <div class="pasta-body" id="bodyInjA">
       <a href="ceftriaxona.html" class="drug ativo-t" data-search="ceftriaxona cef3 iv im pneumonia meningite sepse gonorreia">

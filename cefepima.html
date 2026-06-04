@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#0F3460">
+<meta name="description" content="Calculadora Cefepima 1g / 2g — IV / IM — Adulto e Pediátrico — GUIADOSE">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="CefepimaCalc">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<title>CefepimaCalc — IV / IM · Adulto & Pediátrico</title>
+<style>
+:root{--navy:#0F3460;--navy2:#16213E;--navy3:#0A1628;--gold:#C9A84C;--gold2:#E8C97A;--white:#FFFFFF;--surface:#F7F9FC;--surface2:#EEF2F7;--border:#D8E2EF;--text:#1A2540;--text2:#4A5878;--text3:#8A97B0;--green:#1A7F5A;--green-bg:#E6F7F1;--amber:#92560A;--amber-bg:#FEF3E2;--red:#B91C1C;--red-bg:#FEF2F2;--blue:#1549A0;--blue-bg:#EBF2FF;--teal:#0F6E56;--teal-bg:#E1F5EE;--purple:#5B21B6;--purple-bg:#EDE9FE;--radius:12px;--radius-sm:8px;--shadow:0 2px 12px rgba(15,52,96,0.10);--font:'DM Sans',sans-serif;--mono:'DM Mono',monospace}
+[data-theme="dark"]{--white:#1A2540;--surface:#111827;--surface2:#1F2A3C;--border:#2D3E5A;--text:#E8EDF5;--text2:#A0AEBF;--text3:#5A6A80;--blue-bg:#1A2A4A;--blue:#7AABF0;--amber-bg:#2A1F0A;--amber:#F0C070;--red-bg:#2A1010;--red:#F08080;--green-bg:#0A2018;--green:#60C090;--teal-bg:#0A2018;--teal:#5DCAA5;--purple-bg:#1E1A3A;--purple:#A78BFA}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+body{font-family:var(--font);background:var(--surface);color:var(--text);min-height:100vh;max-width:480px;margin:0 auto;padding-bottom:100px;transition:background 0.2s,color 0.2s}
+.hdr{background:var(--navy);padding:0;position:sticky;top:0;z-index:100;border-bottom:2px solid var(--gold)}
+.back-btn{display:flex;flex-direction:column;align-items:center;justify-content:center;width:40px;height:40px;border-radius:10px;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);text-decoration:none;flex-shrink:0;gap:2px;transition:all 0.18s}
+.back-btn:hover{background:rgba(201,168,76,0.28);border-color:rgba(201,168,76,0.6)}
+.back-btn svg{width:16px;height:16px;fill:#E8C97A;flex-shrink:0}
+.back-btn span{font-size:8px;color:#E8C97A;font-family:var(--mono);letter-spacing:0.3px;font-weight:600}
+.hdr-divider{width:1px;height:32px;background:rgba(255,255,255,0.1);flex-shrink:0}
+.ht{display:flex;align-items:center;gap:10px;padding:8px 16px 10px}
+.logo{width:40px;height:40px;border-radius:10px;background:var(--gold);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.logo svg{width:22px;height:22px;fill:var(--navy)}
+.atitle{font-size:17px;font-weight:600;letter-spacing:-0.3px;color:white}
+.asub{font-size:10px;color:rgba(255,255,255,0.5);margin-top:1px;font-family:var(--mono)}
+.dbtn{margin-left:auto;background:rgba(255,255,255,0.1);border:none;border-radius:8px;padding:7px 10px;cursor:pointer;color:white;font-size:15px;flex-shrink:0}
+.pbar{display:flex;gap:6px;padding:8px 12px;background:var(--navy2)}
+.pb{flex:1;padding:9px 8px;border:2px solid rgba(255,255,255,0.1);border-radius:9px;background:rgba(255,255,255,0.05);color:rgba(255,255,255,0.4);font-size:12px;font-family:var(--font);cursor:pointer;transition:all 0.18s;display:flex;align-items:center;justify-content:center;gap:5px;font-weight:500}
+.pb svg{width:14px;height:14px}
+.pb.on{background:rgba(201,168,76,0.15);border-color:var(--gold);color:var(--gold2);font-weight:700}
+.via-bar{display:flex;gap:5px;padding:7px 12px;background:var(--navy3);align-items:center}
+.via-lbl{font-size:10px;color:rgba(255,255,255,0.35);flex-shrink:0}
+.vbtn{flex:1;padding:5px 8px;border-radius:7px;border:1px solid rgba(255,255,255,0.12);background:transparent;color:rgba(255,255,255,0.45);font-size:11px;font-family:var(--mono);cursor:pointer;text-align:center;transition:all 0.15s;font-weight:500}
+.vbtn.on{background:rgba(201,168,76,0.2);border-color:var(--gold);color:var(--gold2);font-weight:700}
+.tw{position:relative;display:flex;align-items:center;flex-shrink:0;margin-left:6px}
+.tbtn{width:26px;height:26px;border-radius:50%;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.4);color:var(--gold);font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.15s;font-family:var(--font)}
+.tbtn.on,.tbtn:hover{background:rgba(201,168,76,0.3)}
+.tbox{position:absolute;top:34px;right:0;width:268px;background:#1A2540;border:1px solid var(--gold);border-radius:10px;padding:11px 13px;font-size:12px;color:rgba(255,255,255,0.85);line-height:1.6;z-index:999;box-shadow:0 8px 24px rgba(0,0,0,0.4);display:none}
+.tbox.vis{display:block}
+.tbox::before{content:'';position:absolute;top:-6px;right:9px;width:10px;height:10px;background:#1A2540;border-left:1px solid var(--gold);border-top:1px solid var(--gold);transform:rotate(45deg)}
+.ttl{font-size:10px;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;color:var(--gold);margin-bottom:5px}
+main{padding:14px}
+.card{background:var(--white);border-radius:var(--radius);border:1px solid var(--border);padding:14px;margin-bottom:11px;box-shadow:var(--shadow)}
+.ct{font-size:11px;font-weight:600;letter-spacing:0.8px;color:var(--text3);text-transform:uppercase;margin-bottom:11px;display:flex;align-items:center;gap:5px}
+label.fl{display:block;font-size:13px;font-weight:500;color:var(--text2);margin-bottom:5px}
+select,input[type=number]{width:100%;padding:11px 13px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-family:var(--font);font-size:14px;color:var(--text);background:var(--white);appearance:none;-webkit-appearance:none;outline:none;transition:border-color 0.15s;margin-bottom:12px}
+select:focus,input[type=number]:focus{border-color:var(--navy)}
+select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%234A5878' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 11px center;padding-right:32px}
+.rh{background:var(--blue-bg);color:var(--blue);border-radius:var(--radius-sm);padding:9px 11px;font-size:12px;line-height:1.6;margin-top:-8px;margin-bottom:12px;display:none}
+.rh.vis{display:block}
+.rcrd{background:var(--navy);border-radius:var(--radius);padding:18px;margin-bottom:11px;display:none;animation:fadeUp 0.2s ease}
+.rcrd.vis{display:block}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.rhead{display:flex;align-items:center;gap:9px;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,0.12)}
+.rico{width:34px;height:34px;border-radius:8px;background:var(--gold);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.rico svg{width:18px;height:18px;fill:var(--navy)}
+.rdnc{font-size:13px;font-weight:600;color:white}
+.rrgm{font-size:10px;color:var(--gold2);margin-top:2px}
+.dgrid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:10px}
+.di{background:rgba(255,255,255,0.07);border-radius:9px;padding:11px}
+.di.full{grid-column:1/-1}
+.dil{font-size:10px;color:rgba(255,255,255,0.5);margin-bottom:3px;font-weight:500}
+.div{font-size:24px;font-weight:600;color:var(--gold2);font-family:var(--mono);line-height:1}
+.div.g{font-size:28px}
+.diu{font-size:11px;color:rgba(255,255,255,0.45);margin-left:3px;font-weight:400;font-family:var(--font)}
+.dur-badge{display:flex;align-items:center;gap:5px;background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.25);border-radius:7px;padding:6px 10px;font-size:11px;color:var(--gold2);font-family:var(--mono);margin-bottom:10px}
+.dur-badge svg{width:13px;height:13px;fill:var(--gold);flex-shrink:0}
+.preparo-section{background:rgba(255,255,255,0.04);border:1px solid rgba(201,168,76,0.2);border-radius:9px;padding:13px;margin-bottom:10px}
+.prep-title{font-size:10px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:0.7px;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.prep-title svg{width:13px;height:13px;fill:var(--gold)}
+.prep-steps{display:flex;flex-direction:column;gap:7px}
+.step{display:flex;gap:9px;align-items:flex-start}
+.step-num{width:20px;height:20px;border-radius:50%;background:rgba(201,168,76,0.2);border:1px solid rgba(201,168,76,0.4);color:var(--gold2);font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;font-family:var(--mono)}
+.step-txt{font-size:12px;color:rgba(255,255,255,0.75);line-height:1.6;font-family:var(--mono)}
+.step-txt strong{color:var(--gold2)}
+.infusao-box{background:rgba(21,73,160,0.15);border:1px solid rgba(21,73,160,0.3);border-radius:9px;padding:11px;margin-bottom:10px;display:flex;gap:10px;align-items:center}
+.inf-icon{width:32px;height:32px;border-radius:8px;background:rgba(21,73,160,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.inf-icon svg{width:17px;height:17px;fill:#7AABF0}
+.inf-label{font-size:10px;color:rgba(255,255,255,0.45);margin-bottom:2px}
+.inf-val{font-size:15px;font-weight:600;color:#7AABF0;font-family:var(--mono)}
+.estab-box{background:rgba(15,110,86,0.12);border:1px solid rgba(15,110,86,0.25);border-radius:9px;padding:11px;margin-bottom:10px}
+.estab-title{font-size:10px;font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:0.7px;margin-bottom:7px;display:flex;align-items:center;gap:5px}
+.estab-title svg{width:12px;height:12px;fill:var(--teal)}
+.estab-row{display:flex;justify-content:space-between;align-items:center;padding:4px 0;border-bottom:1px solid rgba(15,110,86,0.15);font-size:11px}
+.estab-row:last-child{border-bottom:none}
+.estab-cond{color:rgba(255,255,255,0.6);font-family:var(--mono)}
+.estab-val{color:var(--teal);font-weight:600;font-family:var(--mono)}
+.renal-box{background:rgba(146,86,10,0.1);border:1px solid rgba(146,86,10,0.25);border-radius:9px;padding:11px;margin-bottom:10px}
+.renal-title{font-size:10px;font-weight:700;color:var(--amber);text-transform:uppercase;letter-spacing:0.7px;margin-bottom:8px}
+.rtable{width:100%;border-collapse:collapse;font-size:11px}
+.rtable th{color:rgba(255,255,255,0.5);font-weight:600;padding:5px 6px;text-align:left;font-family:var(--mono);font-size:10px;border-bottom:1px solid rgba(255,255,255,0.08)}
+.rtable td{padding:5px 6px;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(255,255,255,0.75);font-family:var(--mono)}
+.rtable tr:last-child td{border-bottom:none}
+.incompat{background:rgba(185,28,28,0.12);border:1px solid rgba(185,28,28,0.3);border-radius:9px;padding:12px;margin-bottom:10px}
+.incompat-title{font-size:10px;font-weight:700;color:var(--red);text-transform:uppercase;letter-spacing:0.7px;margin-bottom:7px;display:flex;align-items:center;gap:5px}
+.incompat-title svg{width:13px;height:13px;fill:var(--red)}
+.incompat-item{font-size:11px;color:rgba(255,80,80,0.85);display:flex;align-items:center;gap:6px;padding:3px 0;border-bottom:1px solid rgba(185,28,28,0.15)}
+.incompat-item:last-child{border-bottom:none}
+.incompat-item::before{content:'✗';color:var(--red);font-weight:700;flex-shrink:0}
+.fbox{background:rgba(255,255,255,0.04);border:1px solid rgba(201,168,76,0.2);border-radius:9px;padding:12px;margin-bottom:10px}
+.fttl{font-size:10px;font-weight:600;letter-spacing:0.7px;color:var(--gold);text-transform:uppercase;margin-bottom:8px}
+.fln{font-size:12px;color:rgba(255,255,255,0.72);font-family:var(--mono);padding:3px 0;border-bottom:1px solid rgba(255,255,255,0.05);line-height:1.5}
+.fln:last-child{border-bottom:none}
+.fln strong{color:var(--gold2)}
+.acoes{display:flex;gap:7px;margin-bottom:10px}
+.ba{flex:1;padding:9px 5px;border-radius:7px;border:1px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.07);color:rgba(255,255,255,0.8);font-size:11px;font-family:var(--font);cursor:pointer;text-align:center;display:flex;flex-direction:column;align-items:center;gap:3px}
+.ba:active{background:rgba(255,255,255,0.14)}
+.ba svg{width:17px;height:17px}
+.al{border-radius:var(--radius-sm);padding:10px 12px;font-size:12px;line-height:1.6;display:flex;gap:7px;align-items:flex-start;margin-bottom:8px}
+.al svg{width:15px;height:15px;flex-shrink:0;margin-top:1px}
+.aw{background:var(--amber-bg);color:var(--amber)}
+.ai{background:var(--blue-bg);color:var(--blue)}
+.ad{background:var(--red-bg);color:var(--red)}
+.as{background:var(--green-bg);color:var(--green)}
+.il{list-style:none}
+.il li{display:flex;align-items:center;gap:9px;padding:9px 0;border-bottom:1px solid var(--surface2);font-size:13px;color:var(--text2)}
+.il li:last-child{border-bottom:none}
+.idot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.ict{font-size:9px;color:var(--text3);margin-left:auto;font-family:var(--mono);white-space:nowrap}
+.empty-state{text-align:center;padding:28px 18px;color:var(--text3)}
+.empty-state svg{width:36px;height:36px;opacity:0.3;margin-bottom:10px}
+.empty-state p{font-size:13px}
+.hi{padding:9px 11px;border-radius:8px;background:var(--surface2);margin-bottom:7px;cursor:pointer}
+.hit{display:flex;justify-content:space-between;align-items:center}
+.hn{font-size:12px;font-weight:500;color:var(--text)}
+.hhr{font-size:10px;color:var(--text3);font-family:var(--mono)}
+.hd{font-size:11px;color:var(--text2);margin-top:2px}
+.hvz{text-align:center;padding:18px;color:var(--text3);font-size:12px}
+.dev-footer{margin:0 0 14px;background:var(--navy);border-radius:var(--radius);padding:13px 15px;display:flex;align-items:center;gap:11px;border:1px solid var(--gold)}
+.dav{width:34px;height:34px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:700;color:var(--navy);font-size:13px}
+.dnm{font-size:12px;font-weight:600;color:var(--gold2)}
+.dcg{font-size:10px;color:rgba(255,255,255,0.5);margin-top:1px}
+.dlk{margin-left:auto;font-size:10px;color:var(--gold);text-decoration:none;font-family:var(--mono)}
+.fav{margin:0 0 7px;background:var(--surface2);border-radius:var(--radius-sm);padding:10px 12px;font-size:11px;color:var(--text3);line-height:1.6;display:flex;gap:7px}
+.fav svg{width:13px;height:13px;flex-shrink:0;margin-top:1px;fill:var(--text3)}
+.toast{position:fixed;bottom:88px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--navy);color:white;padding:9px 18px;border-radius:99px;font-size:12px;border:1px solid var(--gold);opacity:0;transition:all 0.25s;z-index:999;white-space:nowrap;pointer-events:none}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.tab-nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;background:var(--white);border-top:1px solid var(--border);display:flex;z-index:200}
+.tb{flex:1;padding:9px 4px 7px;border:none;background:transparent;font-family:var(--font);font-size:10px;color:var(--text3);cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;transition:color 0.15s}
+.tb svg{width:19px;height:19px}
+.tb.on{color:var(--navy);font-weight:600}
+[data-theme="dark"] .tab-nav{background:#1A2540}
+.page{display:none}.page.active{display:block}
+.modulo-badge{background:rgba(91,33,182,0.12);border:1px solid rgba(91,33,182,0.25);color:var(--purple);font-size:9px;font-weight:700;padding:2px 8px;border-radius:99px;font-family:var(--mono);letter-spacing:0.5px;margin-left:auto}
+.port-btn{display:flex;align-items:center;gap:5px;background:var(--gold);border:none;border-radius:99px;padding:7px 14px;color:var(--navy3,#0A1628);font-size:11px;font-family:var(--mono);font-weight:700;text-decoration:none;white-space:nowrap;cursor:pointer;flex-shrink:0;transition:background 0.15s}
+.port-btn:hover{background:var(--gold2)}
+.port-btn svg{width:12px;height:12px;stroke:var(--navy3,#0A1628);stroke-width:2.5;fill:none;flex-shrink:0}
+</style>
+</head>
+<body>
+
+<header class="hdr">
+<div class="ht">
+    <a href="guiadose.html" class="back-btn" aria-label="Voltar ao menu GUIADOSE">
+    <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+    <span>MENU</span>
+  </a>
+  <div class="hdr-divider"></div>
+    <div class="logo"><svg viewBox="0 0 24 24"><path d="M19.5 5.5L18 4l-1.5 1.5L15 4l-1.5 1.5L12 4l-1.5 1.5L9 4 7.5 5.5 6 4 4 6v14a2 2 0 002 2h12a2 2 0 002-2V6l-2-1.5z"/></svg></div>
+    <div><div class="atitle">CefepimaCalc</div><div class="asub">Cefepima 1g · 2g · IV · IM · Adulto & Ped. ≥2m</div></div>
+    <span class="modulo-badge">💉 Injetável</span>
+    <button class="dbtn" onclick="toggleDark()">🌙</button>
+  </div>
+  <div class="pbar">
+    <button class="pb on" id="btnA" onclick="setPerfil('adulto')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Adulto / >40 kg</button>
+    <button class="pb" id="btnP" onclick="setPerfil('ped')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M8 12v2a4 4 0 008 0v-2"/></svg>Ped. ≥2 meses</button>
+  </div>
+  <div class="via-bar">
+    <span class="via-lbl">Via:</span>
+    <button class="vbtn on" id="vIV" onclick="setVia('IV')">IV — Intravenosa</button>
+    <button class="vbtn" id="vIM" onclick="setVia('IM')">IM — Intramuscular</button>
+    <div class="tw"><button class="tbtn" onclick="toggleTip(this)">⚠️</button><div class="tbox" id="tipBox"><div class="ttl">⚠️ Advertência</div>Ferramenta educacional. Ajuste renal obrigatório. Incompatível com vancomicina, aminoglicosídeos e metronidazol no mesmo acesso. Não substitui prescrição médica.</div></div>
+  </div>
+</header>
+
+<div id="toast" class="toast"></div>
+
+<div class="page active" id="pageCalc">
+<main>
+
+<!-- ADULTO -->
+<div id="fA">
+  <div class="card">
+    <div class="ct"><svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>Dados — Adulto / >40 kg</div>
+    <label class="fl">Indicação / Doença</label>
+    <select id="dA" onchange="updA()">
+      <option value="">Selecione a indicação...</option>
+      <optgroup label="Infecções urinárias">
+        <option value="itu_lm">ITU leve a moderada</option>
+        <option value="itu_grave">ITU grave / complicada</option>
+      </optgroup>
+      <optgroup label="Infecções sistêmicas">
+        <option value="inf_lm">Infecção leve a moderada (pele, resp., biliar)</option>
+        <option value="inf_grave">Infecção grave / bacteremia</option>
+        <option value="neutropenia">Neutropenia febril (monoterapia empírica)</option>
+        <option value="pneumo_hosp">Pneumonia hospitalar / VAP</option>
+        <option value="meningite">Meningite bacteriana</option>
+      </optgroup>
+      <optgroup label="Profilaxia">
+        <option value="periop_colon">Profilaxia — cirurgia cólon/reto</option>
+      </optgroup>
+      <optgroup label="Insuficiência renal">
+        <option value="ren_30_60">ClCr 30–60 mL/min</option>
+        <option value="ren_11_29">ClCr 11–29 mL/min</option>
+        <option value="ren_hd">Hemodiálise</option>
+      </optgroup>
+    </select>
+    <div id="rwA" style="display:none">
+      <label class="fl">Regime posológico</label>
+      <select id="regA" onchange="calcA()"></select>
+      <div class="rh" id="rhA"></div>
+    </div>
+  </div>
+
+  <div class="rcrd" id="resA">
+    <div class="rhead"><div class="rico"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div><div><div class="rdnc" id="rdA">—</div><div class="rrgm" id="rrA">—</div></div></div>
+    <div class="dgrid" id="dgA"></div>
+    <div class="dur-badge" id="durA" style="display:none"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 13h-2V7h2v8zm0-10h-2V3h2v2z"/></svg></div>
+    <div class="preparo-section" id="prepA" style="display:none"><div class="prep-title"><svg viewBox="0 0 24 24"><path d="M19.5 5.5L18 4l-1.5 1.5L15 4l-1.5 1.5L12 4l-1.5 1.5L9 4 7.5 5.5 6 4 4 6v14a2 2 0 002 2h12a2 2 0 002-2V6l-2-1.5z"/></svg>Preparo da dose</div><div class="prep-steps" id="prepStepsA"></div></div>
+    <div class="infusao-box" id="infA" style="display:none"><div class="inf-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm.5 14.5h-1v-6h1v6zm0-8h-1V7h1v1.5z"/></svg></div><div><div class="inf-label">Tempo de infusão</div><div class="inf-val" id="infValA">30 min</div></div><div style="margin-left:auto;text-align:right"><div class="inf-label">Diluente</div><div style="font-size:11px;color:#7AABF0;font-family:var(--mono)">SF 0,9% ou SG 5% · 50–100 mL</div></div></div>
+    <div class="estab-box" id="estabA">
+      <div class="estab-title"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15v-4H7l5-8v4h4l-5 8z"/></svg>Estabilidade após reconstituição</div>
+      <div class="estab-row"><span class="estab-cond">Temp. ambiente (15–30°C)</span><span class="estab-val">24h · proteger da luz</span></div>
+      <div class="estab-row"><span class="estab-cond">Refrigeração (2–8°C)</span><span class="estab-val">7 dias</span></div>
+      <div class="estab-row"><span class="estab-cond">Cor amarelo-amarronzada</span><span class="estab-val">Normal — potência inalterada</span></div>
+    </div>
+    <div class="fbox" id="fbA" style="display:none"><div class="fttl">📐 Posologia</div><div id="flA"></div></div>
+    <div class="acoes">
+      <button class="ba" onclick="cp('adulto')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copiar</button>
+      <button class="ba" onclick="wa('adulto')"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.118 1.524 5.845L0 24l6.324-1.501A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.882a9.875 9.875 0 01-5.022-1.368l-.361-.214-3.741.981.999-3.648-.235-.374A9.859 9.859 0 012.118 12C2.118 6.533 6.533 2.118 12 2.118c5.467 0 9.882 4.415 9.882 9.882 0 5.467-4.415 9.882-9.882 9.882z"/></svg>WhatsApp</button>
+      <button class="ba" onclick="pr('adulto')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>Imprimir</button>
+    </div>
+    <div id="alA"></div>
+  </div>
+  <div id="emA"><div class="empty-state"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg><p>Selecione a indicação<br>para ver a posologia</p></div></div>
+</div>
+
+<!-- PED -->
+<div id="fP" style="display:none">
+  <div class="card">
+    <div class="ct"><svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>Pediátrico — ≥2 meses</div>
+    <label class="fl">Indicação</label>
+    <select id="dP" onchange="updP()">
+      <option value="">Selecione...</option>
+      <option value="p_std">Infecção leve/moderada — 50 mg/kg/dia</option>
+      <option value="p_grave">Infecção grave / pneumonia — 100 mg/kg/dia</option>
+      <option value="p_neutro">Neutropenia febril — 50 mg/kg/dose 8/8h</option>
+      <option value="p_mening">Meningite bacteriana — 100–150 mg/kg/dia</option>
+    </select>
+    <div id="rwP" style="display:none">
+      <div class="rh vis" id="rhP"></div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:11px">
+      <div><label class="fl">Peso (kg)</label><input type="number" id="peso" placeholder="Ex: 15" min="1" max="60" step="0.1" oninput="calcP()"></div>
+      <div><label class="fl">Idade (meses)</label><input type="number" id="idade" placeholder="Ex: 24" min="2" max="144" step="1" oninput="calcP()"></div>
+    </div>
+  </div>
+  <div class="rcrd" id="resP">
+    <div class="rhead"><div class="rico"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div><div><div class="rdnc" id="rdP">—</div><div class="rrgm" id="rrP">—</div></div></div>
+    <div class="dgrid" id="dgP"></div>
+    <div class="dur-badge" id="durP" style="display:none"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 13h-2V7h2v8zm0-10h-2V3h2v2z"/></svg></div>
+    <div class="preparo-section" id="prepP" style="display:none"><div class="prep-title"><svg viewBox="0 0 24 24"><path d="M19.5 5.5L18 4l-1.5 1.5L15 4l-1.5 1.5L12 4l-1.5 1.5L9 4 7.5 5.5 6 4 4 6v14a2 2 0 002 2h12a2 2 0 002-2V6l-2-1.5z"/></svg>Preparo da dose</div><div class="prep-steps" id="prepStepsP"></div></div>
+    <div class="infusao-box" id="infP" style="display:none"><div class="inf-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm.5 14.5h-1v-6h1v6zm0-8h-1V7h1v1.5z"/></svg></div><div><div class="inf-label">Tempo de infusão</div><div class="inf-val">30 min</div></div><div style="margin-left:auto;text-align:right"><div class="inf-label">Diluente</div><div style="font-size:11px;color:#7AABF0;font-family:var(--mono)">SF 0,9% ou SG 5%</div></div></div>
+    <div class="fbox" id="fbP" style="display:none"><div class="fttl">📐 Cálculo</div><div id="flP"></div></div>
+    <div class="acoes">
+      <button class="ba" onclick="cp('ped')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copiar</button>
+      <button class="ba" onclick="wa('ped')"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.118 1.524 5.845L0 24l6.324-1.501A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.882a9.875 9.875 0 01-5.022-1.368l-.361-.214-3.741.981.999-3.648-.235-.374A9.859 9.859 0 012.118 12C2.118 6.533 6.533 2.118 12 2.118c5.467 0 9.882 4.415 9.882 9.882 0 5.467-4.415 9.882-9.882 9.882z"/></svg>WhatsApp</button>
+      <button class="ba" onclick="pr('ped')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>Imprimir</button>
+    </div>
+    <div id="alP"></div>
+  </div>
+  <div id="emP"><div class="empty-state"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg><p>Informe o peso e a indicação</p></div></div>
+</div>
+
+<!-- AJUSTE RENAL -->
+<div class="card" style="background:var(--navy);border-color:rgba(146,86,10,0.3)">
+  <div class="renal-box">
+    <div class="renal-title">⚙️ Ajuste de dose — Insuficiência Renal (Adulto)</div>
+    <table class="rtable">
+      <tr><th>ClCr (mL/min)</th><th>Dose</th><th>Intervalo</th></tr>
+      <tr><td>&gt;60</td><td>Normal</td><td>Sem ajuste</td></tr>
+      <tr><td>30–60</td><td>Dose normal</td><td>12/12h → 24h</td></tr>
+      <tr><td>11–29</td><td>½ dose normal</td><td>12/12h → 24h</td></tr>
+      <tr><td>≤10 / HD</td><td>250–500 mg</td><td>24h (pós-HD)</td></tr>
+    </table>
+  </div>
+  <!-- INCOMPATIBILIDADES -->
+  <div class="incompat" style="margin-top:10px">
+    <div class="incompat-title"><svg viewBox="0 0 24 24"><path d="M12 9v4m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>Incompatibilidades — acesso separado</div>
+    <div class="incompat-item">Vancomicina — acesso IV separado obrigatório</div>
+    <div class="incompat-item">Aminoglicosídeos (gentamicina, amicacina, tobramicina)</div>
+    <div class="incompat-item">Metronidazol</div>
+    <div class="incompat-item">Netilmicina / Tobramicina</div>
+  </div>
+</div>
+
+<!-- INDICAÇÕES -->
+<div class="card">
+  <div class="ct">Indicações</div>
+  <ul class="il">
+    <li><span class="idot" style="background:#B91C1C"></span>Neutropenia febril — monoterapia empírica<span class="ict">Oncologia ⭐</span></li>
+    <li><span class="idot" style="background:#1A7F5A"></span>Pneumonia hospitalar / ventilador-associada (VAP)<span class="ict">UTI</span></li>
+    <li><span class="idot" style="background:#1549A0"></span>Meningite bacteriana<span class="ict">SNC</span></li>
+    <li><span class="idot" style="background:#C9A84C"></span>ITU complicada / pielonefrite grave<span class="ict">Urinário</span></li>
+    <li><span class="idot" style="background:#7C3AED"></span>Infecções intra-abdominais / peritonite<span class="ict">Abdominal</span></li>
+    <li><span class="idot" style="background:#0F6E56"></span>Bacteremia / sepse (Pseudomonas, gram-neg.)<span class="ict">Sistêmico</span></li>
+    <li><span class="idot" style="background:#1549A0"></span>Profilaxia cirurgia cólon/reto (+metronidazol)<span class="ict">Profilaxia</span></li>
+  </ul>
+  <div class="al ai" style="margin-top:11px">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg>
+    Cefalosporina de 4ª geração. Espectro ampliado cobrindo <strong>Pseudomonas aeruginosa</strong> e gram-negativos resistentes. Ajuste renal obrigatório em ClCr &lt;60 mL/min.
+  </div>
+</div>
+</main>
+</div>
+
+<!-- HISTÓRICO -->
+<div class="page" id="pageHist"><main><div class="card"><div class="ct" style="justify-content:space-between"><span>Histórico</span><button onclick="limH()" style="background:none;border:none;font-size:11px;color:var(--red);cursor:pointer;font-family:var(--font)">Limpar</button></div><div id="histLista"><div class="hvz">Nenhum cálculo ainda.</div></div></div></main></div>
+
+<!-- SOBRE -->
+<div class="page" id="pageInfo"><main>
+  <div class="card"><div class="ct">⚖️ Aviso Legal</div><p style="font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:10px">Ferramenta de <strong>apoio farmacêutico educacional</strong>. Baseada nas bulas ANVISA de Cefepima (Fresenius Kabi / Neo Química / Maxcef). <strong>Não substitui prescrição médica.</strong></p><div class="al aw"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4m0 4h.01"/></svg>Ajuste renal obrigatório em ClCr &lt;60 mL/min. Incompatível com vancomicina, aminoglicosídeos e metronidazol no mesmo acesso. Monitorar sinais de neurotoxicidade em superdose ou IR grave.</div></div>
+  <div class="card"><div class="ct">📋 Sobre</div><p style="font-size:13px;color:var(--text2);line-height:1.7">Versão 1.0 · Módulo Injetáveis GUIADOSE. Cefalosporina de 4ª geração. Apresentações: 1g e 2g. Via IV (bolus 3–5 min / infusão 30 min) e IM. Cobertura de Pseudomonas e gram-negativos resistentes. Pediátrico ≥2 meses.</p></div>
+</main></div>
+
+<div class="dev-footer"><div class="dav">RA</div><div><div class="dnm">Rubiney Alves</div><div class="dcg">Farmácia Clínica · Gestão Comercial · Tecnologia em Saúde</div></div><a href="https://rubiney-alves.vercel.app" target="_blank" class="port-btn" aria-label="Portfólio de Rubiney Alves">Portfólio <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
+<div class="fav"><svg viewBox="0 0 24 24"><path d="M12 9v4m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>GUIADOSE · Posologia baseada em evidências · Bula ANVISA. Não substitui prescrição médica.</div>
+
+<nav class="tab-nav">
+  <button class="tb on" onclick="irP('pageCalc',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M9 12H3m18 0h-6M12 9V3m0 18v-6"/></svg>Calcular</button>
+  <button class="tb" onclick="irP('pageHist',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Histórico</button>
+  <button class="tb" onclick="irP('pageInfo',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg>Sobre</button>
+</nav>
+
+<script>
+let perfil='adulto', via='IV';
+let txtA='', txtP='';
+let hist=JSON.parse(localStorage.getItem('cefepima_hist')||'[]');
+
+function getPreparoIV(mg){
+  const agua=mg<=1000?10:20, frasco=mg<=1000?'1g':'2g';
+  return [
+    {n:1,txt:`Reconstituir frasco <strong>${frasco}</strong> com <strong>${agua} mL</strong> de Água para Injetáveis, SF 0,9% ou SG 5%`},
+    {n:2,txt:`Volume final reconstituído: <strong>~${mg<=1000?11.3:22.6} mL</strong> · incolor a levemente amarelado`},
+    {n:3,txt:`Bolus IV direto: injetar em <strong>3–5 minutos</strong>`},
+    {n:4,txt:`Infusão: diluir em <strong>50–100 mL</strong> SF 0,9% ou SG 5%`},
+    {n:5,txt:`Infundir em <strong>30 minutos</strong>`},
+    {n:6,txt:`⚠️ Não adicionar outros medicamentos após a diluição`},
+  ];
+}
+function getPreparoIM(mg){
+  return [
+    {n:1,txt:`Reconstituir frasco com <strong>${mg<=1000?2.4:4.8} mL</strong> de Água para Injetáveis ou SF 0,9%`},
+    {n:2,txt:`Concentração final: <strong>~280 mg/mL</strong>`},
+    {n:3,txt:`Injetar em grande massa muscular (glúteo ou face lat. da coxa)`},
+    {n:4,txt:`Máx. <strong>2 g por sítio</strong>`},
+  ];
+}
+
+const cfgA = {
+  itu_lm:       {l:'ITU leve a moderada',r:[{id:'1g_12h',mg:1000,freq:2,int:'12/12h',dur:'7–10 dias',h:'1g IV ou IM de 12 em 12 horas por 7 a 10 dias. Bula ANVISA.',t:'1g 12/12h'}]},
+  itu_grave:    {l:'ITU grave / complicada',r:[{id:'2g_12h',mg:2000,freq:2,int:'12/12h',dur:'10–14 dias',h:'2g IV de 12 em 12 horas por 10 a 14 dias.',t:'2g 12/12h'}]},
+  inf_lm:       {l:'Infecção leve a moderada',r:[
+    {id:'1g_12h',mg:1000,freq:2,int:'12/12h',dur:'7–10 dias',h:'1g IV ou IM de 12 em 12 horas. Pele, respiratório, biliar. Bula ANVISA.',t:'1g 12/12h'},
+    {id:'2g_12h',mg:2000,freq:2,int:'12/12h',dur:'7–10 dias',h:'2g IV de 12 em 12 horas para infecções mais graves.',t:'2g 12/12h'},
+  ]},
+  inf_grave:    {l:'Infecção grave / bacteremia',r:[{id:'2g_8h',mg:2000,freq:3,int:'8/8h',dur:'7–14 dias',h:'2g IV de 8 em 8 horas. Infecções graves, bacteremia. Bula ANVISA.',t:'2g 8/8h'}]},
+  neutropenia:  {l:'Neutropenia febril',r:[{id:'2g_8h_n',mg:2000,freq:3,int:'8/8h',dur:'mín. 7 dias',h:'Monoterapia empírica: 2g IV de 8 em 8 horas por mínimo 7 dias ou até resolução da neutropenia e febre. Bula ANVISA.',t:'2g 8/8h neutropenia'}]},
+  pneumo_hosp:  {l:'Pneumonia hospitalar / VAP',r:[{id:'2g_8h_p',mg:2000,freq:3,int:'8/8h',dur:'7–14 dias',h:'Pneumonia nosocomial / VAP: 2g IV de 8 em 8 horas. Cobertura de Pseudomonas e gram-negativos.',t:'2g 8/8h pneumonia'}]},
+  meningite:    {l:'Meningite bacteriana',r:[{id:'2g_8h_m',mg:2000,freq:3,int:'8/8h',dur:'7–21 dias',h:'Meningite: 2g IV de 8 em 8 horas. Duração conforme agente etiológico.',t:'2g 8/8h meningite'}]},
+  periop_colon: {l:'Profilaxia cólon/reto',r:[{id:'2g_periop',mg:2000,freq:1,int:'dose única pré-op + metronidazol 500mg',dur:'dose única',h:'2g IV dose única 60 min antes da incisão + metronidazol 500mg IV imediatamente após. Bula ANVISA.',t:'Profilaxia 2g'}]},
+  ren_30_60:    {l:'ClCr 30–60 mL/min',r:[{id:'r30',mg:1000,freq:1,int:'24h',dur:'conf. indicação',h:'ClCr 30–60: dose normal → intervalo 24h (reduzir frequência).',t:'Ajuste moderado'}]},
+  ren_11_29:    {l:'ClCr 11–29 mL/min',r:[{id:'r11',mg:500,freq:1,int:'24h',dur:'conf. indicação',h:'ClCr 11–29: metade da dose, a cada 24h.',t:'Ajuste grave'}]},
+  ren_hd:       {l:'Hemodiálise',r:[{id:'rhd',mg:500,freq:1,int:'após HD',dur:'conf. indicação',h:'HD remove cefepima. 250–500mg IV após cada sessão de hemodiálise.',t:'Pós-diálise'}]},
+};
+
+const cfgP = {
+  p_std:    {l:'Infecção leve/moderada',mgKg:50, freq:2,int:'12/12h',maxMg:2000,dur:'7–10 dias',h:'50 mg/kg/dose de 12 em 12 horas. Máx: 2g/dose.'},
+  p_grave:  {l:'Infecção grave',       mgKg:50, freq:3,int:'8/8h',  maxMg:2000,dur:'7–14 dias',h:'50 mg/kg/dose de 8 em 8 horas. Máx: 2g/dose.'},
+  p_neutro: {l:'Neutropenia febril',   mgKg:50, freq:3,int:'8/8h',  maxMg:2000,dur:'mín. 7 dias',h:'50 mg/kg/dose de 8 em 8 horas. Máx: 2g/dose. Mínimo 7 dias.'},
+  p_mening: {l:'Meningite bacteriana', mgKg:50, freq:3,int:'8/8h',  maxMg:2000,dur:'7–21 dias',h:'Meningite: 50 mg/kg/dose de 8 em 8 horas. Máx: 2g/dose.'},
+};
+
+function mk(l,v,u,g,full){return `<div class="di${full?' full':''}"><div class="dil">${l}</div><div class="div${g?' g':''}">${v}<span class="diu">${u}</span></div></div>`;}
+function renderPreparo(id,mg){
+  const steps=via==='IV'?getPreparoIV(mg):getPreparoIM(mg);
+  document.getElementById('prepSteps'+id).innerHTML=steps.map(s=>`<div class="step"><span class="step-num">${s.n}</span><div class="step-txt">${s.txt}</div></div>`).join('');
+  document.getElementById('prep'+id).style.display='block';
+}
+function renderInfusao(id){
+  const iv=document.getElementById('inf'+id);
+  iv.style.display=via==='IV'?'flex':'none';
+}
+function renderDur(id,dur){
+  const el=document.getElementById('dur'+id);
+  if(dur){el.innerHTML=`<svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 13h-2V7h2v8zm0-10h-2V3h2v2z"/></svg> Duração: <strong>${dur}</strong>`;el.style.display='flex';}
+  else el.style.display='none';
+}
+function showR(id,d,r,grid,fArr,alertas,mg,dur){
+  document.getElementById('rd'+id).textContent=d; document.getElementById('rr'+id).textContent=r;
+  document.getElementById('dg'+id).innerHTML=grid;
+  renderDur(id,dur); renderPreparo(id,mg); renderInfusao(id);
+  const fb=document.getElementById('fb'+id),fl=document.getElementById('fl'+id);
+  if(fArr&&fArr.length){fl.innerHTML=fArr.map(l=>`<div class="fln">${l}</div>`).join('');fb.style.display='block';}else fb.style.display='none';
+  document.getElementById('al'+id).innerHTML=alertas||'';
+  document.getElementById('res'+id).classList.add('vis'); document.getElementById('em'+id).style.display='none';
+}
+function hideR(id){
+  document.getElementById('res'+id).classList.remove('vis'); document.getElementById('em'+id).style.display='block';
+  ['prep','inf'].forEach(p=>{const el=document.getElementById(p+id);if(el)el.style.display='none';});
+  const d=document.getElementById('dur'+id);if(d)d.style.display='none';
+}
+function setPerfil(p){perfil=p;document.getElementById('btnA').classList.toggle('on',p==='adulto');document.getElementById('btnP').classList.toggle('on',p==='ped');document.getElementById('fA').style.display=p==='adulto'?'block':'none';document.getElementById('fP').style.display=p==='ped'?'block':'none';}
+function setVia(v){via=v;document.getElementById('vIV').classList.toggle('on',v==='IV');document.getElementById('vIM').classList.toggle('on',v==='IM');if(perfil==='adulto')calcA();else calcP();}
+function toggleDark(){const d=document.documentElement;d.getAttribute('data-theme')==='dark'?d.removeAttribute('data-theme'):d.setAttribute('data-theme','dark');}
+function toggleTip(btn){const b=document.getElementById('tipBox');b.classList.toggle('vis');btn.classList.toggle('on');if(b.classList.contains('vis')){document.addEventListener('click',function c(e){if(!e.target.closest('.tw')){b.classList.remove('vis');btn.classList.remove('on');document.removeEventListener('click',c);}});}}
+function irP(p,btn){document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.tb').forEach(b=>b.classList.remove('on'));document.getElementById(p).classList.add('active');btn.classList.add('on');if(p==='pageHist')renderH();}
+function showToast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2000);}
+function cp(p){const t=p==='adulto'?txtA:txtP;if(!t)return;navigator.clipboard.writeText(t).then(()=>showToast('✓ Copiado!')).catch(()=>showToast('Use WhatsApp'));}
+function wa(p){const t=p==='adulto'?txtA:txtP;if(!t)return;window.open('https://wa.me/?text='+encodeURIComponent(t),'_blank');}
+function pr(p){const t=p==='adulto'?txtA:txtP;if(!t)return;const w=window.open('','_blank');w.document.write(`<html><head><title>CefepimaCalc</title><style>body{font-family:Arial,sans-serif;padding:20px;max-width:400px}h2{color:#0F3460}pre{background:#f5f5f5;padding:12px;border-radius:8px;white-space:pre-wrap;font-size:13px}footer{margin-top:18px;font-size:10px;color:#888}</style></head><body><h2>CefepimaCalc — GUIADOSE</h2><pre>${t}</pre><footer>Rubiney Alves · Farmácia Clínica · guiadose.vercel.app<br>Não substitui prescrição médica · Bula ANVISA</footer></body></html>`);w.document.close();w.print();}
+function salvarH(d,r,det){hist.unshift({d,r,det,hora:new Date().toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'})});if(hist.length>20)hist=hist.slice(0,20);localStorage.setItem('cefepima_hist',JSON.stringify(hist));}
+function renderH(){const el=document.getElementById('histLista');if(!hist.length){el.innerHTML='<div class="hvz">Nenhum cálculo ainda.</div>';return;}el.innerHTML=hist.map(h=>`<div class="hi"><div class="hit"><span class="hn">${h.d}</span><span class="hhr">${h.hora}</span></div><div class="hd">${h.r} · ${h.det}</div></div>`).join('');}
+function limH(){hist=[];localStorage.removeItem('cefepima_hist');renderH();}
+
+const INCOMPAT_AL=`<div class="al ad" style="background:rgba(185,28,28,0.2);color:#FCA5A5;border:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4m0 4h.01"/></svg>Incompatível no mesmo acesso: vancomicina, aminoglicosídeos, metronidazol. Administrar sempre em acessos separados.</div>`;
+
+function updA(){
+  const d=document.getElementById('dA').value,rw=document.getElementById('rwA'),rs=document.getElementById('regA');
+  hideR('A');txtA='';
+  if(!d){rw.style.display='none';return;}
+  rs.innerHTML='<option value="">Selecione...</option>'+cfgA[d].r.map(r=>`<option value="${r.id}">${r.l}</option>`).join('');
+  rw.style.display='block';document.getElementById('rhA').classList.remove('vis');calcA();
+}
+function calcA(){
+  const d=document.getElementById('dA').value,reg=document.getElementById('regA').value,rh=document.getElementById('rhA');
+  if(!d||!reg){hideR('A');return;}
+  const cfg=cfgA[d],ro=cfg.r.find(r=>r.id===reg);
+  rh.textContent=ro.h;rh.classList.add('vis');
+  const {mg,freq,int:interval,dur}=ro;
+  const mgDia=freq>0?mg*freq:mg;
+  const mgL=mg>=1000?mg/1000+'g':mg+'mg';
+  const mgDiaL=mgDia>=1000?mgDia/1000+'g':mgDia+'mg';
+  const grid=mk('Dose',mgL,'',true,false)+mk('Via',via,'',false,false)+mk('Freq.',freq>0?freq+'×':interval,'',false,false)+mk('Total/dia',freq>0?mgDiaL:'—',freq>0?'/dia':'',false,false);
+  const fArr=[`Dose: <strong>${mgL}</strong> ${via} · ${interval}`,`Total diário: <strong>${mgDia>=1000?mgDia/1000+'g':mgDia+'mg'}</strong>`,via==='IV'?`Bolus 3–5 min | Infusão: SF/SG 50–100 mL · 30 min`:`IM: reconstituir com Água p/ Inj. ou SF 0,9%`,`Duração: <strong>${dur}</strong>`];
+  let alertas=INCOMPAT_AL;
+  if(d==='neutropenia') alertas+=`<div class="al as" style="background:rgba(26,127,90,0.15);color:#60C090;border:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Neutropenia febril: manter até resolução da febre e neutropenia por mínimo 7 dias. Monoterapia aprovada em bula ANVISA.</div>`;
+  if(d==='periop_colon') alertas+=`<div class="al ai"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg>Associar metronidazol 500mg IV imediatamente após a infusão da cefepima. Administrar 60 min antes da incisão.</div>`;
+  showR('A',cfg.l,ro.t+' · ANVISA',grid,fArr,alertas,mg,dur);
+  txtA=`CefepimaCalc — ${cfg.l}\n${ro.t}\nDose: ${mgL} · ${via} · ${interval}\nTotal: ${mgDia>=1000?mgDia/1000+'g':mgDia+'mg'}/dia · ${dur}\n\nIncompatível com vancomicina e aminoglicosídeos.\nNão substitui prescrição médica.`;
+  salvarH(cfg.l,ro.t,`${mgL} ${via}`);
+}
+
+function updP(){
+  const d=document.getElementById('dP').value,rw=document.getElementById('rwP'),rh=document.getElementById('rhP');
+  hideR('P');txtP='';
+  if(!d){rw.style.display='none';return;}
+  const cfg=cfgP[d];
+  rh.textContent=cfg.h;rw.style.display='block';calcP();
+}
+function calcP(){
+  const d=document.getElementById('dP').value;
+  if(!d){hideR('P');return;}
+  const peso=parseFloat(document.getElementById('peso').value);
+  const cfg=cfgP[d];
+  if(isNaN(peso)||peso<=0){hideR('P');return;}
+  if(peso>=40){
+    showR('P',cfg.l,'Peso ≥40kg — dose adulto',mk('Peso',peso,'kg ≥40kg',false,true)+mk('Ref.','Dose','adulto',false,false),[`Peso ≥40kg → usar <strong>dose de adulto</strong>`,`Ver aba Adulto para o regime correto`],null,1000,cfg.dur);
+    return;
+  }
+  const mgDose=parseFloat(Math.min(peso*cfg.mgKg,cfg.maxMg).toFixed(1));
+  const mgDia=parseFloat((mgDose*cfg.freq).toFixed(1));
+  const frasco=mgDose<=1000?'1g':'2g';
+  const mgL=mgDose>=1000?mgDose/1000+'g':mgDose+'mg';
+  const mgDiaL=mgDia>=1000?mgDia/1000+'g':mgDia+'mg';
+  const grid=mk('Dose/tomada',mgL,'',true,false)+mk('Via',via,'',false,false)+mk('Freq.',cfg.freq+'×','ao dia ('+cfg.int+')',false,false)+mk('Total/dia',mgDiaL,'/dia',false,false);
+  const fArr=[`Peso: <strong>${peso} kg</strong>`,`${cfg.mgKg} mg/kg × ${peso} = <strong>${mgDose} mg/dose</strong> (máx. ${cfg.maxMg/1000}g)`,`Frasco: <strong>${frasco}</strong>`,via==='IV'?`IV: reconstituir → diluir SF/SG 50–100mL → infundir 30 min`:`IM: reconstituir com Água p/ Inj.`,`Duração: <strong>${cfg.dur}</strong>`];
+  showR('P',cfg.l,`${cfg.mgKg}mg/kg · ${cfg.int} · ${via} · ANVISA`,grid,fArr,INCOMPAT_AL,mgDose>=1000?1000:mgDose,cfg.dur);
+  txtP=`CefepimaCalc — ${cfg.l}\nPeso: ${peso}kg\nDose: ${mgDose}mg/dose · ${via} · ${cfg.int}\nTotal: ${mgDia}mg/dia · ${cfg.dur}\n\nIncompatível com vancomicina e aminoglicosídeos.\nNão substitui prescrição médica.`;
+  salvarH(cfg.l,`${cfg.mgKg}mg/kg`,`${mgL} ${via}`);
+}
+
+if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));}
+</script>
+</body>
+</html>
