@@ -413,15 +413,44 @@ main{padding:12px 14px 80px}
         </div>
       </div>
     </div>
-    <div class="pasta-breve" data-search="probiotico lactobacillus flora intestinal">
-      <div class="pasta-breve-ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17 8C8 10 5.9 16.17 3.82 19.09L5.71 21 7 19c.53.52 1.1 1 1.74 1.36C10 21 12 22 14 21c3-1.5 4-5 3-9-.5-2-1.5-3-2.5-4H17z"/></svg></div>
-      <span class="pasta-breve-nome">Probióticos</span>
-      <span class="tag-breve">Em breve</span>
+    <div class="pasta" id="pastaProbA">
+      <div class="pasta-hdr" onclick="togglePasta('probA','aberta')">
+        <div class="pasta-ico" style="background:#E6F7F1">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#1A7F5A" stroke-width="2"><path d="M17 8C8 10 5.9 16.17 3.82 19.09L5.71 21 7 19c.53.52 1.1 1 1.74 1.36C10 21 12 22 14 21c3-1.5 4-5 3-9-.5-2-1.5-3-2.5-4H17z"/></svg>
+        </div>
+        <span class="pasta-nome">Probióticos</span>
+        <span class="pasta-count">5 cepas</span>
+        <span class="pasta-arr" id="arrProbA">›</span>
+      </div>
+      <div class="pasta-body" id="bodyProbA">
+        <a href="probiotico.html" class="drug ativo-t" data-search="probiotico lactobacillus saccharomyces bifidobacterium bacillus diarreia flora sii">
+          <span class="drug-dot t"></span>
+          <div class="drug-info"><div class="drug-nome">Probióticos</div><div class="drug-dose">Lactobacillus · Saccharomyces · Bacillus clausii</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+      </div>
     </div>
-    <div class="pasta-breve" data-search="protetor gastrico omeprazol pantoprazol antiemetico">
-      <div class="pasta-breve-ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0016.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 002 8.5c0 2.3 1.5 4.05 3 5.5l7 7 7-7z"/></svg></div>
-      <span class="pasta-breve-nome">Protetores e Antieméticos</span>
-      <span class="tag-breve">Em breve</span>
+    <div class="pasta" id="pastaGastroA">
+      <div class="pasta-hdr" onclick="togglePasta('gastroA','aberta')">
+        <div class="pasta-ico" style="background:#FEE2E2">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#B91C1C" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0016.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 002 8.5c0 2.3 1.5 4.05 3 5.5l7 7 7-7z"/></svg>
+        </div>
+        <span class="pasta-nome">Protetores e Antieméticos</span>
+        <span class="pasta-count">8</span>
+        <span class="pasta-arr" id="arrGastroA">›</span>
+      </div>
+      <div class="pasta-body" id="bodyGastroA">
+        <a href="protetor_antie.html" class="drug ativo-t" data-search="omeprazol pantoprazol lansoprazol esomeprazol ibp drge ulcera ondansetrona metoclopramida domperidona dimenidrinato antiemetico nausea vomito">
+          <span class="drug-dot t"></span>
+          <div class="drug-info"><div class="drug-nome">Protetores Gástricos (IBP)</div><div class="drug-dose">Omeprazol · Pantoprazol · Lansoprazol · Esomeprazol</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+        <a href="protetor_antie.html" class="drug ativo-t" data-search="ondansetrona metoclopramida domperidona dimenidrinato bromoprida antiemetico nausea vomito cinetose">
+          <span class="drug-dot t"></span>
+          <div class="drug-info"><div class="drug-nome">Antieméticos</div><div class="drug-dose">Ondansetrona · Metoclopramida · Domperidona · Dimenidrinato</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+      </div>
     </div>
   </div>
 
@@ -623,10 +652,44 @@ main{padding:12px 14px 80px}
         </div>
       </div>
     </div>
-    <div class="pasta-breve" data-search="probiotico ped lactobacillus flora">
-      <div class="pasta-breve-ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17 8C8 10 5.9 16.17 3.82 19.09L5.71 21 7 19c.53.52 1.1 1 1.74 1.36C10 21 12 22 14 21c3-1.5 4-5 3-9-.5-2-1.5-3-2.5-4H17z"/></svg></div>
-      <span class="pasta-breve-nome">Probióticos</span>
-      <span class="tag-breve">Em breve</span>
+    <div class="pasta" id="pastaProbP">
+      <div class="pasta-hdr" onclick="togglePasta('probP','aberta-ped')">
+        <div class="pasta-ico" style="background:#E6F7F1">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#1A7F5A" stroke-width="2"><path d="M17 8C8 10 5.9 16.17 3.82 19.09L5.71 21 7 19c.53.52 1.1 1 1.74 1.36C10 21 12 22 14 21c3-1.5 4-5 3-9-.5-2-1.5-3-2.5-4H17z"/></svg>
+        </div>
+        <span class="pasta-nome">Probióticos</span>
+        <span class="pasta-count">5 cepas</span>
+        <span class="pasta-arr" id="arrProbP">›</span>
+      </div>
+      <div class="pasta-body" id="bodyProbP">
+        <a href="probiotico.html" class="drug ativo-b" data-search="probiotico ped lactobacillus saccharomyces bacillus diarreia colica flora">
+          <span class="drug-dot b"></span>
+          <div class="drug-info"><div class="drug-nome">Probióticos</div><div class="drug-dose">Lactobacillus · Saccharomyces · Bacillus clausii</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+      </div>
+    </div>
+    <div class="pasta" id="pastaGastroP">
+      <div class="pasta-hdr" onclick="togglePasta('gastroP','aberta-ped')">
+        <div class="pasta-ico" style="background:#FEE2E2">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#B91C1C" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0016.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 002 8.5c0 2.3 1.5 4.05 3 5.5l7 7 7-7z"/></svg>
+        </div>
+        <span class="pasta-nome">Protetores e Antieméticos</span>
+        <span class="pasta-count">7</span>
+        <span class="pasta-arr" id="arrGastroP">›</span>
+      </div>
+      <div class="pasta-body" id="bodyGastroP">
+        <a href="protetor_antie.html" class="drug ativo-b" data-search="omeprazol ped pantoprazol lansoprazol ibp drge refluxo 0.7mg/kg">
+          <span class="drug-dot b"></span>
+          <div class="drug-info"><div class="drug-nome">Protetores Gástricos (IBP)</div><div class="drug-dose">0,7–0,8mg/kg/dia</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+        <a href="protetor_antie.html" class="drug ativo-b" data-search="ondansetrona ped metoclopramida domperidona dimenidrinato antiemetico 0.15mg/kg nausea vomito cinetose">
+          <span class="drug-dot b"></span>
+          <div class="drug-info"><div class="drug-nome">Antieméticos</div><div class="drug-dose">Dose por peso · 0,15–0,25mg/kg</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+      </div>
     </div>
     <div class="pasta-breve" data-search="solucao salina nasal ped descongestionante rinite">
       <div class="pasta-breve-ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg></div>
