@@ -351,8 +351,8 @@ function updA(){
     `Apresentação: <strong>${comp}</strong>`,
     ...dh(dur,c.int)
   ];
-  showR('A',c.l,dur+' · comp. 500mg · ANVISA',
-    mk('Dose',c.mg,'mg',false)+mk('Comprimidos',c.mg===1000?'2':'1','comp.',false)+mk('Frequência','1×','ao dia',false)+mk('Duração',dur,'',false),
+  showR('A',c.l,c.mg+'mg · '+dur+' · ANVISA',
+    mk('Dose',c.mg,'mg',false)+mk('Comprimidos',c.mg===1000?'2':'1','comp. 500mg',false)+mk('Frequência','1×','ao dia',false)+mk('Duração',dur,'',false),
     fArr,'');
   txtA='AziCalc — '+c.l+'
 '+comp+' · '+dur+'
