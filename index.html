@@ -138,7 +138,7 @@ main{padding:12px 14px 80px}
 .dav{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--gold),#F0D080);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:700;color:var(--navy);font-size:12px}
 .dnm{font-size:12px;font-weight:600;color:var(--gold2)}
 .dcg{font-size:10px;color:rgba(255,255,255,0.45);margin-top:1px}
-.dlk{margin-left:auto;font-size:10px;color:var(--gold);text-decoration:none;font-family:var(--mono)}
+
 .version{text-align:center;font-size:10px;color:var(--text3);padding:8px 0 2px;font-family:var(--mono)}
 
 /* EMPTY BUSCA */
@@ -150,6 +150,9 @@ main{padding:12px 14px 80px}
 .hidden{display:none!important}
 
 [data-theme="dark"] .white-bg{background:var(--white)}
+.port-btn{display:flex;align-items:center;gap:6px;background:#C9A84C;border:none;border-radius:99px;padding:7px 16px;color:#0A1628;font-size:11px;font-family:var(--mono);font-weight:700;text-decoration:none;white-space:nowrap;cursor:pointer;flex-shrink:0;transition:all 0.15s;margin-left:auto}
+.port-btn:hover{background:#E8C97A;transform:translateY(-1px)}
+.port-btn svg{width:13px;height:13px;stroke:#0A1628;stroke-width:2.5;fill:none;flex-shrink:0}
 </style>
 </head>
 <body>
@@ -516,7 +519,7 @@ main{padding:12px 14px 80px}
     <div class="dnm">Rubiney Alves</div>
     <div class="dcg">Farmácia Clínica · Gestão Comercial · Tecnologia em Saúde</div>
   </div>
-  <a href="https://rubiney-alves.vercel.app" target="_blank" class="dlk">portfólio →</a>
+  <a href="https://rubiney-alves.vercel.app" target="_blank" class="port-btn">Portfólio <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
 </div>
 <div class="version">GUIADOSE v1.0 · guiadose.vercel.app · Rubiney Alves</div>
 
