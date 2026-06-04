@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#0F3460">
+<meta name="description" content="GUIADOSE — Calculadoras de Posologia Farmacêutica">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="GUIADOSE">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<title>GUIADOSE — Posologia Farmacêutica</title>
+<style>
+:root{
+  --navy:#0F3460;--navy2:#16213E;--navy3:#0A1628;
+  --gold:#C9A84C;--gold2:#E8C97A;
+  --teal:#0A7C6A;--teal2:#0D9E87;--teal-bg:#E0F5F1;--teal-border:#9FE1CB;
+  --blue:#1549A0;--blue2:#1E63C8;--blue-bg:#E8F0FD;--blue-border:#B5D4F4;
+  --white:#FFFFFF;--surface:#F2F6FB;--surface2:#E4ECF5;
+  --border:#CDD8E8;--text:#1A2540;--text2:#4A5878;--text3:#8A97B0;
+  --green:#1A7F5A;--amber:#92560A;--amber-bg:#FEF3E2;--red:#B91C1C;
+  --radius:13px;--radius-sm:9px;
+  --shadow:0 2px 10px rgba(15,52,96,0.08);
+  --font:'DM Sans',sans-serif;--mono:'DM Mono',monospace;
+}
+[data-theme="dark"]{
+  --white:#1A2540;--surface:#0D1520;--surface2:#162030;
+  --border:#243348;--text:#E4ECF5;--text2:#90A0B8;--text3:#506070;
+  --teal-bg:rgba(10,124,106,0.15);--teal-border:rgba(10,124,106,0.3);
+  --blue-bg:rgba(21,73,160,0.15);--blue-border:rgba(21,73,160,0.3);
+  --amber-bg:#2A1F0A;--amber:#F0C070;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--surface);color:var(--text);min-height:100vh;max-width:480px;margin:0 auto;transition:background 0.2s,color 0.2s;padding-bottom:20px}
+
+/* HERO */
+.hero{background:linear-gradient(150deg,var(--navy3) 0%,var(--navy) 55%,#183870 100%);padding:22px 20px 18px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-70px;right:-70px;width:220px;height:220px;border-radius:50%;background:rgba(201,168,76,0.06);pointer-events:none}
+.hero-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.brand{display:flex;align-items:center;gap:12px}
+.brand-icon{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,var(--gold),#F0D080);display:flex;align-items:center;justify-content:center;box-shadow:0 3px 12px rgba(201,168,76,0.3)}
+.brand-icon svg{width:24px;height:24px;fill:var(--navy)}
+.brand-name{font-size:23px;font-weight:700;color:white;letter-spacing:-0.5px}
+.brand-sub{font-size:10px;color:rgba(255,255,255,0.45);font-family:var(--mono);margin-top:1px}
+.dark-btn{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);border-radius:8px;padding:7px 11px;cursor:pointer;color:white;font-size:14px}
+.proposito{background:rgba(255,255,255,0.06);border:1px solid rgba(201,168,76,0.2);border-radius:10px;padding:10px 13px;display:flex;align-items:flex-start;gap:8px;margin-bottom:14px}
+.proposito svg{width:14px;height:14px;fill:var(--gold);flex-shrink:0;margin-top:2px}
+.proposito span{font-size:11px;color:rgba(255,255,255,0.65);line-height:1.6;font-style:italic}
+.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.stat{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:10px;text-align:center}
+.stat-n{font-size:22px;font-weight:700;color:var(--gold2);font-family:var(--mono)}
+.stat-l{font-size:10px;color:rgba(255,255,255,0.45);margin-top:2px}
+
+/* BUSCA */
+.search-wrap{padding:12px 14px 6px;background:var(--white);border-bottom:1px solid var(--border)}
+.sbox{display:flex;align-items:center;gap:9px;background:var(--surface2);border-radius:10px;padding:10px 13px;border:1.5px solid var(--border);transition:border-color 0.15s}
+.sbox:focus-within{border-color:var(--navy)}
+.sbox svg{width:15px;height:15px;color:var(--text3);flex-shrink:0;fill:none;stroke:currentColor;stroke-width:2}
+.sbox input{border:none;background:transparent;font-family:var(--font);font-size:14px;color:var(--text);outline:none;width:100%}
+.sbox input::placeholder{color:var(--text3)}
+
+/* CONTEÚDO */
+main{padding:12px 14px 80px}
+
+/* COLUNAS */
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+
+/* CABEÇALHO DE COLUNA */
+.col-hdr{border-radius:11px;padding:10px 12px;display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.col-hdr.adulto{background:linear-gradient(135deg,var(--teal),var(--teal2))}
+.col-hdr.ped{background:linear-gradient(135deg,var(--blue),var(--blue2))}
+.col-hdr svg{width:17px;height:17px;fill:white;flex-shrink:0}
+.col-hdr-txt{font-size:12px;font-weight:700;color:white;letter-spacing:0.3px}
+
+/* PASTA */
+.pasta{background:var(--white);border-radius:var(--radius-sm);border:1px solid var(--border);margin-bottom:6px;overflow:hidden;box-shadow:var(--shadow);transition:border-color 0.15s}
+.pasta.aberta{border-color:var(--teal-border)}
+.pasta.aberta-ped{border-color:var(--blue-border)}
+.pasta-hdr{display:flex;align-items:center;gap:8px;padding:10px 11px;cursor:pointer;transition:background 0.15s;-webkit-tap-highlight-color:transparent}
+.pasta-hdr:active{background:var(--surface2)}
+.pasta-ico{width:30px;height:30px;border-radius:7px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.pasta-ico.teal{background:var(--teal-bg)}
+.pasta-ico.blue{background:var(--blue-bg)}
+.pasta-ico svg{width:15px;height:15px}
+.pasta-ico.teal svg{fill:var(--teal)}
+.pasta-ico.blue svg{fill:var(--blue)}
+.pasta-nome{font-size:12px;font-weight:600;color:var(--text);flex:1;line-height:1.2}
+.pasta-count{font-size:9px;color:var(--text3);font-family:var(--mono);background:var(--surface2);padding:2px 5px;border-radius:4px}
+.pasta-arr{font-size:14px;color:var(--text3);transition:transform 0.2s;margin-left:3px;line-height:1}
+.pasta-arr.open{transform:rotate(90deg)}
+.pasta-body{display:none;border-top:1px solid var(--border);padding:5px 6px}
+.pasta-body.open{display:block}
+
+/* ITEM DE MEDICAMENTO */
+.drug{display:flex;align-items:center;gap:7px;padding:7px 8px;border-radius:7px;cursor:pointer;text-decoration:none;transition:background 0.12s}
+.drug:active{background:var(--surface2)}
+.drug.ativo-t:hover,.drug.ativo-t:active{background:var(--teal-bg)}
+.drug.ativo-b:hover,.drug.ativo-b:active{background:var(--blue-bg)}
+.drug-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0}
+.drug-dot.t{background:var(--teal)}
+.drug-dot.b{background:var(--blue)}
+.drug-info{flex:1;min-width:0}
+.drug-nome{font-size:11px;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.drug-dose{font-size:9px;color:var(--text3);font-family:var(--mono);margin-top:1px}
+.drug-arr{font-size:12px;color:var(--text3);flex-shrink:0}
+
+/* BADGE ATIVO */
+.badge-at{font-size:7px;font-weight:700;padding:1px 5px;border-radius:99px;text-transform:uppercase;letter-spacing:0.4px;background:rgba(26,127,90,0.12);color:var(--green);position:absolute;top:5px;right:5px}
+
+/* PASTA EM BREVE */
+.pasta-breve{display:flex;align-items:center;gap:8px;padding:9px 11px;border-radius:var(--radius-sm);border:1px dashed var(--border);margin-bottom:6px;opacity:0.65;background:var(--white)}
+.pasta-breve-ico{width:30px;height:30px;border-radius:7px;background:var(--surface2);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.pasta-breve-ico svg{width:15px;height:15px;fill:var(--text3)}
+.pasta-breve-nome{font-size:12px;font-weight:500;color:var(--text2);flex:1}
+.tag-breve{font-size:8px;font-weight:700;background:var(--amber-bg);color:var(--amber);padding:2px 6px;border-radius:99px;font-family:var(--mono);white-space:nowrap}
+
+/* MÓDULO INJETÁVEIS */
+.injetaveis-sec{background:var(--white);border-radius:var(--radius);border:1px dashed var(--border);padding:13px;margin-top:4px}
+.inj-hdr{display:flex;align-items:center;gap:9px;margin-bottom:11px}
+.inj-icon{width:30px;height:30px;border-radius:8px;background:rgba(201,168,76,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.inj-icon svg{width:16px;height:16px;fill:var(--amber)}
+.inj-title{font-size:13px;font-weight:600;color:var(--text)}
+.inj-badge{margin-left:auto;font-size:9px;background:rgba(201,168,76,0.12);color:var(--amber);padding:2px 7px;border-radius:99px;font-family:var(--mono)}
+.inj-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.inj-card{background:var(--surface2);border-radius:8px;padding:8px 9px;border:1px solid var(--border)}
+.inj-name{font-size:10px;font-weight:600;color:var(--text2)}
+.inj-dose{font-size:9px;color:var(--text3);font-family:var(--mono);margin-top:1px}
+.inj-pills{display:flex;flex-wrap:wrap;gap:4px;margin-top:9px}
+.fpill{font-size:9px;background:var(--surface2);border:1px solid var(--border);color:var(--text3);padding:2px 7px;border-radius:99px;font-family:var(--mono)}
+
+/* RODAPÉ */
+.dev-footer{background:var(--navy);border-radius:var(--radius);padding:12px 14px;display:flex;align-items:center;gap:11px;border:1px solid rgba(201,168,76,0.25);margin-top:14px}
+.dav{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--gold),#F0D080);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:700;color:var(--navy);font-size:12px}
+.dnm{font-size:12px;font-weight:600;color:var(--gold2)}
+.dcg{font-size:10px;color:rgba(255,255,255,0.45);margin-top:1px}
+.dlk{margin-left:auto;font-size:10px;color:var(--gold);text-decoration:none;font-family:var(--mono)}
+.version{text-align:center;font-size:10px;color:var(--text3);padding:8px 0 2px;font-family:var(--mono)}
+
+/* EMPTY BUSCA */
+.empty-s{text-align:center;padding:28px 16px;display:none}
+.empty-s svg{width:36px;height:36px;margin-bottom:10px;opacity:0.2}
+.empty-s p{font-size:13px;color:var(--text3)}
+
+/* HIDDEN */
+.hidden{display:none!important}
+
+[data-theme="dark"] .white-bg{background:var(--white)}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-top">
+    <div class="brand">
+      <div class="brand-icon">
+        <svg viewBox="0 0 24 24"><path d="M19 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2zm-7 3a4 4 0 110 8 4 4 0 010-8zm0 10c-4 0-6 2-6 3h12c0-1-2-3-6-3z"/></svg>
+      </div>
+      <div>
+        <div class="brand-name">GUIADOSE</div>
+        <div class="brand-sub">Posologia baseada em evidências · v1.0</div>
+      </div>
+    </div>
+    <button class="dark-btn" onclick="toggleDark()">🌙</button>
+  </div>
+  <div class="proposito">
+    <svg viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+    <span>"Cada dose calculada com precisão é um paciente mais seguro. O GUIADOSE existe para isso."</span>
+  </div>
+  <div class="stats-row">
+    <div class="stat"><div class="stat-n">16</div><div class="stat-l">Calculadoras</div></div>
+    <div class="stat"><div class="stat-n">2</div><div class="stat-l">Perfis</div></div>
+    <div class="stat"><div class="stat-n">9</div><div class="stat-l">Classes</div></div>
+  </div>
+</div>
+
+<!-- BUSCA -->
+<div class="search-wrap">
+  <div class="sbox">
+    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+    <input type="text" id="searchInput" placeholder="Buscar medicamento ou indicação..." oninput="buscar()">
+  </div>
+</div>
+
+<main>
+
+<!-- DUAS COLUNAS -->
+<div class="cols" id="colsMain">
+
+  <!-- ══ ADULTO ══ -->
+  <div id="colAdulto">
+    <div class="col-hdr adulto">
+      <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2M12 11a4 4 0 100-8 4 4 0 000 8z"/></svg>
+      <span class="col-hdr-txt">ADULTO</span>
+    </div>
+
+    <!-- Pasta Antibióticos ADULTO -->
+    <div class="pasta aberta" id="pastaAntibA">
+      <div class="pasta-hdr" onclick="togglePasta('antibA','aberta')">
+        <div class="pasta-ico teal">
+          <svg viewBox="0 0 24 24"><path d="M9 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2h-4M9 3a2 2 0 002 2h2a2 2 0 002-2M9 3a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+        </div>
+        <span class="pasta-nome">Antibióticos</span>
+        <span class="pasta-count">13</span>
+        <span class="pasta-arr" id="arrAntibA">›</span>
+      </div>
+      <div class="pasta-body" id="bodyAntibA">
+        <a href="amoxicalc.html" class="drug ativo-t" data-search="amoxicilina penicilina itu resp pele amigdalite otite">
+          <span class="drug-dot t"></span>
+          <div class="drug-info"><div class="drug-nome">Amoxicilina</div><div class="drug-dose">250·500mg/5mL</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+        <a href="amoxiclav.html" class="drug ativo-t" data-search="amoxicilina clavulanato augmentin otite sinusite">
+          <span class="drug-dot t"></span>
+          <div class="drug-info"><div class="drug-nome">Amox+Clavulanato</div><div class="drug-dose">250+62,5mg/5mL</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+        <a href="azitromicina.html" class="drug ativo-t" data-search="azitromicina zitromax macrolideo resp ist dose unica">
+          <span class="drug-dot t"></span>
+          <div class="drug-info"><div class="drug-nome">Azitromicina</div><div class="drug-dose">200·100mg/5mL</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+        <a href="cefalexina.html" class="drug ativo-t" data-search="cefalexina cef1 itu pele ossos">
+          <span class="drug-dot t"></span>
+          <div class="drug-info"><div class="drug-nome">Cefalexina</div><div class="drug-dose">250·500mg/5mL</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+        <a href="cefadroxila.html" class="drug ativo-t" data-search="cefadroxila cef1 itu dose unica renal">
+          <span class="drug-dot t"></span>
+          <div class="drug-info"><div class="drug-nome">Cefadroxila</div><div class="drug-dose">250·500mg/5mL</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+        <a href="cefaclor.html" class="drug ativo-t" data-search="cefaclor cef2 ceclor otite resp jejum">
+          <span class="drug-dot t"></span>
+          <div class="drug-info"><div class="drug-nome">Cefaclor</div><div class="drug-dose">250·375mg/5mL</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+        <a href="cefuroxima.html" class="drug ativo-t" data-search="cefuroxima zinnat cef2 otite resp itu">
+          <span class="drug-dot t"></span>
+          <div class="drug-info"><div class="drug-nome">Cefuroxima</div><div class="drug-dose">125·250mg/5mL</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+        <a href="claritromicina.html" class="drug ativo-t" data-search="claritromicina klaricid macrolideo resp hp pylori">
+          <span class="drug-dot t"></span>
+          <div class="drug-info"><div class="drug-nome">Claritromicina</div><div class="drug-dose">125·250mg/5mL</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+        <a href="bactrim.html" class="drug ativo-t" data-search="bactrim smx tmp sulfametoxazol itu pcp">
+          <span class="drug-dot t"></span>
+          <div class="drug-info"><div class="drug-nome">Bactrim® SMX+TMP</div><div class="drug-dose">4 apresentações</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+        <a href="metronidazol.html" class="drug ativo-t" data-search="metronidazol flagyl giardia ameba anaerobio">
+          <span class="drug-dot t"></span>
+          <div class="drug-info"><div class="drug-nome">Metronidazol</div><div class="drug-dose">250·400·500mg</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+        <a href="ciprofloxacino.html" class="drug ativo-t" data-search="ciprofloxacino cipro quinolona itu resp">
+          <span class="drug-dot t"></span>
+          <div class="drug-info"><div class="drug-nome">Ciprofloxacino</div><div class="drug-dose">250·500·750mg</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+        <a href="nitrofurantoina.html" class="drug ativo-t" data-search="nitrofurantoina itu cistite profilaxia">
+          <span class="drug-dot t"></span>
+          <div class="drug-info"><div class="drug-nome">Nitrofurantoína</div><div class="drug-dose">100mg · ITU</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+        <a href="doxiciclina.html" class="drug ativo-t" data-search="doxiciclina tetraciclina acne ist lyme">
+          <span class="drug-dot t"></span>
+          <div class="drug-info"><div class="drug-nome">Doxiciclina</div><div class="drug-dose">100mg · ≥8 anos</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Pastas em breve ADULTO -->
+    <!-- Pasta Analgésicos ADULTO -->
+    <div class="pasta" id="pastaAnalA">
+      <div class="pasta-hdr" onclick="togglePasta('analA','aberta')">
+        <div class="pasta-ico teal">
+          <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20A10 10 0 0012 2zm1 13h-2V7h2v8zm0-10h-2V3h2v2z"/></svg>
+        </div>
+        <span class="pasta-nome">Analgésicos e Antitérmicos</span>
+        <span class="pasta-count">3</span>
+        <span class="pasta-arr" id="arrAnalA">›</span>
+      </div>
+      <div class="pasta-body" id="bodyAnalA">
+        <a href="paracetamol.html" class="drug ativo-t" data-search="paracetamol dor febre tylenol gotas comp hepatopatia">
+          <span class="drug-dot t"></span>
+          <div class="drug-info"><div class="drug-nome">Paracetamol</div><div class="drug-dose">200mg/mL · 500/750mg</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+        <a href="ibuprofeno.html" class="drug ativo-t" data-search="ibuprofeno advil ibupril dor febre anti-inflamatorio colica gotas comp">
+          <span class="drug-dot t"></span>
+          <div class="drug-info"><div class="drug-nome">Ibuprofeno</div><div class="drug-dose">50/100mg/mL · 200–800mg</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+        <a href="dipirona.html" class="drug ativo-t" data-search="dipirona novalgina metamizol dor febre colica gotas">
+          <span class="drug-dot t"></span>
+          <div class="drug-info"><div class="drug-nome">Dipirona</div><div class="drug-dose">500mg/mL · 500mg/1g</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+      </div>
+    </div>
+    <div class="pasta-breve" data-search="anti inflamatorio corticoide dexametasona prednisona">
+      <div class="pasta-breve-ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg></div>
+      <span class="pasta-breve-nome">Anti-inflamatórios</span>
+      <span class="tag-breve">Em breve</span>
+    </div>
+    <div class="pasta-breve" data-search="broncodilatador salbutamol formoterol asma dpoc">
+      <div class="pasta-breve-ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C8.8 3 6 5.1 5.1 8H3v2h2.1C4.4 11.3 4 12.6 4 14c0 4.4 3.6 8 8 8s8-3.6 8-8-3.6-8-8-8z"/></svg></div>
+      <span class="pasta-breve-nome">Broncodilatadores</span>
+      <span class="tag-breve">Em breve</span>
+    </div>
+    <div class="pasta-breve" data-search="mucolítico expectorante carbocisteina ambroxol">
+      <div class="pasta-breve-ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg></div>
+      <span class="pasta-breve-nome">Mucolíticos</span>
+      <span class="tag-breve">Em breve</span>
+    </div>
+    <div class="pasta-breve" data-search="probiotico lactobacillus flora intestinal">
+      <div class="pasta-breve-ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17 8C8 10 5.9 16.17 3.82 19.09L5.71 21 7 19c.53.52 1.1 1 1.74 1.36C10 21 12 22 14 21c3-1.5 4-5 3-9-.5-2-1.5-3-2.5-4H17z"/></svg></div>
+      <span class="pasta-breve-nome">Probióticos</span>
+      <span class="tag-breve">Em breve</span>
+    </div>
+    <div class="pasta-breve" data-search="protetor gastrico omeprazol pantoprazol antiemetico">
+      <div class="pasta-breve-ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0016.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 002 8.5c0 2.3 1.5 4.05 3 5.5l7 7 7-7z"/></svg></div>
+      <span class="pasta-breve-nome">Protetores e Antieméticos</span>
+      <span class="tag-breve">Em breve</span>
+    </div>
+  </div>
+
+  <!-- ══ PEDIÁTRICO ══ -->
+  <div id="colPed">
+    <div class="col-hdr ped">
+      <svg viewBox="0 0 24 24"><path d="M12 12a5 5 0 100-10 5 5 0 000 10zm0 2c-5.33 0-8 2.67-8 4v2h16v-2c0-1.33-2.67-4-8-4z"/></svg>
+      <span class="col-hdr-txt">PEDIÁTRICO</span>
+    </div>
+
+    <!-- Pasta Antibióticos PED -->
+    <div class="pasta" id="pastaAntibP">
+      <div class="pasta-hdr" onclick="togglePasta('antibP','aberta-ped')">
+        <div class="pasta-ico blue">
+          <svg viewBox="0 0 24 24"><path d="M9 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2h-4M9 3a2 2 0 002 2h2a2 2 0 002-2M9 3a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+        </div>
+        <span class="pasta-nome">Antibióticos</span>
+        <span class="pasta-count">13</span>
+        <span class="pasta-arr" id="arrAntibP">›</span>
+      </div>
+      <div class="pasta-body" id="bodyAntibP">
+        <a href="amoxicalc.html" class="drug ativo-b" data-search="amoxicilina ped penicilina otite resp">
+          <span class="drug-dot b"></span>
+          <div class="drug-info"><div class="drug-nome">Amoxicilina</div><div class="drug-dose">25–90mg/kg/dia</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+        <a href="amoxiclav.html" class="drug ativo-b" data-search="amoxicilina clavulanato ped otite sinusite">
+          <span class="drug-dot b"></span>
+          <div class="drug-info"><div class="drug-nome">Amox+Clavulanato</div><div class="drug-dose">20–60mg/kg/dia</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+        <a href="azitromicina.html" class="drug ativo-b" data-search="azitromicina ped resp otite 10mg/kg">
+          <span class="drug-dot b"></span>
+          <div class="drug-info"><div class="drug-nome">Azitromicina</div><div class="drug-dose">10mg/kg/dia</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+        <a href="cefalexina.html" class="drug ativo-b" data-search="cefalexina ped cef1 itu pele">
+          <span class="drug-dot b"></span>
+          <div class="drug-info"><div class="drug-nome">Cefalexina</div><div class="drug-dose">25–100mg/kg/dia</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+        <a href="cefadroxila.html" class="drug ativo-b" data-search="cefadroxila ped cef1 faringite itu">
+          <span class="drug-dot b"></span>
+          <div class="drug-info"><div class="drug-nome">Cefadroxila</div><div class="drug-dose">25–50mg/kg/dia</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+        <a href="cefaclor.html" class="drug ativo-b" data-search="cefaclor ped otite resp 20mg/kg">
+          <span class="drug-dot b"></span>
+          <div class="drug-info"><div class="drug-nome">Cefaclor</div><div class="drug-dose">20–40mg/kg/dia</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+        <a href="cefuroxima.html" class="drug ativo-b" data-search="cefuroxima ped otite resp zinnat">
+          <span class="drug-dot b"></span>
+          <div class="drug-info"><div class="drug-nome">Cefuroxima</div><div class="drug-dose">10–15mg/kg/dose</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+        <a href="claritromicina.html" class="drug ativo-b" data-search="claritromicina ped 7.5mg/kg hp pylori">
+          <span class="drug-dot b"></span>
+          <div class="drug-info"><div class="drug-nome">Claritromicina</div><div class="drug-dose">7,5mg/kg/dose</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+        <a href="bactrim.html" class="drug ativo-b" data-search="bactrim ped smx tmp 6mg/kg pcp">
+          <span class="drug-dot b"></span>
+          <div class="drug-info"><div class="drug-nome">Bactrim®</div><div class="drug-dose">6mg TMP/kg/dia</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+        <a href="metronidazol.html" class="drug ativo-b" data-search="metronidazol ped giardia ameba 15mg/kg">
+          <span class="drug-dot b"></span>
+          <div class="drug-info"><div class="drug-nome">Metronidazol</div><div class="drug-dose">15–35mg/kg/dia</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+        <a href="nitrofurantoina.html" class="drug ativo-b" data-search="nitrofurantoina ped itu 5-7mg/kg">
+          <span class="drug-dot b"></span>
+          <div class="drug-info"><div class="drug-nome">Nitrofurantoína</div><div class="drug-dose">5–7mg/kg/dia</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+        <a href="doxiciclina.html" class="drug ativo-b" data-search="doxiciclina ped 8 anos 2.2mg/kg">
+          <span class="drug-dot b"></span>
+          <div class="drug-info"><div class="drug-nome">Doxiciclina</div><div class="drug-dose">≥8 anos · 2,2mg/kg</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+        <a href="ciprofloxacino.html" class="drug ativo-b" data-search="ciprofloxacino ped fibrose cistica antraz">
+          <span class="drug-dot b"></span>
+          <div class="drug-info"><div class="drug-nome">Ciprofloxacino</div><div class="drug-dose">FC/antraz ≥5 anos</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Pastas em breve PED -->
+    <!-- Pasta Analgésicos PED -->
+    <div class="pasta" id="pastaAnalP">
+      <div class="pasta-hdr" onclick="togglePasta('analP','aberta-ped')">
+        <div class="pasta-ico blue">
+          <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20A10 10 0 0012 2zm1 13h-2V7h2v8zm0-10h-2V3h2v2z"/></svg>
+        </div>
+        <span class="pasta-nome">Analgésicos e Antitérmicos</span>
+        <span class="pasta-count">3</span>
+        <span class="pasta-arr" id="arrAnalP">›</span>
+      </div>
+      <div class="pasta-body" id="bodyAnalP">
+        <a href="paracetamol.html" class="drug ativo-b" data-search="paracetamol ped dor febre gotas 1gota/kg">
+          <span class="drug-dot b"></span>
+          <div class="drug-info"><div class="drug-nome">Paracetamol</div><div class="drug-dose">1 gota/kg/dose</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+        <a href="ibuprofeno.html" class="drug ativo-b" data-search="ibuprofeno ped dor febre 1gota/kg 6meses">
+          <span class="drug-dot b"></span>
+          <div class="drug-info"><div class="drug-nome">Ibuprofeno</div><div class="drug-dose">1 gota/kg · ≥6 meses</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+        <a href="dipirona.html" class="drug ativo-b" data-search="dipirona ped dor febre 12.5mg/kg 3meses">
+          <span class="drug-dot b"></span>
+          <div class="drug-info"><div class="drug-nome">Dipirona</div><div class="drug-dose">12,5mg/kg · ≥3 meses</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+      </div>
+    </div>
+    <div class="pasta-breve" data-search="anti inflamatorio ped corticoide dexametasona">
+      <div class="pasta-breve-ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg></div>
+      <span class="pasta-breve-nome">Anti-inflamatórios</span>
+      <span class="tag-breve">Em breve</span>
+    </div>
+    <div class="pasta-breve" data-search="broncodilatador ped salbutamol sibilancia asma">
+      <div class="pasta-breve-ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C8.8 3 6 5.1 5.1 8H3v2h2.1C4.4 11.3 4 12.6 4 14c0 4.4 3.6 8 8 8s8-3.6 8-8-3.6-8-8-8z"/></svg></div>
+      <span class="pasta-breve-nome">Broncodilatadores</span>
+      <span class="tag-breve">Em breve</span>
+    </div>
+    <div class="pasta-breve" data-search="mucolítico ped ambroxol carbocisteina">
+      <div class="pasta-breve-ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg></div>
+      <span class="pasta-breve-nome">Mucolíticos</span>
+      <span class="tag-breve">Em breve</span>
+    </div>
+    <div class="pasta-breve" data-search="probiotico ped lactobacillus flora">
+      <div class="pasta-breve-ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17 8C8 10 5.9 16.17 3.82 19.09L5.71 21 7 19c.53.52 1.1 1 1.74 1.36C10 21 12 22 14 21c3-1.5 4-5 3-9-.5-2-1.5-3-2.5-4H17z"/></svg></div>
+      <span class="pasta-breve-nome">Probióticos</span>
+      <span class="tag-breve">Em breve</span>
+    </div>
+    <div class="pasta-breve" data-search="solucao salina nasal ped descongestionante rinite">
+      <div class="pasta-breve-ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg></div>
+      <span class="pasta-breve-nome">Soluções Salinas Nasais</span>
+      <span class="tag-breve">Em breve</span>
+    </div>
+  </div>
+
+</div><!-- /cols -->
+
+<!-- EMPTY BUSCA -->
+<div class="empty-s" id="emptyS">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+  <p>Nenhum resultado encontrado.<br>Tente outro nome ou indicação.</p>
+</div>
+
+<!-- MÓDULO INJETÁVEIS -->
+<div class="injetaveis-sec" id="secInjetaveis">
+  <div class="inj-hdr">
+    <div class="inj-icon">
+      <svg viewBox="0 0 24 24"><path d="M19.5 5.5L18 4l-1.5 1.5L15 4l-1.5 1.5L12 4l-1.5 1.5L9 4 7.5 5.5 6 4 4 6v14a2 2 0 002 2h12a2 2 0 002-2V6l-2-1.5z"/></svg>
+    </div>
+    <div>
+      <div class="inj-title">💉 Antibióticos Injetáveis</div>
+      <div style="font-size:10px;color:var(--text3);margin-top:1px">Módulo hospitalar · próxima fase</div>
+    </div>
+    <span class="inj-badge">Em dev.</span>
+  </div>
+  <div class="inj-grid">
+    <div class="inj-card"><div class="inj-name">Ceftriaxona IV/IM</div><div class="inj-dose">500mg · 1g · 2g</div></div>
+    <div class="inj-card"><div class="inj-name">Vancomicina IV</div><div class="inj-dose">TDM · ajuste renal</div></div>
+    <div class="inj-card"><div class="inj-name">Oxacilina IV</div><div class="inj-dose">500mg · 1g</div></div>
+    <div class="inj-card"><div class="inj-name">Gentamicina IV</div><div class="inj-dose">Dose estendida 24h</div></div>
+    <div class="inj-card"><div class="inj-name">Meropeném IV</div><div class="inj-dose">500mg · 1g · 2g</div></div>
+    <div class="inj-card"><div class="inj-name">Pip+Tazobactam</div><div class="inj-dose">4,5g · 4/4h</div></div>
+  </div>
+  <div class="inj-pills">
+    <span class="fpill">Ampicilina</span>
+    <span class="fpill">Cefazolina</span>
+    <span class="fpill">Cefepima</span>
+    <span class="fpill">Clindamicina</span>
+    <span class="fpill">Azitromicina IV</span>
+  </div>
+</div>
+
+<!-- RODAPÉ -->
+<div class="dev-footer">
+  <div class="dav">RA</div>
+  <div>
+    <div class="dnm">Rubiney Alves</div>
+    <div class="dcg">Farmácia Clínica · Gestão Comercial · Tecnologia em Saúde</div>
+  </div>
+  <a href="https://rubiney-alves.vercel.app" target="_blank" class="dlk">portfólio →</a>
+</div>
+<div class="version">GUIADOSE v1.0 · guiadose.vercel.app · Rubiney Alves</div>
+
+</main>
+
+<script>
+// ── TOGGLE PASTA ──
+function togglePasta(id, classeAberta) {
+  const body = document.getElementById('body' + id[0].toUpperCase() + id.slice(1));
+  const arr  = document.getElementById('arr'  + id[0].toUpperCase() + id.slice(1));
+  const pasta = body.closest('.pasta');
+  const aberta = body.classList.toggle('open');
+  arr.classList.toggle('open', aberta);
+  if (aberta) {
+    pasta.classList.add(classeAberta);
+  } else {
+    pasta.classList.remove(classeAberta);
+    pasta.classList.remove('aberta');
+    pasta.classList.remove('aberta-ped');
+  }
+}
+
+// ── BUSCA ──
+function buscar() {
+  const q = document.getElementById('searchInput').value.toLowerCase().trim();
+  const drugs  = document.querySelectorAll('.drug[data-search]');
+  const breves = document.querySelectorAll('.pasta-breve[data-search]');
+  let vis = 0;
+
+  if (!q) {
+    // Restaurar tudo
+    drugs.forEach(d  => d.classList.remove('hidden'));
+    breves.forEach(b => b.classList.remove('hidden'));
+    // pastas fechadas por padrão
+    document.getElementById('pastaAntibA').classList.add('aberta');
+    document.getElementById('emptyS').style.display = 'none';
+    document.getElementById('colsMain').style.display = 'grid';
+    document.getElementById('secInjetaveis').style.display = 'block';
+    return;
+  }
+
+  // Abrir todas as pastas durante busca
+  // todas pastas fechadas por padrão
+
+  drugs.forEach(d => {
+    const tags = (d.dataset.search || '').toLowerCase();
+    const nome = d.querySelector('.drug-nome')?.textContent.toLowerCase() || '';
+    const dose = d.querySelector('.drug-dose')?.textContent.toLowerCase() || '';
+    const ok   = tags.includes(q) || nome.includes(q) || dose.includes(q);
+    d.classList.toggle('hidden', !ok);
+    if (ok) vis++;
+  });
+  breves.forEach(b => {
+    const tags = (b.dataset.search || '').toLowerCase();
+    const nome = b.querySelector('.pasta-breve-nome')?.textContent.toLowerCase() || '';
+    const ok   = tags.includes(q) || nome.includes(q);
+    b.classList.toggle('hidden', !ok);
+    if (ok) vis++;
+  });
+
+  document.getElementById('emptyS').style.display = vis ? 'none' : 'block';
+  document.getElementById('secInjetaveis').style.display = vis ? 'none' : 'none';
+}
+
+// ── DARK MODE ──
+function toggleDark() {
+  const d = document.documentElement;
+  d.getAttribute('data-theme') === 'dark'
+    ? d.removeAttribute('data-theme')
+    : d.setAttribute('data-theme', 'dark');
+}
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
+}
+</script>
+</body>
+</html>
