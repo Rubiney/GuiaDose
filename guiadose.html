@@ -310,20 +310,111 @@ main{padding:12px 14px 80px}
         </a>
       </div>
     </div>
-    <div class="pasta-breve" data-search="anti inflamatorio corticoide dexametasona prednisona">
-      <div class="pasta-breve-ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg></div>
-      <span class="pasta-breve-nome">Anti-inflamatórios</span>
-      <span class="tag-breve">Em breve</span>
+    <div class="pasta" id="pastaAntiA">
+      <div class="pasta-hdr" onclick="togglePasta('antiA','aberta')">
+        <div class="pasta-ico" style="background:#FEF3E2">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#92560A" stroke-width="2"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+        </div>
+        <span class="pasta-nome">Anti-inflamatórios</span>
+        <span class="pasta-count">5</span>
+        <span class="pasta-arr" id="arrAntiA">›</span>
+      </div>
+      <div class="pasta-body" id="bodyAntiA">
+        <a href="nimesulida.html" class="drug ativo-t" data-search="nimesulida cox2 dor dismenorreia artrose tendinite">
+          <span class="drug-dot t"></span>
+          <div class="drug-info"><div class="drug-nome">Nimesulida</div><div class="drug-dose">Comp. 100mg · adulto</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+        <a href="diclofenaco.html" class="drug ativo-t" data-search="diclofenaco voltaren dor artrite artrose colica renal">
+          <span class="drug-dot t"></span>
+          <div class="drug-info"><div class="drug-nome">Diclofenaco</div><div class="drug-dose">Comp. 50mg · adulto & ped ≥1a</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+        <a href="naproxeno.html" class="drug ativo-t" data-search="naproxeno flanax dor artrite gota dismenorreia">
+          <span class="drug-dot t"></span>
+          <div class="drug-info"><div class="drug-nome">Naproxeno</div><div class="drug-dose">Comp. 250/500mg · adulto & ped ≥2a</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+        <a href="cetoprofeno.html" class="drug ativo-t" data-search="cetoprofeno profenid dor artrite gota dismenorreia">
+          <span class="drug-dot t"></span>
+          <div class="drug-info"><div class="drug-nome">Cetoprofeno</div><div class="drug-dose">Comp. 100mg · adulto</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+        <a href="meloxicam.html" class="drug ativo-t" data-search="meloxicam movatec cox2 artrite artrose espondilite">
+          <span class="drug-dot t"></span>
+          <div class="drug-info"><div class="drug-nome">Meloxicam</div><div class="drug-dose">Comp. 7,5/15mg · adulto & ped ≥2a</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+      </div>
     </div>
-    <div class="pasta-breve" data-search="broncodilatador salbutamol formoterol asma dpoc">
-      <div class="pasta-breve-ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C8.8 3 6 5.1 5.1 8H3v2h2.1C4.4 11.3 4 12.6 4 14c0 4.4 3.6 8 8 8s8-3.6 8-8-3.6-8-8-8z"/></svg></div>
-      <span class="pasta-breve-nome">Broncodilatadores</span>
-      <span class="tag-breve">Em breve</span>
     </div>
-    <div class="pasta-breve" data-search="mucolítico expectorante carbocisteina ambroxol">
-      <div class="pasta-breve-ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg></div>
-      <span class="pasta-breve-nome">Mucolíticos</span>
-      <span class="tag-breve">Em breve</span>
+    <div class="pasta" id="pastaBroncoA">
+      <div class="pasta-hdr" onclick="togglePasta('broncoA','aberta')">
+        <div class="pasta-ico" style="background:#EBF2FF">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#1549A0" stroke-width="2"><path d="M12 3C8.8 3 6 5.1 5.1 8H3v2h2.1C4.4 11.3 4 12.6 4 14c0 4.4 3.6 8 8 8s8-3.6 8-8-3.6-8-8-8z"/></svg>
+        </div>
+        <span class="pasta-nome">Broncodilatadores</span>
+        <span class="pasta-count">6</span>
+        <span class="pasta-arr" id="arrBroncoA">›</span>
+      </div>
+      <div class="pasta-body" id="bodyBroncoA">
+        <a href="salbutamol.html" class="drug ativo-t" data-search="salbutamol albuterol saba crise asma dpoc nebulizacao spray">
+          <span class="drug-dot t"></span>
+          <div class="drug-info"><div class="drug-nome">Salbutamol</div><div class="drug-dose">Spray 100mcg · Neb. 5mg/mL</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+        <a href="fenoterol.html" class="drug ativo-t" data-search="fenoterol berotec saba crise asma dpoc spray gotas">
+          <span class="drug-dot t"></span>
+          <div class="drug-info"><div class="drug-nome">Fenoterol</div><div class="drug-dose">Spray 200mcg · Gotas 5mg/mL</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+        <a href="ipratropio.html" class="drug ativo-t" data-search="ipratropio atrovent anticolinergico dpoc asma nebulizacao">
+          <span class="drug-dot t"></span>
+          <div class="drug-info"><div class="drug-nome">Ipratrópio</div><div class="drug-dose">Spray 20mcg · Neb. 0,25mg/mL</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+        <a href="salmeterol.html" class="drug ativo-t" data-search="salmeterol laba manutencao asma dpoc spray po">
+          <span class="drug-dot t"></span>
+          <div class="drug-info"><div class="drug-nome">Salmeterol</div><div class="drug-dose">Spray/Pó 50mcg · LABA</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+        <a href="formoterol.html" class="drug ativo-t" data-search="formoterol laba rapido asma dpoc mart manutencao">
+          <span class="drug-dot t"></span>
+          <div class="drug-info"><div class="drug-nome">Formoterol</div><div class="drug-dose">Cáps. 12mcg · LABA rápido</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+        <a href="teofilina.html" class="drug ativo-t" data-search="teofilina xantina dpoc asma adjuvante nivel serico">
+          <span class="drug-dot t"></span>
+          <div class="drug-info"><div class="drug-nome">Teofilina</div><div class="drug-dose">Comp. LP 200/400mg</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+      </div>
+    </div>
+    </div>
+    <div class="pasta" id="pastaMucA">
+      <div class="pasta-hdr" onclick="togglePasta('mucA','aberta')">
+        <div class="pasta-ico" style="background:#E6F7F1">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#1A7F5A" stroke-width="2"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
+        </div>
+        <span class="pasta-nome">Mucolíticos</span>
+        <span class="pasta-count">Em breve</span>
+        <span class="pasta-arr" id="arrMucA">›</span>
+      </div>
+      <div class="pasta-body" id="bodyMucA">
+        <div class="drug" style="opacity:0.5;cursor:default">
+          <span class="drug-dot" style="background:#1A7F5A"></span>
+          <div class="drug-info"><div class="drug-nome">Ambroxol</div><div class="drug-dose">Em desenvolvimento</div></div>
+        </div>
+        <div class="drug" style="opacity:0.5;cursor:default">
+          <span class="drug-dot" style="background:#1A7F5A"></span>
+          <div class="drug-info"><div class="drug-nome">Carbocisteína</div><div class="drug-dose">Em desenvolvimento</div></div>
+        </div>
+        <div class="drug" style="opacity:0.5;cursor:default">
+          <span class="drug-dot" style="background:#1A7F5A"></span>
+          <div class="drug-info"><div class="drug-nome">Acetilcisteína</div><div class="drug-dose">Em desenvolvimento</div></div>
+        </div>
+      </div>
+    </div>
     </div>
     <div class="pasta-breve" data-search="probiotico lactobacillus flora intestinal">
       <div class="pasta-breve-ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17 8C8 10 5.9 16.17 3.82 19.09L5.71 21 7 19c.53.52 1.1 1 1.74 1.36C10 21 12 22 14 21c3-1.5 4-5 3-9-.5-2-1.5-3-2.5-4H17z"/></svg></div>
@@ -517,125 +608,4 @@ main{padding:12px 14px 80px}
       </a>
       <a href="ampicilina_sulbactam.html" class="drug ativo-t" data-search="ampicilina sulbactam iv pneumonia pele abdominal gineco">
         <span class="drug-dot" style="background:#B91C1C"></span>
-        <div class="drug-info"><div class="drug-nome">Ampicilina+Sulbactam</div><div class="drug-dose">3g IV/IM</div></div>
-        <span class="drug-arr">›</span>
-      </a>
-      <a href="cefazolina.html" class="drug ativo-t" data-search="cefazolina cef1 iv im profilaxia cirurgica pele staph">
-        <span class="drug-dot" style="background:#B91C1C"></span>
-        <div class="drug-info"><div class="drug-nome">Cefazolina</div><div class="drug-dose">1g · 2g IV/IM</div></div>
-        <span class="drug-arr">›</span>
-      </a>
-      <a href="gentamicina.html" class="drug ativo-t" data-search="gentamicina aminoglicosideo iv im sepse gram negativo endocardite">
-        <span class="drug-dot" style="background:#B91C1C"></span>
-        <div class="drug-info"><div class="drug-nome">Gentamicina</div><div class="drug-dose">Dose estendida 24h IV/IM</div></div>
-        <span class="drug-arr">›</span>
-      </a>
-      <a href="vancomicina.html" class="drug ativo-t" data-search="vancomicina mrsa iv glicopeptideo endocardite meningite">
-        <span class="drug-dot" style="background:#B91C1C"></span>
-        <div class="drug-info"><div class="drug-nome">Vancomicina</div><div class="drug-dose">500mg · 1g IV</div></div>
-        <span class="drug-arr">›</span>
-      </a>
-      <a href="clindamicina.html" class="drug ativo-t" data-search="clindamicina iv im anaerob pele pneumonia toxoplasma gineco">
-        <span class="drug-dot" style="background:#B91C1C"></span>
-        <div class="drug-info"><div class="drug-nome">Clindamicina</div><div class="drug-dose">150mg/mL IV/IM</div></div>
-        <span class="drug-arr">›</span>
-      </a>
-      <a href="meropenem.html" class="drug ativo-t" data-search="meropenem carbapenem iv sepse pneumonia meningite pseudomonas">
-        <span class="drug-dot" style="background:#B91C1C"></span>
-        <div class="drug-info"><div class="drug-nome">Meropeném</div><div class="drug-dose">500mg · 1g IV</div></div>
-        <span class="drug-arr">›</span>
-      </a>
-      <a href="piperacilina_tazobactam.html" class="drug ativo-t" data-search="piperacilina tazobactam pip tazo iv sepse pneumonia neutropenia">
-        <span class="drug-dot" style="background:#B91C1C"></span>
-        <div class="drug-info"><div class="drug-nome">Pip+Tazobactam</div><div class="drug-dose">4,5g IV</div></div>
-        <span class="drug-arr">›</span>
-      </a>
-    </div>
-  </div>
-</div>
-
-<!-- RODAPÉ -->
-<div class="dev-footer">
-  <div class="dav">RA</div>
-  <div>
-    <div class="dnm">Rubiney Alves</div>
-    <div class="dcg">Farmácia Clínica · Gestão Comercial · Tecnologia em Saúde</div>
-  </div>
-  <a href="https://rubiney-alves.vercel.app" target="_blank" class="port-btn">Portfólio <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-</div>
-<div class="version">GUIADOSE v1.0 · guiadose.vercel.app · Rubiney Alves</div>
-
-</main>
-
-<script>
-// ── TOGGLE PASTA ──
-function togglePasta(id, classeAberta) {
-  const body = document.getElementById('body' + id[0].toUpperCase() + id.slice(1));
-  const arr  = document.getElementById('arr'  + id[0].toUpperCase() + id.slice(1));
-  const pasta = body.closest('.pasta');
-  const aberta = body.classList.toggle('open');
-  arr.classList.toggle('open', aberta);
-  if (aberta) {
-    pasta.classList.add(classeAberta);
-  } else {
-    pasta.classList.remove(classeAberta);
-    pasta.classList.remove('aberta');
-    pasta.classList.remove('aberta-ped');
-  }
-}
-
-// ── BUSCA ──
-function buscar() {
-  const q = document.getElementById('searchInput').value.toLowerCase().trim();
-  const drugs  = document.querySelectorAll('.drug[data-search]');
-  const breves = document.querySelectorAll('.pasta-breve[data-search]');
-  let vis = 0;
-
-  if (!q) {
-    // Restaurar tudo
-    drugs.forEach(d  => d.classList.remove('hidden'));
-    breves.forEach(b => b.classList.remove('hidden'));
-    // pastas fechadas por padrão
-    document.getElementById('emptyS').style.display = 'none';
-    document.getElementById('colsMain').style.display = 'grid';
-    document.getElementById('secInjetaveis').style.display = 'block';
-    return;
-  }
-
-  // Abrir todas as pastas durante busca
-  // todas pastas fechadas por padrão
-
-  drugs.forEach(d => {
-    const tags = (d.dataset.search || '').toLowerCase();
-    const nome = d.querySelector('.drug-nome')?.textContent.toLowerCase() || '';
-    const dose = d.querySelector('.drug-dose')?.textContent.toLowerCase() || '';
-    const ok   = tags.includes(q) || nome.includes(q) || dose.includes(q);
-    d.classList.toggle('hidden', !ok);
-    if (ok) vis++;
-  });
-  breves.forEach(b => {
-    const tags = (b.dataset.search || '').toLowerCase();
-    const nome = b.querySelector('.pasta-breve-nome')?.textContent.toLowerCase() || '';
-    const ok   = tags.includes(q) || nome.includes(q);
-    b.classList.toggle('hidden', !ok);
-    if (ok) vis++;
-  });
-
-  document.getElementById('emptyS').style.display = vis ? 'none' : 'block';
-  document.getElementById('secInjetaveis').style.display = vis ? 'none' : 'none';
-}
-
-// ── DARK MODE ──
-function toggleDark() {
-  const d = document.documentElement;
-  d.getAttribute('data-theme') === 'dark'
-    ? d.removeAttribute('data-theme')
-    : d.setAttribute('data-theme', 'dark');
-}
-
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
-}
-</script>
-</body>
-</html>
+        <div class="drug-inf
