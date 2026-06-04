@@ -156,6 +156,16 @@ select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/
 .tb.on{color:var(--navy);font-weight:600}
 [data-theme="dark"] .tab-nav{background:#1A2540}
 .page{display:none}.page.active{display:block}
+
+.apres-bar{display:flex;align-items:center;gap:6px;padding:7px 14px 8px;background:var(--navy3)}
+.apres-lbl{font-size:10px;color:rgba(255,255,255,0.35);flex-shrink:0;white-space:nowrap}
+.abtn{padding:5px 11px;border-radius:7px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.5);font-size:11px;font-family:var(--mono);cursor:pointer;transition:all 0.15s;font-weight:500;white-space:nowrap;flex-shrink:0}
+.abtn.on{background:rgba(201,168,76,0.2);border-color:var(--gold);color:var(--gold2);font-weight:700}
+.tw{position:relative;display:flex;align-items:center;flex-shrink:0;margin-left:auto}
+.tbtn{width:26px;height:26px;border-radius:50%;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.4);color:var(--gold);font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.tbox{position:absolute;top:34px;right:0;width:268px;background:#1A2540;border:1px solid var(--gold);border-radius:10px;padding:11px 13px;font-size:12px;color:rgba(255,255,255,0.85);line-height:1.6;z-index:999;box-shadow:0 8px 24px rgba(0,0,0,0.4);display:none}
+.tbox.vis{display:block}
+.tbox::before{content:'';position:absolute;top:-6px;right:9px;width:10px;height:10px;background:#1A2540;border-left:1px solid var(--gold);border-top:1px solid var(--gold);transform:rotate(45deg)}
 </style>
 </head>
 <body>
