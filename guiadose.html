@@ -207,9 +207,9 @@ main{padding:12px 14px 80px}
         </div>
         <span class="pasta-nome">Antibióticos</span>
         <span class="pasta-count">13</span>
-        <span class="pasta-arr open" id="arrAntibA">›</span>
+        <span class="pasta-arr" id="arrAntibA">›</span>
       </div>
-      <div class="pasta-body open" id="bodyAntibA">
+      <div class="pasta-body" id="bodyAntibA">
         <a href="amoxicalc.html" class="drug ativo-t" data-search="amoxicilina penicilina itu resp pele amigdalite otite">
           <span class="drug-dot t"></span>
           <div class="drug-info"><div class="drug-nome">Amoxicilina</div><div class="drug-dose">250·500mg/5mL</div></div>
@@ -220,7 +220,7 @@ main{padding:12px 14px 80px}
           <div class="drug-info"><div class="drug-nome">Amox+Clavulanato</div><div class="drug-dose">250+62,5mg/5mL</div></div>
           <span class="drug-arr">›</span>
         </a>
-        <a href="index.html" class="drug ativo-t" data-search="azitromicina zitromax macrolideo resp ist dose unica">
+        <a href="azitromicina.html" class="drug ativo-t" data-search="azitromicina zitromax macrolideo resp ist dose unica">
           <span class="drug-dot t"></span>
           <div class="drug-info"><div class="drug-nome">Azitromicina</div><div class="drug-dose">200·100mg/5mL</div></div>
           <span class="drug-arr">›</span>
@@ -362,7 +362,7 @@ main{padding:12px 14px 80px}
           <div class="drug-info"><div class="drug-nome">Amox+Clavulanato</div><div class="drug-dose">20–60mg/kg/dia</div></div>
           <span class="drug-arr">›</span>
         </a>
-        <a href="index.html" class="drug ativo-b" data-search="azitromicina ped resp otite 10mg/kg">
+        <a href="azitromicina.html" class="drug ativo-b" data-search="azitromicina ped resp otite 10mg/kg">
           <span class="drug-dot b"></span>
           <div class="drug-info"><div class="drug-nome">Azitromicina</div><div class="drug-dose">10mg/kg/dia</div></div>
           <span class="drug-arr">›</span>
@@ -554,10 +554,7 @@ function buscar() {
     // Restaurar tudo
     drugs.forEach(d  => d.classList.remove('hidden'));
     breves.forEach(b => b.classList.remove('hidden'));
-    document.querySelectorAll('.pasta-body').forEach(b => {
-      if (b.id === 'bodyAntibA') { b.classList.add('open'); }
-    });
-    document.getElementById('arrAntibA').classList.add('open');
+    // pastas fechadas por padrão
     document.getElementById('pastaAntibA').classList.add('aberta');
     document.getElementById('emptyS').style.display = 'none';
     document.getElementById('colsMain').style.display = 'grid';
@@ -566,8 +563,7 @@ function buscar() {
   }
 
   // Abrir todas as pastas durante busca
-  document.querySelectorAll('.pasta-body').forEach(b => b.classList.add('open'));
-  document.querySelectorAll('.pasta-arr').forEach(a => a.classList.add('open'));
+  // todas pastas fechadas por padrão
 
   drugs.forEach(d => {
     const tags = (d.dataset.search || '').toLowerCase();
