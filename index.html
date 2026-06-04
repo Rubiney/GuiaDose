@@ -2,408 +2,604 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="theme-color" content="#0F3460">
+<meta name="description" content="GUIADOSE — Calculadoras de Posologia Farmacêutica">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="GUIADOSE">
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="icons/icon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
-<title>AziCalc — GUIADOSE</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<title>GUIADOSE — Posologia Farmacêutica</title>
 <style>
 :root{
   --navy:#0F3460;--navy2:#16213E;--navy3:#0A1628;
   --gold:#C9A84C;--gold2:#E8C97A;
-  --white:#FFFFFF;--surface:#F7F9FC;--surface2:#EEF2F7;
-  --border:#D8E2EF;--text:#1A2540;--text2:#4A5878;--text3:#8A97B0;
-  --green:#1A7F5A;--green-bg:#E6F7F1;
-  --amber:#92560A;--amber-bg:#FEF3E2;
-  --red:#B91C1C;--red-bg:#FEF2F2;
-  --blue:#1549A0;--blue-bg:#EBF2FF;
-  --radius:12px;--radius-sm:8px;
-  --shadow:0 2px 12px rgba(15,52,96,0.10);
+  --teal:#0A7C6A;--teal2:#0D9E87;--teal-bg:#E0F5F1;--teal-border:#9FE1CB;
+  --blue:#1549A0;--blue2:#1E63C8;--blue-bg:#E8F0FD;--blue-border:#B5D4F4;
+  --white:#FFFFFF;--surface:#F2F6FB;--surface2:#E4ECF5;
+  --border:#CDD8E8;--text:#1A2540;--text2:#4A5878;--text3:#8A97B0;
+  --green:#1A7F5A;--amber:#92560A;--amber-bg:#FEF3E2;--red:#B91C1C;
+  --radius:13px;--radius-sm:9px;
+  --shadow:0 2px 10px rgba(15,52,96,0.08);
   --font:'DM Sans',sans-serif;--mono:'DM Mono',monospace;
 }
 [data-theme="dark"]{
-  --white:#1A2540;--surface:#111827;--surface2:#1F2A3C;
-  --border:#2D3E5A;--text:#E8EDF5;--text2:#A0AEBF;--text3:#5A6A80;
-  --blue-bg:#1A2A4A;--blue:#7AABF0;
+  --white:#1A2540;--surface:#0D1520;--surface2:#162030;
+  --border:#243348;--text:#E4ECF5;--text2:#90A0B8;--text3:#506070;
+  --teal-bg:rgba(10,124,106,0.15);--teal-border:rgba(10,124,106,0.3);
+  --blue-bg:rgba(21,73,160,0.15);--blue-border:rgba(21,73,160,0.3);
   --amber-bg:#2A1F0A;--amber:#F0C070;
-  --red-bg:#2A1010;--red:#F08080;
-  --green-bg:#0A2018;--green:#60C090;
 }
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-body{font-family:var(--font);background:var(--surface);color:var(--text);min-height:100vh;max-width:480px;margin:0 auto;padding-bottom:100px;transition:background 0.2s,color 0.2s}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--surface);color:var(--text);min-height:100vh;max-width:480px;margin:0 auto;transition:background 0.2s,color 0.2s;padding-bottom:20px}
 
-/* HEADER */
-.app-header{background:var(--navy);padding:0;position:sticky;top:0;z-index:100;border-bottom:2px solid var(--gold)}
-.app-header-top{display:flex;align-items:center;gap:10px;padding:8px 16px 10px}
-.app-logo{width:40px;height:40px;border-radius:10px;background:var(--gold);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.app-logo svg{width:22px;height:22px;fill:var(--navy)}
-.app-title{font-size:17px;font-weight:600;letter-spacing:-0.3px;color:white}
-.app-subtitle{font-size:10px;color:rgba(255,255,255,0.5);margin-top:1px;font-family:var(--mono)}
-.dark-btn{margin-left:auto;background:rgba(255,255,255,0.1);border:none;border-radius:8px;padding:7px 10px;cursor:pointer;color:white;font-size:15px;flex-shrink:0}
+/* HERO */
+.hero{background:linear-gradient(150deg,var(--navy3) 0%,var(--navy) 55%,#183870 100%);padding:22px 20px 18px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-70px;right:-70px;width:220px;height:220px;border-radius:50%;background:rgba(201,168,76,0.06);pointer-events:none}
+.hero-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.brand{display:flex;align-items:center;gap:12px}
+.brand-icon{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,var(--gold),#F0D080);display:flex;align-items:center;justify-content:center;box-shadow:0 3px 12px rgba(201,168,76,0.3)}
+.brand-icon svg{width:24px;height:24px;fill:var(--navy)}
+.brand-name{font-size:23px;font-weight:700;color:white;letter-spacing:-0.5px}
+.brand-sub{font-size:10px;color:rgba(255,255,255,0.45);font-family:var(--mono);margin-top:1px}
+.dark-btn{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);border-radius:8px;padding:7px 11px;cursor:pointer;color:white;font-size:14px}
+.proposito{background:rgba(255,255,255,0.06);border:1px solid rgba(201,168,76,0.2);border-radius:10px;padding:10px 13px;display:flex;align-items:flex-start;gap:8px;margin-bottom:14px}
+.proposito svg{width:14px;height:14px;fill:var(--gold);flex-shrink:0;margin-top:2px}
+.proposito span{font-size:11px;color:rgba(255,255,255,0.65);line-height:1.6;font-style:italic}
+.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.stat{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:10px;text-align:center}
+.stat-n{font-size:22px;font-weight:700;color:var(--gold2);font-family:var(--mono)}
+.stat-l{font-size:10px;color:rgba(255,255,255,0.45);margin-top:2px}
 
-/* BOTÃO MENU */
-.back-btn{display:flex;flex-direction:column;align-items:center;justify-content:center;width:40px;height:40px;border-radius:10px;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);text-decoration:none;flex-shrink:0;gap:2px;transition:all 0.18s}
-.back-btn:hover{background:rgba(201,168,76,0.28);border-color:rgba(201,168,76,0.6)}
-.back-btn svg{width:16px;height:16px;fill:#E8C97A;flex-shrink:0}
-.back-btn span{font-size:8px;color:#E8C97A;font-family:var(--mono);letter-spacing:0.3px;font-weight:600}
-.hdr-divider{width:1px;height:32px;background:rgba(255,255,255,0.1);flex-shrink:0}
+/* BUSCA */
+.search-wrap{padding:12px 14px 6px;background:var(--white);border-bottom:1px solid var(--border)}
+.sbox{display:flex;align-items:center;gap:9px;background:var(--surface2);border-radius:10px;padding:10px 13px;border:1.5px solid var(--border);transition:border-color 0.15s}
+.sbox:focus-within{border-color:var(--navy)}
+.sbox svg{width:15px;height:15px;color:var(--text3);flex-shrink:0;fill:none;stroke:currentColor;stroke-width:2}
+.sbox input{border:none;background:transparent;font-family:var(--font);font-size:14px;color:var(--text);outline:none;width:100%}
+.sbox input::placeholder{color:var(--text3)}
 
-/* PERFIL BAR */
-.pbar{display:flex;gap:6px;padding:8px 12px;background:var(--navy2)}
-.pb{flex:1;padding:9px 8px;border:2px solid rgba(255,255,255,0.1);border-radius:9px;background:rgba(255,255,255,0.05);color:rgba(255,255,255,0.4);font-size:12px;font-family:var(--font);cursor:pointer;transition:all 0.18s;display:flex;align-items:center;justify-content:center;gap:5px;font-weight:500}
-.pb svg{width:14px;height:14px}
-.pb.on{background:rgba(201,168,76,0.15);border-color:var(--gold);color:var(--gold2);font-weight:700}
+/* CONTEÚDO */
+main{padding:12px 14px 80px}
 
-/* TOOLTIP */
-.tw{position:relative;display:flex;align-items:center;flex-shrink:0;margin-left:6px}
-.tbtn{width:26px;height:26px;border-radius:50%;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.4);color:var(--gold);font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center}
-.tbox{position:absolute;top:34px;right:0;width:268px;background:#1A2540;border:1px solid var(--gold);border-radius:10px;padding:11px 13px;font-size:12px;color:rgba(255,255,255,0.85);line-height:1.6;z-index:999;box-shadow:0 8px 24px rgba(0,0,0,0.4);display:none}
-.tbox.vis{display:block}
-.tbox::before{content:'';position:absolute;top:-6px;right:9px;width:10px;height:10px;background:#1A2540;border-left:1px solid var(--gold);border-top:1px solid var(--gold);transform:rotate(45deg)}
+/* COLUNAS */
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 
-/* MAIN */
-main{padding:14px}
-.card{background:var(--white);border-radius:var(--radius);border:1px solid var(--border);padding:14px;margin-bottom:11px;box-shadow:var(--shadow)}
-.ct{font-size:11px;font-weight:600;letter-spacing:0.8px;color:var(--text3);text-transform:uppercase;margin-bottom:11px;display:flex;align-items:center;gap:5px}
-label.fl{display:block;font-size:13px;font-weight:500;color:var(--text2);margin-bottom:5px}
-select,input[type=number]{width:100%;padding:11px 13px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-family:var(--font);font-size:14px;color:var(--text);background:var(--white);appearance:none;-webkit-appearance:none;outline:none;transition:border-color 0.15s;margin-bottom:12px}
-select:focus,input[type=number]:focus{border-color:var(--navy)}
-select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%234A5878' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 11px center;padding-right:32px}
-.rh{background:var(--blue-bg);color:var(--blue);border-radius:var(--radius-sm);padding:9px 11px;font-size:12px;line-height:1.6;margin-top:-8px;margin-bottom:12px;display:none}
-.rh.vis{display:block}
+/* CABEÇALHO DE COLUNA */
+.col-hdr{border-radius:11px;padding:10px 12px;display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.col-hdr.adulto{background:linear-gradient(135deg,var(--teal),var(--teal2))}
+.col-hdr.ped{background:linear-gradient(135deg,var(--blue),var(--blue2))}
+.col-hdr svg{width:17px;height:17px;fill:white;flex-shrink:0}
+.col-hdr-txt{font-size:12px;font-weight:700;color:white;letter-spacing:0.3px}
 
-/* RESULTADO */
-.rcrd{background:var(--navy);border-radius:var(--radius);padding:18px;margin-bottom:11px;display:none;animation:fadeUp 0.2s ease}
-.rcrd.vis{display:block}
-@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-.rhead{display:flex;align-items:center;gap:9px;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,0.12)}
-.rico{width:34px;height:34px;border-radius:8px;background:var(--gold);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.rico svg{width:18px;height:18px;fill:var(--navy)}
-.rdnc{font-size:13px;font-weight:600;color:white}
-.rrgm{font-size:10px;color:var(--gold2);margin-top:2px}
-.dgrid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:10px}
-.di{background:rgba(255,255,255,0.07);border-radius:9px;padding:11px}
-.di.full{grid-column:1/-1}
-.dil{font-size:10px;color:rgba(255,255,255,0.5);margin-bottom:3px;font-weight:500}
-.div{font-size:24px;font-weight:600;color:var(--gold2);font-family:var(--mono);line-height:1}
-.diu{font-size:11px;color:rgba(255,255,255,0.45);margin-left:3px;font-weight:400;font-family:var(--font)}
+/* PASTA */
+.pasta{background:var(--white);border-radius:var(--radius-sm);border:1px solid var(--border);margin-bottom:6px;overflow:hidden;box-shadow:var(--shadow);transition:border-color 0.15s}
+.pasta.aberta{border-color:var(--teal-border)}
+.pasta.aberta-ped{border-color:var(--blue-border)}
+.pasta-hdr{display:flex;align-items:center;gap:8px;padding:10px 11px;cursor:pointer;transition:background 0.15s;-webkit-tap-highlight-color:transparent}
+.pasta-hdr:active{background:var(--surface2)}
+.pasta-ico{width:30px;height:30px;border-radius:7px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.pasta-ico.teal{background:var(--teal-bg)}
+.pasta-ico.blue{background:var(--blue-bg)}
+.pasta-ico svg{width:15px;height:15px}
+.pasta-ico.teal svg{fill:var(--teal)}
+.pasta-ico.blue svg{fill:var(--blue)}
+.pasta-nome{font-size:12px;font-weight:600;color:var(--text);flex:1;line-height:1.2}
+.pasta-count{font-size:9px;color:var(--text3);font-family:var(--mono);background:var(--surface2);padding:2px 5px;border-radius:4px}
+.pasta-arr{font-size:14px;color:var(--text3);transition:transform 0.2s;margin-left:3px;line-height:1}
+.pasta-arr.open{transform:rotate(90deg)}
+.pasta-body{display:none;border-top:1px solid var(--border);padding:5px 6px}
+.pasta-body.open{display:block}
 
-/* FÓRMULA / POSOLOGIA */
-.fbox{background:rgba(255,255,255,0.04);border:1px solid rgba(201,168,76,0.2);border-radius:9px;padding:12px;margin-bottom:10px}
-.fttl{font-size:10px;font-weight:600;letter-spacing:0.7px;color:var(--gold);text-transform:uppercase;margin-bottom:8px}
-.fln{font-size:12px;color:rgba(255,255,255,0.72);font-family:var(--mono);padding:3px 0;border-bottom:1px solid rgba(255,255,255,0.05);line-height:1.5}
-.fln:last-child{border-bottom:none}
-.fln strong{color:var(--gold2)}
+/* ITEM DE MEDICAMENTO */
+.drug{display:flex;align-items:center;gap:7px;padding:7px 8px;border-radius:7px;cursor:pointer;text-decoration:none;transition:background 0.12s}
+.drug:active{background:var(--surface2)}
+.drug.ativo-t:hover,.drug.ativo-t:active{background:var(--teal-bg)}
+.drug.ativo-b:hover,.drug.ativo-b:active{background:var(--blue-bg)}
+.drug-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0}
+.drug-dot.t{background:var(--teal)}
+.drug-dot.b{background:var(--blue)}
+.drug-info{flex:1;min-width:0}
+.drug-nome{font-size:11px;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.drug-dose{font-size:9px;color:var(--text3);font-family:var(--mono);margin-top:1px}
+.drug-arr{font-size:12px;color:var(--text3);flex-shrink:0}
 
-/* ALERTAS */
-.al{border-radius:var(--radius-sm);padding:10px 12px;font-size:12px;line-height:1.6;display:flex;gap:7px;align-items:flex-start;margin-bottom:8px}
-.al svg{width:15px;height:15px;flex-shrink:0;margin-top:1px}
-.aw{background:var(--amber-bg);color:var(--amber)}
-.ai{background:var(--blue-bg);color:var(--blue)}
-.ad{background:var(--red-bg);color:var(--red)}
-.as{background:var(--green-bg);color:var(--green)}
+/* BADGE ATIVO */
+.badge-at{font-size:7px;font-weight:700;padding:1px 5px;border-radius:99px;text-transform:uppercase;letter-spacing:0.4px;background:rgba(26,127,90,0.12);color:var(--green);position:absolute;top:5px;right:5px}
 
-/* AÇÕES */
-.acoes{display:flex;gap:7px;margin-bottom:10px}
-.ba{flex:1;padding:9px 5px;border-radius:7px;border:1px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.07);color:rgba(255,255,255,0.8);font-size:11px;font-family:var(--font);cursor:pointer;text-align:center;display:flex;flex-direction:column;align-items:center;gap:3px}
-.ba:active{background:rgba(255,255,255,0.14)}
-.ba svg{width:17px;height:17px}
+/* PASTA EM BREVE */
+.pasta-breve{display:flex;align-items:center;gap:8px;padding:9px 11px;border-radius:var(--radius-sm);border:1px dashed var(--border);margin-bottom:6px;opacity:0.65;background:var(--white)}
+.pasta-breve-ico{width:30px;height:30px;border-radius:7px;background:var(--surface2);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.pasta-breve-ico svg{width:15px;height:15px;fill:var(--text3)}
+.pasta-breve-nome{font-size:12px;font-weight:500;color:var(--text2);flex:1}
+.tag-breve{font-size:8px;font-weight:700;background:var(--amber-bg);color:var(--amber);padding:2px 6px;border-radius:99px;font-family:var(--mono);white-space:nowrap}
 
-/* EMPTY STATE */
-.empty-state{text-align:center;padding:28px 18px;color:var(--text3)}
-.empty-state svg{width:36px;height:36px;opacity:0.3;margin-bottom:10px}
-.empty-state p{font-size:13px}
-
-/* INDICAÇÕES */
-.il{list-style:none}
-.il li{display:flex;align-items:center;gap:9px;padding:9px 0;border-bottom:1px solid var(--surface2);font-size:13px;color:var(--text2)}
-.il li:last-child{border-bottom:none}
-.idot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
-.ict{font-size:9px;color:var(--text3);margin-left:auto;font-family:var(--mono);white-space:nowrap}
-
-/* HISTÓRICO */
-.hi{padding:9px 11px;border-radius:8px;background:var(--surface2);margin-bottom:7px}
-.hit{display:flex;justify-content:space-between;align-items:center}
-.hn{font-size:12px;font-weight:500;color:var(--text)}
-.hhr{font-size:10px;color:var(--text3);font-family:var(--mono)}
-.hd{font-size:11px;color:var(--text2);margin-top:2px}
-.hvz{text-align:center;padding:18px;color:var(--text3);font-size:12px}
+/* MÓDULO INJETÁVEIS */
+.injetaveis-sec{background:var(--white);border-radius:var(--radius);border:1px dashed var(--border);padding:13px;margin-top:4px}
+.inj-hdr{display:flex;align-items:center;gap:9px;margin-bottom:11px}
+.inj-icon{width:30px;height:30px;border-radius:8px;background:rgba(201,168,76,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.inj-icon svg{width:16px;height:16px;fill:var(--amber)}
+.inj-title{font-size:13px;font-weight:600;color:var(--text)}
+.inj-badge{margin-left:auto;font-size:9px;background:rgba(201,168,76,0.12);color:var(--amber);padding:2px 7px;border-radius:99px;font-family:var(--mono)}
+.inj-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.inj-card{background:var(--surface2);border-radius:8px;padding:8px 9px;border:1px solid var(--border)}
+.inj-name{font-size:10px;font-weight:600;color:var(--text2)}
+.inj-dose{font-size:9px;color:var(--text3);font-family:var(--mono);margin-top:1px}
+.inj-pills{display:flex;flex-wrap:wrap;gap:4px;margin-top:9px}
+.fpill{font-size:9px;background:var(--surface2);border:1px solid var(--border);color:var(--text3);padding:2px 7px;border-radius:99px;font-family:var(--mono)}
 
 /* RODAPÉ */
-.dev-footer{margin:0 0 14px;background:var(--navy);border-radius:var(--radius);padding:13px 15px;display:flex;align-items:center;gap:11px;border:1px solid var(--gold)}
-.dav{width:34px;height:34px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:700;color:var(--navy);font-size:13px}
+.dev-footer{background:var(--navy);border-radius:var(--radius);padding:12px 14px;display:flex;align-items:center;gap:11px;border:1px solid rgba(201,168,76,0.25);margin-top:14px}
+.dav{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--gold),#F0D080);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:700;color:var(--navy);font-size:12px}
 .dnm{font-size:12px;font-weight:600;color:var(--gold2)}
-.dcg{font-size:10px;color:rgba(255,255,255,0.5);margin-top:1px}
-.port-btn{display:flex;align-items:center;gap:5px;background:var(--gold);border:none;border-radius:99px;padding:7px 14px;color:var(--navy3,#0A1628);font-size:11px;font-family:var(--mono);font-weight:700;text-decoration:none;white-space:nowrap;cursor:pointer;flex-shrink:0;transition:background 0.15s}
-.port-btn:hover{background:var(--gold2)}
-.port-btn svg{width:12px;height:12px;stroke:var(--navy3,#0A1628);stroke-width:2.5;fill:none;flex-shrink:0}
-.fav{margin:0 0 7px;background:var(--surface2);border-radius:var(--radius-sm);padding:10px 12px;font-size:11px;color:var(--text3);line-height:1.6;display:flex;gap:7px}
-.fav svg{width:13px;height:13px;flex-shrink:0;margin-top:1px;fill:var(--text3)}
+.dcg{font-size:10px;color:rgba(255,255,255,0.45);margin-top:1px}
+.dlk{margin-left:auto;font-size:10px;color:var(--gold);text-decoration:none;font-family:var(--mono)}
+.version{text-align:center;font-size:10px;color:var(--text3);padding:8px 0 2px;font-family:var(--mono)}
 
-/* TOAST */
-.toast{position:fixed;bottom:88px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--navy);color:white;padding:9px 18px;border-radius:99px;font-size:12px;border:1px solid var(--gold);opacity:0;transition:all 0.25s;z-index:999;white-space:nowrap;pointer-events:none}
-.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+/* EMPTY BUSCA */
+.empty-s{text-align:center;padding:28px 16px;display:none}
+.empty-s svg{width:36px;height:36px;margin-bottom:10px;opacity:0.2}
+.empty-s p{font-size:13px;color:var(--text3)}
 
-/* NAV */
-.tab-nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;background:var(--white);border-top:1px solid var(--border);display:flex;z-index:200}
-.tb{flex:1;padding:9px 4px 7px;border:none;background:transparent;font-family:var(--font);font-size:10px;color:var(--text3);cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;transition:color 0.15s}
-.tb svg{width:19px;height:19px}
-.tb.on{color:var(--navy);font-weight:600}
-[data-theme="dark"] .tab-nav{background:#1A2540}
-.page{display:none}.page.active{display:block}
+/* HIDDEN */
+.hidden{display:none!important}
+
+[data-theme="dark"] .white-bg{background:var(--white)}
 </style>
 </head>
 <body>
-<header class="app-header">
-  <div class="app-header-top">
-    <a href="guiadose.html" class="back-btn" aria-label="Voltar ao menu GUIADOSE">
-      <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
-      <span>MENU</span>
-    </a>
-    <div class="hdr-divider"></div>
-    <div class="app-logo"><svg viewBox="0 0 24 24"><path d="M9 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2h-4M9 3a2 2 0 002 2h2a2 2 0 002-2M9 3a2 2 0 012-2h2a2 2 0 012 2"/></svg></div>
-    <div><div class="app-title">AziCalc</div><div class="app-subtitle">Azitromicina · Adulto & Pediátrico</div></div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-top">
+    <div class="brand">
+      <div class="brand-icon">
+        <svg viewBox="0 0 24 24"><path d="M19 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2zm-7 3a4 4 0 110 8 4 4 0 010-8zm0 10c-4 0-6 2-6 3h12c0-1-2-3-6-3z"/></svg>
+      </div>
+      <div>
+        <div class="brand-name">GUIADOSE</div>
+        <div class="brand-sub">Posologia baseada em evidências · v1.0</div>
+      </div>
+    </div>
     <button class="dark-btn" onclick="toggleDark()">🌙</button>
   </div>
-  <div class="pbar">
-    <button class="pb on" id="btnA" onclick="setPerfil('adulto')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Adulto / ≥45 kg
-    </button>
-    <button class="pb" id="btnP" onclick="setPerfil('ped')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M8 12v2a4 4 0 008 0v-2"/></svg>Pediátrico &lt;45 kg
-    </button>
+  <div class="proposito">
+    <svg viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+    <span>"Cada dose calculada com precisão é um paciente mais seguro. O GUIADOSE existe para isso."</span>
   </div>
-  <div class="apres-bar">
-    <span class="apres-lbl">Apresentação:</span>
-    <button class="abtn on" id="a200" onclick="setConc(200)">200mg/5mL</button><button class="abtn" id="a100" onclick="setConc(100)">100mg/5mL</button>
-    <div class="tw"><button class="tbtn" onclick="toggleTip(this)">⚠️</button>
-    <div class="tbox" id="tipBox"><div style="font-size:10px;font-weight:700;color:var(--gold);margin-bottom:5px">⚠️ Advertência</div>Contraindicado &lt;6 meses / &lt;5 kg. Adulto (≥45kg) usa comprimido 500mg. Bula ANVISA.</div></div>
+  <div class="stats-row">
+    <div class="stat"><div class="stat-n">16</div><div class="stat-l">Calculadoras</div></div>
+    <div class="stat"><div class="stat-n">2</div><div class="stat-l">Perfis</div></div>
+    <div class="stat"><div class="stat-n">9</div><div class="stat-l">Classes</div></div>
   </div>
-</header>
-<div id="toast" class="toast"></div>
-<div class="page active" id="pageCalc"><main>
-<div id="fA">
-  <div class="card"><div class="ct">Adulto ≥45 kg — comprimido 500 mg</div>
-    <label class="fl">Indicação</label>
-    <select id="dA" onchange="updA()">
-      <option value="">Selecione...</option>
-      <optgroup label="Respiratório">
-        <option value="a_far">Faringite / amigdalite — 3 dias</option>
-        <option value="a_sin">Sinusite bacteriana — 3 dias</option>
-        <option value="a_bro3">Bronquite / DPOC — 3 dias</option>
-        <option value="a_bro5">Bronquite / DPOC — 5 dias</option>
-        <option value="a_pne3">Pneumonia (PAC) — 3 dias</option>
-        <option value="a_pne5">Pneumonia (PAC) — 5 dias</option>
-      </optgroup>
-      <optgroup label="Pele / IST">
-        <option value="a_pel3">Infecções de pele — 3 dias</option>
-        <option value="a_pel5">Infecções de pele — 5 dias</option>
-        <option value="a_ist">Clamídia / gonorreia — dose única</option>
-      </optgroup>
-    </select>
-    <div class="rh" id="rhA"></div>
+</div>
+
+<!-- BUSCA -->
+<div class="search-wrap">
+  <div class="sbox">
+    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+    <input type="text" id="searchInput" placeholder="Buscar medicamento ou indicação..." oninput="buscar()">
   </div>
-  <div class="rcrd" id="resA">
-    <div class="rhead"><div class="rico"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
-    <div><div class="rdnc" id="rdA">—</div><div class="rrgm" id="rrA">—</div></div></div>
-    <div class="dgrid" id="dgA"></div>
-    <div class="fbox" id="fbA" style="display:none"><div class="fttl">📐 Posologia</div><div id="flA"></div></div>
-    <div class="acoes">
-      <button class="ba" onclick="cp(txtA)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copiar</button>
-      <button class="ba" onclick="wa(txtA)"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.118 1.524 5.845L0 24l6.324-1.501A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.882a9.875 9.875 0 01-5.022-1.368l-.361-.214-3.741.981.999-3.648-.235-.374A9.859 9.859 0 012.118 12C2.118 6.533 6.533 2.118 12 2.118c5.467 0 9.882 4.415 9.882 9.882 0 5.467-4.415 9.882-9.882 9.882z"/></svg>WhatsApp</button>
-      <button class="ba" onclick="pr(TITULO,txtA)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>Imprimir</button>
+</div>
+
+<main>
+
+<!-- DUAS COLUNAS -->
+<div class="cols" id="colsMain">
+
+  <!-- ══ ADULTO ══ -->
+  <div id="colAdulto">
+    <div class="col-hdr adulto">
+      <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2M12 11a4 4 0 100-8 4 4 0 000 8z"/></svg>
+      <span class="col-hdr-txt">ADULTO</span>
     </div>
-    <div id="alA"></div>
-  </div>
-  <div id="emA"><div class="empty-state"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg><p>Selecione a indicação</p></div></div></div>
-<div id="fP" style="display:none">
-  <div class="card"><div class="ct">Pediátrico &lt;45 kg — suspensão oral</div>
-    <div class="al ai" style="margin-bottom:12px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg>
-    Concentração: <strong id="cncLbl">200 mg/5mL</strong> · Contraindicado &lt;6 meses / &lt;5 kg</div>
-    <label class="fl">Indicação</label>
-    <select id="dP" onchange="updP()">
-      <option value="">Selecione...</option>
-      <optgroup label="Respiratório / Pele">
-        <option value="p_3d">Faringite · Sinusite · Pele — 3 dias</option>
-        <option value="p_5d">Faringite · Sinusite · Pele — 5 dias</option>
-      </optgroup>
-      <optgroup label="Otite">
-        <option value="p_odu">Otite — dose única (30 mg/kg)</option>
-        <option value="p_o3d">Otite — 3 dias</option>
-        <option value="p_o5d">Otite — 5 dias</option>
-      </optgroup>
-      <optgroup label="Pneumonia">
-        <option value="p_pne">Pneumonia — 5 dias</option>
-      </optgroup>
-    </select>
-    <div class="rh" id="rhP"></div>
-    <label class="fl">Peso (kg)</label>
-    <input type="number" id="peso" placeholder="Ex: 15" min="5" max="44" step="0.1" oninput="calcP()">
-  </div>
-  <div class="rcrd" id="resP">
-    <div class="rhead"><div class="rico"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
-    <div><div class="rdnc" id="rdP">—</div><div class="rrgm" id="rrP">—</div></div></div>
-    <div class="dgrid" id="dgP"></div>
-    <div class="fbox" id="fbP" style="display:none"><div class="fttl">📐 Posologia</div><div id="flP"></div></div>
-    <div class="acoes">
-      <button class="ba" onclick="cp(txtP)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copiar</button>
-      <button class="ba" onclick="wa(txtP)"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.118 1.524 5.845L0 24l6.324-1.501A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.882a9.875 9.875 0 01-5.022-1.368l-.361-.214-3.741.981.999-3.648-.235-.374A9.859 9.859 0 012.118 12C2.118 6.533 6.533 2.118 12 2.118c5.467 0 9.882 4.415 9.882 9.882 0 5.467-4.415 9.882-9.882 9.882z"/></svg>WhatsApp</button>
-      <button class="ba" onclick="pr(TITULO,txtP)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>Imprimir</button>
+
+    <!-- Pasta Antibióticos ADULTO -->
+    <div class="pasta aberta" id="pastaAntibA">
+      <div class="pasta-hdr" onclick="togglePasta('antibA','aberta')">
+        <div class="pasta-ico teal">
+          <svg viewBox="0 0 24 24"><path d="M9 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2h-4M9 3a2 2 0 002 2h2a2 2 0 002-2M9 3a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+        </div>
+        <span class="pasta-nome">Antibióticos</span>
+        <span class="pasta-count">13</span>
+        <span class="pasta-arr open" id="arrAntibA">›</span>
+      </div>
+      <div class="pasta-body open" id="bodyAntibA">
+        <a href="amoxicalc.html" class="drug ativo-t" data-search="amoxicilina penicilina itu resp pele amigdalite otite">
+          <span class="drug-dot t"></span>
+          <div class="drug-info"><div class="drug-nome">Amoxicilina</div><div class="drug-dose">250·500mg/5mL</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+        <a href="amoxiclav.html" class="drug ativo-t" data-search="amoxicilina clavulanato augmentin otite sinusite">
+          <span class="drug-dot t"></span>
+          <div class="drug-info"><div class="drug-nome">Amox+Clavulanato</div><div class="drug-dose">250+62,5mg/5mL</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+        <a href="azitromicina.html" class="drug ativo-t" data-search="azitromicina zitromax macrolideo resp ist dose unica">
+          <span class="drug-dot t"></span>
+          <div class="drug-info"><div class="drug-nome">Azitromicina</div><div class="drug-dose">200·100mg/5mL</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+        <a href="cefalexina.html" class="drug ativo-t" data-search="cefalexina cef1 itu pele ossos">
+          <span class="drug-dot t"></span>
+          <div class="drug-info"><div class="drug-nome">Cefalexina</div><div class="drug-dose">250·500mg/5mL</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+        <a href="cefadroxila.html" class="drug ativo-t" data-search="cefadroxila cef1 itu dose unica renal">
+          <span class="drug-dot t"></span>
+          <div class="drug-info"><div class="drug-nome">Cefadroxila</div><div class="drug-dose">250·500mg/5mL</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+        <a href="cefaclor.html" class="drug ativo-t" data-search="cefaclor cef2 ceclor otite resp jejum">
+          <span class="drug-dot t"></span>
+          <div class="drug-info"><div class="drug-nome">Cefaclor</div><div class="drug-dose">250·375mg/5mL</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+        <a href="cefuroxima.html" class="drug ativo-t" data-search="cefuroxima zinnat cef2 otite resp itu">
+          <span class="drug-dot t"></span>
+          <div class="drug-info"><div class="drug-nome">Cefuroxima</div><div class="drug-dose">125·250mg/5mL</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+        <a href="claritromicina.html" class="drug ativo-t" data-search="claritromicina klaricid macrolideo resp hp pylori">
+          <span class="drug-dot t"></span>
+          <div class="drug-info"><div class="drug-nome">Claritromicina</div><div class="drug-dose">125·250mg/5mL</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+        <a href="bactrim.html" class="drug ativo-t" data-search="bactrim smx tmp sulfametoxazol itu pcp">
+          <span class="drug-dot t"></span>
+          <div class="drug-info"><div class="drug-nome">Bactrim® SMX+TMP</div><div class="drug-dose">4 apresentações</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+        <a href="metronidazol.html" class="drug ativo-t" data-search="metronidazol flagyl giardia ameba anaerobio">
+          <span class="drug-dot t"></span>
+          <div class="drug-info"><div class="drug-nome">Metronidazol</div><div class="drug-dose">250·400·500mg</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+        <a href="ciprofloxacino.html" class="drug ativo-t" data-search="ciprofloxacino cipro quinolona itu resp">
+          <span class="drug-dot t"></span>
+          <div class="drug-info"><div class="drug-nome">Ciprofloxacino</div><div class="drug-dose">250·500·750mg</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+        <a href="nitrofurantoina.html" class="drug ativo-t" data-search="nitrofurantoina itu cistite profilaxia">
+          <span class="drug-dot t"></span>
+          <div class="drug-info"><div class="drug-nome">Nitrofurantoína</div><div class="drug-dose">100mg · ITU</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+        <a href="doxiciclina.html" class="drug ativo-t" data-search="doxiciclina tetraciclina acne ist lyme">
+          <span class="drug-dot t"></span>
+          <div class="drug-info"><div class="drug-nome">Doxiciclina</div><div class="drug-dose">100mg · ≥8 anos</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+      </div>
     </div>
-    <div id="alP"></div>
+
+    <!-- Pastas em breve ADULTO -->
+    <!-- Pasta Analgésicos ADULTO -->
+    <div class="pasta" id="pastaAnalA">
+      <div class="pasta-hdr" onclick="togglePasta('analA','aberta')">
+        <div class="pasta-ico teal">
+          <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20A10 10 0 0012 2zm1 13h-2V7h2v8zm0-10h-2V3h2v2z"/></svg>
+        </div>
+        <span class="pasta-nome">Analgésicos e Antitérmicos</span>
+        <span class="pasta-count">3</span>
+        <span class="pasta-arr" id="arrAnalA">›</span>
+      </div>
+      <div class="pasta-body" id="bodyAnalA">
+        <a href="paracetamol.html" class="drug ativo-t" data-search="paracetamol dor febre tylenol gotas comp hepatopatia">
+          <span class="drug-dot t"></span>
+          <div class="drug-info"><div class="drug-nome">Paracetamol</div><div class="drug-dose">200mg/mL · 500/750mg</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+        <a href="ibuprofeno.html" class="drug ativo-t" data-search="ibuprofeno advil ibupril dor febre anti-inflamatorio colica gotas comp">
+          <span class="drug-dot t"></span>
+          <div class="drug-info"><div class="drug-nome">Ibuprofeno</div><div class="drug-dose">50/100mg/mL · 200–800mg</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+        <a href="dipirona.html" class="drug ativo-t" data-search="dipirona novalgina metamizol dor febre colica gotas">
+          <span class="drug-dot t"></span>
+          <div class="drug-info"><div class="drug-nome">Dipirona</div><div class="drug-dose">500mg/mL · 500mg/1g</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+      </div>
+    </div>
+    <div class="pasta-breve" data-search="anti inflamatorio corticoide dexametasona prednisona">
+      <div class="pasta-breve-ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg></div>
+      <span class="pasta-breve-nome">Anti-inflamatórios</span>
+      <span class="tag-breve">Em breve</span>
+    </div>
+    <div class="pasta-breve" data-search="broncodilatador salbutamol formoterol asma dpoc">
+      <div class="pasta-breve-ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C8.8 3 6 5.1 5.1 8H3v2h2.1C4.4 11.3 4 12.6 4 14c0 4.4 3.6 8 8 8s8-3.6 8-8-3.6-8-8-8z"/></svg></div>
+      <span class="pasta-breve-nome">Broncodilatadores</span>
+      <span class="tag-breve">Em breve</span>
+    </div>
+    <div class="pasta-breve" data-search="mucolítico expectorante carbocisteina ambroxol">
+      <div class="pasta-breve-ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg></div>
+      <span class="pasta-breve-nome">Mucolíticos</span>
+      <span class="tag-breve">Em breve</span>
+    </div>
+    <div class="pasta-breve" data-search="probiotico lactobacillus flora intestinal">
+      <div class="pasta-breve-ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17 8C8 10 5.9 16.17 3.82 19.09L5.71 21 7 19c.53.52 1.1 1 1.74 1.36C10 21 12 22 14 21c3-1.5 4-5 3-9-.5-2-1.5-3-2.5-4H17z"/></svg></div>
+      <span class="pasta-breve-nome">Probióticos</span>
+      <span class="tag-breve">Em breve</span>
+    </div>
+    <div class="pasta-breve" data-search="protetor gastrico omeprazol pantoprazol antiemetico">
+      <div class="pasta-breve-ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0016.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 002 8.5c0 2.3 1.5 4.05 3 5.5l7 7 7-7z"/></svg></div>
+      <span class="pasta-breve-nome">Protetores e Antieméticos</span>
+      <span class="tag-breve">Em breve</span>
+    </div>
   </div>
-  <div id="emP"><div class="empty-state"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg><p>Selecione a indicação</p></div></div></div>
-<div class="card"><div class="ct">Indicações — Bula ANVISA</div><ul class="il">
-  <li><span class="idot" style="background:#1549A0"></span>Faringite / amigdalite bacteriana<span class="ict">Resp. sup.</span></li>
-  <li><span class="idot" style="background:#1549A0"></span>Sinusite bacteriana aguda<span class="ict">Resp. sup.</span></li>
-  <li><span class="idot" style="background:#C9A84C"></span>Otite média aguda<span class="ict">Ouvido</span></li>
-  <li><span class="idot" style="background:#1A7F5A"></span>Bronquite / exacerbação DPOC<span class="ict">Resp. inf.</span></li>
-  <li><span class="idot" style="background:#1A7F5A"></span>Pneumonia adquirida na comunidade<span class="ict">Resp. inf.</span></li>
-  <li><span class="idot" style="background:#7C3AED"></span>Infecções de pele e tecidos moles<span class="ict">Pele</span></li>
-  <li><span class="idot" style="background:#B91C1C"></span>Clamídia / gonorreia — dose única<span class="ict">IST adulto</span></li></ul></div>
-</main></div>
-<div class="page" id="pageHist"><main><div class="card"><div class="ct" style="justify-content:space-between"><span>Histórico</span><button onclick="limH()" style="background:none;border:none;font-size:11px;color:var(--red);cursor:pointer;font-family:var(--font)">Limpar</button></div><div id="histLista"><div class="hvz">Nenhum cálculo ainda.</div></div></div></main></div>
-<div class="page" id="pageInfo"><main>
-  <div class="card"><div class="ct">⚖️ Aviso Legal</div><p style="font-size:13px;color:var(--text2);line-height:1.7">Ferramenta de apoio farmacêutico educacional. Baseada na bula ANVISA. Não substitui prescrição médica. Contraindicado &lt;6 meses / &lt;5 kg.</p></div>
-  <div class="card"><div class="ct">📋 Sobre</div><p style="font-size:13px;color:var(--text2);line-height:1.7">AziCalc v3.0 · GUIADOSE SAFE RELEASE® · Azitromicina di-hidratada · Suspensão 200/100mg/5mL · Comp. 500mg · Bula ANVISA 2024 · Auditado GUIADOSE SAFE RELEASE® 03/06/2026</p></div>
-</main></div>
+
+  <!-- ══ PEDIÁTRICO ══ -->
+  <div id="colPed">
+    <div class="col-hdr ped">
+      <svg viewBox="0 0 24 24"><path d="M12 12a5 5 0 100-10 5 5 0 000 10zm0 2c-5.33 0-8 2.67-8 4v2h16v-2c0-1.33-2.67-4-8-4z"/></svg>
+      <span class="col-hdr-txt">PEDIÁTRICO</span>
+    </div>
+
+    <!-- Pasta Antibióticos PED -->
+    <div class="pasta" id="pastaAntibP">
+      <div class="pasta-hdr" onclick="togglePasta('antibP','aberta-ped')">
+        <div class="pasta-ico blue">
+          <svg viewBox="0 0 24 24"><path d="M9 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2h-4M9 3a2 2 0 002 2h2a2 2 0 002-2M9 3a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+        </div>
+        <span class="pasta-nome">Antibióticos</span>
+        <span class="pasta-count">13</span>
+        <span class="pasta-arr" id="arrAntibP">›</span>
+      </div>
+      <div class="pasta-body" id="bodyAntibP">
+        <a href="amoxicalc.html" class="drug ativo-b" data-search="amoxicilina ped penicilina otite resp">
+          <span class="drug-dot b"></span>
+          <div class="drug-info"><div class="drug-nome">Amoxicilina</div><div class="drug-dose">25–90mg/kg/dia</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+        <a href="amoxiclav.html" class="drug ativo-b" data-search="amoxicilina clavulanato ped otite sinusite">
+          <span class="drug-dot b"></span>
+          <div class="drug-info"><div class="drug-nome">Amox+Clavulanato</div><div class="drug-dose">20–60mg/kg/dia</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+        <a href="azitromicina.html" class="drug ativo-b" data-search="azitromicina ped resp otite 10mg/kg">
+          <span class="drug-dot b"></span>
+          <div class="drug-info"><div class="drug-nome">Azitromicina</div><div class="drug-dose">10mg/kg/dia</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+        <a href="cefalexina.html" class="drug ativo-b" data-search="cefalexina ped cef1 itu pele">
+          <span class="drug-dot b"></span>
+          <div class="drug-info"><div class="drug-nome">Cefalexina</div><div class="drug-dose">25–100mg/kg/dia</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+        <a href="cefadroxila.html" class="drug ativo-b" data-search="cefadroxila ped cef1 faringite itu">
+          <span class="drug-dot b"></span>
+          <div class="drug-info"><div class="drug-nome">Cefadroxila</div><div class="drug-dose">25–50mg/kg/dia</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+        <a href="cefaclor.html" class="drug ativo-b" data-search="cefaclor ped otite resp 20mg/kg">
+          <span class="drug-dot b"></span>
+          <div class="drug-info"><div class="drug-nome">Cefaclor</div><div class="drug-dose">20–40mg/kg/dia</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+        <a href="cefuroxima.html" class="drug ativo-b" data-search="cefuroxima ped otite resp zinnat">
+          <span class="drug-dot b"></span>
+          <div class="drug-info"><div class="drug-nome">Cefuroxima</div><div class="drug-dose">10–15mg/kg/dose</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+        <a href="claritromicina.html" class="drug ativo-b" data-search="claritromicina ped 7.5mg/kg hp pylori">
+          <span class="drug-dot b"></span>
+          <div class="drug-info"><div class="drug-nome">Claritromicina</div><div class="drug-dose">7,5mg/kg/dose</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+        <a href="bactrim.html" class="drug ativo-b" data-search="bactrim ped smx tmp 6mg/kg pcp">
+          <span class="drug-dot b"></span>
+          <div class="drug-info"><div class="drug-nome">Bactrim®</div><div class="drug-dose">6mg TMP/kg/dia</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+        <a href="metronidazol.html" class="drug ativo-b" data-search="metronidazol ped giardia ameba 15mg/kg">
+          <span class="drug-dot b"></span>
+          <div class="drug-info"><div class="drug-nome">Metronidazol</div><div class="drug-dose">15–35mg/kg/dia</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+        <a href="nitrofurantoina.html" class="drug ativo-b" data-search="nitrofurantoina ped itu 5-7mg/kg">
+          <span class="drug-dot b"></span>
+          <div class="drug-info"><div class="drug-nome">Nitrofurantoína</div><div class="drug-dose">5–7mg/kg/dia</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+        <a href="doxiciclina.html" class="drug ativo-b" data-search="doxiciclina ped 8 anos 2.2mg/kg">
+          <span class="drug-dot b"></span>
+          <div class="drug-info"><div class="drug-nome">Doxiciclina</div><div class="drug-dose">≥8 anos · 2,2mg/kg</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+        <a href="ciprofloxacino.html" class="drug ativo-b" data-search="ciprofloxacino ped fibrose cistica antraz">
+          <span class="drug-dot b"></span>
+          <div class="drug-info"><div class="drug-nome">Ciprofloxacino</div><div class="drug-dose">FC/antraz ≥5 anos</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Pastas em breve PED -->
+    <!-- Pasta Analgésicos PED -->
+    <div class="pasta" id="pastaAnalP">
+      <div class="pasta-hdr" onclick="togglePasta('analP','aberta-ped')">
+        <div class="pasta-ico blue">
+          <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20A10 10 0 0012 2zm1 13h-2V7h2v8zm0-10h-2V3h2v2z"/></svg>
+        </div>
+        <span class="pasta-nome">Analgésicos e Antitérmicos</span>
+        <span class="pasta-count">3</span>
+        <span class="pasta-arr" id="arrAnalP">›</span>
+      </div>
+      <div class="pasta-body" id="bodyAnalP">
+        <a href="paracetamol.html" class="drug ativo-b" data-search="paracetamol ped dor febre gotas 1gota/kg">
+          <span class="drug-dot b"></span>
+          <div class="drug-info"><div class="drug-nome">Paracetamol</div><div class="drug-dose">1 gota/kg/dose</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+        <a href="ibuprofeno.html" class="drug ativo-b" data-search="ibuprofeno ped dor febre 1gota/kg 6meses">
+          <span class="drug-dot b"></span>
+          <div class="drug-info"><div class="drug-nome">Ibuprofeno</div><div class="drug-dose">1 gota/kg · ≥6 meses</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+        <a href="dipirona.html" class="drug ativo-b" data-search="dipirona ped dor febre 12.5mg/kg 3meses">
+          <span class="drug-dot b"></span>
+          <div class="drug-info"><div class="drug-nome">Dipirona</div><div class="drug-dose">12,5mg/kg · ≥3 meses</div></div>
+          <span class="drug-arr">›</span>
+        </a>
+      </div>
+    </div>
+    <div class="pasta-breve" data-search="anti inflamatorio ped corticoide dexametasona">
+      <div class="pasta-breve-ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg></div>
+      <span class="pasta-breve-nome">Anti-inflamatórios</span>
+      <span class="tag-breve">Em breve</span>
+    </div>
+    <div class="pasta-breve" data-search="broncodilatador ped salbutamol sibilancia asma">
+      <div class="pasta-breve-ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C8.8 3 6 5.1 5.1 8H3v2h2.1C4.4 11.3 4 12.6 4 14c0 4.4 3.6 8 8 8s8-3.6 8-8-3.6-8-8-8z"/></svg></div>
+      <span class="pasta-breve-nome">Broncodilatadores</span>
+      <span class="tag-breve">Em breve</span>
+    </div>
+    <div class="pasta-breve" data-search="mucolítico ped ambroxol carbocisteina">
+      <div class="pasta-breve-ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg></div>
+      <span class="pasta-breve-nome">Mucolíticos</span>
+      <span class="tag-breve">Em breve</span>
+    </div>
+    <div class="pasta-breve" data-search="probiotico ped lactobacillus flora">
+      <div class="pasta-breve-ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17 8C8 10 5.9 16.17 3.82 19.09L5.71 21 7 19c.53.52 1.1 1 1.74 1.36C10 21 12 22 14 21c3-1.5 4-5 3-9-.5-2-1.5-3-2.5-4H17z"/></svg></div>
+      <span class="pasta-breve-nome">Probióticos</span>
+      <span class="tag-breve">Em breve</span>
+    </div>
+    <div class="pasta-breve" data-search="solucao salina nasal ped descongestionante rinite">
+      <div class="pasta-breve-ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg></div>
+      <span class="pasta-breve-nome">Soluções Salinas Nasais</span>
+      <span class="tag-breve">Em breve</span>
+    </div>
+  </div>
+
+</div><!-- /cols -->
+
+<!-- EMPTY BUSCA -->
+<div class="empty-s" id="emptyS">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+  <p>Nenhum resultado encontrado.<br>Tente outro nome ou indicação.</p>
+</div>
+
+<!-- MÓDULO INJETÁVEIS -->
+<div class="injetaveis-sec" id="secInjetaveis">
+  <div class="inj-hdr">
+    <div class="inj-icon">
+      <svg viewBox="0 0 24 24"><path d="M19.5 5.5L18 4l-1.5 1.5L15 4l-1.5 1.5L12 4l-1.5 1.5L9 4 7.5 5.5 6 4 4 6v14a2 2 0 002 2h12a2 2 0 002-2V6l-2-1.5z"/></svg>
+    </div>
+    <div>
+      <div class="inj-title">💉 Antibióticos Injetáveis</div>
+      <div style="font-size:10px;color:var(--text3);margin-top:1px">Módulo hospitalar · próxima fase</div>
+    </div>
+    <span class="inj-badge">Em dev.</span>
+  </div>
+  <div class="inj-grid">
+    <div class="inj-card"><div class="inj-name">Ceftriaxona IV/IM</div><div class="inj-dose">500mg · 1g · 2g</div></div>
+    <div class="inj-card"><div class="inj-name">Vancomicina IV</div><div class="inj-dose">TDM · ajuste renal</div></div>
+    <div class="inj-card"><div class="inj-name">Oxacilina IV</div><div class="inj-dose">500mg · 1g</div></div>
+    <div class="inj-card"><div class="inj-name">Gentamicina IV</div><div class="inj-dose">Dose estendida 24h</div></div>
+    <div class="inj-card"><div class="inj-name">Meropeném IV</div><div class="inj-dose">500mg · 1g · 2g</div></div>
+    <div class="inj-card"><div class="inj-name">Pip+Tazobactam</div><div class="inj-dose">4,5g · 4/4h</div></div>
+  </div>
+  <div class="inj-pills">
+    <span class="fpill">Ampicilina</span>
+    <span class="fpill">Cefazolina</span>
+    <span class="fpill">Cefepima</span>
+    <span class="fpill">Clindamicina</span>
+    <span class="fpill">Azitromicina IV</span>
+  </div>
+</div>
+
+<!-- RODAPÉ -->
 <div class="dev-footer">
   <div class="dav">RA</div>
-  <div><div class="dnm">Rubiney Alves</div><div class="dcg">Farmácia Clínica · Gestão Comercial · Tecnologia em Saúde</div></div>
-  <a href="https://rubiney-alves.vercel.app" target="_blank" class="port-btn">Portfólio <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+  <div>
+    <div class="dnm">Rubiney Alves</div>
+    <div class="dcg">Farmácia Clínica · Gestão Comercial · Tecnologia em Saúde</div>
+  </div>
+  <a href="https://rubiney-alves.vercel.app" target="_blank" class="dlk">portfólio →</a>
 </div>
-<div class="fav"><svg viewBox="0 0 24 24"><path d="M12 9v4m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>GUIADOSE · Posologia baseada em evidências · Bula ANVISA. Não substitui prescrição médica.</div>
-<nav class="tab-nav">
-  <button class="tb on" onclick="irP('pageCalc',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M9 12H3m18 0h-6M12 9V3m0 18v-6"/></svg>Calcular</button>
-  <button class="tb" onclick="irP('pageHist',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Histórico</button>
-  <button class="tb" onclick="irP('pageInfo',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg>Sobre</button>
-</nav>
+<div class="version">GUIADOSE v1.0 · guiadose.vercel.app · Rubiney Alves</div>
+
+</main>
+
 <script>
-const TITULO='AziCalc';
-let hist=JSON.parse(localStorage.getItem('azi_hist')||'[]');
-function salvarH(d,r,det){hist.unshift({d,r,det,hora:new Date().toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'})});if(hist.length>20)hist=hist.slice(0,20);localStorage.setItem('azi_hist',JSON.stringify(hist));}
-function renderH(){const el=document.getElementById('histLista');if(!hist.length){el.innerHTML='<div class="hvz">Nenhum cálculo ainda.</div>';return;}el.innerHTML=hist.map(h=>`<div class="hi"><div class="hit"><span class="hn">${h.d}</span><span class="hhr">${h.hora}</span></div><div class="hd">${h.r} · ${h.det}</div></div>`).join('');}
-function limH(){hist=[];localStorage.removeItem('azi_hist');renderH();}
-
-function mk(l,v,u,full){return `<div class="di${full?' full':''}"><div class="dil">${l}</div><div class="div">${v}<span class="diu">${u}</span></div></div>`;}
-function showR(id,dnc,rgm,grid,fArr,al){
-  document.getElementById('rd'+id).textContent=dnc;
-  document.getElementById('rr'+id).textContent=rgm;
-  document.getElementById('dg'+id).innerHTML=grid;
-  const fb=document.getElementById('fb'+id),fl=document.getElementById('fl'+id);
-  if(fArr&&fArr.length){fl.innerHTML=fArr.map(l=>`<div class="fln">${l}</div>`).join('');fb.style.display='block';}
-  else if(fb)fb.style.display='none';
-  if(document.getElementById('al'+id))document.getElementById('al'+id).innerHTML=al||'';
-  document.getElementById('res'+id).classList.add('vis');
-  document.getElementById('em'+id).style.display='none';
-}
-function hideR(id){document.getElementById('res'+id).classList.remove('vis');document.getElementById('em'+id).style.display='block';}
-function hor(i){const x=(i||'').toLowerCase();if(x.includes('6/6'))return '6h · 12h · 18h · 0h';if(x.includes('8/8'))return '7h · 15h · 23h';if(x.includes('12/12'))return '7h · 19h';if(x.includes('única')||x.includes('unica'))return 'dose única';return '1× ao dia — mesma hora';}
-function dh(dur,intervalo){return [`⏱ Duração: <strong>${dur}</strong>`,`🕐 Horários: <strong>${hor(intervalo)}</strong>`];}
-function irP(p,btn){document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.tb').forEach(b=>b.classList.remove('on'));document.getElementById(p).classList.add('active');btn.classList.add('on');if(p==='pageHist')renderH();}
-function showToast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2000);}
-function cp(txt){if(!txt)return;navigator.clipboard.writeText(txt).then(()=>showToast('✓ Copiado!')).catch(()=>showToast('Use WhatsApp'));}
-function wa(txt){if(!txt)return;window.open('https://wa.me/?text='+encodeURIComponent(txt),'_blank');}
-function pr(titulo,txt){if(!txt)return;const w=window.open('','_blank');w.document.write(`<html><head><title>${titulo}</title><style>body{font-family:Arial,sans-serif;padding:20px;max-width:400px}h2{color:#0F3460}pre{background:#f5f5f5;padding:12px;border-radius:8px;white-space:pre-wrap;font-size:13px}footer{margin-top:18px;font-size:10px;color:#888}</style></head><body><h2>${titulo} — GUIADOSE</h2><pre>${txt}</pre><footer>Rubiney Alves · guiadose.vercel.app · Não substitui prescrição médica</footer></body></html>`);w.document.close();w.print();}
-function toggleDark(){const d=document.documentElement;d.getAttribute('data-theme')==='dark'?d.removeAttribute('data-theme'):d.setAttribute('data-theme','dark');}
-function toggleTip(btn){const b=document.getElementById('tipBox');b.classList.toggle('vis');if(b.classList.contains('vis')){document.addEventListener('click',function c(e){if(!e.target.closest('.tw')){b.classList.remove('vis');document.removeEventListener('click',c);}});}}
-function setPerfil(p){document.getElementById('btnA').classList.toggle('on',p==='adulto');document.getElementById('btnP').classList.toggle('on',p==='ped');document.getElementById('fA').style.display=p==='adulto'?'block':'none';document.getElementById('fP').style.display=p==='ped'?'block':'none';}
-if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));}
-
-
-let txtA='',txtP='',concAtual=200;
-const cfgA={
-  a_far:{l:'Faringite / amigdalite',mg:500,dias:3,int:'1× ao dia'},
-  a_sin:{l:'Sinusite bacteriana',mg:500,dias:3,int:'1× ao dia'},
-  a_bro3:{l:'Bronquite / DPOC',mg:500,dias:3,int:'1× ao dia'},
-  a_bro5:{l:'Bronquite / DPOC',mg:500,dias:5,int:'1× ao dia'},
-  a_pne3:{l:'Pneumonia (PAC)',mg:500,dias:3,int:'1× ao dia'},
-  a_pne5:{l:'Pneumonia (PAC)',mg:500,dias:5,int:'1× ao dia'},
-  a_pel3:{l:'Infecções de pele',mg:500,dias:3,int:'1× ao dia'},
-  a_pel5:{l:'Infecções de pele',mg:500,dias:5,int:'1× ao dia'},
-  a_ist:{l:'Clamídia / gonorreia',mg:1000,dias:1,int:'dose única'},
-};
-function updA(){
-  const d=document.getElementById('dA').value,rh=document.getElementById('rhA');
-  hideR('A');txtA='';
-  if(!d){rh.classList.remove('vis');return;}
-  const c=cfgA[d];
-  const dur=c.dias===1?'dose única':c.dias+' dias';
-  const comp=c.mg===1000?'2 comp. 500mg':'1 comp. 500mg';
-  rh.textContent=c.l+' · '+comp+' · '+dur+' · Bula ANVISA';rh.classList.add('vis');
-  const fArr=[
-    `Dose: <strong>${c.mg} mg</strong> · 1× ao dia`,
-    `Apresentação: <strong>${comp}</strong>`,
-    ...dh(dur,c.int)
-  ];
-  showR('A',c.l,dur+' · comp. 500mg · ANVISA',
-    mk('Dose',c.mg,'mg',false)+mk('Comprimidos',c.mg===1000?'2':'1','comp.',false)+mk('Frequência','1×','ao dia',false)+mk('Duração',dur,'',false),
-    fArr,'');
-  txtA='AziCalc — '+c.l+'
-'+comp+' · '+dur+'
-Horário: 7h (em jejum ou 2h após refeição)
-
-Não substitui prescrição médica.';
-  salvarH(c.l,dur,'adulto');
-}
-function setConc(c){concAtual=c;document.getElementById('a200').classList.toggle('on',c===200);document.getElementById('a100').classList.toggle('on',c===100);document.getElementById('cncLbl').textContent=c+' mg/5mL';calcP();}
-function updP(){document.getElementById('rhP').textContent=document.getElementById('dP').selectedOptions[0]?.text||'';document.getElementById('rhP').classList.add('vis');calcP();}
-function calcP(){
-  const d=document.getElementById('dP').value;
-  const peso=parseFloat(document.getElementById('peso').value);
-  hideR('P');txtP='';
-  if(!d||isNaN(peso)||peso<=0)return;
-  if(peso<5){showR('P','Peso insuficiente','—',mk('Atenção','<5','kg',true),null,'<div class="al ad"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4m0 4h.01"/></svg>Contraindicado &lt;5 kg / &lt;6 meses. Consulte o pediatra.</div>');return;}
-  if(peso>=45){showR('P','≥45 kg','usar dose adulta',mk('Peso',peso,'kg',true),null,'<div class="al ai"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg>Peso ≥45 kg: selecione o perfil Adulto.</div>');return;}
-  const C=concAtual/5;
-  const labels={p_3d:'Faringite/Sinusite/Pele — 3 dias',p_5d:'Faringite/Sinusite/Pele — 5 dias',p_odu:'Otite — dose única',p_o3d:'Otite — 3 dias',p_o5d:'Otite — 5 dias',p_pne:'Pneumonia — 5 dias'};
-  const lbl=labels[d]||d;
-  let grid='',fArr=[],al='';
-  if(d==='p_odu'){
-    const mg=Math.min(parseFloat((peso*30).toFixed(1)),1500);
-    const ml=parseFloat((mg/C).toFixed(2));
-    grid=mk('Dose total',mg,'mg',false)+mk('Volume',ml,'mL',false)+mk('Administrações','1','dose',false)+mk('Concentração',concAtual,'mg/5mL',false);
-    fArr=[`Peso: <strong>${peso} kg</strong>`,`30mg/kg × ${peso} = <strong>${mg} mg</strong> (máx 1500mg)`,`${mg} ÷ ${C} = <strong>${ml} mL</strong>`,`Concentração: <strong>${concAtual}mg/5mL</strong>`,...dh('dose única','única')];
-    if(ml>10)al=`<div class="al aw"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4m0 4h.01"/></svg>Volume >10mL: usar 2 seringas (10mL + ${parseFloat((ml-10).toFixed(2))}mL).</div>`;
-    txtP=`AziCalc — ${lbl}
-Peso:${peso}kg · ${concAtual}mg/5mL
-Dose única: ${mg}mg → ${ml}mL
-
-Não substitui prescrição médica.`;
-    salvarH(lbl,ml+'mL dose única',peso+'kg');
-  } else if(d==='p_3d'||d==='p_o3d'){
-    const mg=parseFloat(Math.min(peso*10,500).toFixed(1));
-    const ml=parseFloat((mg/C).toFixed(2));
-    grid=mk('Dose/dia',mg,'mg',false)+mk('Volume/dose',ml,'mL',false)+mk('Duração','3','dias',false)+mk('Frequência','1×','ao dia',false);
-    fArr=[`Peso: <strong>${peso} kg</strong>`,`10mg/kg × ${peso} = <strong>${mg} mg</strong> (máx 500mg)`,`${mg} ÷ ${C} = <strong>${ml} mL</strong>`,`Concentração: <strong>${concAtual}mg/5mL</strong>`,...dh('3 dias','1× ao dia')];
-    txtP=`AziCalc — ${lbl}
-Peso:${peso}kg · ${concAtual}mg/5mL
-${ml}mL/dia × 3 dias
-
-Não substitui prescrição médica.`;
-    salvarH(lbl,ml+'mL/dia × 3d',peso+'kg');
+// ── TOGGLE PASTA ──
+function togglePasta(id, classeAberta) {
+  const body = document.getElementById('body' + id[0].toUpperCase() + id.slice(1));
+  const arr  = document.getElementById('arr'  + id[0].toUpperCase() + id.slice(1));
+  const pasta = body.closest('.pasta');
+  const aberta = body.classList.toggle('open');
+  arr.classList.toggle('open', aberta);
+  if (aberta) {
+    pasta.classList.add(classeAberta);
   } else {
-    const mg1=parseFloat(Math.min(peso*10,500).toFixed(1));
-    const mg2=parseFloat(Math.min(peso*5,250).toFixed(1));
-    const ml1=parseFloat((mg1/C).toFixed(2));
-    const ml2=parseFloat((mg2/C).toFixed(2));
-    grid=mk('Dia 1',mg1,'mg',false)+mk('Dia 1 vol.',ml1,'mL',false)+mk('Dias 2–5',mg2,'mg',false)+mk('Dias 2–5 vol.',ml2,'mL',false);
-    fArr=[`Peso: <strong>${peso} kg</strong>`,`Dia 1: 10mg/kg × ${peso} = <strong>${mg1}mg → ${ml1}mL</strong>`,`Dias 2–5: 5mg/kg × ${peso} = <strong>${mg2}mg → ${ml2}mL</strong>`,`Concentração: <strong>${concAtual}mg/5mL</strong>`,...dh('5 dias','1× ao dia')];
-    txtP=`AziCalc — ${lbl}
-Peso:${peso}kg · ${concAtual}mg/5mL
-Dia1:${ml1}mL / Dias2-5:${ml2}mL
-
-Não substitui prescrição médica.`;
-    salvarH(lbl,'Dia1:'+ml1+' D2-5:'+ml2,peso+'kg');
+    pasta.classList.remove(classeAberta);
+    pasta.classList.remove('aberta');
+    pasta.classList.remove('aberta-ped');
   }
-  showR('P',lbl,concAtual+'mg/5mL · ANVISA',grid,fArr,al);
 }
 
+// ── BUSCA ──
+function buscar() {
+  const q = document.getElementById('searchInput').value.toLowerCase().trim();
+  const drugs  = document.querySelectorAll('.drug[data-search]');
+  const breves = document.querySelectorAll('.pasta-breve[data-search]');
+  let vis = 0;
+
+  if (!q) {
+    // Restaurar tudo
+    drugs.forEach(d  => d.classList.remove('hidden'));
+    breves.forEach(b => b.classList.remove('hidden'));
+    document.querySelectorAll('.pasta-body').forEach(b => {
+      if (b.id === 'bodyAntibA') { b.classList.add('open'); }
+    });
+    document.getElementById('arrAntibA').classList.add('open');
+    document.getElementById('pastaAntibA').classList.add('aberta');
+    document.getElementById('emptyS').style.display = 'none';
+    document.getElementById('colsMain').style.display = 'grid';
+    document.getElementById('secInjetaveis').style.display = 'block';
+    return;
+  }
+
+  // Abrir todas as pastas durante busca
+  document.querySelectorAll('.pasta-body').forEach(b => b.classList.add('open'));
+  document.querySelectorAll('.pasta-arr').forEach(a => a.classList.add('open'));
+
+  drugs.forEach(d => {
+    const tags = (d.dataset.search || '').toLowerCase();
+    const nome = d.querySelector('.drug-nome')?.textContent.toLowerCase() || '';
+    const dose = d.querySelector('.drug-dose')?.textContent.toLowerCase() || '';
+    const ok   = tags.includes(q) || nome.includes(q) || dose.includes(q);
+    d.classList.toggle('hidden', !ok);
+    if (ok) vis++;
+  });
+  breves.forEach(b => {
+    const tags = (b.dataset.search || '').toLowerCase();
+    const nome = b.querySelector('.pasta-breve-nome')?.textContent.toLowerCase() || '';
+    const ok   = tags.includes(q) || nome.includes(q);
+    b.classList.toggle('hidden', !ok);
+    if (ok) vis++;
+  });
+
+  document.getElementById('emptyS').style.display = vis ? 'none' : 'block';
+  document.getElementById('secInjetaveis').style.display = vis ? 'none' : 'none';
+}
+
+// ── DARK MODE ──
+function toggleDark() {
+  const d = document.documentElement;
+  d.getAttribute('data-theme') === 'dark'
+    ? d.removeAttribute('data-theme')
+    : d.setAttribute('data-theme', 'dark');
+}
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
+}
 </script>
 </body>
 </html>
