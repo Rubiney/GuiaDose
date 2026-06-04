@@ -183,9 +183,9 @@ main{padding:12px 14px 80px}
     <span>"Cada dose calculada com precisão é um paciente mais seguro. O GUIADOSE existe para isso."</span>
   </div>
   <div class="stats-row">
-    <div class="stat"><div class="stat-n">16</div><div class="stat-l">Calculadoras</div></div>
+    <div class="stat"><div class="stat-n">44</div><div class="stat-l">Calculadoras</div></div>
     <div class="stat"><div class="stat-n">2</div><div class="stat-l">Perfis</div></div>
-    <div class="stat"><div class="stat-n">9</div><div class="stat-l">Classes</div></div>
+    <div class="stat"><div class="stat-n">10</div><div class="stat-l">Classes</div></div>
   </div>
 </div>
 
@@ -951,3 +951,80 @@ main{padding:12px 14px 80px}
   <p>Nenhum resultado encontrado.<br>Tente outro nome ou indicação.</p>
 </div>
 
+<!-- RODAPÉ -->
+<div class="dev-footer">
+  <div class="dav">RA</div>
+  <div>
+    <div class="dnm">Rubiney Alves</div>
+    <div class="dcg">Farmácia Clínica · Gestão Comercial · Tecnologia em Saúde</div>
+  </div>
+  <a href="https://rubiney-alves.vercel.app" target="_blank" class="port-btn">Portfólio <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+</div>
+<div class="fav" style="justify-content:center;gap:0;font-size:10px">Uso de profissionais de saúde · Bula ANVISA 2024 · guiadose.vercel.app</div>
+
+</main>
+
+<script>
+// ── TOGGLE PASTA ──
+function togglePasta(id, classeAberta) {
+  const key = id[0].toUpperCase() + id.slice(1);
+  const body  = document.getElementById('body'  + key);
+  const arr   = document.getElementById('arr'   + key);
+  const pasta = body.closest('.pasta');
+  const aberta = body.classList.toggle('open');
+  arr.classList.toggle('open', aberta);
+  if (aberta) {
+    pasta.classList.add(classeAberta);
+  } else {
+    pasta.classList.remove('aberta');
+    pasta.classList.remove('aberta-ped');
+  }
+}
+
+// ── BUSCA ──
+function buscar() {
+  const q = document.getElementById('searchInput').value.toLowerCase().trim();
+  const drugs = document.querySelectorAll('.drug[data-search]');
+  let vis = 0;
+
+  if (!q) {
+    drugs.forEach(d => d.classList.remove('hidden'));
+    document.querySelectorAll('.pasta-body').forEach(b => b.classList.remove('open'));
+    document.querySelectorAll('.pasta-arr').forEach(a => a.classList.remove('open'));
+    document.querySelectorAll('.pasta').forEach(p => { p.classList.remove('aberta'); p.classList.remove('aberta-ped'); });
+    document.getElementById('emptyS').style.display = 'none';
+    document.getElementById('colsMain').style.display = 'grid';
+    return;
+  }
+
+  // Abrir todas as pastas durante busca
+  document.querySelectorAll('.pasta-body').forEach(b => b.classList.add('open'));
+  document.querySelectorAll('.pasta-arr').forEach(a => a.classList.add('open'));
+  document.getElementById('colsMain').style.display = 'grid';
+
+  drugs.forEach(d => {
+    const tags = (d.dataset.search || '').toLowerCase();
+    const nome = d.querySelector('.drug-nome')?.textContent.toLowerCase() || '';
+    const dose = d.querySelector('.drug-dose')?.textContent.toLowerCase() || '';
+    const ok   = tags.includes(q) || nome.includes(q) || dose.includes(q);
+    d.classList.toggle('hidden', !ok);
+    if (ok) vis++;
+  });
+
+  document.getElementById('emptyS').style.display = vis ? 'none' : 'block';
+}
+
+// ── DARK MODE ──
+function toggleDark() {
+  const d = document.documentElement;
+  d.getAttribute('data-theme') === 'dark'
+    ? d.removeAttribute('data-theme')
+    : d.setAttribute('data-theme', 'dark');
+}
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
+}
+</script>
+</body>
+</html>
