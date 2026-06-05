@@ -985,23 +985,25 @@ function togglePasta(id, classeAberta) {
 function buscar() {
   const q = document.getElementById('searchInput').value.toLowerCase().trim();
   const drugs = document.querySelectorAll('.drug[data-search]');
+  const pastas = document.querySelectorAll('.pasta');
   let vis = 0;
 
   if (!q) {
+    // Restaurar estado original — tudo visível, todas pastas fechadas
     drugs.forEach(d => d.classList.remove('hidden'));
+    pastas.forEach(p => {
+      p.classList.remove('hidden');
+      p.classList.remove('aberta');
+      p.classList.remove('aberta-ped');
+    });
     document.querySelectorAll('.pasta-body').forEach(b => b.classList.remove('open'));
     document.querySelectorAll('.pasta-arr').forEach(a => a.classList.remove('open'));
-    document.querySelectorAll('.pasta').forEach(p => { p.classList.remove('aberta'); p.classList.remove('aberta-ped'); });
     document.getElementById('emptyS').style.display = 'none';
     document.getElementById('colsMain').style.display = 'grid';
     return;
   }
 
-  // Abrir todas as pastas durante busca
-  document.querySelectorAll('.pasta-body').forEach(b => b.classList.add('open'));
-  document.querySelectorAll('.pasta-arr').forEach(a => a.classList.add('open'));
-  document.getElementById('colsMain').style.display = 'grid';
-
+  // 1. Filtrar cada drug
   drugs.forEach(d => {
     const tags = (d.dataset.search || '').toLowerCase();
     const nome = d.querySelector('.drug-nome')?.textContent.toLowerCase() || '';
@@ -1011,6 +1013,24 @@ function buscar() {
     if (ok) vis++;
   });
 
+  // 2. Abrir pastas com resultado, esconder pastas sem resultado
+  pastas.forEach(p => {
+    const body = p.querySelector('.pasta-body');
+    const arr  = p.querySelector('.pasta-arr');
+    const temVisivel = p.querySelectorAll('.drug:not(.hidden)').length > 0;
+    if (temVisivel) {
+      p.classList.remove('hidden');
+      body && body.classList.add('open');
+      arr  && arr.classList.add('open');
+    } else {
+      p.classList.add('hidden');
+      body && body.classList.remove('open');
+      arr  && arr.classList.remove('open');
+    }
+  });
+
+  // 3. Mostrar/ocultar colsMain e emptyS
+  document.getElementById('colsMain').style.display = 'grid';
   document.getElementById('emptyS').style.display = vis ? 'none' : 'block';
 }
 
