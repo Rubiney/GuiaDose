@@ -206,16 +206,16 @@ main{padding:12px 14px 80px}
     </div>
 
     <!-- Pasta Antibióticos ADULTO -->
-    <div class="pasta aberta" id="pastaAntibA">
+    <div class="pasta" id="pastaAntibA">
       <div class="pasta-hdr" onclick="togglePasta('antibA','aberta')">
         <div class="pasta-ico teal">
           <svg viewBox="0 0 24 24"><path d="M9 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2h-4M9 3a2 2 0 002 2h2a2 2 0 002-2M9 3a2 2 0 012-2h2a2 2 0 012 2"/></svg>
         </div>
         <span class="pasta-nome">Antibióticos</span>
         <span class="pasta-count">13</span>
-        <span class="pasta-arr open" id="arrAntibA">›</span>
+        <span class="pasta-arr" id="arrAntibA">›</span>
       </div>
-      <div class="pasta-body open" id="bodyAntibA">
+      <div class="pasta-body" id="bodyAntibA">
         <a href="amoxicalc.html" class="drug ativo-t" data-search="amoxicilina penicilina itu resp pele amigdalite otite">
           <span class="drug-dot t"></span>
           <div class="drug-info"><div class="drug-nome">Amoxicilina</div><div class="drug-dose">250·500mg/5mL</div></div>
@@ -561,11 +561,6 @@ function buscar() {
     // Restaurar tudo
     drugs.forEach(d  => d.classList.remove('hidden'));
     breves.forEach(b => b.classList.remove('hidden'));
-    document.querySelectorAll('.pasta-body').forEach(b => {
-      if (b.id === 'bodyAntibA') { b.classList.add('open'); }
-    });
-    document.getElementById('arrAntibA').classList.add('open');
-    document.getElementById('pastaAntibA').classList.add('aberta');
     document.getElementById('emptyS').style.display = 'none';
     document.getElementById('colsMain').style.display = 'grid';
     document.getElementById('secInjetaveis').style.display = 'block';
