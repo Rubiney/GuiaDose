@@ -1,50 +1,55 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0F3460">
+<meta name="description" content="Calculadora Cefazolina 500mg / 1g — IV / IM — Adulto e Pediátrico — GUIADOSE">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="CefazolinaCalc">
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="icon" href="icons/icon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
-<title>CefazolinaCalc — GUIADOSE</title>
+<title>CefazolinaCalc — IV / IM · Adulto & Pediátrico</title>
 <style>
-:root{--navy:#0F3460;--navy2:#16213E;--navy3:#0A1628;--gold:#C9A84C;--gold2:#E8C97A;--white:#FFFFFF;--surface:#F7F9FC;--surface2:#EEF2F7;--border:#D8E2EF;--text:#1A2540;--text2:#4A5878;--text3:#8A97B0;--green:#1A7F5A;--green-bg:#E6F7F1;--amber:#92560A;--amber-bg:#FEF3E2;--red:#B91C1C;--red-bg:#FEF2F2;--blue:#1549A0;--blue-bg:#EBF2FF;--radius:12px;--radius-sm:8px;--shadow:0 2px 12px rgba(15,52,96,0.10);--font:'DM Sans',sans-serif;--mono:'DM Mono',monospace}
-[data-theme="dark"]{--white:#1A2540;--surface:#111827;--surface2:#1F2A3C;--border:#2D3E5A;--text:#E8EDF5;--text2:#A0AEBF;--text3:#5A6A80;--blue-bg:#1A2A4A;--blue:#7AABF0;--amber-bg:#2A1F0A;--amber:#F0C070;--red-bg:#2A1010;--red:#F08080;--green-bg:#0A2018;--green:#60C090}
+:root{--navy:#0F3460;--navy2:#16213E;--navy3:#0A1628;--gold:#C9A84C;--gold2:#E8C97A;--white:#FFFFFF;--surface:#F7F9FC;--surface2:#EEF2F7;--border:#D8E2EF;--text:#1A2540;--text2:#4A5878;--text3:#8A97B0;--green:#1A7F5A;--green-bg:#E6F7F1;--amber:#92560A;--amber-bg:#FEF3E2;--red:#B91C1C;--red-bg:#FEF2F2;--blue:#1549A0;--blue-bg:#EBF2FF;--teal:#0F6E56;--teal-bg:#E1F5EE;--purple:#5B21B6;--purple-bg:#EDE9FE;--radius:12px;--radius-sm:8px;--shadow:0 2px 12px rgba(15,52,96,0.10);--font:'DM Sans',sans-serif;--mono:'DM Mono',monospace}
+[data-theme="dark"]{--white:#1A2540;--surface:#111827;--surface2:#1F2A3C;--border:#2D3E5A;--text:#E8EDF5;--text2:#A0AEBF;--text3:#5A6A80;--blue-bg:#1A2A4A;--blue:#7AABF0;--amber-bg:#2A1F0A;--amber:#F0C070;--red-bg:#2A1010;--red:#F08080;--green-bg:#0A2018;--green:#60C090;--teal-bg:#0A2018;--teal:#5DCAA5;--purple-bg:#1E1A3A;--purple:#A78BFA}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 body{font-family:var(--font);background:var(--surface);color:var(--text);min-height:100vh;max-width:480px;margin:0 auto;padding-bottom:100px;transition:background 0.2s,color 0.2s}
-.app-header{background:var(--navy);padding:0;position:sticky;top:0;z-index:100;border-bottom:2px solid var(--gold)}
-.app-header-top{display:flex;align-items:center;gap:10px;padding:8px 16px 10px}
-.app-logo{width:40px;height:40px;border-radius:10px;background:var(--gold);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.app-logo svg{width:22px;height:22px;fill:var(--navy)}
-.app-title{font-size:17px;font-weight:600;letter-spacing:-0.3px;color:white}
-.app-subtitle{font-size:10px;color:rgba(255,255,255,0.5);margin-top:1px;font-family:var(--mono)}
-.dark-btn{margin-left:auto;background:rgba(255,255,255,0.1);border:none;border-radius:8px;padding:7px 10px;cursor:pointer;color:white;font-size:15px;flex-shrink:0}
+.hdr{background:var(--navy);padding:0;position:sticky;top:0;z-index:100;border-bottom:2px solid var(--gold)}
 .back-btn{display:flex;flex-direction:column;align-items:center;justify-content:center;width:40px;height:40px;border-radius:10px;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);text-decoration:none;flex-shrink:0;gap:2px;transition:all 0.18s}
 .back-btn:hover{background:rgba(201,168,76,0.28);border-color:rgba(201,168,76,0.6)}
-.back-btn svg{width:16px;height:16px;fill:#E8C97A}
+.back-btn svg{width:16px;height:16px;fill:#E8C97A;flex-shrink:0}
 .back-btn span{font-size:8px;color:#E8C97A;font-family:var(--mono);letter-spacing:0.3px;font-weight:600}
 .hdr-divider{width:1px;height:32px;background:rgba(255,255,255,0.1);flex-shrink:0}
+.ht{display:flex;align-items:center;gap:10px;padding:8px 16px 10px}
+.logo{width:40px;height:40px;border-radius:10px;background:var(--gold);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.logo svg{width:22px;height:22px;fill:var(--navy)}
+.atitle{font-size:17px;font-weight:600;letter-spacing:-0.3px;color:white}
+.asub{font-size:10px;color:rgba(255,255,255,0.5);margin-top:1px;font-family:var(--mono)}
+.dbtn{margin-left:auto;background:rgba(255,255,255,0.1);border:none;border-radius:8px;padding:7px 10px;cursor:pointer;color:white;font-size:15px;flex-shrink:0}
 .pbar{display:flex;gap:6px;padding:8px 12px;background:var(--navy2)}
 .pb{flex:1;padding:9px 8px;border:2px solid rgba(255,255,255,0.1);border-radius:9px;background:rgba(255,255,255,0.05);color:rgba(255,255,255,0.4);font-size:12px;font-family:var(--font);cursor:pointer;transition:all 0.18s;display:flex;align-items:center;justify-content:center;gap:5px;font-weight:500}
 .pb svg{width:14px;height:14px}
 .pb.on{background:rgba(201,168,76,0.15);border-color:var(--gold);color:var(--gold2);font-weight:700}
-.apres-bar{display:flex;align-items:center;gap:6px;padding:7px 14px 8px;background:var(--navy3)}
-.apres-lbl{font-size:10px;color:rgba(255,255,255,0.35);flex-shrink:0;white-space:nowrap}
-.abtn{padding:5px 11px;border-radius:7px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.5);font-size:11px;font-family:var(--mono);cursor:pointer;transition:all 0.15s;font-weight:500;white-space:nowrap;flex-shrink:0}
-.abtn.on{background:rgba(201,168,76,0.2);border-color:var(--gold);color:var(--gold2);font-weight:700}
-.tw{position:relative;display:flex;align-items:center;flex-shrink:0;margin-left:auto}
-.tbtn{width:26px;height:26px;border-radius:50%;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.4);color:var(--gold);font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.via-bar{display:flex;gap:5px;padding:7px 12px;background:var(--navy3);align-items:center}
+.via-lbl{font-size:10px;color:rgba(255,255,255,0.35);flex-shrink:0}
+.vbtn{flex:1;padding:5px 8px;border-radius:7px;border:1px solid rgba(255,255,255,0.12);background:transparent;color:rgba(255,255,255,0.45);font-size:11px;font-family:var(--mono);cursor:pointer;text-align:center;transition:all 0.15s;font-weight:500}
+.vbtn.on{background:rgba(201,168,76,0.2);border-color:var(--gold);color:var(--gold2);font-weight:700}
+.tw{position:relative;display:flex;align-items:center;flex-shrink:0;margin-left:6px}
+.tbtn{width:26px;height:26px;border-radius:50%;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.4);color:var(--gold);font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.15s;font-family:var(--font)}
+.tbtn.on,.tbtn:hover{background:rgba(201,168,76,0.3)}
 .tbox{position:absolute;top:34px;right:0;width:268px;background:#1A2540;border:1px solid var(--gold);border-radius:10px;padding:11px 13px;font-size:12px;color:rgba(255,255,255,0.85);line-height:1.6;z-index:999;box-shadow:0 8px 24px rgba(0,0,0,0.4);display:none}
 .tbox.vis{display:block}
 .tbox::before{content:'';position:absolute;top:-6px;right:9px;width:10px;height:10px;background:#1A2540;border-left:1px solid var(--gold);border-top:1px solid var(--gold);transform:rotate(45deg)}
+.ttl{font-size:10px;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;color:var(--gold);margin-bottom:5px}
 main{padding:14px}
-.card{background:var(--white);border-radius:var(--radius);border:1px solid var(--border);padding:14px;margin-bottom:11px;box-shadow:var(--shadow)}
-.ct{font-size:11px;font-weight:600;letter-spacing:0.8px;color:var(--text3);text-transform:uppercase;margin-bottom:11px}
+.card{background:var(--white);border-radius:var(--radius);border:1px solid var(--border);border-top:3px solid var(--gold);padding:14px;margin-bottom:11px;box-shadow:var(--shadow)}
+.ct{font-size:11px;font-weight:600;letter-spacing:0.8px;color:var(--text3);text-transform:uppercase;margin-bottom:11px;display:flex;align-items:center;gap:5px}
 label.fl{display:block;font-size:13px;font-weight:500;color:var(--text2);margin-bottom:5px}
 select,input[type=number]{width:100%;padding:11px 13px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-family:var(--font);font-size:14px;color:var(--text);background:var(--white);appearance:none;-webkit-appearance:none;outline:none;transition:border-color 0.15s;margin-bottom:12px}
 select:focus,input[type=number]:focus{border-color:var(--navy)}
@@ -63,30 +68,64 @@ select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/
 .di{background:rgba(255,255,255,0.07);border-radius:9px;padding:11px}
 .di.full{grid-column:1/-1}
 .dil{font-size:10px;color:rgba(255,255,255,0.5);margin-bottom:3px;font-weight:500}
-.div{font-size:22px;font-weight:600;color:var(--gold2);font-family:var(--mono);line-height:1}
+.div{font-size:24px;font-weight:600;color:var(--gold2);font-family:var(--mono);line-height:1}
+.div.g{font-size:28px}
 .diu{font-size:11px;color:rgba(255,255,255,0.45);margin-left:3px;font-weight:400;font-family:var(--font)}
+.dur-badge{display:flex;align-items:center;gap:5px;background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.25);border-radius:7px;padding:6px 10px;font-size:11px;color:var(--gold2);font-family:var(--mono);margin-bottom:10px}
+.dur-badge svg{width:13px;height:13px;fill:var(--gold);flex-shrink:0}
+.preparo-section{background:rgba(255,255,255,0.04);border:1px solid rgba(201,168,76,0.2);border-radius:9px;padding:13px;margin-bottom:10px}
+.prep-title{font-size:10px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:0.7px;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.prep-title svg{width:13px;height:13px;fill:var(--gold)}
+.prep-steps{display:flex;flex-direction:column;gap:7px}
+.step{display:flex;gap:9px;align-items:flex-start}
+.step-num{width:20px;height:20px;border-radius:50%;background:rgba(201,168,76,0.2);border:1px solid rgba(201,168,76,0.4);color:var(--gold2);font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;font-family:var(--mono)}
+.step-txt{font-size:12px;color:rgba(255,255,255,0.75);line-height:1.6;font-family:var(--mono)}
+.step-txt strong{color:var(--gold2)}
+.infusao-box{background:rgba(21,73,160,0.15);border:1px solid rgba(21,73,160,0.3);border-radius:9px;padding:11px;margin-bottom:10px;display:flex;gap:10px;align-items:center}
+.inf-icon{width:32px;height:32px;border-radius:8px;background:rgba(21,73,160,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.inf-icon svg{width:17px;height:17px;fill:#7AABF0}
+.inf-label{font-size:10px;color:rgba(255,255,255,0.45);margin-bottom:2px}
+.inf-val{font-size:15px;font-weight:600;color:#7AABF0;font-family:var(--mono)}
+.inf-unit{font-size:11px;color:rgba(255,255,255,0.45);margin-left:3px}
+/* ESTABILIDADE */
+.estab-box{background:rgba(15,110,86,0.12);border:1px solid rgba(15,110,86,0.25);border-radius:9px;padding:11px;margin-bottom:10px}
+.estab-title{font-size:10px;font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:0.7px;margin-bottom:7px;display:flex;align-items:center;gap:5px}
+.estab-title svg{width:12px;height:12px;fill:var(--teal)}
+.estab-row{display:flex;justify-content:space-between;align-items:center;padding:4px 0;border-bottom:1px solid rgba(15,110,86,0.15);font-size:11px}
+.estab-row:last-child{border-bottom:none}
+.estab-cond{color:rgba(255,255,255,0.6);font-family:var(--mono)}
+.estab-val{color:var(--teal);font-weight:600;font-family:var(--mono)}
+/* AJUSTE RENAL */
+.renal-box{background:rgba(146,86,10,0.1);border:1px solid rgba(146,86,10,0.25);border-radius:9px;padding:11px;margin-bottom:10px}
+.renal-title{font-size:10px;font-weight:700;color:var(--amber);text-transform:uppercase;letter-spacing:0.7px;margin-bottom:8px}
+.rtable{width:100%;border-collapse:collapse;font-size:11px}
+.rtable th{color:rgba(255,255,255,0.5);font-weight:600;padding:5px 6px;text-align:left;font-family:var(--mono);font-size:10px;border-bottom:1px solid rgba(255,255,255,0.08)}
+.rtable td{padding:5px 6px;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(255,255,255,0.75);font-family:var(--mono)}
+.rtable tr:last-child td{border-bottom:none}
 .fbox{background:rgba(255,255,255,0.04);border:1px solid rgba(201,168,76,0.2);border-radius:9px;padding:12px;margin-bottom:10px}
 .fttl{font-size:10px;font-weight:600;letter-spacing:0.7px;color:var(--gold);text-transform:uppercase;margin-bottom:8px}
-.fln{font-size:12px;color:rgba(255,255,255,0.78);font-family:var(--mono);padding:4px 0;border-bottom:1px solid rgba(255,255,255,0.06);line-height:1.5}
+.fln{font-size:12px;color:rgba(255,255,255,0.72);font-family:var(--mono);padding:3px 0;border-bottom:1px solid rgba(255,255,255,0.05);line-height:1.5}
 .fln:last-child{border-bottom:none}
 .fln strong{color:var(--gold2)}
+.acoes{display:flex;gap:7px;margin-bottom:10px}
+.ba{flex:1;padding:9px 5px;border-radius:7px;border:1px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.07);color:rgba(255,255,255,0.8);font-size:11px;font-family:var(--font);cursor:pointer;text-align:center;display:flex;flex-direction:column;align-items:center;gap:3px}
+.ba:active{background:rgba(255,255,255,0.14)}
+.ba svg{width:17px;height:17px}
 .al{border-radius:var(--radius-sm);padding:10px 12px;font-size:12px;line-height:1.6;display:flex;gap:7px;align-items:flex-start;margin-bottom:8px}
 .al svg{width:15px;height:15px;flex-shrink:0;margin-top:1px}
 .aw{background:var(--amber-bg);color:var(--amber)}
 .ai{background:var(--blue-bg);color:var(--blue)}
 .ad{background:var(--red-bg);color:var(--red)}
-.acoes{display:flex;gap:7px;margin-bottom:10px}
-.ba{flex:1;padding:9px 5px;border-radius:7px;border:1px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.07);color:rgba(255,255,255,0.8);font-size:11px;font-family:var(--font);cursor:pointer;text-align:center;display:flex;flex-direction:column;align-items:center;gap:3px}
-.ba svg{width:17px;height:17px}
-.empty-state{text-align:center;padding:28px 18px;color:var(--text3)}
-.empty-state svg{width:36px;height:36px;opacity:0.3;margin-bottom:10px}
-.empty-state p{font-size:13px}
+.as{background:var(--green-bg);color:var(--green)}
 .il{list-style:none}
 .il li{display:flex;align-items:center;gap:9px;padding:9px 0;border-bottom:1px solid var(--surface2);font-size:13px;color:var(--text2)}
 .il li:last-child{border-bottom:none}
 .idot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
-.ict{font-size:9px;color:var(--text3);margin-left:auto;font-family:var(--mono)}
-.hi{padding:9px 11px;border-radius:8px;background:var(--surface2);margin-bottom:7px}
+.ict{font-size:9px;color:var(--text3);margin-left:auto;font-family:var(--mono);white-space:nowrap}
+.empty-state{text-align:center;padding:28px 18px;color:var(--text3)}
+.empty-state svg{width:36px;height:36px;opacity:0.3;margin-bottom:10px}
+.empty-state p{font-size:13px}
+.hi{padding:9px 11px;border-radius:8px;background:var(--surface2);margin-bottom:7px;cursor:pointer}
 .hit{display:flex;justify-content:space-between;align-items:center}
 .hn{font-size:12px;font-weight:500;color:var(--text)}
 .hhr{font-size:10px;color:var(--text3);font-family:var(--mono)}
@@ -96,12 +135,10 @@ select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/
 .dav{width:34px;height:34px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:700;color:var(--navy);font-size:13px}
 .dnm{font-size:12px;font-weight:600;color:var(--gold2)}
 .dcg{font-size:10px;color:rgba(255,255,255,0.5);margin-top:1px}
-.port-btn{display:flex;align-items:center;gap:6px;background:#C9A84C;border:none;border-radius:99px;padding:7px 16px;color:#0A1628;font-size:11px;font-family:var(--mono);font-weight:700;text-decoration:none;white-space:nowrap;cursor:pointer;flex-shrink:0;transition:all 0.15s;margin-left:auto}
-.port-btn:hover{background:#E8C97A}
-.port-btn svg{width:13px;height:13px;stroke:#0A1628;stroke-width:2.5;fill:none}
+.dlk{margin-left:auto;font-size:10px;color:var(--gold);text-decoration:none;font-family:var(--mono)}
 .fav{margin:0 0 7px;background:var(--surface2);border-radius:var(--radius-sm);padding:10px 12px;font-size:11px;color:var(--text3);line-height:1.6;display:flex;gap:7px}
 .fav svg{width:13px;height:13px;flex-shrink:0;margin-top:1px;fill:var(--text3)}
-.toast{position:fixed;bottom:88px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--navy);color:white;padding:9px 18px;border-radius:99px;font-size:12px;border:1px solid var(--gold);opacity:0;transition:all 0.25s;z-index:999;pointer-events:none}
+.toast{position:fixed;bottom:88px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--navy);color:white;padding:9px 18px;border-radius:99px;font-size:12px;border:1px solid var(--gold);opacity:0;transition:all 0.25s;z-index:999;white-space:nowrap;pointer-events:none}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 .tab-nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;background:var(--white);border-top:1px solid var(--border);display:flex;z-index:200}
 .tb{flex:1;padding:9px 4px 7px;border:none;background:transparent;font-family:var(--font);font-size:10px;color:var(--text3);cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;transition:color 0.15s}
@@ -109,180 +146,518 @@ select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/
 .tb.on{color:var(--navy);font-weight:600}
 [data-theme="dark"] .tab-nav{background:#1A2540}
 .page{display:none}.page.active{display:block}
-.pasta-count{display:inline-flex;align-items:center;justify-content:center;min-width:24px;height:20px;padding:0 7px;background:var(--gold);color:var(--navy3);font-size:10px;font-weight:700;font-family:var(--mono);border-radius:99px;letter-spacing:0.3px;flex-shrink:0}
-.pasta-arr{width:24px;height:24px;display:flex;align-items:center;justify-content:center;background:var(--navy);border-radius:7px;flex-shrink:0;transition:all 0.18s;flex-shrink:0}
-.pasta-arr svg{width:13px;height:13px;stroke:var(--gold);stroke-width:2.5;fill:none;transition:transform 0.2s}
-.pasta-arr.open svg{transform:rotate(90deg)}
-.pasta.aberta .pasta-arr{background:var(--navy2)}
-.pasta.aberta-ped .pasta-arr{background:var(--navy2)}
+.modulo-badge{background:rgba(91,33,182,0.12);border:1px solid rgba(91,33,182,0.25);color:var(--purple);font-size:9px;font-weight:700;padding:2px 8px;border-radius:99px;font-family:var(--mono);letter-spacing:0.5px;margin-left:auto}
 </style>
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="CefazolinaCalc — IV / IM · Adulto & Pediátrico">
+<meta property="og:description" content="Calculadora Cefazolina 500mg / 1g — IV / IM — Adulto e Pediátrico — GUIADOSE">
+<meta property="og:url" content="https://guiadose.vercel.app/">
+<meta property="og:image" content="https://guiadose.vercel.app/icons/icon-512.png">
 </head>
 <body>
-<header class="app-header">
-  <div class="app-header-top">
-    <a href="guiadose.html" class="back-btn"><svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg><span>MENU</span></a>
-    <div class="hdr-divider"></div>
-    <div class="app-logo"><svg viewBox="0 0 24 24"><path d="M19 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/></svg></div>
-    <div><div class="app-title">CefazolinaCalc</div><div class="app-subtitle">Cefazolina · IV/IM · Adulto & Pediátrico</div></div>
-    <button class="dark-btn" onclick="toggleDark()">🌙</button>
+
+<header class="hdr">
+<div class="ht">
+    <a href="guiadose.html" class="back-btn" aria-label="Voltar ao menu GUIADOSE">
+    <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+    <span>MENU</span>
+  </a>
+  <div class="hdr-divider"></div>
+    <div class="logo"><svg viewBox="0 0 24 24"><path d="M19.5 5.5L18 4l-1.5 1.5L15 4l-1.5 1.5L12 4l-1.5 1.5L9 4 7.5 5.5 6 4 4 6v14a2 2 0 002 2h12a2 2 0 002-2V6l-2-1.5z"/></svg></div>
+    <div><div class="atitle">CefazolinaCalc</div><div class="asub">Cefazolina 500mg · 1g · IV · IM · Adulto & Ped.</div></div>
+    <span class="modulo-badge">💉 Injetável</span>
+    <button class="dbtn" onclick="toggleDark()">🌙</button>
   </div>
   <div class="pbar">
-    <button class="pb on" id="btnA" onclick="setPerfil('adulto')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Adulto</button>
-    <button class="pb" id="btnP" onclick="setPerfil('ped')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M8 12v2a4 4 0 008 0v-2"/></svg>Pediátrico</button>
+    <button class="pb on" id="btnA" onclick="setPerfil('adulto')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Adulto
+    </button>
+    <button class="pb" id="btnP" onclick="setPerfil('ped')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M8 12v2a4 4 0 008 0v-2"/></svg>Ped. ≥1 mês
+    </button>
   </div>
-  <div class="apres-bar">
-    <span class="apres-lbl">Via:</span>
-    <button class="abtn on">IV / IM</button>
-    <div class="tw"><button class="tbtn" onclick="toggleTip(this)">⚠️</button>
-    <div class="tbox" id="tipBox"><div style="font-size:10px;font-weight:700;color:var(--gold);margin-bottom:5px">⚠️ Advertência</div>Uso hospitalar/ambulatorial. Requer prescrição médica. Verificar função renal antes de usar. Bula ANVISA.</div></div>
+  <div class="via-bar">
+    <span class="via-lbl">Via:</span>
+    <button class="vbtn on" id="vIV" onclick="setVia('IV')">IV — Intravenosa</button>
+    <button class="vbtn" id="vIM" onclick="setVia('IM')">IM — Intramuscular</button>
+    <div class="tw">
+      <button class="tbtn" onclick="toggleTip(this)">⚠️</button>
+      <div class="tbox" id="tipBox">
+        <div class="ttl">⚠️ Advertência</div>
+        Ferramenta de apoio farmacêutico educacional. Solução IM com lidocaína NUNCA por via IV. Não substitui prescrição médica.
+      </div>
+    </div>
   </div>
 </header>
+
 <div id="toast" class="toast"></div>
-<div class="page active" id="pageCalc"><main>
+
+<div class="page active" id="pageCalc">
+<main>
+
+<!-- ADULTO -->
 <div id="fA">
   <div class="card">
-    <div class="ct">Adulto — CefazolinaCalc IV/IM</div>
-    <div class="al aw" style="margin-bottom:12px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4m0 4h.01"/></svg>Uso hospitalar. Verificar função renal e alergias antes de administrar. Bula ANVISA.</div>
-    <label class="fl">Indicação</label>
-    <select id="dA" onchange="updA()"><option value="">Selecione...</option><option value="profi">Profilaxia cirúrgica — dose única</option><option value="pele">Infecções de pele / celulite</option><option value="itu">ITU não complicada</option><option value="staph">Infecção por S. aureus (MSSA)</option><option value="osteo">Osteomielite — 4–6 semanas</option></select>
-    <div class="rh" id="rhA"></div>
+    <div class="ct"><svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>Dados — Adulto</div>
+    <label class="fl">Indicação / Doença</label>
+    <select id="dA" onchange="updA()">
+      <option value="">Selecione a indicação...</option>
+      <optgroup label="Infecções — doses terapêuticas">
+        <option value="leve">Infecção leve</option>
+        <option value="mod_grave">Infecção moderada a grave</option>
+        <option value="grave_max">Infecção grave — dose máxima (6g/dia)</option>
+        <option value="itu_ag">ITU aguda não complicada</option>
+        <option value="pneumo_pnc">Pneumonia pneumocócica</option>
+        <option value="endocardite_trat">Endocardite — tratamento</option>
+      </optgroup>
+      <optgroup label="Profilaxia cirúrgica">
+        <option value="periop_std">Profilaxia perioperatória — padrão</option>
+        <option value="periop_longa">Profilaxia — cirurgia prolongada (reforço)</option>
+        <option value="endocardite_prof">Profilaxia endocardite bacteriana</option>
+      </optgroup>
+      <optgroup label="Insuficiência renal — ajuste">
+        <option value="renal_55">ClCr 35–54 mL/min</option>
+        <option value="renal_34">ClCr 11–34 mL/min</option>
+        <option value="renal_10">ClCr ≤10 mL/min</option>
+        <option value="idoso75">Idoso ≥75 anos</option>
+      </optgroup>
+    </select>
+    <div id="rwA" style="display:none">
+      <label class="fl">Regime posológico</label>
+      <select id="regA" onchange="calcA()"></select>
+      <div class="rh" id="rhA"></div>
+    </div>
   </div>
+
   <div class="rcrd" id="resA">
-    <div class="rhead"><div class="rico"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div><div><div class="rdnc" id="rdA">—</div><div class="rrgm" id="rrA">—</div></div></div>
+    <div class="rhead">
+      <div class="rico"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+      <div><div class="rdnc" id="rdA">—</div><div class="rrgm" id="rrA">—</div></div>
+    </div>
     <div class="dgrid" id="dgA"></div>
+    <div class="dur-badge" id="durA" style="display:none"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 13h-2V7h2v8zm0-10h-2V3h2v2z"/></svg></div>
+    <div class="preparo-section" id="prepA" style="display:none">
+      <div class="prep-title"><svg viewBox="0 0 24 24"><path d="M19.5 5.5L18 4l-1.5 1.5L15 4l-1.5 1.5L12 4l-1.5 1.5L9 4 7.5 5.5 6 4 4 6v14a2 2 0 002 2h12a2 2 0 002-2V6l-2-1.5z"/></svg>Preparo da dose</div>
+      <div class="prep-steps" id="prepStepsA"></div>
+    </div>
+    <div class="infusao-box" id="infA" style="display:none">
+      <div class="inf-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm.5 14.5h-1v-6h1v6zm0-8h-1V7h1v1.5z"/></svg></div>
+      <div><div class="inf-label">Tempo de infusão</div><div class="inf-val" id="infValA">—</div></div>
+      <div style="margin-left:auto;text-align:right"><div class="inf-label">Diluente</div><div style="font-size:11px;color:#7AABF0;font-family:var(--mono)" id="diluenteA">SF 0,9% · 50–100 mL</div></div>
+    </div>
+    <div class="estab-box" id="estabA">
+      <div class="estab-title"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15v-4H7l5-8v4h4l-5 8z"/></svg>Estabilidade após reconstituição</div>
+      <div class="estab-row"><span class="estab-cond">Temp. ambiente (15–30°C)</span><span class="estab-val">12h · proteger da luz</span></div>
+      <div class="estab-row"><span class="estab-cond">Refrigeração (2–8°C)</span><span class="estab-val">24h · proteger da luz</span></div>
+      <div class="estab-row"><span class="estab-cond">Solução escurecida</span><span class="estab-val">Normal — potência inalterada</span></div>
+    </div>
     <div class="fbox" id="fbA" style="display:none"><div class="fttl">📐 Posologia</div><div id="flA"></div></div>
     <div class="acoes">
-      <button class="ba" onclick="cp(txtA)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copiar</button>
-      <button class="ba" onclick="wa(txtA)"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.118 1.524 5.845L0 24l6.324-1.501A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.882a9.875 9.875 0 01-5.022-1.368l-.361-.214-3.741.981.999-3.648-.235-.374A9.859 9.859 0 012.118 12C2.118 6.533 6.533 2.118 12 2.118c5.467 0 9.882 4.415 9.882 9.882 0 5.467-4.415 9.882-9.882 9.882z"/></svg>WhatsApp</button>
-      <button class="ba" onclick="pr('CefazolinaCalc',txtA)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>Imprimir</button>
+      <button class="ba" onclick="cp('adulto')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copiar</button>
+      <button class="ba" onclick="wa('adulto')"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.118 1.524 5.845L0 24l6.324-1.501A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.882a9.875 9.875 0 01-5.022-1.368l-.361-.214-3.741.981.999-3.648-.235-.374A9.859 9.859 0 012.118 12C2.118 6.533 6.533 2.118 12 2.118c5.467 0 9.882 4.415 9.882 9.882 0 5.467-4.415 9.882-9.882 9.882z"/></svg>WhatsApp</button>
+      <button class="ba" onclick="pr('adulto')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>Imprimir</button>
     </div>
     <div id="alA"></div>
   </div>
-  <div id="emA"><div class="empty-state"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg><p>Selecione a indicação</p></div></div>
+  <div id="emA"><div class="empty-state"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg><p>Selecione a indicação<br>para ver a posologia</p></div></div>
 </div>
 
+<!-- PEDIÁTRICO -->
 <div id="fP" style="display:none">
-  <div class="card"><div class="ct">Pediátrico — Dose por peso</div>
-    <div class="al ai" style="margin-bottom:12px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg>Cálculo baseado em mg/kg. Dose máxima conforme bula ANVISA.</div>
-    <label class="fl">Indicação</label>
-    <select id="dP" onchange="updP()"><option value="">Selecione...</option><option value="p_profi">Profilaxia cirúrgica (25mg/kg)</option><option value="p_inf">Infecção moderada (50mg/kg/dia)</option><option value="p_grave">Infecção grave (100mg/kg/dia)</option></select>
-    <div class="rh" id="rhP"></div>
-    <label class="fl">Peso (kg)</label>
-    <input type="number" id="peso" placeholder="Ex: 15" min="1" max="40" step="0.1" oninput="calcP()">
+  <div class="card">
+    <div class="ct"><svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>Dados — Pediátrico (≥1 mês)</div>
+    <label class="fl">Indicação / Doença</label>
+    <select id="dP" onchange="updP()">
+      <option value="">Selecione a indicação...</option>
+      <option value="p_std">Infecção — dose padrão (25–50 mg/kg/dia)</option>
+      <option value="p_grave">Infecção grave (100 mg/kg/dia)</option>
+      <option value="p_profilaxia">Profilaxia cirúrgica</option>
+    </select>
+    <div id="rwP" style="display:none">
+      <label class="fl">Regime</label>
+      <select id="regP" onchange="calcP()"></select>
+      <div class="rh" id="rhP"></div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:11px">
+      <div><label class="fl">Peso (kg)</label><input type="number" id="peso" placeholder="Ex: 15" min="1" max="60" step="0.1" oninput="calcP()"></div>
+      <div><label class="fl">Idade (meses)</label><input type="number" id="idade" placeholder="Ex: 24" min="1" max="144" step="1" oninput="calcP()"></div>
+    </div>
   </div>
+
   <div class="rcrd" id="resP">
-    <div class="rhead"><div class="rico"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div><div><div class="rdnc" id="rdP">—</div><div class="rrgm" id="rrP">—</div></div></div>
+    <div class="rhead">
+      <div class="rico"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+      <div><div class="rdnc" id="rdP">—</div><div class="rrgm" id="rrP">—</div></div>
+    </div>
     <div class="dgrid" id="dgP"></div>
-    <div class="fbox" id="fbP" style="display:none"><div class="fttl">📐 Posologia</div><div id="flP"></div></div>
+    <div class="dur-badge" id="durP" style="display:none"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 13h-2V7h2v8zm0-10h-2V3h2v2z"/></svg></div>
+    <div class="preparo-section" id="prepP" style="display:none">
+      <div class="prep-title"><svg viewBox="0 0 24 24"><path d="M19.5 5.5L18 4l-1.5 1.5L15 4l-1.5 1.5L12 4l-1.5 1.5L9 4 7.5 5.5 6 4 4 6v14a2 2 0 002 2h12a2 2 0 002-2V6l-2-1.5z"/></svg>Preparo da dose</div>
+      <div class="prep-steps" id="prepStepsP"></div>
+    </div>
+    <div class="infusao-box" id="infP" style="display:none">
+      <div class="inf-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm.5 14.5h-1v-6h1v6zm0-8h-1V7h1v1.5z"/></svg></div>
+      <div><div class="inf-label">Tempo de infusão</div><div class="inf-val" id="infValP">30–60 min</div></div>
+      <div style="margin-left:auto;text-align:right"><div class="inf-label">Diluente</div><div style="font-size:11px;color:#7AABF0;font-family:var(--mono)" id="diluenteP">SF 0,9% ou SG 5%</div></div>
+    </div>
+    <div class="fbox" id="fbP" style="display:none"><div class="fttl">📐 Cálculo</div><div id="flP"></div></div>
     <div class="acoes">
-      <button class="ba" onclick="cp(txtP)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copiar</button>
-      <button class="ba" onclick="wa(txtP)"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.118 1.524 5.845L0 24l6.324-1.501A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.882a9.875 9.875 0 01-5.022-1.368l-.361-.214-3.741.981.999-3.648-.235-.374A9.859 9.859 0 012.118 12C2.118 6.533 6.533 2.118 12 2.118c5.467 0 9.882 4.415 9.882 9.882 0 5.467-4.415 9.882-9.882 9.882z"/></svg>WhatsApp</button>
-      <button class="ba" onclick="pr('CefazolinaCalc',txtP)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>Imprimir</button>
+      <button class="ba" onclick="cp('ped')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copiar</button>
+      <button class="ba" onclick="wa('ped')"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.118 1.524 5.845L0 24l6.324-1.501A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.882a9.875 9.875 0 01-5.022-1.368l-.361-.214-3.741.981.999-3.648-.235-.374A9.859 9.859 0 012.118 12C2.118 6.533 6.533 2.118 12 2.118c5.467 0 9.882 4.415 9.882 9.882 0 5.467-4.415 9.882-9.882 9.882z"/></svg>WhatsApp</button>
+      <button class="ba" onclick="pr('ped')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>Imprimir</button>
     </div>
     <div id="alP"></div>
   </div>
-  <div id="emP"><div class="empty-state"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg><p>Informe o peso e a indicação</p></div></div>
+  <div id="emP"><div class="empty-state"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg><p>Informe o peso e a indicação<br>para calcular</p></div></div>
 </div>
-<div class="card"><div class="ct">Indicações — Bula ANVISA</div><ul class="il"><li><span class="idot" style="background:#0F6E56"></span>Profilaxia cirúrgica<span class="ict">Cirurgia ⭐</span></li><li><span class="idot" style="background:#7C3AED"></span>Infecções de pele / celulite<span class="ict">Pele</span></li><li><span class="idot" style="background:#B91C1C"></span>Infecção por S. aureus (MSSA)<span class="ict">Sistêmico</span></li><li><span class="idot" style="background:#1A7F5A"></span>ITU não complicada<span class="ict">Urinário</span></li><li><span class="idot" style="background:#C9A84C"></span>Osteomielite<span class="ict">Ortopedia</span></li></ul></div>
-</main></div>
-<div class="page" id="pageHist"><main><div class="card"><div class="ct" style="justify-content:space-between;display:flex"><span>Histórico</span><button onclick="limH()" style="background:none;border:none;font-size:11px;color:var(--red);cursor:pointer;font-family:var(--font)">Limpar</button></div><div id="histLista"><div class="hvz">Nenhum cálculo ainda.</div></div></div></main></div>
-<div class="page" id="pageInfo"><main>
-  <div class="card"><div class="ct">⚖️ Aviso Legal</div><p style="font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:10px">Ferramenta educacional. Uso hospitalar. Cefalosporina 1ª geração para uso IV/IM. Não substitui prescrição médica. Bula ANVISA.</p></div>
-  <div class="card"><div class="ct">📋 Sobre</div><p style="font-size:13px;color:var(--text2);line-height:1.7">CefazolinaCalc v1.0 · GUIADOSE · Cefazolina sódica · Pó p/ injeção 1g/2g · Bula ANVISA 2024.</p></div>
-</main></div>
-<div class="dev-footer"><div class="dav">RA</div><div><div class="dnm">Rubiney Alves</div><div class="dcg">Farmácia Clínica · Gestão Comercial · Tecnologia em Saúde</div></div><a href="https://rubiney-alves.vercel.app" target="_blank" class="port-btn">Portfólio <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
-<div class="fav"><svg viewBox="0 0 24 24"><path d="M12 9v4m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>GUIADOSE · Posologia baseada em evidências · Bula ANVISA. Não substitui prescrição médica.</div>
+
+<!-- AJUSTE RENAL -->
+<div class="card" style="background:var(--navy);border-color:rgba(146,86,10,0.3)">
+  <div class="renal-box">
+    <div class="renal-title">⚙️ Ajuste de dose — Insuficiência Renal</div>
+    <table class="rtable">
+      <tr><th>ClCr (mL/min)</th><th>Intervalo</th><th>Dose</th></tr>
+      <tr><td>≥55</td><td>Normal</td><td>Sem alteração</td></tr>
+      <tr><td>35–54</td><td>8/8h ou 12/12h</td><td>Dose normal ×1</td></tr>
+      <tr><td>11–34</td><td>12/12h</td><td>½ dose usual</td></tr>
+      <tr><td>≤10</td><td>18–24h</td><td>½ dose usual</td></tr>
+      <tr><td>Idoso ≥75 anos</td><td>8/8h</td><td>Máx. 500mg/dose</td></tr>
+    </table>
+  </div>
+  <div class="al aw" style="margin-top:4px;background:rgba(146,86,10,0.15);color:var(--amber);border:none">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4m0 4h.01"/></svg>
+    Dose de ataque (loading dose) sem ajuste em todos os casos de IR. Monitorar creatinina sérica durante tratamento prolongado.
+  </div>
+</div>
+
+<!-- INDICAÇÕES -->
+<div class="card">
+  <div class="ct">Indicações</div>
+  <ul class="il">
+    <li><span class="idot" style="background:#1A7F5A"></span>Profilaxia perioperatória — cirurgias limpas/contaminadas<span class="ict">Profilaxia ⭐</span></li>
+    <li><span class="idot" style="background:#7C3AED"></span>Infecções de pele e estruturas da pele (S. aureus)<span class="ict">Pele</span></li>
+    <li><span class="idot" style="background:#B91C1C"></span>Infecções ósseas e articulares (S. aureus)<span class="ict">Ossos</span></li>
+    <li><span class="idot" style="background:#C9A84C"></span>ITU aguda não complicada (E. coli, Klebsiella)<span class="ict">Urinário</span></li>
+    <li><span class="idot" style="background:#1549A0"></span>Pneumonia pneumocócica<span class="ict">Resp.</span></li>
+    <li><span class="idot" style="background:#B91C1C"></span>Endocardite — profilaxia e tratamento<span class="ict">Cardíaco</span></li>
+    <li><span class="idot" style="background:#0F6E56"></span>Infecções biliares (E. coli, S. aureus, Klebsiella)<span class="ict">Biliar</span></li>
+  </ul>
+</div>
+
+</main>
+</div>
+
+<!-- HISTÓRICO -->
+<div class="page" id="pageHist">
+<main>
+  <div class="card">
+    <div class="ct" style="justify-content:space-between"><span>Histórico</span><button onclick="limH()" style="background:none;border:none;font-size:11px;color:var(--red);cursor:pointer;font-family:var(--font)">Limpar</button></div>
+    <div id="histLista"><div class="hvz">Nenhum cálculo ainda.</div></div>
+  </div>
+</main>
+</div>
+
+<!-- SOBRE -->
+<div class="page" id="pageInfo">
+<main>
+  <div class="card">
+    <div class="ct">⚖️ Aviso Legal</div>
+    <p style="font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:10px">Ferramenta de <strong>apoio farmacêutico educacional</strong>. Baseada na bula ANVISA de Cefazolina Sódica (Cezolin® BioChimico / Fazolon® Blau / EMS). <strong>Não substitui prescrição médica.</strong></p>
+    <div class="al aw">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>
+      Solução com lidocaína (IM) NUNCA por via IV. Ajuste renal obrigatório em ClCr &lt;55 mL/min. Idosos ≥75 anos: máx. 500mg/dose. Verificar hipersensibilidade a cefalosporinas/penicilinas.
+    </div>
+  </div>
+  <div class="card">
+    <div class="ct">📋 Sobre</div>
+    <p style="font-size:13px;color:var(--text2);line-height:1.7">Versão 1.0 · Módulo Injetáveis GUIADOSE. Cefalosporina de 1ª geração. Apresentações: 500mg e 1g. Via IV (bolus 3–5 min / infusão 30–60 min) e IM (com lidocaína 0,5% ou água). Profilaxia perioperatória padrão-ouro. Bula ANVISA Cezolin®/Fazolon®.</p>
+  </div>
+</main>
+</div>
+
+<div class="dev-footer">
+  <div class="dav">RA</div>
+  <div><div class="dnm">Rubiney Alves</div><div class="dcg">Farmácia Clínica · Gestão Comercial · Tecnologia em Saúde</div></div>
+  <a href="https://rubiney-alves.vercel.app" target="_blank" class="dlk">portfólio →</a>
+</div>
+<div class="fav">
+  <svg viewBox="0 0 24 24"><path d="M12 9v4m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>
+  GUIADOSE · Posologia baseada em evidências · Bula ANVISA. Não substitui prescrição médica.
+</div>
+
 <nav class="tab-nav">
   <button class="tb on" onclick="irP('pageCalc',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M9 12H3m18 0h-6M12 9V3m0 18v-6"/></svg>Calcular</button>
   <button class="tb" onclick="irP('pageHist',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Histórico</button>
   <button class="tb" onclick="irP('pageInfo',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg>Sobre</button>
 </nav>
+
 <script>
-let txtA='',txtP='';
-let hist=JSON.parse(localStorage.getItem('cfazl_hist')||'[]');
-const cfgA={
-  profi:  {l:'Profilaxia cirúrgica',mg:2000,freq:1,int:'dose única',via:'IV',dur:'dose única (30–60min antes)',obs:'Repetir a cada 4h em cirurgias longas'},
-  pele:   {l:'Infecções de pele / celulite',mg:1000,freq:3,int:'8/8h',via:'IV/IM',dur:'7–14 dias'},
-  itu:    {l:'ITU não complicada',mg:1000,freq:3,int:'8/8h',via:'IV/IM',dur:'7–10 dias'},
-  staph:  {l:'Infecção por S. aureus (MSSA)',mg:1000,freq:3,int:'8/8h',via:'IV',dur:'7–14 dias'},
-  osteo:  {l:'Osteomielite',mg:1000,freq:3,int:'8/8h',via:'IV',dur:'4–6 semanas'},
+let perfil='adulto', via='IV';
+let txtA='', txtP='';
+let hist=JSON.parse(localStorage.getItem('cefazol_hist')||'[]');
+
+// ════════════════════════════════
+// PREPARO POR VIA
+// ════════════════════════════════
+function getPreparoIV(mgDose){
+  // Reconstituir 1g com 10mL → vol final 11,2mL → diluir em 50–100mL SF
+  const frasco = mgDose<=500?'500mg':'1g';
+  const aguaRecon = mgDose<=500?'5 mL':'10 mL';
+  const volFinal = mgDose<=500?'~5,6 mL':'~11,2 mL';
+  return [
+    {n:1,txt:`Reconstituir frasco <strong>${frasco}</strong> com <strong>${aguaRecon}</strong> de Água para Injetáveis`},
+    {n:2,txt:`Volume final reconstituído: <strong>${volFinal}</strong> · solução incolor a levemente amarelada`},
+    {n:3,txt:`Para bolus IV direto: administrar em <strong>3–5 minutos</strong>`},
+    {n:4,txt:`Para infusão: diluir em <strong>50–100 mL</strong> de SF 0,9% ou SG 5%`},
+    {n:5,txt:`Infundir em <strong>30–60 minutos</strong>`},
+  ];
+}
+function getPreparoIM(mgDose){
+  const lidVol = mgDose<=500?'2 mL':'2,5 mL';
+  const volFinal = mgDose<=500?'~2,5 mL':'~3,2 mL';
+  return [
+    {n:1,txt:`Reconstituir frasco com <strong>${lidVol}</strong> de Lidocaína 0,5% (ou Água para injetáveis)`},
+    {n:2,txt:`Volume final: <strong>${volFinal}</strong> · concentração ~312 mg/mL`},
+    {n:3,txt:`Injetar em grande massa muscular: <strong>glúteo</strong> (adulto) ou face lateral da coxa (criança)`},
+    {n:4,txt:`<strong>NUNCA</strong> administrar solução com lidocaína por via IV`},
+  ];
+}
+
+// ════════════════════════════════
+// CONFIGS ADULTO
+// ════════════════════════════════
+const cfgA = {
+  leve:          {l:'Infecção leve', r:[
+    {id:'250_8h',mg:250,freq:3,int:'8/8h',dur:'5–10 dias',h:'Infecção leve: 250–500mg de 8 em 8 horas. Bula ANVISA.',t:'250mg 8/8h'},
+    {id:'500_8h',mg:500,freq:3,int:'8/8h',dur:'5–10 dias',h:'500mg de 8 em 8 horas para infecções leves a moderadas.',t:'500mg 8/8h'},
+  ]},
+  mod_grave:     {l:'Infecção moderada a grave', r:[
+    {id:'500_8h',mg:500,freq:3,int:'8/8h',dur:'7–14 dias',h:'500mg a 1g de 8 em 8 horas. Bula ANVISA.',t:'500mg–1g 8/8h'},
+    {id:'1g_6h', mg:1000,freq:4,int:'6/6h',dur:'7–14 dias',h:'Infecção grave: 1g a cada 6 horas. Dose máxima usual.',t:'1g 6/6h'},
+  ]},
+  grave_max:     {l:'Infecção grave — dose máxima', r:[
+    {id:'1g_6h', mg:1000,freq:4,int:'6/6h',dur:'conforme evolução',h:'Dose máxima: 1,5g a cada 6h (6g/dia). Infecções graves em UTI.',t:'6g/dia máx.'},
+    {id:'1_5g_6h',mg:1500,freq:4,int:'6/6h',dur:'conforme evolução',h:'1,5g de 6 em 6 horas = 6g/dia. Dose máxima da bula ANVISA.',t:'1,5g 6/6h'},
+  ]},
+  itu_ag:        {l:'ITU aguda não complicada', r:[
+    {id:'1g_12h',mg:1000,freq:2,int:'12/12h',dur:'7–10 dias',h:'ITU aguda não complicada: 1g de 12 em 12 horas. Bula ANVISA.',t:'1g 12/12h'},
+  ]},
+  pneumo_pnc:    {l:'Pneumonia pneumocócica', r:[
+    {id:'500_12h',mg:500,freq:2,int:'12/12h',dur:'7–10 dias',h:'Pneumonia pneumocócica: 500mg de 12 em 12 horas. Bula ANVISA.',t:'500mg 12/12h'},
+  ]},
+  endocardite_trat:{l:'Endocardite — tratamento', r:[
+    {id:'1g_6h_endo',mg:1000,freq:4,int:'6/6h',dur:'4–6 semanas',h:'Endocardite bacteriana (S. aureus sensível): 1g de 6 em 6 horas por 4 a 6 semanas.',t:'1g 6/6h endocardite'},
+  ]},
+  periop_std:    {l:'Profilaxia perioperatória', r:[
+    {id:'1g_periop',mg:1000,freq:1,int:'dose única pré-op',dur:'dose única',h:'1g IV 30 min a 1h antes da incisão. Cobrir gram-positivos e gram-negativos. Padrão-ouro para profilaxia cirúrgica.',t:'Profilaxia 1g'},
+    {id:'2g_periop',mg:2000,freq:1,int:'dose única pré-op',dur:'dose única',h:'2g IV para pacientes ≥80kg ou cirurgia de alto risco. 30 min antes da incisão.',t:'Profilaxia 2g (≥80kg)'},
+  ]},
+  periop_longa:  {l:'Profilaxia — cirurgia prolongada', r:[
+    {id:'1g_2h',mg:1000,freq:0,int:'reforço 2/2h intraop.',dur:'até 24h pós-op',h:'Cirurgia >2h: reforço de 500mg–1g a cada 2 horas de cirurgia. Máx: 6g/dia.',t:'Reforço intraoperatório'},
+  ]},
+  endocardite_prof:{l:'Profilaxia endocardite bacteriana', r:[
+    {id:'1g_prof_endo',mg:1000,freq:1,int:'30min antes',dur:'dose única',h:'1g IV 30 minutos antes do início do procedimento cirúrgico ou odontológico de risco.',t:'Profilaxia endocardite'},
+  ]},
+  renal_55:      {l:'ClCr 35–54 mL/min', r:[
+    {id:'r55',mg:500,freq:2,int:'8/12h',dur:'conforme indicação',h:'ClCr 35–54: dose normal de 8 em 8h ou 12 em 12h. Monitorar creatinina.',t:'Ajuste leve'},
+  ]},
+  renal_34:      {l:'ClCr 11–34 mL/min', r:[
+    {id:'r34',mg:250,freq:2,int:'12/12h',dur:'conforme indicação',h:'ClCr 11–34: ½ dose usual a cada 12 horas.',t:'Ajuste moderado'},
+  ]},
+  renal_10:      {l:'ClCr ≤10 mL/min', r:[
+    {id:'r10',mg:250,freq:1,int:'24h',dur:'conforme indicação',h:'ClCr ≤10: ½ dose usual a cada 18–24 horas.',t:'Ajuste grave'},
+  ]},
+  idoso75:       {l:'Idoso ≥75 anos', r:[
+    {id:'idoso',mg:500,freq:3,int:'8/8h',dur:'conforme indicação',h:'Idoso ≥75 anos: máximo 500mg de 8 em 8 horas independentemente da creatinina.',t:'Idoso ≥75 anos'},
+  ]},
 };
-const cfgP={
-  p_profi:{l:'Profilaxia cirúrgica',mgKgDia:25,freq:1,int:'dose única',via:'IV',dur:'dose única',max:2000},
-  p_inf:  {l:'Infecção moderada',mgKgDia:50,freq:3,int:'8/8h',via:'IV/IM',dur:'7–14 dias',max:1000},
-  p_grave:{l:'Infecção grave',mgKgDia:100,freq:3,int:'8/8h',via:'IV',dur:'7–14 dias',max:2000},
+
+// ════════════════════════════════
+// CONFIGS PEDIÁTRICO
+// ════════════════════════════════
+const cfgP = {
+  p_std:      {l:'Infecção — dose padrão',mgKg:37.5,maxMg:1000,dur:'7–10 dias',
+               h:'Dose padrão: 25–50 mg/kg/dia dividido de 8 em 8 horas. Usar 37,5mg/kg como ponto médio. Máx: 100mg/kg/dia.'},
+  p_grave:    {l:'Infecção grave',mgKg:100,maxMg:6000,dur:'7–14 dias',
+               h:'Dose máxima pediátrica: 100 mg/kg/dia dividido de 6 em 6 horas. Máx: 6g/dia.'},
+  p_profilaxia:{l:'Profilaxia cirúrgica',mgKg:25,maxMg:1000,dur:'dose única',
+               h:'Profilaxia perioperatória: 25 mg/kg IV 30–60 min antes da cirurgia. Máx: 1g/dose.'},
 };
-function hor(i){if(i==='8/8h')return '7h · 15h · 23h';if(i==='12/12h')return '7h · 19h';if(i==='6/6h')return '6h · 12h · 18h · 0h';if(i==='24/24h'||i==='1× ao dia')return '7h (1× ao dia)';if(i==='única'||i==='dose única')return 'dose única';return i;}
-function mk(l,v,u,full){return `<div class="di${full?' full':''}"><div class="dil">${l}</div><div class="div">${v}<span class="diu">${u}</span></div></div>`;}
-function showR(id,dnc,rgm,grid,fArr,al){
-  document.getElementById('rd'+id).textContent=dnc;
-  document.getElementById('rr'+id).textContent=rgm;
+
+function mk(l,v,u,g,full){return `<div class="di${full?' full':''}"><div class="dil">${l}</div><div class="div${g?' g':''}">${v}<span class="diu">${u}</span></div></div>`;}
+
+function renderPreparo(id,mg){
+  const steps=via==='IV'?getPreparoIV(mg):getPreparoIM(mg);
+  document.getElementById('prepSteps'+id).innerHTML=steps.map(s=>`<div class="step"><span class="step-num">${s.n}</span><div class="step-txt">${s.txt}</div></div>`).join('');
+  document.getElementById('prep'+id).style.display='block';
+}
+function renderInfusao(id){
+  const iv=document.getElementById('inf'+id);
+  if(via==='IV'){
+    document.getElementById('infVal'+id).textContent='30–60 min';
+    iv.style.display='flex';
+  } else {
+    iv.style.display='none';
+  }
+}
+function renderDur(id,dur){
+  const el=document.getElementById('dur'+id);
+  if(dur){el.innerHTML=`<svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 13h-2V7h2v8zm0-10h-2V3h2v2z"/></svg> Duração: <strong>${dur}</strong>`;el.style.display='flex';}
+  else el.style.display='none';
+}
+function showR(id,d,r,grid,fArr,alertas,mg,dur){
+  document.getElementById('rd'+id).textContent=d;
+  document.getElementById('rr'+id).textContent=r;
   document.getElementById('dg'+id).innerHTML=grid;
+  renderDur(id,dur);
+  renderPreparo(id,mg);
+  renderInfusao(id);
   const fb=document.getElementById('fb'+id),fl=document.getElementById('fl'+id);
-  if(fArr&&fArr.length){fl.innerHTML=fArr.map(l=>`<div class="fln">${l}</div>`).join('');fb.style.display='block';}
-  else fb.style.display='none';
-  document.getElementById('al'+id).innerHTML=al||'';
+  if(fArr&&fArr.length){fl.innerHTML=fArr.map(l=>`<div class="fln">${l}</div>`).join('');fb.style.display='block';}else fb.style.display='none';
+  document.getElementById('al'+id).innerHTML=alertas||'';
   document.getElementById('res'+id).classList.add('vis');
   document.getElementById('em'+id).style.display='none';
 }
-function hideR(id){document.getElementById('res'+id).classList.remove('vis');document.getElementById('em'+id).style.display='block';}
-function updA(){
-  const d=document.getElementById('dA').value,rh=document.getElementById('rhA');
-  hideR('A');txtA='';
-  if(!d){rh.classList.remove('vis');return;}
-  const c=cfgA[d],mgDia=c.mg*c.freq;
-  rh.textContent=c.l+' · '+c.mg+'mg de '+c.int+' · '+c.dur+' · Bula ANVISA';rh.classList.add('vis');
-  const grid=mk('Dose',c.mg,'mg')+mk('Via',c.via,'IV/IM')+mk('Intervalo',c.int,'')+mk('Duração',c.dur,'');
-  const fArr=[
-    `Dose: <strong>${c.mg} mg</strong> de ${c.int}`,
-    `Via: <strong>${c.via}</strong>`,
-    `Total diário: <strong>${mgDia} mg/dia</strong>`,
-    `⏱ Duração: <strong>${c.dur}</strong>`,
-    `🕐 Horários: <strong>${hor(c.int)}</strong>`,
-  ];
-  if(c.obs) fArr.splice(2,0,`Obs: <strong>${c.obs}</strong>`);
-  showR('A',c.l,c.int+' · '+c.dur+' · ANVISA',grid,fArr,'');
-  txtA=`CefazolinaCalc — ${c.l}\n${c.mg}mg de ${c.int} · ${c.dur}\nVia: ${c.via}\nHorários: ${hor(c.int)}\n\nNão substitui prescrição médica.`;
-  salvarH(c.l,c.dur,c.mg+'mg '+c.int);
+function hideR(id){
+  document.getElementById('res'+id).classList.remove('vis');
+  document.getElementById('em'+id).style.display='block';
+  ['prep','inf'].forEach(p=>{const el=document.getElementById(p+id);if(el)el.style.display='none';});
+  const d=document.getElementById('dur'+id);if(d)d.style.display='none';
 }
 
-function updP(){
-  const rh=document.getElementById('rhP');
-  rh.textContent=document.getElementById('dP').selectedOptions[0]?.text||'';
-  rh.classList.add('vis');rh.style.display='block';calcP();
+function setPerfil(p){
+  perfil=p;
+  document.getElementById('btnA').classList.toggle('on',p==='adulto');
+  document.getElementById('btnP').classList.toggle('on',p==='ped');
+  document.getElementById('fA').style.display=p==='adulto'?'block':'none';
+  document.getElementById('fP').style.display=p==='ped'?'block':'none';
 }
-function calcP(){
-  const d=document.getElementById('dP').value,peso=parseFloat(document.getElementById('peso').value);
-  hideR('P');txtP='';
-  if(!d||isNaN(peso)||peso<=0)return;
-  if(peso<1){showR('P','Peso insuficiente','—',mk('Peso',peso,'kg',true),null,'<div class="al ad"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4m0 4h.01"/></svg>Peso inválido. Consulte o médico.</div>');return;}
-  const c=cfgP[d];
-  const mgDose=parseFloat(Math.min(peso*(c.mgKgDia/c.freq),c.max).toFixed(1));
-  const mgDia=parseFloat((mgDose*c.freq).toFixed(1));
-  const grid=mk('Dose/tomada',mgDose,'mg')+mk('Freq.',c.freq+'×','ao dia')+mk('Intervalo',c.int,'')+mk('Duração',c.dur,'');
-  const fArr=[
-    `Peso: <strong>${peso} kg</strong>`,
-    `${c.mgKgDia}mg/kg/dia ÷ ${c.freq}× = ${(c.mgKgDia/c.freq).toFixed(1)}mg/kg/dose`,
-    `${(c.mgKgDia/c.freq).toFixed(1)} × ${peso} = <strong>${mgDose} mg/dose</strong> (máx ${c.max}mg)`,
-    `Via: <strong>${c.via||'IV/IM'}</strong>`,
-    `⏱ Duração: <strong>${c.dur}</strong>`,
-    `🕐 Horários: <strong>${hor(c.int)}</strong>`,
-  ];
-  showR('P',c.l,c.int+' · '+c.dur+' · ANVISA',grid,fArr,'');
-  txtP=`CefazolinaCalc — ${c.l}\nPeso:${peso}kg\n${mgDose}mg/dose de ${c.int} · ${c.dur}\nVia: ${c.via||'IV/IM'}\nHorários: ${hor(c.int)}\n\nNão substitui prescrição médica.`;
-  salvarH(c.l,c.dur,mgDose+'mg/dose');
+function setVia(v){
+  via=v;
+  document.getElementById('vIV').classList.toggle('on',v==='IV');
+  document.getElementById('vIM').classList.toggle('on',v==='IM');
+  if(perfil==='adulto')calcA(); else calcP();
 }
-function setPerfil(p){document.getElementById('btnA').classList.toggle('on',p==='adulto');document.getElementById('btnP').classList.toggle('on',p==='ped');document.getElementById('fA').style.display=p==='adulto'?'block':'none';document.getElementById('fP').style.display=p==='ped'?'block':'none';}
+function toggleDark(){const d=document.documentElement;const isDark=d.getAttribute('data-theme')==='dark';isDark?d.removeAttribute('data-theme'):d.setAttribute('data-theme','dark');localStorage.setItem('guia_theme',isDark?'light':'dark');}(function(){if(localStorage.getItem('guia_theme')==='dark')document.documentElement.setAttribute('data-theme','dark');})()
+function toggleTip(btn){const b=document.getElementById('tipBox');b.classList.toggle('vis');btn.classList.toggle('on');if(b.classList.contains('vis')){document.addEventListener('click',function c(e){if(!e.target.closest('.tw')){b.classList.remove('vis');btn.classList.remove('on');document.removeEventListener('click',c);}});}}
 function irP(p,btn){document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.tb').forEach(b=>b.classList.remove('on'));document.getElementById(p).classList.add('active');btn.classList.add('on');if(p==='pageHist')renderH();}
 function showToast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2000);}
-function cp(txt){if(!txt)return;navigator.clipboard.writeText(txt).then(()=>showToast('✓ Copiado!')).catch(()=>showToast('Use WhatsApp'));}
-function wa(txt){if(!txt)return;window.open('https://wa.me/?text='+encodeURIComponent(txt),'_blank');}
-function pr(titulo,txt){if(!txt)return;const w=window.open('','_blank');w.document.write(`<html><head><title>${titulo}</title><style>body{font-family:Arial,sans-serif;padding:20px;max-width:400px}h2{color:#0F3460}pre{background:#f5f5f5;padding:12px;border-radius:8px;white-space:pre-wrap;font-size:13px}footer{margin-top:18px;font-size:10px;color:#888}</style></head><body><h2>${titulo} — GUIADOSE</h2><pre>${txt}</pre><footer>Rubiney Alves · guiadose.vercel.app · Não substitui prescrição médica</footer></body></html>`);w.document.close();w.print();}
-function toggleDark(){const d=document.documentElement;d.getAttribute('data-theme')==='dark'?d.removeAttribute('data-theme'):d.setAttribute('data-theme','dark');}
-function toggleTip(btn){const b=document.getElementById('tipBox');b.classList.toggle('vis');if(b.classList.contains('vis')){document.addEventListener('click',function c(e){if(!e.target.closest('.tw')){b.classList.remove('vis');document.removeEventListener('click',c);}});}}
-function salvarH(d,r,det){hist.unshift({d,r,det,hora:new Date().toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'})});if(hist.length>20)hist=hist.slice(0,20);localStorage.setItem('cfazl_hist',JSON.stringify(hist));}
-function renderH(){const el=document.getElementById('histLista');if(!hist.length){el.innerHTML='<div class="hvz">Nenhum cálculo ainda.</div>';return;}el.innerHTML=hist.map(h=>`<div class="hi"><div class="hit"><span class="hn">${h.d}</span><span class="hhr">${h.hora}</span></div><div class="hd">${h.r} · ${h.det}</div></div>`).join('');}
-function limH(){hist=[];localStorage.removeItem('cfazl_hist');renderH();}
+function cp(p){const t=p==='adulto'?txtA:txtP;if(!t)return;navigator.clipboard.writeText(t).then(()=>showToast('✓ Copiado!')).catch(()=>showToast('Use WhatsApp'));}
+function wa(p){const t=p==='adulto'?txtA:txtP;if(!t)return;window.open('https://wa.me/?text='+encodeURIComponent(t),'_blank');}
+function pr(p){
+  const t=p==='adulto'?txtA:txtP;if(!t)return;
+  const w=window.open('','_blank');
+  w.document.write(`<html><head><title>CefazolinaCalc</title><style>body{font-family:Arial,sans-serif;padding:20px;max-width:400px}h2{color:#0F3460}pre{background:#f5f5f5;padding:12px;border-radius:8px;white-space:pre-wrap;font-size:13px}footer{margin-top:18px;font-size:10px;color:#888}</style>
+<meta property="og:type" content="website">
+<meta property="og:title" content="CefazolinaCalc — IV / IM · Adulto & Pediátrico">
+<meta property="og:description" content="Calculadora Cefazolina 500mg / 1g — IV / IM — Adulto e Pediátrico — GUIADOSE">
+<meta property="og:url" content="https://guiadose.vercel.app/">
+<meta property="og:image" content="https://guiadose.vercel.app/icons/icon-512.png">
+</head><body><h2>CefazolinaCalc — GUIADOSE</h2><pre>${t}</pre><footer>Rubiney Alves · Farmácia Clínica · guiadose.vercel.app<br>Não substitui prescrição médica · Bula ANVISA</footer></body></html>`);
+  w.document.close();w.print();
+}
+function salvarH(d,r,det){
+  hist.unshift({d,r,det,hora:new Date().toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'})});
+  if(hist.length>20)hist=hist.slice(0,20);
+  localStorage.setItem('cefazol_hist',JSON.stringify(hist));
+}
+function renderH(){
+  const el=document.getElementById('histLista');
+  if(!hist.length){el.innerHTML='<div class="hvz">Nenhum cálculo ainda.</div>';return;}
+  el.innerHTML=hist.map(h=>`<div class="hi"><div class="hit"><span class="hn">${h.d}</span><span class="hhr">${h.hora}</span></div><div class="hd">${h.r} · ${h.det}</div></div>`).join('');
+}
+function limH(){hist=[];localStorage.removeItem('cefazol_hist');renderH();}
+
+const LID_AL=`<div class="al ad" style="background:rgba(185,28,28,0.2);color:#FCA5A5;border:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4m0 4h.01"/></svg>Solução IM com lidocaína: NUNCA administrar por via IV. Verificar contraindicações à lidocaína.</div>`;
+
+// ── ADULTO ──
+function updA(){
+  const d=document.getElementById('dA').value,rw=document.getElementById('rwA'),rs=document.getElementById('regA');
+  hideR('A');txtA='';
+  if(!d){rw.style.display='none';return;}
+  rs.innerHTML='<option value="">Selecione...</option>'+cfgA[d].r.map(r=>`<option value="${r.id}">${r.l}</option>`).join('');
+  rw.style.display='block';document.getElementById('rhA').classList.remove('vis');calcA();
+}
+function calcA(){
+  const d=document.getElementById('dA').value,reg=document.getElementById('regA').value,rh=document.getElementById('rhA');
+  if(!d||!reg){hideR('A');return;}
+  const cfg=cfgA[d],ro=cfg.r.find(r=>r.id===reg);
+  rh.textContent=ro.h;rh.classList.add('vis');
+
+  const {mg,freq,int:interval,dur}=ro;
+  const mgDia=freq>0?mg*freq:mg;
+  const mgLabel=mg>=1000?mg/1000+'g':mg+'mg';
+  const mgDiaLabel=mgDia>=1000?mgDia/1000+'g':mgDia+'mg';
+
+  const grid=mk('Dose',mgLabel,'',true,false)+mk('Via',via,'',false,false)+
+    mk(freq>0?'Freq.':'Quando',freq>0?freq+'×':interval,'',false,false)+
+    mk('Total/dia',mgDia>0?mgDiaLabel:'—',freq>0?'/dia':'',false,false);
+
+  const fArr=[
+    `Dose: <strong>${mgLabel}</strong> ${via} · ${interval}`,
+    `Total diário: <strong>${mgDiaLabel}</strong>`,
+    via==='IV'?`Bolus: 3–5 min | Infusão: SF0,9%/SG5% 50–100mL, 30–60 min`:`Reconstituir com lidocaína 0,5% — não usar IV`,
+    `Duração: <strong>${dur}</strong>`,
+  ];
+
+  let alertas=via==='IM'?LID_AL:'';
+  if(dur.includes('sem.')||dur.includes('semanas')) alertas+=`<div class="al aw"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4m0 4h.01"/></svg>Tratamento prolongado: monitorar função renal e hemograma.</div>`;
+  if(reg.includes('periop')||reg.includes('prof')) alertas+=`<div class="al as" style="background:rgba(26,127,90,0.15);color:#60C090;border:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Profilaxia: administrar 30–60 min antes da incisão. Não prolongar além de 24h no pós-operatório.</div>`;
+
+  showR('A',cfg.l,ro.t+' · ANVISA',grid,fArr,alertas,mg,dur);
+  txtA=`CefazolinaCalc — ${cfg.l}\n${ro.t}\nDose: ${mgLabel} · ${via} · ${interval}\nTotal: ${mgDiaLabel}/dia · ${dur}\n\nNão substitui prescrição médica.`;
+  salvarH(cfg.l,ro.t,`${mgLabel} ${via}`);
+}
+
+// ── PED ──
+function updP(){
+  const d=document.getElementById('dP').value,rw=document.getElementById('rwP'),rs=document.getElementById('regP');
+  hideR('P');txtP='';
+  if(!d){rw.style.display='none';return;}
+  const cfg=cfgP[d];
+  rs.innerHTML=`<option value="">Calcular...</option><option value="calc" selected>${cfg.l}</option>`;
+  rw.style.display='block';
+  document.getElementById('rhP').textContent=cfg.h;document.getElementById('rhP').classList.add('vis');
+  calcP();
+}
+function calcP(){
+  const d=document.getElementById('dP').value;
+  if(!d){hideR('P');return;}
+  const peso=parseFloat(document.getElementById('peso').value);
+  const cfg=cfgP[d];
+  if(isNaN(peso)||peso<=0){hideR('P');return;}
+
+  const freq=d==='p_profilaxia'?1:d==='p_grave'?4:3;
+  const mgDia=parseFloat(Math.min(peso*cfg.mgKg,cfg.maxMg).toFixed(1));
+  const mgDose=parseFloat((mgDia/freq).toFixed(1));
+  const frasco=mgDose<=500?'500mg':'1g';
+  const mgLabel=mgDia>=1000?mgDia/1000+'g':mgDia+'mg';
+  const mgDoseLabel=mgDose>=1000?mgDose/1000+'g':mgDose+'mg';
+  const interval=freq===1?'dose única':freq===4?'6/6h':'8/8h';
+
+  const grid=mk('Dose/dia',mgLabel,'',true,false)+mk('Dose/tomada',mgDoseLabel,'',false,false)+
+    mk('Freq.',freq===1?'1×':''+freq+'×','ao dia ('+interval+')',false,false)+
+    mk('Frasco',frasco,'',false,false);
+
+  const fArr=[
+    `Peso: <strong>${peso} kg</strong>`,
+    `${cfg.mgKg} mg/kg × ${peso} = <strong>${mgDia} mg/dia</strong> (máx. ${cfg.maxMg>=1000?cfg.maxMg/1000+'g':cfg.maxMg+'mg'})`,
+    `Dose/tomada: ${mgDia} ÷ ${freq} = <strong>${mgDose} mg</strong>`,
+    `Frasco recomendado: <strong>${frasco}</strong>`,
+    via==='IV'?`IV: reconstituir com água p/ injetáveis → diluir SF0,9% → infundir 30–60 min`:`IM: reconstituir com lidocaína 0,5% — não usar IV`,
+    `Duração: <strong>${cfg.dur}</strong>`,
+  ];
+
+  let alertas=via==='IM'?LID_AL:'';
+  if(d==='p_profilaxia') alertas+=`<div class="al as" style="background:rgba(26,127,90,0.15);color:#60C090;border:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Profilaxia: 30–60 min antes da incisão. Dose única. Máx: 1g.</div>`;
+  if(peso>=50) alertas+=`<div class="al ai"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg>Peso ≥50 kg — considerar dose de adulto.</div>`;
+
+  showR('P',cfg.l,`${cfg.mgKg}mg/kg/dia · ${via} · ANVISA`,grid,fArr,alertas,mgDose>=1000?1000:mgDose,cfg.dur);
+  txtP=`CefazolinaCalc — ${cfg.l}\nPeso: ${peso}kg\nDose: ${mgDia}mg/dia · ${mgDose}mg/dose (${freq}×/dia · ${interval})\nFrasco: ${frasco} · ${via} · ${cfg.dur}\n\nNão substitui prescrição médica.`;
+  salvarH(cfg.l,`${cfg.mgKg}mg/kg`,`${mgDoseLabel} ${via}`);
+}
+
 if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));}
 </script>
 </body>

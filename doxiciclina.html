@@ -1,50 +1,55 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0F3460">
+<meta name="description" content="Calculadora Doxiciclina 100mg — Adulto e Pediátrico ≥8 anos — GUIADOSE">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="DoxiCalc">
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="icon" href="icons/icon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
-<title>DoxiCalc — GUIADOSE</title>
+<title>DoxiCalc — Doxiciclina 100mg</title>
 <style>
-:root{--navy:#0F3460;--navy2:#16213E;--navy3:#0A1628;--gold:#C9A84C;--gold2:#E8C97A;--white:#FFFFFF;--surface:#F7F9FC;--surface2:#EEF2F7;--border:#D8E2EF;--text:#1A2540;--text2:#4A5878;--text3:#8A97B0;--green:#1A7F5A;--green-bg:#E6F7F1;--amber:#92560A;--amber-bg:#FEF3E2;--red:#B91C1C;--red-bg:#FEF2F2;--blue:#1549A0;--blue-bg:#EBF2FF;--radius:12px;--radius-sm:8px;--shadow:0 2px 12px rgba(15,52,96,0.10);--font:'DM Sans',sans-serif;--mono:'DM Mono',monospace}
-[data-theme="dark"]{--white:#1A2540;--surface:#111827;--surface2:#1F2A3C;--border:#2D3E5A;--text:#E8EDF5;--text2:#A0AEBF;--text3:#5A6A80;--blue-bg:#1A2A4A;--blue:#7AABF0;--amber-bg:#2A1F0A;--amber:#F0C070;--red-bg:#2A1010;--red:#F08080;--green-bg:#0A2018;--green:#60C090}
+:root{--navy:#0F3460;--navy2:#16213E;--navy3:#0A1628;--gold:#C9A84C;--gold2:#E8C97A;--white:#FFFFFF;--surface:#F7F9FC;--surface2:#EEF2F7;--border:#D8E2EF;--text:#1A2540;--text2:#4A5878;--text3:#8A97B0;--green:#1A7F5A;--green-bg:#E6F7F1;--amber:#92560A;--amber-bg:#FEF3E2;--red:#B91C1C;--red-bg:#FEF2F2;--blue:#1549A0;--blue-bg:#EBF2FF;--teal:#0F6E56;--teal-bg:#E1F5EE;--orange:#C05A00;--orange-bg:#FFF0E6;--radius:12px;--radius-sm:8px;--shadow:0 2px 12px rgba(15,52,96,0.10);--font:'DM Sans',sans-serif;--mono:'DM Mono',monospace}
+[data-theme="dark"]{--white:#1A2540;--surface:#111827;--surface2:#1F2A3C;--border:#2D3E5A;--text:#E8EDF5;--text2:#A0AEBF;--text3:#5A6A80;--blue-bg:#1A2A4A;--blue:#7AABF0;--amber-bg:#2A1F0A;--amber:#F0C070;--red-bg:#2A1010;--red:#F08080;--green-bg:#0A2018;--green:#60C090;--teal-bg:#0A2018;--teal:#5DCAA5;--orange-bg:#2A1A0A;--orange:#F0A060}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 body{font-family:var(--font);background:var(--surface);color:var(--text);min-height:100vh;max-width:480px;margin:0 auto;padding-bottom:100px;transition:background 0.2s,color 0.2s}
-.app-header{background:var(--navy);padding:0;position:sticky;top:0;z-index:100;border-bottom:2px solid var(--gold)}
-.app-header-top{display:flex;align-items:center;gap:10px;padding:8px 16px 10px}
-.app-logo{width:40px;height:40px;border-radius:10px;background:var(--gold);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.app-logo svg{width:22px;height:22px;fill:var(--navy)}
-.app-title{font-size:17px;font-weight:600;letter-spacing:-0.3px;color:white}
-.app-subtitle{font-size:10px;color:rgba(255,255,255,0.5);margin-top:1px;font-family:var(--mono)}
-.dark-btn{margin-left:auto;background:rgba(255,255,255,0.1);border:none;border-radius:8px;padding:7px 10px;cursor:pointer;color:white;font-size:15px;flex-shrink:0}
-.back-btn{display:flex;flex-direction:column;align-items:center;justify-content:center;width:40px;height:40px;border-radius:10px;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);text-decoration:none;flex-shrink:0;gap:2px;transition:all 0.18s}
-.back-btn:hover{background:rgba(201,168,76,0.28);border-color:rgba(201,168,76,0.6)}
-.back-btn svg{width:16px;height:16px;fill:#E8C97A}
-.back-btn span{font-size:8px;color:#E8C97A;font-family:var(--mono);letter-spacing:0.3px;font-weight:600}
-.hdr-divider{width:1px;height:32px;background:rgba(255,255,255,0.1);flex-shrink:0}
-.pbar{display:flex;gap:6px;padding:8px 12px;background:var(--navy2)}
-.pb{flex:1;padding:9px 8px;border:2px solid rgba(255,255,255,0.1);border-radius:9px;background:rgba(255,255,255,0.05);color:rgba(255,255,255,0.4);font-size:12px;font-family:var(--font);cursor:pointer;transition:all 0.18s;display:flex;align-items:center;justify-content:center;gap:5px;font-weight:500}
-.pb svg{width:14px;height:14px}
-.pb.on{background:rgba(201,168,76,0.15);border-color:var(--gold);color:var(--gold2);font-weight:700}
-.apres-bar{display:flex;align-items:center;gap:6px;padding:7px 14px 8px;background:var(--navy3)}
-.apres-lbl{font-size:10px;color:rgba(255,255,255,0.35);flex-shrink:0;white-space:nowrap}
-.abtn{padding:5px 11px;border-radius:7px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.5);font-size:11px;font-family:var(--mono);cursor:pointer;transition:all 0.15s;font-weight:500;white-space:nowrap;flex-shrink:0}
-.abtn.on{background:rgba(201,168,76,0.2);border-color:var(--gold);color:var(--gold2);font-weight:700}
+.hdr{background:var(--navy);padding:0;position:sticky;top:0;z-index:100;border-bottom:2px solid var(--gold)}
+.ht{display:flex;align-items:center;gap:10px;padding-bottom:10px}
+.logo{width:40px;height:40px;border-radius:10px;background:var(--gold);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.logo svg{width:22px;height:22px;fill:var(--navy)}
+.atitle{font-size:17px;font-weight:600;letter-spacing:-0.3px}
+.asub{font-size:10px;color:rgba(255,255,255,0.55);margin-top:1px;font-family:var(--mono)}
+.dbtn{margin-left:auto;background:rgba(255,255,255,0.1);border:none;border-radius:8px;padding:7px 10px;cursor:pointer;color:white;font-size:15px;flex-shrink:0}
+
+
+
+
+.warn-bar{background:var(--navy3);padding:8px 16px;display:flex;gap:7px;align-items:flex-start}
+.warn-bar svg{width:13px;height:13px;flex-shrink:0;color:var(--gold);margin-top:1px}
+.warn-bar span{font-size:10px;color:rgba(255,255,255,0.55);line-height:1.5}
+.warn-bar strong{color:var(--gold2)}
 .tw{position:relative;display:flex;align-items:center;flex-shrink:0;margin-left:auto}
-.tbtn{width:26px;height:26px;border-radius:50%;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.4);color:var(--gold);font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center}
-.tbox{position:absolute;top:34px;right:0;width:268px;background:#1A2540;border:1px solid var(--gold);border-radius:10px;padding:11px 13px;font-size:12px;color:rgba(255,255,255,0.85);line-height:1.6;z-index:999;box-shadow:0 8px 24px rgba(0,0,0,0.4);display:none}
+.tbtn{width:24px;height:24px;border-radius:50%;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.4);color:var(--gold);font-size:12px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.15s;font-family:var(--font)}
+.tbtn.on,.tbtn:hover{background:rgba(201,168,76,0.3)}
+.tbox{position:absolute;top:32px;right:0;width:260px;background:#1A2540;border:1px solid var(--gold);border-radius:10px;padding:11px 13px;font-size:12px;color:rgba(255,255,255,0.85);line-height:1.6;z-index:999;box-shadow:0 8px 24px rgba(0,0,0,0.4);display:none}
 .tbox.vis{display:block}
 .tbox::before{content:'';position:absolute;top:-6px;right:9px;width:10px;height:10px;background:#1A2540;border-left:1px solid var(--gold);border-top:1px solid var(--gold);transform:rotate(45deg)}
+.ttl{font-size:10px;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;color:var(--gold);margin-bottom:5px}
+/* alertas de fotossensibilidade e alimento */
+.foto-alert{background:rgba(192,90,0,0.1);border:1px solid rgba(192,90,0,0.3);border-radius:var(--radius-sm);padding:9px 11px;font-size:11px;color:var(--orange);margin-bottom:11px;display:flex;gap:6px;align-items:flex-start;line-height:1.5}
+.foto-alert svg{width:14px;height:14px;flex-shrink:0;margin-top:1px}
+.food-alert{background:rgba(26,127,90,0.08);border:1px solid rgba(26,127,90,0.25);border-radius:var(--radius-sm);padding:8px 11px;font-size:11px;color:var(--green);margin-bottom:11px;display:flex;gap:6px;align-items:center}
+.food-alert svg{width:13px;height:13px;flex-shrink:0}
 main{padding:14px}
-.card{background:var(--white);border-radius:var(--radius);border:1px solid var(--border);padding:14px;margin-bottom:11px;box-shadow:var(--shadow)}
-.ct{font-size:11px;font-weight:600;letter-spacing:0.8px;color:var(--text3);text-transform:uppercase;margin-bottom:11px}
+.card{background:var(--white);border-radius:var(--radius);border:1px solid var(--border);border-top:3px solid var(--gold);padding:14px;margin-bottom:11px;box-shadow:var(--shadow)}
+.ct{font-size:11px;font-weight:600;letter-spacing:0.8px;color:var(--text3);text-transform:uppercase;margin-bottom:11px;display:flex;align-items:center;gap:5px}
 label.fl{display:block;font-size:13px;font-weight:500;color:var(--text2);margin-bottom:5px}
 select,input[type=number]{width:100%;padding:11px 13px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-family:var(--font);font-size:14px;color:var(--text);background:var(--white);appearance:none;-webkit-appearance:none;outline:none;transition:border-color 0.15s;margin-bottom:12px}
 select:focus,input[type=number]:focus{border-color:var(--navy)}
@@ -59,25 +64,39 @@ select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/
 .rico svg{width:18px;height:18px;fill:var(--navy)}
 .rdnc{font-size:13px;font-weight:600;color:white}
 .rrgm{font-size:10px;color:var(--gold2);margin-top:2px}
-.dgrid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:10px}
+/* Caixa esquema D1 → D2+ */
+.esquema-box{background:rgba(255,255,255,0.05);border:1px solid rgba(201,168,76,0.25);border-radius:9px;padding:12px;margin-bottom:10px}
+.esquema-title{font-size:10px;font-weight:600;color:var(--gold);text-transform:uppercase;letter-spacing:0.7px;margin-bottom:8px}
+.esq-row{display:flex;gap:8px;margin-bottom:6px}
+.esq-day{background:rgba(255,255,255,0.07);border-radius:7px;padding:8px 10px;flex:1;text-align:center}
+.esq-day.dest{background:rgba(201,168,76,0.18);border:1px solid rgba(201,168,76,0.35)}
+.esq-label{font-size:9px;color:rgba(255,255,255,0.45);margin-bottom:2px;text-transform:uppercase;letter-spacing:0.5px}
+.esq-val{font-size:18px;font-weight:600;color:var(--gold2);font-family:var(--mono)}
+.esq-unit{font-size:10px;color:rgba(255,255,255,0.45);margin-left:2px}
+.dgrid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
 .di{background:rgba(255,255,255,0.07);border-radius:9px;padding:11px}
 .di.full{grid-column:1/-1}
 .dil{font-size:10px;color:rgba(255,255,255,0.5);margin-bottom:3px;font-weight:500}
-.div{font-size:22px;font-weight:600;color:var(--gold2);font-family:var(--mono);line-height:1}
-.diu{font-size:11px;color:rgba(255,255,255,0.45);margin-left:3px;font-weight:400;font-family:var(--font)}
-.fbox{background:rgba(255,255,255,0.04);border:1px solid rgba(201,168,76,0.2);border-radius:9px;padding:12px;margin-bottom:10px}
+.div{font-size:24px;font-weight:600;color:var(--gold2);font-family:var(--mono);line-height:1}
+.div.g{font-size:30px}
+.diu{font-size:12px;color:rgba(255,255,255,0.5);margin-left:3px;font-weight:400;font-family:var(--font)}
+.fbox{background:rgba(255,255,255,0.04);border:1px solid rgba(201,168,76,0.25);border-radius:9px;padding:13px;margin-top:10px}
 .fttl{font-size:10px;font-weight:600;letter-spacing:0.7px;color:var(--gold);text-transform:uppercase;margin-bottom:8px}
-.fln{font-size:12px;color:rgba(255,255,255,0.78);font-family:var(--mono);padding:4px 0;border-bottom:1px solid rgba(255,255,255,0.06);line-height:1.5}
+.fln{font-size:12px;color:rgba(255,255,255,0.72);font-family:var(--mono);padding:3px 0;border-bottom:1px solid rgba(255,255,255,0.05);line-height:1.5}
 .fln:last-child{border-bottom:none}
 .fln strong{color:var(--gold2)}
-.al{border-radius:var(--radius-sm);padding:10px 12px;font-size:12px;line-height:1.6;display:flex;gap:7px;align-items:flex-start;margin-bottom:8px}
+.acoes{display:flex;gap:7px;margin-top:12px}
+.ba{flex:1;padding:9px 5px;border-radius:7px;border:1px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.07);color:rgba(255,255,255,0.8);font-size:11px;font-family:var(--font);cursor:pointer;text-align:center;display:flex;flex-direction:column;align-items:center;gap:3px}
+.ba:active{background:rgba(255,255,255,0.14)}
+.ba svg{width:17px;height:17px}
+.al{border-radius:var(--radius-sm);padding:10px 12px;font-size:12px;line-height:1.6;display:flex;gap:7px;align-items:flex-start;margin-top:9px}
 .al svg{width:15px;height:15px;flex-shrink:0;margin-top:1px}
 .aw{background:var(--amber-bg);color:var(--amber)}
 .ai{background:var(--blue-bg);color:var(--blue)}
 .ad{background:var(--red-bg);color:var(--red)}
-.acoes{display:flex;gap:7px;margin-bottom:10px}
-.ba{flex:1;padding:9px 5px;border-radius:7px;border:1px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.07);color:rgba(255,255,255,0.8);font-size:11px;font-family:var(--font);cursor:pointer;text-align:center;display:flex;flex-direction:column;align-items:center;gap:3px}
-.ba svg{width:17px;height:17px}
+.as{background:var(--green-bg);color:var(--green)}
+.at{background:var(--teal-bg);color:var(--teal)}
+.ao{background:var(--orange-bg);color:var(--orange)}
 .empty-state{text-align:center;padding:28px 18px;color:var(--text3)}
 .empty-state svg{width:36px;height:36px;opacity:0.3;margin-bottom:10px}
 .empty-state p{font-size:13px}
@@ -85,23 +104,21 @@ select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/
 .il li{display:flex;align-items:center;gap:9px;padding:9px 0;border-bottom:1px solid var(--surface2);font-size:13px;color:var(--text2)}
 .il li:last-child{border-bottom:none}
 .idot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
-.ict{font-size:9px;color:var(--text3);margin-left:auto;font-family:var(--mono)}
-.hi{padding:9px 11px;border-radius:8px;background:var(--surface2);margin-bottom:7px}
+.ict{font-size:9px;color:var(--text3);margin-left:auto;font-family:var(--mono);white-space:nowrap}
+.hi{padding:9px 11px;border-radius:8px;background:var(--surface2);margin-bottom:7px;cursor:pointer}
 .hit{display:flex;justify-content:space-between;align-items:center}
 .hn{font-size:12px;font-weight:500;color:var(--text)}
 .hhr{font-size:10px;color:var(--text3);font-family:var(--mono)}
 .hd{font-size:11px;color:var(--text2);margin-top:2px}
 .hvz{text-align:center;padding:18px;color:var(--text3);font-size:12px}
-.dev-footer{margin:0 0 14px;background:var(--navy);border-radius:var(--radius);padding:13px 15px;display:flex;align-items:center;gap:11px;border:1px solid var(--gold)}
+.dev-footer{margin:0 14px 14px;background:var(--navy);border-radius:var(--radius);padding:13px 15px;display:flex;align-items:center;gap:11px;border:1px solid var(--gold)}
 .dav{width:34px;height:34px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:700;color:var(--navy);font-size:13px}
 .dnm{font-size:12px;font-weight:600;color:var(--gold2)}
 .dcg{font-size:10px;color:rgba(255,255,255,0.5);margin-top:1px}
-.port-btn{display:flex;align-items:center;gap:6px;background:#C9A84C;border:none;border-radius:99px;padding:7px 16px;color:#0A1628;font-size:11px;font-family:var(--mono);font-weight:700;text-decoration:none;white-space:nowrap;cursor:pointer;flex-shrink:0;transition:all 0.15s;margin-left:auto}
-.port-btn:hover{background:#E8C97A}
-.port-btn svg{width:13px;height:13px;stroke:#0A1628;stroke-width:2.5;fill:none}
-.fav{margin:0 0 7px;background:var(--surface2);border-radius:var(--radius-sm);padding:10px 12px;font-size:11px;color:var(--text3);line-height:1.6;display:flex;gap:7px}
+.dlk{margin-left:auto;font-size:10px;color:var(--gold);text-decoration:none;font-family:var(--mono)}
+.fav{margin:0 14px 7px;background:var(--surface2);border-radius:var(--radius-sm);padding:10px 12px;font-size:11px;color:var(--text3);line-height:1.6;display:flex;gap:7px}
 .fav svg{width:13px;height:13px;flex-shrink:0;margin-top:1px;fill:var(--text3)}
-.toast{position:fixed;bottom:88px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--navy);color:white;padding:9px 18px;border-radius:99px;font-size:12px;border:1px solid var(--gold);opacity:0;transition:all 0.25s;z-index:999;pointer-events:none}
+.toast{position:fixed;bottom:88px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--navy);color:white;padding:9px 18px;border-radius:99px;font-size:12px;border:1px solid var(--gold);opacity:0;transition:all 0.25s;z-index:999;white-space:nowrap;pointer-events:none}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 .tab-nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;background:var(--white);border-top:1px solid var(--border);display:flex;z-index:200}
 .tb{flex:1;padding:9px 4px 7px;border:none;background:transparent;font-family:var(--font);font-size:10px;color:var(--text3);cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;transition:color 0.15s}
@@ -109,179 +126,444 @@ select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/
 .tb.on{color:var(--navy);font-weight:600}
 [data-theme="dark"] .tab-nav{background:#1A2540}
 .page{display:none}.page.active{display:block}
-.pasta-count{display:inline-flex;align-items:center;justify-content:center;min-width:24px;height:20px;padding:0 7px;background:var(--gold);color:var(--navy3);font-size:10px;font-weight:700;font-family:var(--mono);border-radius:99px;letter-spacing:0.3px;flex-shrink:0}
-.pasta-arr{width:24px;height:24px;display:flex;align-items:center;justify-content:center;background:var(--navy);border-radius:7px;flex-shrink:0;transition:all 0.18s;flex-shrink:0}
-.pasta-arr svg{width:13px;height:13px;stroke:var(--gold);stroke-width:2.5;fill:none;transition:transform 0.2s}
-.pasta-arr.open svg{transform:rotate(90deg)}
-.pasta.aberta .pasta-arr{background:var(--navy2)}
-.pasta.aberta-ped .pasta-arr{background:var(--navy2)}
+
+.perfil-bar{display:flex;gap:6px;padding:8px 12px;background:var(--navy2)}
+.perfil-btn,.pb{flex:1;padding:10px 8px;border:2px solid rgba(255,255,255,0.1);border-radius:9px;background:rgba(255,255,255,0.05);color:rgba(255,255,255,0.4);font-size:12px;font-family:var(--font);cursor:pointer;transition:all 0.18s;display:flex;align-items:center;justify-content:center;gap:5px;font-weight:500;margin:0 2px}
+.perfil-btn svg,.pb svg{width:15px;height:15px;flex-shrink:0}
+.perfil-btn.ativo,.pb.on{background:rgba(201,168,76,0.18);border-color:var(--gold);color:var(--gold2);font-weight:700}
+
+
+.back-btn{display:flex;flex-direction:column;align-items:center;justify-content:center;width:40px;height:40px;border-radius:10px;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);text-decoration:none;flex-shrink:0;gap:2px;transition:all 0.18s}
+.back-btn:hover{background:rgba(201,168,76,0.28);border-color:rgba(201,168,76,0.6)}
+.back-btn svg{width:16px;height:16px;fill:#E8C97A;flex-shrink:0}
+.back-btn span{font-size:8px;color:#E8C97A;font-family:var(--mono);letter-spacing:0.3px;font-weight:600}
+.hdr-divider{width:1px;height:32px;background:rgba(255,255,255,0.1);flex-shrink:0}
+
+/* Badge de duração no resultado */
+.dur-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);border-radius:7px;padding:5px 10px;font-size:11px;color:var(--gold2);font-family:var(--mono);margin-top:8px;width:100%}
+.dur-badge svg{width:13px;height:13px;fill:var(--gold)}
 </style>
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="DoxiCalc — Doxiciclina 100mg">
+<meta property="og:description" content="Calculadora Doxiciclina 100mg — Adulto e Pediátrico ≥8 anos — GUIADOSE">
+<meta property="og:url" content="https://guiadose.vercel.app/">
+<meta property="og:image" content="https://guiadose.vercel.app/icons/icon-512.png">
 </head>
 <body>
-<header class="app-header">
-  <div class="app-header-top">
-    <a href="guiadose.html" class="back-btn"><svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg><span>MENU</span></a>
-    <div class="hdr-divider"></div>
-    <div class="app-logo"><svg viewBox="0 0 24 24"><path d="M9 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2h-4M9 3a2 2 0 002 2h2a2 2 0 002-2M9 3a2 2 0 012-2h2a2 2 0 012 2"/></svg></div>
-    <div><div class="app-title">DoxiCalc</div><div class="app-subtitle">Doxiciclina · Adulto ≥8 anos</div></div>
-    <button class="dark-btn" onclick="toggleDark()">🌙</button>
+<header class="hdr">
+<div class="ht">
+    <a href="guiadose.html" class="back-btn" aria-label="Voltar ao menu GUIADOSE">
+    <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+    <span>MENU</span>
+  </a>
+  <div class="hdr-divider"></div>
+    <div class="logo"><svg viewBox="0 0 24 24"><path d="M9 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2h-4M9 3a2 2 0 002 2h2a2 2 0 002-2M9 3a2 2 0 012-2h2a2 2 0 012 2"/></svg></div>
+    <div><div class="atitle">DoxiCalc</div><div class="asub">Doxiciclina 100 mg · Adulto & Ped. ≥8 anos</div></div>
+    <button class="dbtn" onclick="toggleDark()">🌙</button>
   </div>
   <div class="pbar">
     <button class="pb on" id="btnA" onclick="setPerfil('adulto')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Adulto</button>
-    <button class="pb" id="btnP" onclick="setPerfil('ped')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M8 12v2a4 4 0 008 0v-2"/></svg>Pediátrico</button>
+    <button class="pb" id="btnP" onclick="setPerfil('ped')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M8 12v2a4 4 0 008 0v-2"/></svg>Ped. ≥8 anos / &gt;45 kg</button>
   </div>
-  <div class="apres-bar">
-    <span class="apres-lbl">Suspensão:</span>
-    <div id="apres_btns"></div>
-    <div class="tw"><button class="tbtn" onclick="toggleTip(this)">⚠️</button>
-    <div class="tbox" id="tipBox"><div style="font-size:10px;font-weight:700;color:var(--gold);margin-bottom:5px">⚠️ Advertência</div>Ferramenta educacional. Não substitui prescrição médica. Bula ANVISA.</div></div>
+  <div class="warn-bar">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>
+    <span><strong>Contraindicado &lt;8 anos</strong> — manchas dentárias permanentes e inibição do crescimento ósseo. Não usar em gestantes (3º trim.) e lactantes.</span>
+    <div class="tw"><button class="tbtn" onclick="toggleTip(this)">⚠️</button><div class="tbox" id="tipBox"><div class="ttl">⚠️ Advertência</div>Ferramenta educacional e de apoio profissional. Verificar sempre indicação, peso e posologia antes da dispensação.</div></div>
   </div>
 </header>
 <div id="toast" class="toast"></div>
-<div class="page active" id="pageCalc"><main>
+
+<div class="page active" id="pageCalc">
+<main>
+<!-- ADULTO -->
 <div id="fA">
-  <div class="card"><div class="ct" id="ctA">Adulto</div>
-    <label class="fl">Indicação</label>
-    <select id="dA" onchange="updA()"><option value="">Selecione...</option><option value="resp">Infecção respiratória — 7–14 dias</option><option value="sinusite">Sinusite bacteriana — 10 dias</option><option value="clamydia">Clamídia / uretrite — 7 dias</option><option value="sifilis">Sífilis (alérgico penicilina) — 14–28 dias</option><option value="acne">Acne inflamatória — 8–12 semanas</option><option value="pele">Infecções de pele — 7–10 dias</option><option value="lyme">Doença de Lyme — 14–21 dias</option><option value="malaria">Profilaxia malária — contínuo</option></select>
-    <div class="rh" id="rhA"></div>
+  <div class="card">
+    <div class="ct"><svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>Dados — Adulto</div>
+    <div class="foto-alert"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg><span><strong>Fotossensibilidade:</strong> evitar exposição solar durante o tratamento. Usar protetor solar. Pode causar queimaduras solares graves.</span></div>
+    <div class="food-alert"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Tomar com alimento ou leite para reduzir irritação gástrica. Não usar com antiácidos (Al, Ca, Mg) ou suplementos de ferro — reduzem absorção.</div>
+    <label class="fl">Indicação / Doença</label>
+    <select id="dA" onchange="updA()">
+      <option value="">Selecione a indicação...</option>
+      <optgroup label="Infecções respiratórias">
+        <option value="resp">Resp. — Mycoplasma, H. influenzae, Chlamydia</option>
+        <option value="sinusite">Sinusite bacteriana</option>
+      </optgroup>
+      <optgroup label="IST / Genitais">
+        <option value="clamydia_ist">Chlamydia trachomatis — uretrite/cervicite</option>
+        <option value="sifilis">Sífilis (alternativa à penicilina)</option>
+        <option value="gonorreia_d">Gonorreia não complicada</option>
+        <option value="lgv">Linfogranuloma venéreo</option>
+        <option value="cancroide">Cancroide (Haemophilus ducreyi)</option>
+        <option value="donovanose">Donovanose / Granuloma inguinal</option>
+        <option value="epididimite">Orquiepididimite aguda</option>
+      </optgroup>
+      <optgroup label="Pele e acne">
+        <option value="acne">Acne vulgar (tratamento e manutenção)</option>
+        <option value="pele">Infecção de pele / tecidos moles</option>
+      </optgroup>
+      <optgroup label="Zoonoses e febres">
+        <option value="riquetsia">Rickettsia / febre das Montanhas Rochosas</option>
+        <option value="lyme">Doença de Lyme</option>
+        <option value="brucelose">Brucelose</option>
+        <option value="malaria_prop">Malária — profilaxia</option>
+        <option value="malaria_trat">Malária — tratamento (associado)</option>
+        <option value="antraz_d">Antraz — pós-exposição (60 dias)</option>
+      </optgroup>
+      <optgroup label="Outras">
+        <option value="itu_d">ITU não complicada</option>
+        <option value="tracoma">Tracoma / conjuntivite de inclusão</option>
+        <option value="colera">Cólera</option>
+        <option value="perio">Periodontite (adjuvante)</option>
+      </optgroup>
+    </select>
+    <div id="rwA" style="display:none">
+      <label class="fl">Regime posológico</label>
+      <select id="regA" onchange="calcA()"></select>
+      <div class="rh" id="rhA"></div>
+    </div>
   </div>
   <div class="rcrd" id="resA">
     <div class="rhead"><div class="rico"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div><div><div class="rdnc" id="rdA">—</div><div class="rrgm" id="rrA">—</div></div></div>
+    <!-- Esquema D1 → D2+ -->
+    <div class="esquema-box" id="esqA" style="display:none">
+      <div class="esquema-title">📅 Esquema de doses</div>
+      <div class="esq-row" id="esqRowA"></div>
+    </div>
     <div class="dgrid" id="dgA"></div>
     <div class="fbox" id="fbA" style="display:none"><div class="fttl">📐 Posologia</div><div id="flA"></div></div>
     <div class="acoes">
-      <button class="ba" onclick="cp(txtA)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copiar</button>
-      <button class="ba" onclick="wa(txtA)"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.118 1.524 5.845L0 24l6.324-1.501A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.882a9.875 9.875 0 01-5.022-1.368l-.361-.214-3.741.981.999-3.648-.235-.374A9.859 9.859 0 012.118 12C2.118 6.533 6.533 2.118 12 2.118c5.467 0 9.882 4.415 9.882 9.882 0 5.467-4.415 9.882-9.882 9.882z"/></svg>WhatsApp</button>
-      <button class="ba" onclick="pr('DoxiCalc',txtA)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>Imprimir</button>
+      <button class="ba" onclick="cp('adulto')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copiar</button>
+      <button class="ba" onclick="wa('adulto')"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.118 1.524 5.845L0 24l6.324-1.501A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.882a9.875 9.875 0 01-5.022-1.368l-.361-.214-3.741.981.999-3.648-.235-.374A9.859 9.859 0 012.118 12C2.118 6.533 6.533 2.118 12 2.118c5.467 0 9.882 4.415 9.882 9.882 0 5.467-4.415 9.882-9.882 9.882z"/></svg>WhatsApp</button>
+      <button class="ba" onclick="pr('adulto')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>Imprimir</button>
     </div>
     <div id="alA"></div>
+    <div id="durA" class="dur-badge" style="display:none"></div>
   </div>
-  <div id="emA"><div class="empty-state"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg><p>Selecione a indicação</p></div></div>
+  <div id="emA">
+    <div class="empty-state"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg><p>Selecione a indicação<br>para ver a posologia</p></div></div>
 </div>
+
+<!-- PED ≥8 anos / >45 kg -->
 <div id="fP" style="display:none">
-  <div class="card"><div class="ct">Pediátrico — Suspensão oral</div>
-    <div class="al ai" style="margin-bottom:12px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg>Concentração: <strong id="cncLbl">—</strong></div>
+  <div class="card">
+    <div class="ct"><svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>Pediátrico — ≥8 anos</div>
+    <div class="foto-alert"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg><span><strong>≥8 anos obrigatório.</strong> Acima de 45 kg → dose de adulto. Fotossensibilidade: protetor solar. Não tomar com antiácidos.</span></div>
     <label class="fl">Indicação</label>
-    <select id="dP" onchange="updP()"><option value="">Selecione...</option></select>
-    <div class="rh" id="rhP"></div>
-    <label class="fl">Peso (kg)</label>
-    <input type="number" id="peso" placeholder="Ex: 15" min="3" max="60" step="0.1" oninput="calcP()">
+    <select id="dP" onchange="updP()">
+      <option value="">Selecione...</option>
+      <option value="p_std">Infecção geral — dose padrão</option>
+      <option value="p_grave">Infecção grave — dose dobrada D1→manutenção</option>
+      <option value="p_antraz">Antraz pós-exposição (60 dias)</option>
+    </select>
+    <div id="rwP" style="display:none">
+      <label class="fl">Regime</label>
+      <select id="regP" onchange="calcP()"></select>
+      <div class="rh" id="rhP"></div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:11px">
+      <div><label class="fl">Peso (kg)</label><input type="number" id="peso" placeholder="Ex: 30" min="8" max="60" step="0.5" oninput="calcP()"></div>
+      <div><label class="fl">Idade (anos)</label><input type="number" id="idade" placeholder="Ex: 10" min="8" max="17" step="1" oninput="calcP()"></div>
+    </div>
   </div>
   <div class="rcrd" id="resP">
     <div class="rhead"><div class="rico"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div><div><div class="rdnc" id="rdP">—</div><div class="rrgm" id="rrP">—</div></div></div>
+    <div class="esquema-box" id="esqP" style="display:none"><div class="esquema-title">📅 Esquema</div><div class="esq-row" id="esqRowP"></div></div>
     <div class="dgrid" id="dgP"></div>
-    <div class="fbox" id="fbP" style="display:none"><div class="fttl">📐 Posologia</div><div id="flP"></div></div>
+    <div class="fbox" id="fbP" style="display:none"><div class="fttl">📐 Cálculo</div><div id="flP"></div></div>
     <div class="acoes">
-      <button class="ba" onclick="cp(txtP)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copiar</button>
-      <button class="ba" onclick="wa(txtP)"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.118 1.524 5.845L0 24l6.324-1.501A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.882a9.875 9.875 0 01-5.022-1.368l-.361-.214-3.741.981.999-3.648-.235-.374A9.859 9.859 0 012.118 12C2.118 6.533 6.533 2.118 12 2.118c5.467 0 9.882 4.415 9.882 9.882 0 5.467-4.415 9.882-9.882 9.882z"/></svg>WhatsApp</button>
-      <button class="ba" onclick="pr('DoxiCalc',txtP)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>Imprimir</button>
+      <button class="ba" onclick="cp('ped')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copiar</button>
+      <button class="ba" onclick="wa('ped')"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.118 1.524 5.845L0 24l6.324-1.501A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.882a9.875 9.875 0 01-5.022-1.368l-.361-.214-3.741.981.999-3.648-.235-.374A9.859 9.859 0 012.118 12C2.118 6.533 6.533 2.118 12 2.118c5.467 0 9.882 4.415 9.882 9.882 0 5.467-4.415 9.882-9.882 9.882z"/></svg>WhatsApp</button>
+      <button class="ba" onclick="pr('ped')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>Imprimir</button>
     </div>
     <div id="alP"></div>
+    <div id="durP" class="dur-badge" style="display:none"></div>
   </div>
-  <div id="emP"><div class="empty-state"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg><p>Informe o peso e a indicação</p></div></div>
+  <div id="emP"><div class="empty-state"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg><p>Informe o peso (≥8 anos)<br>para calcular a dosagem</p></div></div>
 </div>
-<div class="card"><div class="ct">Indicações — Bula ANVISA</div><ul class="il"><li><span class="idot" style="background:#1549A0"></span>Infecções respiratórias<span class="ict">Resp.</span></li><li><span class="idot" style="background:#B91C1C"></span>Clamídia / sífilis / IST<span class="ict">IST</span></li><li><span class="idot" style="background:#7C3AED"></span>Acne inflamatória<span class="ict">Derm.</span></li><li><span class="idot" style="background:#C9A84C"></span>Profilaxia malária<span class="ict">Profilaxia</span></li><li><span class="idot" style="background:#1A7F5A"></span>Doença de Lyme<span class="ict">Sistêmico</span></li></ul></div>
-</main></div>
-<div class="page" id="pageHist"><main><div class="card"><div class="ct" style="justify-content:space-between;display:flex"><span>Histórico</span><button onclick="limH()" style="background:none;border:none;font-size:11px;color:var(--red);cursor:pointer;font-family:var(--font)">Limpar</button></div><div id="histLista"><div class="hvz">Nenhum cálculo ainda.</div></div></div></main></div>
+
+<!-- INDICAÇÕES -->
+<div class="card">
+  <div class="ct">Indicações da Doxiciclina</div>
+  <ul class="il">
+    <li><span class="idot" style="background:#1A7F5A"></span>Resp. — Mycoplasma, Chlamydia, Legionella<span class="ict">Resp.</span></li>
+    <li><span class="idot" style="background:#B91C1C"></span>IST — Chlamydia, sífilis, gonorreia<span class="ict">IST</span></li>
+    <li><span class="idot" style="background:#7C3AED"></span>Acne vulgar (tratamento e manutenção)<span class="ict">Pele</span></li>
+    <li><span class="idot" style="background:#C9A84C"></span>Riquetsia / Lyme / brucelose<span class="ict">Zoonose</span></li>
+    <li><span class="idot" style="background:#0F6E56"></span>Malária — profilaxia e tratamento<span class="ict">Parasitária</span></li>
+    <li><span class="idot" style="background:#1549A0"></span>Antraz pós-exposição (60 dias)<span class="ict">Bioterrorismo</span></li>
+  </ul>
+  <div class="al ad" style="margin-top:11px">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>
+    <strong>Contraindicado &lt;8 anos, gestação e lactação.</strong> Tetraciclinias de amplo espectro. Administrar com alimento ou leite. Evitar antiácidos e ferro. Fotossensibilidade — protetor solar obrigatório. Bula ANVISA (Sandoz / Pharlab / Teuto).
+  </div>
+</div>
+</main>
+</div>
+
+<div class="page" id="pageHist"><main><div class="card"><div class="ct" style="justify-content:space-between"><span>Histórico</span><button onclick="limH()" style="background:none;border:none;font-size:11px;color:var(--red);cursor:pointer;font-family:var(--font)">Limpar</button></div><div id="histLista"><div class="hvz">Nenhum cálculo ainda.</div></div></div></main></div>
 <div class="page" id="pageInfo"><main>
-  <div class="card"><div class="ct">⚖️ Aviso Legal</div><p style="font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:10px">Ferramenta educacional. Contraindicado &lt;8 anos e gestantes. Tomar com água, não deitar 30min. Não substitui prescrição médica. Bula ANVISA.</p></div>
-  <div class="card"><div class="ct">📋 Sobre</div><p style="font-size:13px;color:var(--text2);line-height:1.7">DoxiCalc v2.0 · GUIADOSE SAFE RELEASE® · Doxiciclina · Caps. 100mg · Bula ANVISA 2024.</p></div>
+  <div class="card"><div class="ct">⚖️ Aviso Legal</div><p style="font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:10px">Ferramenta de <strong>apoio farmacêutico educacional</strong>. Baseada na bula ANVISA (Sandoz / Pharlab / Teuto). <strong>Não substitui prescrição médica.</strong></p><div class="al ad"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>Contraindicado &lt;8 anos — manchas dentárias permanentes. Contraindicado em gestantes e lactantes. Fotossensibilidade — protetor solar. Não associar com antiácidos, ferro, bismuto ou penicilina.</div></div>
+  <div class="card"><div class="ct">📋 Sobre o DoxiCalc</div><p style="font-size:13px;color:var(--text2);line-height:1.7">Versão 1.0 · Módulo GUIADOSE. Tetraciclina de 2ª geração. Comprimido 100 mg. Adulto e pediátrico ≥8 anos. Esquema D1 200mg → D2+ 100mg por dia. Bula ANVISA.</p></div>
 </main></div>
-<div class="dev-footer"><div class="dav">RA</div><div><div class="dnm">Rubiney Alves</div><div class="dcg">Farmácia Clínica · Gestão Comercial · Tecnologia em Saúde</div></div><a href="https://rubiney-alves.vercel.app" target="_blank" class="port-btn">Portfólio <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
-<div class="fav"><svg viewBox="0 0 24 24"><path d="M12 9v4m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>GUIADOSE · Posologia baseada em evidências · Bula ANVISA. Não substitui prescrição médica.</div>
+
+<div class="dev-footer"><div class="dav">RA</div><div><div class="dnm">Rubiney Alves</div><div class="dcg">Farmácia Clínica · Gestão Comercial · Tecnologia em Saúde</div></div><a href="https://rubiney-alves.vercel.app" target="_blank" class="dlk">portfólio →</a></div>
+<div class="fav"><svg viewBox="0 0 24 24"><path d="M12 9v4m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>GUIADOSE · Posologia baseada em evidências · Apoio farmacêutico. Bula ANVISA Sandoz/Pharlab. Não substitui prescrição médica.</div>
 <nav class="tab-nav">
   <button class="tb on" onclick="irP('pageCalc',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M9 12H3m18 0h-6M12 9V3m0 18v-6"/></svg>Calcular</button>
   <button class="tb" onclick="irP('pageHist',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Histórico</button>
   <button class="tb" onclick="irP('pageInfo',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg>Sobre</button>
 </nav>
+
 <script>
-let perfil='adulto',txtA='',txtP='';
+let perfil='adulto', txtA='', txtP='';
 let hist=JSON.parse(localStorage.getItem('doxi_hist')||'[]');
-let concAtual=100;
-const cfgA={
-  resp:   {l:'Infecção respiratória',mg:100,freq:2,int:'12/12h',dur:'7–14 dias'},
-  sinusite:{l:'Sinusite bacteriana',mg:100,freq:2,int:'12/12h',dur:'10 dias'},
-  clamydia:{l:'Clamídia / uretrite',mg:100,freq:2,int:'12/12h',dur:'7 dias'},
-  sifilis: {l:'Sífilis (alérgico penicilina)',mg:100,freq:2,int:'12/12h',dur:'14–28 dias'},
-  acne:   {l:'Acne inflamatória',mg:100,freq:1,int:'1× ao dia',dur:'8–12 semanas'},
-  pele:   {l:'Infecções de pele',mg:100,freq:2,int:'12/12h',dur:'7–10 dias'},
-  lyme:   {l:'Doença de Lyme',mg:100,freq:2,int:'12/12h',dur:'14–21 dias'},
-  malaria:{l:'Profilaxia malária',mg:100,freq:1,int:'1× ao dia',dur:'contínuo'},
+
+// ── CONFIGS ADULTO ──
+// Padrão: D1=200mg (2×100mg ou dose única), D2+=100mg/dia
+const cfgA = {
+  resp:        {l:'Resp. — Mycoplasma/Chlamydia/H.influenzae',r:[{id:'std',l:'D1: 200mg → D2+: 100mg/dia — 7–14 dias',h:'Dia 1: 200mg (único ou 2×100mg). Seguido de 100mg/dia por 7 a 14 dias.',t:'Padrão ANVISA'}]},
+  sinusite:    {l:'Sinusite bacteriana',r:[{id:'std',l:'D1: 200mg → D2+: 100mg/dia — 10 dias',h:'Dia 1: 200mg. Seguido de 100mg/dia. Bula ANVISA.',t:'Padrão ANVISA'}]},
+  clamydia_ist:{l:'Chlamydia trachomatis — uretrite/cervicite',r:[{id:'100_12h_7d',l:'100 mg — 2× ao dia (12/12h) — 7 dias',h:'100 mg de 12 em 12 horas por 7 dias. Para uretrite, cervicite e infecções retais por Chlamydia.',t:'100mg 12/12h 7d'}]},
+  sifilis:     {l:'Sífilis (alternativa à penicilina)',r:[{id:'100_12h_14d',l:'100 mg — 2× ao dia — 14 dias (primária/secundária)',h:'100 mg de 12 em 12 horas por 14 dias para sífilis primária e secundária. Sífilis latente tardia: 28 dias.',t:'Sífilis 14–28d'},{id:'100_12h_28d',l:'100 mg — 2× ao dia — 28 dias (latente tardia)',h:'Sífilis latente tardia: 100 mg de 12 em 12 horas por 28 dias.',t:'Sífilis latente 28d'}]},
+  gonorreia_d: {l:'Gonorreia não complicada',r:[{id:'std_5d',l:'D1: 200mg → D2+: 100mg/dia — 5–7 dias',h:'Dia 1: 200mg. Seguido de 100mg/dia por 5 a 7 dias.',t:'Gonorreia'}]},
+  lgv:         {l:'Linfogranuloma venéreo',r:[{id:'100_12h_21d',l:'100 mg — 2× ao dia — 21 dias',h:'100 mg de 12 em 12 horas por 21 dias.',t:'LGV 21 dias'}]},
+  cancroide:   {l:'Cancroide',r:[{id:'std_3d',l:'D1: 200mg → D2+: 100mg/dia — 3 dias',h:'Dias 1: 200mg. D2+: 100mg/dia por 3 dias.',t:'Cancroide 3d'}]},
+  donovanose:  {l:'Donovanose / Granuloma inguinal',r:[{id:'100_12h_21d',l:'100 mg — 2× ao dia — 21 dias (mín.)',h:'100 mg de 12 em 12 horas por mínimo 21 dias até cicatrização completa.',t:'Donovanose ≥21d'}]},
+  epididimite: {l:'Orquiepididimite aguda',r:[{id:'100_12h_10d',l:'100 mg — 2× ao dia — 10 dias',h:'100 mg de 12 em 12 horas por 10 dias. Para Chlamydia / Neisseria gonorrhoeae.',t:'Epididimite 10d'}]},
+  acne:        {l:'Acne vulgar',r:[{id:'100_1x_ac',l:'100 mg — 1× ao dia — 8–12 semanas',h:'100 mg ao dia por 8 a 12 semanas. Manutenção: 50 mg/dia (½ comp. ou comprimido 50mg).',t:'Acne 8–12sem'},{id:'50_1x_ac',l:'50 mg — 1× ao dia — manutenção',h:'Manutenção de acne: 50 mg ao dia (½ comp. de 100mg).',t:'Acne manutenção 50mg'}]},
+  pele:        {l:'Infecção de pele / tecidos moles',r:[{id:'std',l:'D1: 200mg → D2+: 100mg/dia — 7–10 dias',h:'200mg no D1, seguido de 100mg/dia. Pioderma, erisipela, infecção por Staphylococcus.',t:'Pele ANVISA'}]},
+  riquetsia:   {l:'Rickettsia / Febre das Montanhas Rochosas',r:[{id:'std_5d',l:'D1: 200mg → D2+: 100mg/dia — 5–10 dias',h:'200mg D1, seguido de 100mg/dia por 5 a 10 dias ou até 3 dias após febre cessar.',t:'Rickettsia'}]},
+  lyme:        {l:'Doença de Lyme',r:[{id:'100_12h_14_21d',l:'100 mg — 2× ao dia — 14–21 dias',h:'100 mg de 12 em 12 horas por 14 a 21 dias para doença de Lyme precoce.',t:'Lyme 14–21d'}]},
+  brucelose:   {l:'Brucelose',r:[{id:'100_12h_6s',l:'100 mg — 2× ao dia — 6 semanas + rifampicina',h:'100 mg de 12 em 12 horas por 6 semanas, associado a rifampicina 600–900mg/dia.',t:'Brucelose 6sem'}]},
+  malaria_prop:{l:'Malária — profilaxia',r:[{id:'100_1x_malp',l:'100 mg — 1× ao dia (começar 1–2d antes)',h:'100 mg ao dia. Iniciar 1–2 dias antes da exposição, continuar durante estadia e por 4 semanas após.',t:'Profilaxia malária'}]},
+  malaria_trat:{l:'Malária — tratamento (adjuvante)',r:[{id:'100_12h_7d_mal',l:'100 mg — 2× ao dia — 7 dias (+ quinina)',h:'100 mg de 12 em 12 horas por 7 dias associado à quinina. Não usar em monoterapia para malária.',t:'Malária + quinina'}]},
+  antraz_d:    {l:'Antraz pós-exposição',r:[{id:'100_12h_60d',l:'100 mg — 2× ao dia — 60 dias',h:'100 mg de 12 em 12 horas por 60 dias após exposição ao Bacillus anthracis aerossolizado.',t:'Antraz 60 dias'}]},
+  itu_d:       {l:'ITU não complicada',r:[{id:'std_7d',l:'D1: 200mg → D2+: 100mg/dia — 7 dias',h:'Dia 1: 200mg. Seguido de 100mg/dia por 7 dias.',t:'ITU ANVISA'}]},
+  tracoma:     {l:'Tracoma / conjuntivite de inclusão',r:[{id:'std_3s',l:'D1: 200mg → D2+: 100mg/dia — 3 semanas',h:'200mg D1, seguido de 100mg/dia por 3 semanas. Pode ser associado com agente tópico.',t:'Tracoma 3sem'}]},
+  colera:      {l:'Cólera',r:[{id:'300_unico',l:'300 mg — dose única',h:'Dose única de 300 mg (3 comprimidos de 100mg) para cólera. Associar sempre à reposição hídrica.',t:'Cólera dose única'}]},
+  perio:       {l:'Periodontite (adjuvante)',r:[{id:'100_1x_per',l:'100 mg — 1× ao dia — 2–4 semanas',h:'100 mg ao dia como adjuvante à raspagem periodontal. Duração conforme avaliação do dentista.',t:'Periodontite adj.'}]}
 };
-const cfgP={};
-function hor(i){if(i==='8/8h')return '7h · 15h · 23h';if(i==='12/12h')return '7h · 19h';if(i==='6/6h')return '6h · 12h · 18h · 0h';if(i==='única'||i==='dose única')return 'dose única';return '1× ao dia';}
-function setConc(c){concAtual=c;}
-function mk(l,v,u,full){return `<div class="di${full?' full':''}"><div class="dil">${l}</div><div class="div">${v}<span class="diu">${u}</span></div></div>`;}
-function showR(id,dnc,rgm,grid,fArr,al){
-  document.getElementById('rd'+id).textContent=dnc;
-  document.getElementById('rr'+id).textContent=rgm;
+
+const cfgP = {
+  p_std:   {l:'Infecção geral',r:[{id:'22_d1_11',l:'4,4 mg/kg D1 → 2,2 mg/kg D2+ (1×/dia)',h:'Dia 1: 4,4 mg/kg (máx. 200mg). D2+: 2,2 mg/kg/dia (máx. 100mg). >45kg: dose adulto.',t:'Padrão ANVISA ped.'}]},
+  p_grave: {l:'Infecção grave',r:[{id:'44_d1_44',l:'4,4 mg/kg/dia em D1 e D2+ (2× ao dia)',h:'Infecção grave: 4,4 mg/kg/dia (máx. 200mg/dia) durante todo o tratamento, dividido 12/12h.',t:'Dose grave manutenção'}]},
+  p_antraz:{l:'Antraz pós-exposição',r:[{id:'p_antraz_r',l:'2,2 mg/kg — 2× ao dia (12/12h) — 60 dias',h:'2,2 mg/kg de 12 em 12 horas por 60 dias. Máx: 100mg/dose. >45kg: 100mg 12/12h.',t:'Antraz 60d ped.'}]}
+};
+
+function mk(l,v,u,g,full){return `<div class="di${full?' full':''}"><div class="dil">${l}</div><div class="div${g?' g':''}">${v}<span class="diu">${u}</span></div></div>`;}
+function esqBox(id,d1,d2,dur){
+  const row=document.getElementById('esqRow'+id);
+  row.innerHTML=`<div class="esq-day dest"><div class="esq-label">Dia 1</div><div class="esq-val">${d1}<span class="esq-unit">mg</span></div></div><div class="esq-day"><div class="esq-label">D2+ por dia</div><div class="esq-val">${d2}<span class="esq-unit">mg</span></div></div><div class="esq-day"><div class="esq-label">Duração total</div><div class="esq-val" style="font-size:13px;padding-top:2px">${dur}</div></div>`;
+  document.getElementById('esq'+id).style.display='block';
+}
+function hideEsq(id){document.getElementById('esq'+id).style.display='none';}
+function showR(id,d,r,grid,fArr,alertas){
+  document.getElementById('rd'+id).textContent=d; document.getElementById('rr'+id).textContent=r;
   document.getElementById('dg'+id).innerHTML=grid;
   const fb=document.getElementById('fb'+id),fl=document.getElementById('fl'+id);
-  if(fArr&&fArr.length){fl.innerHTML=fArr.map(l=>`<div class="fln">${l}</div>`).join('');fb.style.display='block';}
-  else fb.style.display='none';
-  document.getElementById('al'+id).innerHTML=al||'';
-  document.getElementById('res'+id).classList.add('vis');
-  document.getElementById('em'+id).style.display='none';
+  if(fArr&&fArr.length){const _dId=document.getElementById('dA')?.value||document.getElementById('doenca')?.value||''; const _dDur=_durMap[_dId]||''; if(_dDur&&!fArr.some(f=>f.includes('Duração')))fArr.push('⏱ Duração: <strong>'+_dDur+'</strong>'); const _dIdX=document.getElementById('dA')?.value||document.getElementById('doenca')?.value||document.getElementById('dP')?.value||'';
+  const _rHint=document.getElementById('rhA')?.textContent||document.getElementById('regHint')?.textContent||document.getElementById('regimeHintAdulto')?.textContent||'';
+  const _dh=getDurHorarios(_dIdX,_rHint);
+  if(_dh.dur&&!fArr.some(f=>f.includes('Duração')))fArr.push('⏱ Duração: <strong>'+_dh.dur+'</strong>');
+  if(_dh.hor&&_dh.hor!=='conforme prescrição'&&!fArr.some(f=>f.includes('Horário')))fArr.push('🕐 Horários: <strong>'+_dh.hor+'</strong>');
+  fl.innerHTML=fArr.map(l=>`<div class="fln">${l}</div>`).join('');fb.style.display='block';}else fb.style.display='none';
+  document.getElementById('al'+id).innerHTML=alertas||'';
+  document.getElementById('res'+id).classList.add('vis'); document.getElementById('em'+id).style.display='none';
 }
-function hideR(id){document.getElementById('res'+id).classList.remove('vis');document.getElementById('em'+id).style.display='block';}
-function updA(){
-  const d=document.getElementById('dA').value,rh=document.getElementById('rhA');
-  hideR('A');txtA='';
-  if(!d){rh.classList.remove('vis');return;}
-  const c=cfgA[d],mgDia=c.mg*c.freq;
-  rh.textContent=c.l+' · '+c.mg+'mg de '+c.int+' · '+c.dur+' · Bula ANVISA';rh.classList.add('vis');
-  const grid=mk('Dose',c.mg,'mg')+mk('Freq.',c.freq+'×','ao dia')+mk('Intervalo',c.int,'')+mk('Duração',c.dur,'');
-  const fArr=[
-    `Dose: <strong>${c.mg} mg</strong> de ${c.int}`,
-    `Total diário: <strong>${mgDia} mg/dia</strong>`,
-    `⏱ Duração: <strong>${c.dur}</strong>`,
-    `🕐 Horários: <strong>${hor(c.int)}</strong>`,
-  ];
-  showR('A',c.l,c.int+' · '+c.dur+' · ANVISA',grid,fArr,'');
-  txtA=`DoxiCalc — ${c.l}\n${c.mg}mg de ${c.int} · ${c.dur}\nTotal: ${mgDia}mg/dia\nHorários: ${hor(c.int)}\n\nNão substitui prescrição médica.`;
-  salvarH(c.l,c.dur,c.mg+'mg '+c.int);
+function hideR(id){hideEsq(id);document.getElementById('res'+id).classList.remove('vis');document.getElementById('em'+id).style.display='block';}
+function setPerfil(p){
+  perfil=p; document.getElementById('btnA').classList.toggle('on',p==='adulto'); document.getElementById('btnP').classList.toggle('on',p==='ped');
+  document.getElementById('fA').style.display=p==='adulto'?'block':'none'; document.getElementById('fP').style.display=p==='ped'?'block':'none';
 }
-function updP(){
-  const rh=document.getElementById('rhP');
-  rh.textContent=document.getElementById('dP').selectedOptions[0]?.text||'';
-  rh.classList.add('vis');rh.style.display='block';calcP();
-}
-function calcP(){
-  const d=document.getElementById('dP').value,peso=parseFloat(document.getElementById('peso').value);
-  hideR('P');txtP='';
-  if(!d||isNaN(peso)||peso<=0)return;
-  if(peso<3){showR('P','Peso insuficiente','—',mk('Peso',peso,'kg',true),null,'<div class="al ad"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4m0 4h.01"/></svg>Peso abaixo de 3 kg. Consulte o pediatra.</div>');return;}
-  if(peso>=40){showR('P','≥40kg — usar dose adulta','—',mk('Peso',peso,'kg',true),null,'<div class="al ai"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg>Peso ≥40 kg: selecione o perfil Adulto.</div>');return;}
-  const c=cfgP[d],C=concAtual/5;
-  const mgDose=parseFloat(Math.min(peso*(c.mgKgDia/c.freq),c.max).toFixed(1));
-  const ml=parseFloat((mgDose/C).toFixed(2));
-  const mgDia=parseFloat((mgDose*c.freq).toFixed(1));
-  const grid=mk('Dose/tomada',mgDose,'mg')+mk('Volume',ml,'mL/dose')+mk('Freq.',c.freq+'×','ao dia')+mk('Duração',c.dur,'');
-  const fArr=[
-    `Peso: <strong>${peso} kg</strong>`,
-    `${c.mgKgDia}mg/kg/dia ÷ ${c.freq}× = ${(c.mgKgDia/c.freq).toFixed(1)}mg/kg/dose`,
-    `${(c.mgKgDia/c.freq).toFixed(1)} × ${peso} = <strong>${mgDose} mg/dose</strong> (máx ${c.max}mg)`,
-    `${mgDose} ÷ ${C} mg/mL = <strong>${ml} mL/dose</strong>`,
-    `Concentração: <strong>${concAtual}mg/5mL</strong>`,
-    `⏱ Duração: <strong>${c.dur}</strong>`,
-    `🕐 Horários: <strong>${hor(c.int)}</strong>`,
-  ];
-  showR('P',c.l,c.int+' · '+c.dur+' · ANVISA',grid,fArr,'');
-  txtP=`DoxiCalc — ${c.l}\nPeso:${peso}kg · ${concAtual}mg/5mL\n${ml}mL de ${c.int} · ${c.dur}\nHorários: ${hor(c.int)}\n\nNão substitui prescrição médica.`;
-  salvarH(c.l,c.dur,ml+'mL '+c.int);
-}
-function setPerfil(p){perfil=p;document.getElementById('btnA').classList.toggle('on',p==='adulto');document.getElementById('btnP').classList.toggle('on',p==='ped');document.getElementById('fA').style.display=p==='adulto'?'block':'none';document.getElementById('fP').style.display=p==='ped'?'block':'none';}
+function toggleDark(){const d=document.documentElement;const isDark=d.getAttribute('data-theme')==='dark';isDark?d.removeAttribute('data-theme'):d.setAttribute('data-theme','dark');localStorage.setItem('guia_theme',isDark?'light':'dark');}(function(){if(localStorage.getItem('guia_theme')==='dark')document.documentElement.setAttribute('data-theme','dark');})()
+function toggleTip(btn){const b=document.getElementById('tipBox');b.classList.toggle('vis');btn.classList.toggle('on');if(b.classList.contains('vis')){document.addEventListener('click',function c(e){if(!e.target.closest('.tw')){b.classList.remove('vis');btn.classList.remove('on');document.removeEventListener('click',c);}});}}
 function irP(p,btn){document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.tb').forEach(b=>b.classList.remove('on'));document.getElementById(p).classList.add('active');btn.classList.add('on');if(p==='pageHist')renderH();}
 function showToast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2000);}
-function cp(txt){if(!txt)return;navigator.clipboard.writeText(txt).then(()=>showToast('✓ Copiado!')).catch(()=>showToast('Use WhatsApp'));}
-function wa(txt){if(!txt)return;window.open('https://wa.me/?text='+encodeURIComponent(txt),'_blank');}
-function pr(titulo,txt){if(!txt)return;const w=window.open('','_blank');w.document.write(`<html><head><title>${titulo}</title><style>body{font-family:Arial,sans-serif;padding:20px;max-width:400px}h2{color:#0F3460}pre{background:#f5f5f5;padding:12px;border-radius:8px;white-space:pre-wrap;font-size:13px}footer{margin-top:18px;font-size:10px;color:#888}</style></head><body><h2>${titulo} — GUIADOSE</h2><pre>${txt}</pre><footer>Rubiney Alves · guiadose.vercel.app · Não substitui prescrição médica</footer></body></html>`);w.document.close();w.print();}
-function toggleDark(){const d=document.documentElement;d.getAttribute('data-theme')==='dark'?d.removeAttribute('data-theme'):d.setAttribute('data-theme','dark');}
-function toggleTip(btn){const b=document.getElementById('tipBox');b.classList.toggle('vis');if(b.classList.contains('vis')){document.addEventListener('click',function c(e){if(!e.target.closest('.tw')){b.classList.remove('vis');document.removeEventListener('click',c);}});}}
+function cp(p){const t=p==='adulto'?txtA:txtP;if(!t)return;navigator.clipboard.writeText(t).then(()=>showToast('✓ Copiado!')).catch(()=>showToast('Use WhatsApp'));}
+function wa(p){const t=p==='adulto'?txtA:txtP;if(!t)return;window.open('https://wa.me/?text='+encodeURIComponent(t),'_blank');}
+function pr(p){const t=p==='adulto'?txtA:txtP;if(!t)return;const w=window.open('','_blank');w.document.write(`<html><head><title>DoxiCalc</title><style>body{font-family:Arial,sans-serif;padding:20px;max-width:400px}h2{color:#0F3460}pre{background:#f5f5f5;padding:12px;border-radius:8px;white-space:pre-wrap;font-size:13px}footer{margin-top:18px;font-size:10px;color:#888}</style>
+<meta property="og:type" content="website">
+<meta property="og:title" content="DoxiCalc — Doxiciclina 100mg">
+<meta property="og:description" content="Calculadora Doxiciclina 100mg — Adulto e Pediátrico ≥8 anos — GUIADOSE">
+<meta property="og:url" content="https://guiadose.vercel.app/">
+<meta property="og:image" content="https://guiadose.vercel.app/icons/icon-512.png">
+</head><body><h2>DoxiCalc — Doxiciclina</h2><pre>${t}</pre><footer>Desenvolvido por Rubiney Alves · Farmácia Clínica · Gestão Comercial · Tecnologia em Saúde<br>Não substitui prescrição médica · Bula ANVISA</footer></body></html>`);w.document.close();w.print();}
 function salvarH(d,r,det){hist.unshift({d,r,det,hora:new Date().toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'})});if(hist.length>20)hist=hist.slice(0,20);localStorage.setItem('doxi_hist',JSON.stringify(hist));}
 function renderH(){const el=document.getElementById('histLista');if(!hist.length){el.innerHTML='<div class="hvz">Nenhum cálculo ainda.</div>';return;}el.innerHTML=hist.map(h=>`<div class="hi"><div class="hit"><span class="hn">${h.d}</span><span class="hhr">${h.hora}</span></div><div class="hd">${h.r} · ${h.det}</div></div>`).join('');}
 function limH(){hist=[];localStorage.removeItem('doxi_hist');renderH();}
+
+const FOTO=`<div class="al ao"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4m0 4h.01"/></svg>Fotossensibilidade — usar protetor solar durante todo o tratamento. Evitar exposição solar intensa.</div>`;
+const INTER=`<div class="al ai"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg>Não associar com antiácidos (Al, Ca, Mg), ferro, bismuto. Intervalo mínimo de 2–3h entre esses produtos e a doxiciclina.</div>`;
+
+function updA(){
+  const d=document.getElementById('dA').value,rw=document.getElementById('rwA'),rs=document.getElementById('regA');
+  hideR('A');txtA='';
+  if(!d){rw.style.display='none';return;}
+  rs.innerHTML='<option value="">Selecione...</option>'+cfgA[d].r.map(r=>`<option value="${r.id}">${r.l}</option>`).join('');
+  rw.style.display='block';document.getElementById('rhA').classList.remove('vis');calcA();
+}
+function calcA(){
+  const d=document.getElementById('dA').value,reg=document.getElementById('regA').value,rh=document.getElementById('rhA');
+  if(!d||!reg){hideR('A');return;}
+  const cfg=cfgA[d],ro=cfg.r.find(r=>r.id===reg);
+  rh.textContent=ro.h;rh.classList.add('vis');
+
+  // Extrai duração do label
+  const durMatch=ro.l.match(/(\d+[^—]*(?:dias?|dias?|sem\.|semanas?|meses?|dias?))/i);
+  const dur=durMatch?durMatch[0]:ro.t;
+
+  // Regimes com esquema D1→D2+ (dose de ataque)
+  const isStd=reg==='std'||reg==='std_5d'||reg==='std_3d'||reg==='std_7d'||reg==='std_3s';
+  if(isStd){
+    hideEsq('A');
+    esqBox('A',200,100,dur);
+    const grid=mk('Dia 1',200,'mg (2 comp.)',false,false)+mk('D2+ por dia',100,'mg (1 comp.)',true,false)+mk('Duração',dur,'',false,false)+mk('Comp. 100mg','2→1','comp./dia',false,false);
+    const fArr=[`D1: <strong>200 mg</strong> (2 comp. 100mg ou 1×/dia dose única)`,`D2+ em diante: <strong>100 mg/dia</strong> (1 comp. ou 2×50mg)`,`Duração: ${dur}`,`Tomar com alimento ou leite · Protetor solar`];
+    showR('A',cfg.l,ro.t+' · ANVISA',grid,fArr,FOTO+INTER);
+    txtA=`DoxiCalc — ${cfg.l}\nD1: 200mg · D2+: 100mg/dia · ${dur}\n\nTomar com alimento. Fotossensibilidade.\nNão substitui prescrição médica.`;
+    salvarH(cfg.l,ro.t,`D1:200mg → 100mg/dia`);
+    const _doA1=document.getElementById('dA')?.value||''; mostrarDuracao(_doA1,'durA'); return;
+  }
+  // Dose única cólera
+  if(reg==='300_unico'){
+    hideEsq('A');
+    const grid=mk('Dose única',300,'mg',false,false)+mk('Comprimidos',3,'comp. 100mg',true,false)+mk('Administração','1','vez',false,false)+mk('Obs.','Rehidratação','obrigatória',false,false);
+    showR('A',cfg.l,ro.t,grid,[`Dose única: <strong>300 mg</strong> (3 comp. 100mg)`,`Associar SEMPRE à reposição hídrica e eletrolítica`],FOTO+INTER);
+    txtA=`DoxiCalc — Cólera\nDose única: 300mg (3 comp.)\n\nFotossensibilidade. Não substitui prescrição médica.`;
+    salvarH(cfg.l,ro.t,'300mg dose única');
+    const _doA2=document.getElementById('dA')?.value||''; mostrarDuracao(_doA2,'durA'); return;
+  }
+  // Demais regimes 100mg 12/12h ou 100mg 1×/dia
+  hideEsq('A');
+  const is12h=reg.includes('12h')||reg.includes('12d')||reg.includes('21d')||reg.includes('14d')||reg.includes('28d')||reg.includes('6s')||reg.includes('7d_mal')||reg.includes('60d')||reg.includes('10d')||reg.includes('14_21');
+  const freq=is12h?2:1;
+  const mg=100;
+  const mgDia=mg*freq;
+  const grid=mk('Dose/tomada',mg,'mg',false,false)+mk('Comp. 100mg',1,'comp.',true,false)+mk('Freq.',freq+'×','ao dia'+(freq===2?' (12/12h)':''),false,false)+mk('Duração',dur,'',false,false);
+  const fArr=[`Dose: <strong>${mg} mg</strong> ${freq===2?'de 12 em 12 horas':'1× ao dia'}`,`Total diário: <strong>${mgDia} mg/dia</strong> · Duração: ${dur}`,`Tomar com alimento · Fotossensibilidade`];
+  let alertas=FOTO+INTER;
+  if(reg.includes('brucelose')) alertas+=`<div class="al ai"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg>Associar rifampicina 600–900mg/dia por 6 semanas para brucelose.</div>`;
+  if(reg.includes('malp')) alertas+=`<div class="al as" style="background:rgba(26,127,90,0.15);color:#60C090;border:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Profilaxia malária: iniciar 1–2 dias antes da área endêmica. Continuar 4 semanas após retorno.</div>`;
+  showR('A',cfg.l,ro.t+' · ANVISA',grid,fArr,alertas);
+  txtA=`DoxiCalc — ${cfg.l}\n${ro.t}\nDose: ${mg}mg ${freq}×/dia · ${dur}\n\nTomar com alimento. Fotossensibilidade.\nNão substitui prescrição médica.`;
+  salvarH(cfg.l,ro.t,`${mg}mg ${freq}×/dia`);
+  const _doA=document.getElementById('dA')?.value||''; mostrarDuracao(_doA,'durA');
+}
+
+function updP(){
+  const d=document.getElementById('dP').value,rw=document.getElementById('rwP'),rs=document.getElementById('regP');
+  hideR('P');txtP='';
+  if(!d){rw.style.display='none';return;}
+  rs.innerHTML='<option value="">Selecione...</option>'+cfgP[d].r.map(r=>`<option value="${r.id}">${r.l}</option>`).join('');
+  rw.style.display='block';document.getElementById('rhP').classList.remove('vis');calcP();
+}
+function calcP(){
+  const d=document.getElementById('dP').value,reg=document.getElementById('regP').value;
+  const peso=parseFloat(document.getElementById('peso').value),rh=document.getElementById('rhP');
+  if(!d||!reg){hideR('P');return;}
+  const cfg=cfgP[d],ro=cfg.r.find(r=>r.id===reg);
+  rh.textContent=ro.h;rh.classList.add('vis');
+  if(isNaN(peso)||peso<=0){hideR('P');return;}
+  if(peso<8){showR('P',cfg.l,ro.t,'<div class="di full"><div class="dil">Atenção</div><div style="font-size:13px;color:rgba(255,255,255,0.8);margin-top:4px">Peso muito baixo — confirmar idade ≥8 anos.</div></div>',null,`<div class="al ad" style="background:rgba(185,28,28,0.2);color:#FCA5A5;border:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/></svg>Contraindicado &lt;8 anos. Manchas dentárias permanentes.</div>`);return;}
+  // >45kg usa dose adulto
+  if(peso>45){
+    hideEsq('P');
+    if(reg==='22_d1_11'||reg==='std'){ esqBox('P',200,100,'conforme indicação'); }
+    const grid=mk('Peso &gt;45 kg','→','dose adulto',false,true)+mk('D1','200','mg',false,false)+mk('D2+','100','mg/dia',true,false);
+    showR('P',cfg.l,'Peso >45 kg — dose adulto',grid,[`Peso: <strong>${peso} kg</strong> (>45 kg)`,`Usar dose de adulto: D1 200 mg → D2+ 100 mg/dia`],FOTO+INTER);
+    txtP=`DoxiCalc — ${cfg.l}\nPeso: ${peso}kg (>45kg) → dose adulto\nD1: 200mg · D2+: 100mg/dia\n\nFotossensibilidade. Não substitui prescrição médica.`;
+    salvarH(cfg.l,'Dose adulto','D1:200→100mg/dia'); return;
+  }
+  // Cálculo por peso
+  let d1mg, manMg, dur, freq=1, isAntraz=reg.includes('antraz');
+  if(reg==='22_d1_11'){
+    d1mg=parseFloat(Math.min(peso*4.4,200).toFixed(1));
+    manMg=parseFloat(Math.min(peso*2.2,100).toFixed(1));
+    dur='conforme indicação'; freq=1;
+    esqBox('P',d1mg,manMg,dur);
+  } else if(reg==='44_d1_44'){
+    d1mg=parseFloat(Math.min(peso*4.4,200).toFixed(1));
+    manMg=parseFloat((d1mg/2).toFixed(1));
+    dur='conforme indicação'; freq=2;
+    hideEsq('P');
+  } else { // antraz
+    d1mg=parseFloat(Math.min(peso*2.2,100).toFixed(1));
+    manMg=d1mg; dur='60 dias'; freq=2;
+    hideEsq('P');
+  }
+  const fArr=[`Peso: <strong>${peso} kg</strong>`,
+    reg==='22_d1_11'?`D1: 4,4 mg/kg × ${peso} = <strong>${d1mg} mg</strong>`:`4,4 mg/kg × ${peso} = <strong>${d1mg} mg</strong>`,
+    reg==='22_d1_11'?`D2+: 2,2 mg/kg × ${peso} = <strong>${manMg} mg/dia</strong>`:`Dose/tomada: ${d1mg} mg ÷ 2 = <strong>${manMg} mg 12/12h</strong>`,
+    `Tomar com alimento · Protetor solar obrigatório`];
+  const grid=mk(reg==='22_d1_11'?'D1':reg.includes('antraz')?'Dose/tomada':'Dose/tomada',reg==='22_d1_11'?d1mg:d1mg,'mg',true,false)+
+    mk(reg==='22_d1_11'?'D2+/dia':'mg/dia',reg==='22_d1_11'?manMg:d1mg*2,'mg',false,false)+
+    mk('Freq.',freq+'×','ao dia',false,false)+mk('Duração',dur,'',false,false);
+  showR('P',cfg.l,ro.t+' · ANVISA',grid,fArr,FOTO+INTER);
+  txtP=`DoxiCalc — ${cfg.l}\nPeso: ${peso}kg\n${ro.t}\n\nFotossensibilidade. Não substitui prescrição médica.`;
+  salvarH(cfg.l,ro.t,`${d1mg}mg D1`);
+  const _doP=document.getElementById('dP')?.value||''; mostrarDuracao(_doP,'durP');
+}
 if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));}
+
+// Durações por indicação — GUIADOSE
+const _durMap={'resp':'7–14 dias','sinusite':'10 dias','clamydia_ist':'7 dias','sifilis':'14–28 dias','gonorreia_d':'dose única','lgv':'21 dias','cancroide':'7 dias','donovanose':'3 semanas','epididimite':'10 dias','acne':'8–12 semanas','pele':'7–10 dias','riquetsia':'5–10 dias','lyme':'14–21 dias','brucelose':'6 semanas','malaria_prop':'contínuo','antraz_d':'60 dias','itu_d':'7 dias','colera':'dose única'};
+
+
+// === GUIADOSE: Duração do tratamento ===
+function mostrarDuracao(idDoenca, idBadge) {
+  const dur = _durMap[idDoenca] || '';
+  const el = document.getElementById(idBadge);
+  if (!el) return;
+  if (dur) {
+    el.innerHTML = '<svg viewBox="0 0 24 24" style="width:13px;height:13px;fill:var(--gold);flex-shrink:0"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 13h-2V7h2v8zm0-10h-2V3h2v2z"/></svg> Duração: <strong>' + dur + '</strong>';
+    el.style.display = 'flex';
+  } else {
+    el.style.display = 'none';
+  }
+}
+function ocultarDuracao(idBadge) {
+  const el = document.getElementById(idBadge);
+  if (el) el.style.display = 'none';
+}
+
+
+// GUIADOSE: Adiciona duração à última linha da posologia
+function addDuracaoFormula(idDoenca, idFormula) {
+  const dur = _durMap[idDoenca] || '';
+  if (!dur) return;
+  const el = document.getElementById(idFormula);
+  if (!el) return;
+  // Verificar se duração já está na última linha
+  const lines = el.querySelectorAll('.formula-line, .fln');
+  if (lines.length > 0) {
+    const last = lines[lines.length - 1];
+    if (last.textContent.includes('Duração')) return;
+  }
+  const div = document.createElement('div');
+  div.className = lines.length > 0 ? lines[0].className : 'formula-line';
+  div.innerHTML = '⏱ Duração: <strong>' + dur + '</strong>';
+  el.appendChild(div);
+}
+
+
+// GUIADOSE: Horários sugeridos por intervalo
+function getHorarios(intervalo) {
+  const i = (intervalo||'').toLowerCase();
+  if (i.includes('6/6') || i.includes('6h')) return '6h · 12h · 18h · 0h';
+  if (i.includes('8/8') || i.includes('8h')) return '7h · 15h · 23h';
+  if (i.includes('12/12') || i.includes('12h')) return '7h · 19h';
+  if (i.includes('4/4') || i.includes('4h')) return '6h · 10h · 14h · 18h · 22h · 2h';
+  if (i.includes('noite') || i.includes('notur') || i.includes('deitar')) return '22h (ao deitar)';
+  if (i.includes('única') || i.includes('unica') || i.includes('1×')) return 'dose única';
+  return 'conforme prescrição';
+}
+function getDurHorarios(doencaId, intervaloTxt) {
+  const dur = (typeof _durMap !== 'undefined' ? _durMap[doencaId] : '') || '';
+  const hor = getHorarios(intervaloTxt);
+  return {dur, hor};
+}
+
 </script>
 </body>
 </html>

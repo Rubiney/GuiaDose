@@ -1,8 +1,8 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0F3460">
 <meta name="description" content="Calculadora Cefepima 1g / 2g — IV / IM — Adulto e Pediátrico — GUIADOSE">
 <meta name="mobile-web-app-capable" content="yes">
@@ -48,7 +48,7 @@ body{font-family:var(--font);background:var(--surface);color:var(--text);min-hei
 .tbox::before{content:'';position:absolute;top:-6px;right:9px;width:10px;height:10px;background:#1A2540;border-left:1px solid var(--gold);border-top:1px solid var(--gold);transform:rotate(45deg)}
 .ttl{font-size:10px;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;color:var(--gold);margin-bottom:5px}
 main{padding:14px}
-.card{background:var(--white);border-radius:var(--radius);border:1px solid var(--border);padding:14px;margin-bottom:11px;box-shadow:var(--shadow)}
+.card{background:var(--white);border-radius:var(--radius);border:1px solid var(--border);border-top:3px solid var(--gold);padding:14px;margin-bottom:11px;box-shadow:var(--shadow)}
 .ct{font-size:11px;font-weight:600;letter-spacing:0.8px;color:var(--text3);text-transform:uppercase;margin-bottom:11px;display:flex;align-items:center;gap:5px}
 label.fl{display:block;font-size:13px;font-weight:500;color:var(--text2);margin-bottom:5px}
 select,input[type=number]{width:100%;padding:11px 13px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-family:var(--font);font-size:14px;color:var(--text);background:var(--white);appearance:none;-webkit-appearance:none;outline:none;transition:border-color 0.15s;margin-bottom:12px}
@@ -150,10 +150,13 @@ select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/
 [data-theme="dark"] .tab-nav{background:#1A2540}
 .page{display:none}.page.active{display:block}
 .modulo-badge{background:rgba(91,33,182,0.12);border:1px solid rgba(91,33,182,0.25);color:var(--purple);font-size:9px;font-weight:700;padding:2px 8px;border-radius:99px;font-family:var(--mono);letter-spacing:0.5px;margin-left:auto}
-.port-btn{display:flex;align-items:center;gap:5px;background:var(--gold);border:none;border-radius:99px;padding:7px 14px;color:var(--navy3,#0A1628);font-size:11px;font-family:var(--mono);font-weight:700;text-decoration:none;white-space:nowrap;cursor:pointer;flex-shrink:0;transition:background 0.15s}
-.port-btn:hover{background:var(--gold2)}
-.port-btn svg{width:12px;height:12px;stroke:var(--navy3,#0A1628);stroke-width:2.5;fill:none;flex-shrink:0}
 </style>
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="CefepimaCalc — IV / IM · Adulto & Pediátrico">
+<meta property="og:description" content="Calculadora Cefepima 1g / 2g — IV / IM — Adulto e Pediátrico — GUIADOSE">
+<meta property="og:url" content="https://guiadose.vercel.app/">
+<meta property="og:image" content="https://guiadose.vercel.app/icons/icon-512.png">
 </head>
 <body>
 
@@ -331,7 +334,7 @@ select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/
   <div class="card"><div class="ct">📋 Sobre</div><p style="font-size:13px;color:var(--text2);line-height:1.7">Versão 1.0 · Módulo Injetáveis GUIADOSE. Cefalosporina de 4ª geração. Apresentações: 1g e 2g. Via IV (bolus 3–5 min / infusão 30 min) e IM. Cobertura de Pseudomonas e gram-negativos resistentes. Pediátrico ≥2 meses.</p></div>
 </main></div>
 
-<div class="dev-footer"><div class="dav">RA</div><div><div class="dnm">Rubiney Alves</div><div class="dcg">Farmácia Clínica · Gestão Comercial · Tecnologia em Saúde</div></div><a href="https://rubiney-alves.vercel.app" target="_blank" class="port-btn" aria-label="Portfólio de Rubiney Alves">Portfólio <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
+<div class="dev-footer"><div class="dav">RA</div><div><div class="dnm">Rubiney Alves</div><div class="dcg">Farmácia Clínica · Gestão Comercial · Tecnologia em Saúde</div></div><a href="https://rubiney-alves.vercel.app" target="_blank" class="dlk">portfólio →</a></div>
 <div class="fav"><svg viewBox="0 0 24 24"><path d="M12 9v4m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>GUIADOSE · Posologia baseada em evidências · Bula ANVISA. Não substitui prescrição médica.</div>
 
 <nav class="tab-nav">
@@ -420,13 +423,19 @@ function hideR(id){
 }
 function setPerfil(p){perfil=p;document.getElementById('btnA').classList.toggle('on',p==='adulto');document.getElementById('btnP').classList.toggle('on',p==='ped');document.getElementById('fA').style.display=p==='adulto'?'block':'none';document.getElementById('fP').style.display=p==='ped'?'block':'none';}
 function setVia(v){via=v;document.getElementById('vIV').classList.toggle('on',v==='IV');document.getElementById('vIM').classList.toggle('on',v==='IM');if(perfil==='adulto')calcA();else calcP();}
-function toggleDark(){const d=document.documentElement;d.getAttribute('data-theme')==='dark'?d.removeAttribute('data-theme'):d.setAttribute('data-theme','dark');}
+function toggleDark(){const d=document.documentElement;const isDark=d.getAttribute('data-theme')==='dark';isDark?d.removeAttribute('data-theme'):d.setAttribute('data-theme','dark');localStorage.setItem('guia_theme',isDark?'light':'dark');}(function(){if(localStorage.getItem('guia_theme')==='dark')document.documentElement.setAttribute('data-theme','dark');})()
 function toggleTip(btn){const b=document.getElementById('tipBox');b.classList.toggle('vis');btn.classList.toggle('on');if(b.classList.contains('vis')){document.addEventListener('click',function c(e){if(!e.target.closest('.tw')){b.classList.remove('vis');btn.classList.remove('on');document.removeEventListener('click',c);}});}}
 function irP(p,btn){document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.tb').forEach(b=>b.classList.remove('on'));document.getElementById(p).classList.add('active');btn.classList.add('on');if(p==='pageHist')renderH();}
 function showToast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2000);}
 function cp(p){const t=p==='adulto'?txtA:txtP;if(!t)return;navigator.clipboard.writeText(t).then(()=>showToast('✓ Copiado!')).catch(()=>showToast('Use WhatsApp'));}
 function wa(p){const t=p==='adulto'?txtA:txtP;if(!t)return;window.open('https://wa.me/?text='+encodeURIComponent(t),'_blank');}
-function pr(p){const t=p==='adulto'?txtA:txtP;if(!t)return;const w=window.open('','_blank');w.document.write(`<html><head><title>CefepimaCalc</title><style>body{font-family:Arial,sans-serif;padding:20px;max-width:400px}h2{color:#0F3460}pre{background:#f5f5f5;padding:12px;border-radius:8px;white-space:pre-wrap;font-size:13px}footer{margin-top:18px;font-size:10px;color:#888}</style></head><body><h2>CefepimaCalc — GUIADOSE</h2><pre>${t}</pre><footer>Rubiney Alves · Farmácia Clínica · guiadose.vercel.app<br>Não substitui prescrição médica · Bula ANVISA</footer></body></html>`);w.document.close();w.print();}
+function pr(p){const t=p==='adulto'?txtA:txtP;if(!t)return;const w=window.open('','_blank');w.document.write(`<html><head><title>CefepimaCalc</title><style>body{font-family:Arial,sans-serif;padding:20px;max-width:400px}h2{color:#0F3460}pre{background:#f5f5f5;padding:12px;border-radius:8px;white-space:pre-wrap;font-size:13px}footer{margin-top:18px;font-size:10px;color:#888}</style>
+<meta property="og:type" content="website">
+<meta property="og:title" content="CefepimaCalc — IV / IM · Adulto & Pediátrico">
+<meta property="og:description" content="Calculadora Cefepima 1g / 2g — IV / IM — Adulto e Pediátrico — GUIADOSE">
+<meta property="og:url" content="https://guiadose.vercel.app/">
+<meta property="og:image" content="https://guiadose.vercel.app/icons/icon-512.png">
+</head><body><h2>CefepimaCalc — GUIADOSE</h2><pre>${t}</pre><footer>Rubiney Alves · Farmácia Clínica · guiadose.vercel.app<br>Não substitui prescrição médica · Bula ANVISA</footer></body></html>`);w.document.close();w.print();}
 function salvarH(d,r,det){hist.unshift({d,r,det,hora:new Date().toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'})});if(hist.length>20)hist=hist.slice(0,20);localStorage.setItem('cefepima_hist',JSON.stringify(hist));}
 function renderH(){const el=document.getElementById('histLista');if(!hist.length){el.innerHTML='<div class="hvz">Nenhum cálculo ainda.</div>';return;}el.innerHTML=hist.map(h=>`<div class="hi"><div class="hit"><span class="hn">${h.d}</span><span class="hhr">${h.hora}</span></div><div class="hd">${h.r} · ${h.det}</div></div>`).join('');}
 function limH(){hist=[];localStorage.removeItem('cefepima_hist');renderH();}

@@ -1,292 +1,766 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0F3460">
+<meta name="description" content="Calculadora Amoxicilina + Clavulanato — Adulto e Pediátrico — GUIADOSE">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="AmoxiClavCalc">
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="icon" href="icons/icon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
-<title>AmoxiClavCalc — GUIADOSE</title>
+<title>AmoxiClavCalc — Dosagem Adulto e Pediátrico</title>
 <style>
-:root{--navy:#0F3460;--navy2:#16213E;--navy3:#0A1628;--gold:#C9A84C;--gold2:#E8C97A;--white:#FFFFFF;--surface:#F7F9FC;--surface2:#EEF2F7;--border:#D8E2EF;--text:#1A2540;--text2:#4A5878;--text3:#8A97B0;--green:#1A7F5A;--green-bg:#E6F7F1;--amber:#92560A;--amber-bg:#FEF3E2;--red:#B91C1C;--red-bg:#FEF2F2;--blue:#1549A0;--blue-bg:#EBF2FF;--radius:12px;--radius-sm:8px;--shadow:0 2px 12px rgba(15,52,96,0.10);--font:'DM Sans',sans-serif;--mono:'DM Mono',monospace}
-[data-theme="dark"]{--white:#1A2540;--surface:#111827;--surface2:#1F2A3C;--border:#2D3E5A;--text:#E8EDF5;--text2:#A0AEBF;--text3:#5A6A80;--blue-bg:#1A2A4A;--blue:#7AABF0;--amber-bg:#2A1F0A;--amber:#F0C070;--red-bg:#2A1010;--red:#F08080;--green-bg:#0A2018;--green:#60C090}
+:root{
+  --navy:#0F3460;--navy2:#16213E;--navy3:#0A1628;
+  --gold:#C9A84C;--gold2:#E8C97A;--gold3:#FDF6E3;
+  --white:#FFFFFF;--surface:#F7F9FC;--surface2:#EEF2F7;
+  --border:#D8E2EF;--text:#1A2540;--text2:#4A5878;--text3:#8A97B0;
+  --green:#1A7F5A;--green-bg:#E6F7F1;
+  --amber:#92560A;--amber-bg:#FEF3E2;
+  --red:#B91C1C;--red-bg:#FEF2F2;
+  --blue:#1549A0;--blue-bg:#EBF2FF;
+  --teal:#0F6E56;--teal-bg:#E1F5EE;
+  --radius:12px;--radius-sm:8px;
+  --shadow:0 2px 12px rgba(15,52,96,0.10);
+  --font:'DM Sans',sans-serif;--mono:'DM Mono',monospace;
+}
+[data-theme="dark"]{
+  --white:#1A2540;--surface:#111827;--surface2:#1F2A3C;
+  --border:#2D3E5A;--text:#E8EDF5;--text2:#A0AEBF;--text3:#5A6A80;
+  --shadow:0 2px 12px rgba(0,0,0,0.4);
+  --blue-bg:#1A2A4A;--blue:#7AABF0;
+  --amber-bg:#2A1F0A;--amber:#F0C070;
+  --red-bg:#2A1010;--red:#F08080;
+  --green-bg:#0A2018;--green:#60C090;
+  --teal-bg:#0A2018;--teal:#5DCAA5;
+}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
 body{font-family:var(--font);background:var(--surface);color:var(--text);min-height:100vh;max-width:480px;margin:0 auto;padding-bottom:100px;transition:background 0.2s,color 0.2s}
+
 .app-header{background:var(--navy);padding:0;position:sticky;top:0;z-index:100;border-bottom:2px solid var(--gold)}
-.app-header-top{display:flex;align-items:center;gap:10px;padding:8px 16px 10px}
+.header-top{display:flex;align-items:center;gap:10px;padding-bottom:10px}
 .app-logo{width:40px;height:40px;border-radius:10px;background:var(--gold);display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .app-logo svg{width:22px;height:22px;fill:var(--navy)}
-.app-title{font-size:17px;font-weight:600;letter-spacing:-0.3px;color:white}
-.app-subtitle{font-size:10px;color:rgba(255,255,255,0.5);margin-top:1px;font-family:var(--mono)}
+.app-title{font-size:17px;font-weight:600;letter-spacing:-0.3px;line-height:1.2}
+.app-subtitle{font-size:10px;color:rgba(255,255,255,0.55);margin-top:1px;font-family:var(--mono)}
 .dark-btn{margin-left:auto;background:rgba(255,255,255,0.1);border:none;border-radius:8px;padding:7px 10px;cursor:pointer;color:white;font-size:15px;flex-shrink:0}
-.back-btn{display:flex;flex-direction:column;align-items:center;justify-content:center;width:40px;height:40px;border-radius:10px;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);text-decoration:none;flex-shrink:0;gap:2px;transition:all 0.18s}
-.back-btn:hover{background:rgba(201,168,76,0.28);border-color:rgba(201,168,76,0.6)}
-.back-btn svg{width:16px;height:16px;fill:#E8C97A}
-.back-btn span{font-size:8px;color:#E8C97A;font-family:var(--mono);letter-spacing:0.3px;font-weight:600}
-.hdr-divider{width:1px;height:32px;background:rgba(255,255,255,0.1);flex-shrink:0}
-.pbar{display:flex;gap:6px;padding:8px 12px;background:var(--navy2)}
-.pb{flex:1;padding:9px 8px;border:2px solid rgba(255,255,255,0.1);border-radius:9px;background:rgba(255,255,255,0.05);color:rgba(255,255,255,0.4);font-size:12px;font-family:var(--font);cursor:pointer;transition:all 0.18s;display:flex;align-items:center;justify-content:center;gap:5px;font-weight:500}
-.pb svg{width:14px;height:14px}
-.pb.on{background:rgba(201,168,76,0.15);border-color:var(--gold);color:var(--gold2);font-weight:700}
-.apres-bar{display:flex;align-items:center;gap:6px;padding:7px 14px 8px;background:var(--navy3)}
-.apres-lbl{font-size:10px;color:rgba(255,255,255,0.35);flex-shrink:0;white-space:nowrap}
-.abtn{padding:5px 11px;border-radius:7px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.5);font-size:11px;font-family:var(--mono);cursor:pointer;transition:all 0.15s;font-weight:500;white-space:nowrap;flex-shrink:0}
-.abtn.on{background:rgba(201,168,76,0.2);border-color:var(--gold);color:var(--gold2);font-weight:700}
-.tw{position:relative;display:flex;align-items:center;flex-shrink:0;margin-left:auto}
-.tbtn{width:26px;height:26px;border-radius:50%;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.4);color:var(--gold);font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center}
-.tbox{position:absolute;top:34px;right:0;width:268px;background:#1A2540;border:1px solid var(--gold);border-radius:10px;padding:11px 13px;font-size:12px;color:rgba(255,255,255,0.85);line-height:1.6;z-index:999;box-shadow:0 8px 24px rgba(0,0,0,0.4);display:none}
-.tbox.vis{display:block}
-.tbox::before{content:'';position:absolute;top:-6px;right:9px;width:10px;height:10px;background:#1A2540;border-left:1px solid var(--gold);border-top:1px solid var(--gold);transform:rotate(45deg)}
+
+.perfil-bar{display:flex;gap:6px;padding:8px 12px;background:var(--navy2)}
+
+
+
+
+.conc-bar{display:flex;gap:6px;padding:8px 16px;background:var(--navy3);align-items:center}
+.conc-label{font-size:10px;color:rgba(255,255,255,0.35);white-space:nowrap;flex-shrink:0}
+.conc-btn{flex:1;padding:5px 6px;border-radius:7px;border:1px solid rgba(255,255,255,0.15);background:transparent;color:rgba(255,255,255,0.5);font-size:10px;font-family:var(--mono);cursor:pointer;text-align:center;transition:all 0.15s;line-height:1.3}
+.conc-btn.ativo{background:rgba(201,168,76,0.2);border-color:var(--gold);color:var(--gold2);font-weight:500}
+.tooltip-wrap{position:relative;display:flex;align-items:center;flex-shrink:0}
+.tooltip-btn{width:26px;height:26px;border-radius:50%;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.4);color:var(--gold);font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.15s;font-family:var(--font)}
+.tooltip-btn:hover,.tooltip-btn.ativo{background:rgba(201,168,76,0.3)}
+.tooltip-box{position:absolute;top:34px;right:0;width:272px;background:#1A2540;border:1px solid var(--gold);border-radius:10px;padding:11px 13px;font-size:12px;color:rgba(255,255,255,0.85);line-height:1.6;z-index:999;box-shadow:0 8px 24px rgba(0,0,0,0.4);display:none}
+.tooltip-box.visible{display:block}
+.tooltip-box::before{content:'';position:absolute;top:-6px;right:9px;width:10px;height:10px;background:#1A2540;border-left:1px solid var(--gold);border-top:1px solid var(--gold);transform:rotate(45deg)}
+.tooltip-title{font-size:10px;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;color:var(--gold);margin-bottom:5px}
+
 main{padding:14px}
-.card{background:var(--white);border-radius:var(--radius);border:1px solid var(--border);padding:14px;margin-bottom:11px;box-shadow:var(--shadow)}
-.ct{font-size:11px;font-weight:600;letter-spacing:0.8px;color:var(--text3);text-transform:uppercase;margin-bottom:11px}
+.card{background:var(--white);border-radius:var(--radius);border:1px solid var(--border);border-top:3px solid var(--gold);padding:14px;margin-bottom:11px;box-shadow:var(--shadow)}
+.card-title{font-size:11px;font-weight:600;letter-spacing:0.8px;color:var(--text3);text-transform:uppercase;margin-bottom:11px;display:flex;align-items:center;gap:5px}
 label.fl{display:block;font-size:13px;font-weight:500;color:var(--text2);margin-bottom:5px}
 select,input[type=number]{width:100%;padding:11px 13px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-family:var(--font);font-size:14px;color:var(--text);background:var(--white);appearance:none;-webkit-appearance:none;outline:none;transition:border-color 0.15s;margin-bottom:12px}
 select:focus,input[type=number]:focus{border-color:var(--navy)}
 select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%234A5878' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 11px center;padding-right:32px}
-.rh{background:var(--blue-bg);color:var(--blue);border-radius:var(--radius-sm);padding:9px 11px;font-size:12px;line-height:1.6;margin-top:-8px;margin-bottom:12px;display:none}
-.rh.vis{display:block}
-.rcrd{background:var(--navy);border-radius:var(--radius);padding:18px;margin-bottom:11px;display:none;animation:fadeUp 0.2s ease}
-.rcrd.vis{display:block}
+.regime-hint{background:var(--blue-bg);color:var(--blue);border-radius:var(--radius-sm);padding:9px 11px;font-size:12px;line-height:1.6;margin-top:-8px;margin-bottom:12px;display:none}
+.regime-hint.visible{display:block}
+
+.result-card{background:var(--navy);border-radius:var(--radius);padding:18px;margin-bottom:11px;display:none;animation:fadeUp 0.2s ease}
+.result-card.visible{display:block}
 @keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-.rhead{display:flex;align-items:center;gap:9px;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,0.12)}
-.rico{width:34px;height:34px;border-radius:8px;background:var(--gold);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.rico svg{width:18px;height:18px;fill:var(--navy)}
-.rdnc{font-size:13px;font-weight:600;color:white}
-.rrgm{font-size:10px;color:var(--gold2);margin-top:2px}
-.dgrid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:10px}
+.res-header{display:flex;align-items:center;gap:9px;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,0.12)}
+.res-icon{width:34px;height:34px;border-radius:8px;background:var(--gold);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.res-icon svg{width:18px;height:18px;fill:var(--navy)}
+.res-doenca{font-size:13px;font-weight:600;color:white}
+.res-regime{font-size:10px;color:var(--gold2);margin-top:2px}
+.dose-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
 .di{background:rgba(255,255,255,0.07);border-radius:9px;padding:11px}
 .di.full{grid-column:1/-1}
-.dil{font-size:10px;color:rgba(255,255,255,0.5);margin-bottom:3px;font-weight:500}
-.div{font-size:22px;font-weight:600;color:var(--gold2);font-family:var(--mono);line-height:1}
-.diu{font-size:11px;color:rgba(255,255,255,0.45);margin-left:3px;font-weight:400;font-family:var(--font)}
-.fbox{background:rgba(255,255,255,0.04);border:1px solid rgba(201,168,76,0.2);border-radius:9px;padding:12px;margin-bottom:10px}
-.fttl{font-size:10px;font-weight:600;letter-spacing:0.7px;color:var(--gold);text-transform:uppercase;margin-bottom:8px}
-.fln{font-size:12px;color:rgba(255,255,255,0.78);font-family:var(--mono);padding:4px 0;border-bottom:1px solid rgba(255,255,255,0.06);line-height:1.5}
-.fln:last-child{border-bottom:none}
-.fln strong{color:var(--gold2)}
-.al{border-radius:var(--radius-sm);padding:10px 12px;font-size:12px;line-height:1.6;display:flex;gap:7px;align-items:flex-start;margin-bottom:8px}
-.al svg{width:15px;height:15px;flex-shrink:0;margin-top:1px}
-.aw{background:var(--amber-bg);color:var(--amber)}
-.ai{background:var(--blue-bg);color:var(--blue)}
-.ad{background:var(--red-bg);color:var(--red)}
-.acoes{display:flex;gap:7px;margin-bottom:10px}
-.ba{flex:1;padding:9px 5px;border-radius:7px;border:1px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.07);color:rgba(255,255,255,0.8);font-size:11px;font-family:var(--font);cursor:pointer;text-align:center;display:flex;flex-direction:column;align-items:center;gap:3px}
-.ba svg{width:17px;height:17px}
+.di-label{font-size:10px;color:rgba(255,255,255,0.5);margin-bottom:3px;font-weight:500}
+.di-val{font-size:24px;font-weight:600;color:var(--gold2);font-family:var(--mono);line-height:1}
+.di-val.g{font-size:30px}
+.di-unit{font-size:12px;color:rgba(255,255,255,0.5);margin-left:3px;font-weight:400;font-family:var(--font)}
+
+/* RATIO BOX — exibe amox/clav juntos */
+.ratio-box{background:rgba(255,255,255,0.05);border:1px solid rgba(201,168,76,0.25);border-radius:9px;padding:12px;margin-top:10px;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.ratio-title{font-size:10px;font-weight:600;letter-spacing:0.6px;color:var(--gold);text-transform:uppercase;grid-column:1/-1;margin-bottom:2px}
+.ratio-item{background:rgba(255,255,255,0.05);border-radius:7px;padding:9px}
+.ratio-label{font-size:10px;color:rgba(255,255,255,0.45);margin-bottom:2px}
+.ratio-val{font-size:18px;font-weight:600;color:var(--gold2);font-family:var(--mono)}
+.ratio-unit{font-size:11px;color:rgba(255,255,255,0.45);margin-left:2px}
+
+.formula-box{background:rgba(255,255,255,0.04);border:1px solid rgba(201,168,76,0.25);border-radius:9px;padding:13px;margin-top:10px}
+.formula-title{font-size:10px;font-weight:600;letter-spacing:0.7px;color:var(--gold);text-transform:uppercase;margin-bottom:8px}
+.fl-line{font-size:12px;color:rgba(255,255,255,0.72);font-family:var(--mono);padding:3px 0;border-bottom:1px solid rgba(255,255,255,0.05);line-height:1.5}
+.fl-line:last-child{border-bottom:none}
+.fl-line strong{color:var(--gold2)}
+
+.acoes{display:flex;gap:7px;margin-top:12px}
+.btn-a{flex:1;padding:9px 5px;border-radius:7px;border:1px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.07);color:rgba(255,255,255,0.8);font-size:11px;font-family:var(--font);cursor:pointer;text-align:center;display:flex;flex-direction:column;align-items:center;gap:3px}
+.btn-a:active{background:rgba(255,255,255,0.14)}
+.btn-a svg{width:17px;height:17px}
+
+.frasco-row{margin-top:12px;padding-top:11px;border-top:1px solid rgba(255,255,255,0.10);display:flex;align-items:center;gap:7px}
+.frasco-row svg{width:14px;height:14px;fill:var(--gold);flex-shrink:0}
+.frasco-text{font-size:11px;color:rgba(255,255,255,0.65)}
+.frasco-text strong{color:var(--gold2)}
+
+.alert{border-radius:var(--radius-sm);padding:10px 12px;font-size:12px;line-height:1.6;display:flex;gap:7px;align-items:flex-start;margin-top:9px}
+.alert svg{width:15px;height:15px;flex-shrink:0;margin-top:1px}
+.a-warn{background:var(--amber-bg);color:var(--amber)}
+.a-info{background:var(--blue-bg);color:var(--blue)}
+.a-danger{background:var(--red-bg);color:var(--red)}
+.a-success{background:var(--green-bg);color:var(--green)}
+.a-teal{background:var(--teal-bg);color:var(--teal)}
+
 .empty-state{text-align:center;padding:28px 18px;color:var(--text3)}
 .empty-state svg{width:36px;height:36px;opacity:0.3;margin-bottom:10px}
 .empty-state p{font-size:13px}
-.il{list-style:none}
-.il li{display:flex;align-items:center;gap:9px;padding:9px 0;border-bottom:1px solid var(--surface2);font-size:13px;color:var(--text2)}
-.il li:last-child{border-bottom:none}
-.idot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
-.ict{font-size:9px;color:var(--text3);margin-left:auto;font-family:var(--mono)}
-.hi{padding:9px 11px;border-radius:8px;background:var(--surface2);margin-bottom:7px}
-.hit{display:flex;justify-content:space-between;align-items:center}
-.hn{font-size:12px;font-weight:500;color:var(--text)}
-.hhr{font-size:10px;color:var(--text3);font-family:var(--mono)}
-.hd{font-size:11px;color:var(--text2);margin-top:2px}
-.hvz{text-align:center;padding:18px;color:var(--text3);font-size:12px}
-.dev-footer{margin:0 0 14px;background:var(--navy);border-radius:var(--radius);padding:13px 15px;display:flex;align-items:center;gap:11px;border:1px solid var(--gold)}
-.dav{width:34px;height:34px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:700;color:var(--navy);font-size:13px}
-.dnm{font-size:12px;font-weight:600;color:var(--gold2)}
-.dcg{font-size:10px;color:rgba(255,255,255,0.5);margin-top:1px}
-.port-btn{display:flex;align-items:center;gap:6px;background:#C9A84C;border:none;border-radius:99px;padding:7px 16px;color:#0A1628;font-size:11px;font-family:var(--mono);font-weight:700;text-decoration:none;white-space:nowrap;cursor:pointer;flex-shrink:0;transition:all 0.15s;margin-left:auto}
-.port-btn:hover{background:#E8C97A}
-.port-btn svg{width:13px;height:13px;stroke:#0A1628;stroke-width:2.5;fill:none}
-.fav{margin:0 0 7px;background:var(--surface2);border-radius:var(--radius-sm);padding:10px 12px;font-size:11px;color:var(--text3);line-height:1.6;display:flex;gap:7px}
-.fav svg{width:13px;height:13px;flex-shrink:0;margin-top:1px;fill:var(--text3)}
-.toast{position:fixed;bottom:88px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--navy);color:white;padding:9px 18px;border-radius:99px;font-size:12px;border:1px solid var(--gold);opacity:0;transition:all 0.25s;z-index:999;pointer-events:none}
+
+.ind-list{list-style:none}
+.ind-list li{display:flex;align-items:center;gap:9px;padding:9px 0;border-bottom:1px solid var(--surface2);font-size:13px;color:var(--text2)}
+.ind-list li:last-child{border-bottom:none}
+.ind-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.ind-cat{font-size:9px;color:var(--text3);margin-left:auto;font-family:var(--mono);white-space:nowrap}
+
+.hist-item{padding:9px 11px;border-radius:8px;background:var(--surface2);margin-bottom:7px;cursor:pointer}
+.hist-item:active{opacity:0.7}
+.hi-top{display:flex;justify-content:space-between;align-items:center}
+.hi-nome{font-size:12px;font-weight:500;color:var(--text)}
+.hi-hora{font-size:10px;color:var(--text3);font-family:var(--mono)}
+.hi-det{font-size:11px;color:var(--text2);margin-top:2px}
+.hist-vazio{text-align:center;padding:18px;color:var(--text3);font-size:12px}
+
+.dev-footer{margin:0 14px 14px;background:var(--navy);border-radius:var(--radius);padding:13px 15px;display:flex;align-items:center;gap:11px;border:1px solid var(--gold)}
+.dev-avatar{width:34px;height:34px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:700;color:var(--navy);font-size:13px}
+.dev-nome{font-size:12px;font-weight:600;color:var(--gold2)}
+.dev-cargo{font-size:10px;color:rgba(255,255,255,0.5);margin-top:1px}
+.dev-link{margin-left:auto;font-size:10px;color:var(--gold);text-decoration:none;font-family:var(--mono)}
+
+.footer-aviso{margin:0 14px 7px;background:var(--surface2);border-radius:var(--radius-sm);padding:10px 12px;font-size:11px;color:var(--text3);line-height:1.6;display:flex;gap:7px}
+.footer-aviso svg{width:13px;height:13px;flex-shrink:0;margin-top:1px;fill:var(--text3)}
+
+.toast{position:fixed;bottom:88px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--navy);color:white;padding:9px 18px;border-radius:99px;font-size:12px;border:1px solid var(--gold);opacity:0;transition:all 0.25s;z-index:999;white-space:nowrap;pointer-events:none}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
 .tab-nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;background:var(--white);border-top:1px solid var(--border);display:flex;z-index:200}
-.tb{flex:1;padding:9px 4px 7px;border:none;background:transparent;font-family:var(--font);font-size:10px;color:var(--text3);cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;transition:color 0.15s}
-.tb svg{width:19px;height:19px}
-.tb.on{color:var(--navy);font-weight:600}
+.tab-btn{flex:1;padding:9px 4px 7px;border:none;background:transparent;font-family:var(--font);font-size:10px;color:var(--text3);cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;transition:color 0.15s}
+.tab-btn svg{width:19px;height:19px}
+.tab-btn.ativo{color:var(--navy);font-weight:600}
 [data-theme="dark"] .tab-nav{background:#1A2540}
-.page{display:none}.page.active{display:block}
-.pasta-count{display:inline-flex;align-items:center;justify-content:center;min-width:24px;height:20px;padding:0 7px;background:var(--gold);color:var(--navy3);font-size:10px;font-weight:700;font-family:var(--mono);border-radius:99px;letter-spacing:0.3px;flex-shrink:0}
-.pasta-arr{width:24px;height:24px;display:flex;align-items:center;justify-content:center;background:var(--navy);border-radius:7px;flex-shrink:0;transition:all 0.18s;flex-shrink:0}
-.pasta-arr svg{width:13px;height:13px;stroke:var(--gold);stroke-width:2.5;fill:none;transition:transform 0.2s}
-.pasta-arr.open svg{transform:rotate(90deg)}
-.pasta.aberta .pasta-arr{background:var(--navy2)}
-.pasta.aberta-ped .pasta-arr{background:var(--navy2)}
+.page{display:none}
+.page.ativa{display:block}
+
+.perfil-bar{display:flex;gap:6px;padding:8px 12px;background:var(--navy2)}
+.perfil-btn,.pb{flex:1;padding:10px 8px;border:2px solid rgba(255,255,255,0.1);border-radius:9px;background:rgba(255,255,255,0.05);color:rgba(255,255,255,0.4);font-size:12px;font-family:var(--font);cursor:pointer;transition:all 0.18s;display:flex;align-items:center;justify-content:center;gap:5px;font-weight:500;margin:0 2px}
+.perfil-btn svg,.pb svg{width:15px;height:15px;flex-shrink:0}
+.perfil-btn.ativo,.pb.on{background:rgba(201,168,76,0.18);border-color:var(--gold);color:var(--gold2);font-weight:700}
+
+
+.back-btn{display:flex;flex-direction:column;align-items:center;justify-content:center;width:40px;height:40px;border-radius:10px;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);text-decoration:none;flex-shrink:0;gap:2px;transition:all 0.18s}
+.back-btn:hover{background:rgba(201,168,76,0.28);border-color:rgba(201,168,76,0.6)}
+.back-btn svg{width:16px;height:16px;fill:#E8C97A;flex-shrink:0}
+.back-btn span{font-size:8px;color:#E8C97A;font-family:var(--mono);letter-spacing:0.3px;font-weight:600}
+.hdr-divider{width:1px;height:32px;background:rgba(255,255,255,0.1);flex-shrink:0}
+
+/* Badge de duração no resultado */
+.dur-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);border-radius:7px;padding:5px 10px;font-size:11px;color:var(--gold2);font-family:var(--mono);margin-top:8px;width:100%}
+.dur-badge svg{width:13px;height:13px;fill:var(--gold)}
 </style>
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="AmoxiClavCalc — Dosagem Adulto e Pediátrico">
+<meta property="og:description" content="Calculadora Amoxicilina + Clavulanato — Adulto e Pediátrico — GUIADOSE">
+<meta property="og:url" content="https://guiadose.vercel.app/">
+<meta property="og:image" content="https://guiadose.vercel.app/icons/icon-512.png">
 </head>
 <body>
+
 <header class="app-header">
-  <div class="app-header-top">
-    <a href="guiadose.html" class="back-btn"><svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg><span>MENU</span></a>
-    <div class="hdr-divider"></div>
-    <div class="app-logo"><svg viewBox="0 0 24 24"><path d="M9 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2h-4M9 3a2 2 0 002 2h2a2 2 0 002-2M9 3a2 2 0 012-2h2a2 2 0 012 2"/></svg></div>
-    <div><div class="app-title">AmoxiClavCalc</div><div class="app-subtitle">Amox+Clavulanato · Adulto & Pediátrico</div></div>
+<div class="header-top">
+    <a href="guiadose.html" class="back-btn" aria-label="Voltar ao menu GUIADOSE">
+    <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+    <span>MENU</span>
+  </a>
+  <div class="hdr-divider"></div>
+    <div class="app-logo">
+      <svg viewBox="0 0 24 24"><path d="M19 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2zm-7 3a4 4 0 110 8 4 4 0 010-8zm0 10c-4 0-6 2-6 3h12c0-1-2-3-6-3z"/></svg>
+    </div>
+    <div>
+      <div class="app-title">AmoxiClavCalc</div>
+      <div class="app-subtitle">Amoxicilina + Clavulanato · Adulto & Pediátrico</div>
+    </div>
     <button class="dark-btn" onclick="toggleDark()">🌙</button>
   </div>
-  <div class="pbar">
-    <button class="pb on" id="btnA" onclick="setPerfil('adulto')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Adulto</button>
-    <button class="pb" id="btnP" onclick="setPerfil('ped')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M8 12v2a4 4 0 008 0v-2"/></svg>Pediátrico</button>
+
+  <div class="perfil-bar">
+    <button class="perfil-btn ativo" id="btnA" onclick="setPerfil('adulto')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      Adulto / &gt;40 kg
+    </button>
+    <button class="perfil-btn" id="btnP" onclick="setPerfil('ped')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M8 12v2a4 4 0 004 4 4 4 0 004-4v-2"/></svg>
+      Pediátrico / &lt;40 kg
+    </button>
   </div>
-  <div class="apres-bar">
-    <span class="apres-lbl">Suspensão:</span>
-    <div id="apres_btns"></div>
-    <div class="tw"><button class="tbtn" onclick="toggleTip(this)">⚠️</button>
-    <div class="tbox" id="tipBox"><div style="font-size:10px;font-weight:700;color:var(--gold);margin-bottom:5px">⚠️ Advertência</div>Ferramenta educacional. Não substitui prescrição médica. Bula ANVISA.</div></div>
+
+  <div class="conc-bar" id="concBar" style="display:none">
+    <span class="conc-label">Suspensão:</span>
+    <button class="conc-btn ativo" onclick="setConc(this,250,62.5)">250+62,5<br>mg/5mL</button>
+    <button class="conc-btn" onclick="setConc(this,400,57)">400+57<br>mg/5mL</button>
+    <div class="tooltip-wrap">
+      <button class="tooltip-btn" onclick="toggleTip(this)">⚠️</button>
+      <div class="tooltip-box" id="tipBox">
+        <div class="tooltip-title">⚠️ Advertência</div>
+        Esta ferramenta possui finalidade educacional e de apoio profissional. O usuário é responsável por conferir a prescrição, concentração do medicamento, peso do paciente e posologia antes da administração ou dispensação.
+      </div>
+    </div>
   </div>
 </header>
+
 <div id="toast" class="toast"></div>
-<div class="page active" id="pageCalc"><main>
-<div id="fA">
-  <div class="card"><div class="ct" id="ctA">Adulto</div>
-    <label class="fl">Indicação</label>
-    <select id="dA" onchange="updA()"><option value="">Selecione...</option><option value="leve">Infecção leve / moderada</option><option value="grave">Infecção grave</option><option value="sinusite">Sinusite bacteriana</option><option value="otite">Otite média aguda</option><option value="pneumonia">Pneumonia (PAC)</option><option value="pele">Infecções de pele</option><option value="itu">ITU não complicada</option></select>
-    <div class="rh" id="rhA"></div>
-  </div>
-  <div class="rcrd" id="resA">
-    <div class="rhead"><div class="rico"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div><div><div class="rdnc" id="rdA">—</div><div class="rrgm" id="rrA">—</div></div></div>
-    <div class="dgrid" id="dgA"></div>
-    <div class="fbox" id="fbA" style="display:none"><div class="fttl">📐 Posologia</div><div id="flA"></div></div>
-    <div class="acoes">
-      <button class="ba" onclick="cp(txtA)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copiar</button>
-      <button class="ba" onclick="wa(txtA)"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.118 1.524 5.845L0 24l6.324-1.501A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.882a9.875 9.875 0 01-5.022-1.368l-.361-.214-3.741.981.999-3.648-.235-.374A9.859 9.859 0 012.118 12C2.118 6.533 6.533 2.118 12 2.118c5.467 0 9.882 4.415 9.882 9.882 0 5.467-4.415 9.882-9.882 9.882z"/></svg>WhatsApp</button>
-      <button class="ba" onclick="pr('AmoxiClavCalc',txtA)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>Imprimir</button>
+
+<!-- CALCULAR -->
+<div class="page ativa" id="pageCalc">
+<main>
+
+<!-- ADULTO -->
+<div id="fAdulto">
+  <div class="card">
+    <div class="card-title">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+      Dados — Adulto / acima de 40 kg
     </div>
+    <label class="fl">Indicação / Doença</label>
+    <select id="dA" onchange="updRegA()">
+      <option value="">Selecione a indicação...</option>
+      <optgroup label="Trato respiratório superior">
+        <option value="amig">Amigdalite / tonsilite recorrente</option>
+        <option value="sinusite">Sinusite bacteriana aguda</option>
+        <option value="otite_a">Otite média aguda</option>
+      </optgroup>
+      <optgroup label="Trato respiratório inferior">
+        <option value="bronquite">Bronquite aguda / crônica</option>
+        <option value="pneumonia">Broncopneumonia / pneumonia</option>
+      </optgroup>
+      <optgroup label="Trato geniturinário">
+        <option value="itu">ITU — cistite / uretrite / pielonefrite</option>
+      </optgroup>
+      <optgroup label="Pele e tecidos moles">
+        <option value="pele">Infecção de pele / celulite / abscesso</option>
+      </optgroup>
+      <optgroup label="Ossos e articulações">
+        <option value="osteo">Osteomielite / artrite séptica</option>
+      </optgroup>
+      <optgroup label="Insuficiência renal">
+        <option value="renal_mod_a">Insuf. renal moderada (ClCr 10–30 mL/min)</option>
+        <option value="renal_grav_a">Insuf. renal grave (ClCr &lt;10 mL/min)</option>
+      </optgroup>
+    </select>
+    <div id="rwA" style="display:none">
+      <label class="fl">Regime posológico</label>
+      <select id="regA" onchange="calcA()"></select>
+      <div class="regime-hint" id="rhA"></div>
+    </div>
+  </div>
+  <div class="result-card" id="resA">
+    <div class="res-header">
+      <div class="res-icon"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+      <div><div class="res-doenca" id="rdA">—</div><div class="res-regime" id="rrA">—</div></div>
+    </div>
+    <div class="dose-grid" id="dgA"></div>
+    <div class="ratio-box" id="rbA" style="display:none">
+      <div class="ratio-title">Composição por dose</div>
+      <div class="ratio-item"><div class="ratio-label">Amoxicilina</div><div class="ratio-val" id="ratioAmoxA">—<span class="ratio-unit">mg</span></div></div>
+      <div class="ratio-item"><div class="ratio-label">Ác. clavulânico</div><div class="ratio-val" id="ratioClavA">—<span class="ratio-unit">mg</span></div></div>
+    </div>
+    <div class="formula-box" id="fbA" style="display:none"><div class="formula-title">📐 Posologia</div><div id="flA"></div></div>
+    <div class="acoes">
+      <button class="btn-a" onclick="copiar('adulto')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copiar</button>
+      <button class="btn-a" onclick="whats('adulto')"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.118 1.524 5.845L0 24l6.324-1.501A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.882a9.875 9.875 0 01-5.022-1.368l-.361-.214-3.741.981.999-3.648-.235-.374A9.859 9.859 0 012.118 12C2.118 6.533 6.533 2.118 12 2.118c5.467 0 9.882 4.415 9.882 9.882 0 5.467-4.415 9.882-9.882 9.882z"/></svg>WhatsApp</button>
+      <button class="btn-a" onclick="imprimir('adulto')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>Imprimir</button>
+    </div>
+    <div class="frasco-row" id="frA" style="display:none"><svg viewBox="0 0 24 24"><path d="M9 2h6l1 4H8L9 2zM7 6h10l1 14H6L7 6z"/></svg><div class="frasco-text" id="ftA"></div></div>
     <div id="alA"></div>
   </div>
-  <div id="emA"><div class="empty-state"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg><p>Selecione a indicação</p></div></div>
+  <div id="emA">
+    <div id="durA" class="dur-badge" style="display:none"></div><div class="empty-state"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg><p>Selecione a indicação<br>para ver a posologia</p></div></div>
 </div>
-<div id="fP" style="display:none">
-  <div class="card"><div class="ct">Pediátrico — Suspensão oral</div>
-    <div class="al ai" style="margin-bottom:12px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg>Concentração: <strong id="cncLbl">—</strong></div>
-    <label class="fl">Indicação</label>
-    <select id="dP" onchange="updP()"><option value="">Selecione...</option><option value="p_leve">Infecção leve (25mg/kg/dia)</option><option value="p_grave">Infecção grave (45mg/kg/dia)</option><option value="p_otite">Otite média aguda (45mg/kg/dia)</option><option value="p_pneumonia">Pneumonia (45mg/kg/dia)</option><option value="p_pele">Infecções de pele (25mg/kg/dia)</option></select>
-    <div class="rh" id="rhP"></div>
-    <label class="fl">Peso (kg)</label>
-    <input type="number" id="peso" placeholder="Ex: 15" min="3" max="60" step="0.1" oninput="calcP()">
-  </div>
-  <div class="rcrd" id="resP">
-    <div class="rhead"><div class="rico"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div><div><div class="rdnc" id="rdP">—</div><div class="rrgm" id="rrP">—</div></div></div>
-    <div class="dgrid" id="dgP"></div>
-    <div class="fbox" id="fbP" style="display:none"><div class="fttl">📐 Posologia</div><div id="flP"></div></div>
-    <div class="acoes">
-      <button class="ba" onclick="cp(txtP)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copiar</button>
-      <button class="ba" onclick="wa(txtP)"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.118 1.524 5.845L0 24l6.324-1.501A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.882a9.875 9.875 0 01-5.022-1.368l-.361-.214-3.741.981.999-3.648-.235-.374A9.859 9.859 0 012.118 12C2.118 6.533 6.533 2.118 12 2.118c5.467 0 9.882 4.415 9.882 9.882 0 5.467-4.415 9.882-9.882 9.882z"/></svg>WhatsApp</button>
-      <button class="ba" onclick="pr('AmoxiClavCalc',txtP)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>Imprimir</button>
+
+<!-- PED -->
+<div id="fPed" style="display:none">
+  <div class="card">
+    <div class="card-title">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+      Dados — Pediátrico / abaixo de 40 kg
     </div>
-    <div id="alP"></div>
+    <label class="fl">Indicação / Doença</label>
+    <select id="dP" onchange="updRegP()">
+      <option value="">Selecione a indicação...</option>
+      <optgroup label="Infecções leves / moderadas">
+        <option value="leve">Inf. leve/moderada — resp. sup., pele, tecidos moles</option>
+      </optgroup>
+      <optgroup label="Infecções graves">
+        <option value="grave">Otite média, sinusite, broncopneumonia, ITU</option>
+      </optgroup>
+      <optgroup label="SBP — Dose alta">
+        <option value="sbp_alta">Otite / sinusite resistente — dose alta SBP ⭐</option>
+      </optgroup>
+      <optgroup label="Insuficiência renal">
+        <option value="ren_mod_p">Insuf. renal moderada (ClCr 10–30)</option>
+        <option value="ren_grav_p">Insuf. renal grave (ClCr &lt;10)</option>
+      </optgroup>
+    </select>
+    <div id="rwP" style="display:none">
+      <label class="fl">Regime posológico</label>
+      <select id="regP" onchange="calcP()"></select>
+      <div class="regime-hint" id="rhP"></div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:11px">
+      <div><label class="fl">Peso (kg)</label><input type="number" id="peso" placeholder="Ex: 15" min="1" max="40" step="0.1" oninput="calcP()"></div>
+      <div><label class="fl">Idade (anos)</label><input type="number" id="idade" placeholder="Opcional" min="0" max="15" step="1" oninput="calcP()"></div>
+    </div>
   </div>
-  <div id="emP"><div class="empty-state"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg><p>Informe o peso e a indicação</p></div></div>
+  <div class="result-card" id="resP">
+    <div class="res-header">
+      <div class="res-icon"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+      <div><div class="res-doenca" id="rdP">—</div><div class="res-regime" id="rrP">—</div></div>
+    </div>
+    <div class="dose-grid" id="dgP"></div>
+    <div class="ratio-box" id="rbP" style="display:none">
+      <div class="ratio-title">Composição por dose</div>
+      <div class="ratio-item"><div class="ratio-label">Amoxicilina</div><div class="ratio-val" id="ratioAmoxP">—<span class="ratio-unit">mg</span></div></div>
+      <div class="ratio-item"><div class="ratio-label">Ác. clavulânico</div><div class="ratio-val" id="ratioClavP">—<span class="ratio-unit">mg</span></div></div>
+    </div>
+    <div class="formula-box" id="fbP" style="display:none"><div class="formula-title">📐 Transparência do cálculo</div><div id="flP"></div></div>
+    <div class="acoes">
+      <button class="btn-a" onclick="copiar('ped')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copiar</button>
+      <button class="btn-a" onclick="whats('ped')"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.118 1.524 5.845L0 24l6.324-1.501A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.882a9.875 9.875 0 01-5.022-1.368l-.361-.214-3.741.981.999-3.648-.235-.374A9.859 9.859 0 012.118 12C2.118 6.533 6.533 2.118 12 2.118c5.467 0 9.882 4.415 9.882 9.882 0 5.467-4.415 9.882-9.882 9.882z"/></svg>WhatsApp</button>
+      <button class="btn-a" onclick="imprimir('ped')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>Imprimir</button>
+    </div>
+    <div class="frasco-row" id="frP" style="display:none"><svg viewBox="0 0 24 24"><path d="M9 2h6l1 4H8L9 2zM7 6h10l1 14H6L7 6z"/></svg><div class="frasco-text" id="ftP"></div></div>
+    <div id="alP"></div>
+    <div id="durP" class="dur-badge" style="display:none"></div>
+  </div>
+  <div id="emP"><div class="empty-state"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg><p>Informe o peso e a indicação<br>para calcular a dosagem</p></div></div>
 </div>
-<div class="card"><div class="ct">Indicações — Bula ANVISA</div><ul class="il"><li><span class="idot" style="background:#1549A0"></span>Otite / sinusite / infecções resp.<span class="ict">Resp.</span></li><li><span class="idot" style="background:#B91C1C"></span>ITU não complicada<span class="ict">Urinário</span></li><li><span class="idot" style="background:#7C3AED"></span>Infecções de pele<span class="ict">Pele</span></li><li><span class="idot" style="background:#1A7F5A"></span>Pneumonia (PAC)<span class="ict">Resp. inf.</span></li></ul></div>
-</main></div>
-<div class="page" id="pageHist"><main><div class="card"><div class="ct" style="justify-content:space-between;display:flex"><span>Histórico</span><button onclick="limH()" style="background:none;border:none;font-size:11px;color:var(--red);cursor:pointer;font-family:var(--font)">Limpar</button></div><div id="histLista"><div class="hvz">Nenhum cálculo ainda.</div></div></div></main></div>
-<div class="page" id="pageInfo"><main>
-  <div class="card"><div class="ct">⚖️ Aviso Legal</div><p style="font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:10px">Ferramenta educacional. Não substitui prescrição médica. Contraindicado em hepatopatia grave. Bula ANVISA.</p></div>
-  <div class="card"><div class="ct">📋 Sobre</div><p style="font-size:13px;color:var(--text2);line-height:1.7">AmoxiClavCalc v2.0 · GUIADOSE SAFE RELEASE® · Amoxicilina+Clavulanato · Bula ANVISA 2024.</p></div>
-</main></div>
-<div class="dev-footer"><div class="dav">RA</div><div><div class="dnm">Rubiney Alves</div><div class="dcg">Farmácia Clínica · Gestão Comercial · Tecnologia em Saúde</div></div><a href="https://rubiney-alves.vercel.app" target="_blank" class="port-btn">Portfólio <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
-<div class="fav"><svg viewBox="0 0 24 24"><path d="M12 9v4m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>GUIADOSE · Posologia baseada em evidências · Bula ANVISA. Não substitui prescrição médica.</div>
+
+<!-- INDICAÇÕES -->
+<div class="card">
+  <div class="card-title">Indicações da Amoxicilina + Clavulanato</div>
+  <ul class="ind-list">
+    <li><span class="ind-dot" style="background:#1549A0"></span>Amigdalite / sinusite / otite média<span class="ind-cat">Resp. sup.</span></li>
+    <li><span class="ind-dot" style="background:#1549A0"></span>Bronquite aguda / broncopneumonia<span class="ind-cat">Resp. inf.</span></li>
+    <li><span class="ind-dot" style="background:#C9A84C"></span>Cistite / pielonefrite / uretrite<span class="ind-cat">Geniturinário</span></li>
+    <li><span class="ind-dot" style="background:#7C3AED"></span>Celulite / abscesso / ferida infectada<span class="ind-cat">Pele</span></li>
+    <li><span class="ind-dot" style="background:#B91C1C"></span>Osteomielite / artrite séptica<span class="ind-cat">Ossos</span></li>
+    <li><span class="ind-dot" style="background:#1A7F5A"></span>Sepse puerperal / intra-abdominal<span class="ind-cat">Outros</span></li>
+  </ul>
+  <div class="alert a-teal" style="margin-top:11px">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg>
+    Apresentações: <strong>250+62,5 mg/5mL</strong> e <strong>400+57 mg/5mL</strong>. Suspensão estável por <strong>7 dias</strong> em geladeira (2–8°C) após reconstituição. Bula ANVISA + Protocolos SBP.
+  </div>
+</div>
+</main>
+</div>
+
+<!-- HISTÓRICO -->
+<div class="page" id="pageHist">
+<main>
+  <div class="card">
+    <div class="card-title" style="justify-content:space-between"><span>Histórico de cálculos</span><button onclick="limparH()" style="background:none;border:none;font-size:11px;color:var(--red);cursor:pointer;font-family:var(--font)">Limpar</button></div>
+    <div id="histLista"><div class="hist-vazio">Nenhum cálculo realizado ainda.</div></div>
+  </div>
+</main>
+</div>
+
+<!-- SOBRE -->
+<div class="page" id="pageInfo">
+<main>
+  <div class="card">
+    <div class="card-title">⚖️ Aviso Legal</div>
+    <p style="font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:10px">Ferramenta exclusivamente para <strong>apoio de consulta farmacêutica e educacional</strong>. Baseada na bula ANVISA (Novartis/Sandoz/EMS) e protocolos SBP. <strong>Não substitui prescrição médica.</strong></p>
+    <div class="alert a-warn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>
+      Crianças abaixo de 2 meses — sem dados clínicos disponíveis para dose alta. Crianças abaixo de 3 meses / 4 kg — consulte sempre o pediatra. Monitorar função hepática em uso prolongado.
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">📋 Sobre</div>
+    <p style="font-size:13px;color:var(--text2);line-height:1.7">Versão 1.0 · Módulo Antibióticos GUIADOSE. Suspensões 250+62,5 mg/5mL e 400+57 mg/5mL. Adulto (comprimido 500+125 mg) e pediátrico. Estabilidade pós-reconstituição: 7 dias em geladeira.</p>
+  </div>
+</main>
+</div>
+
+<div class="dev-footer">
+  <div class="dev-avatar">RA</div>
+  <div><div class="dev-nome">Rubiney Alves</div><div class="dev-cargo">Farmácia Clínica · Gestão Comercial · Tecnologia em Saúde</div></div>
+  <a href="https://rubiney-alves.vercel.app" target="_blank" class="dev-link">portfólio →</a>
+</div>
+<div class="footer-aviso">
+  <svg viewBox="0 0 24 24"><path d="M12 9v4m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>
+  GUIADOSE · Posologia baseada em evidências · Apoio farmacêutico educacional. Bula ANVISA + SBP. Não substitui prescrição médica.
+</div>
+
 <nav class="tab-nav">
-  <button class="tb on" onclick="irP('pageCalc',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M9 12H3m18 0h-6M12 9V3m0 18v-6"/></svg>Calcular</button>
-  <button class="tb" onclick="irP('pageHist',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Histórico</button>
-  <button class="tb" onclick="irP('pageInfo',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg>Sobre</button>
+  <button class="tab-btn ativo" onclick="irPara('pageCalc',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M9 12H3m18 0h-6M12 9V3m0 18v-6"/></svg>Calcular</button>
+  <button class="tab-btn" onclick="irPara('pageHist',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Histórico</button>
+  <button class="tab-btn" onclick="irPara('pageInfo',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg>Sobre</button>
 </nav>
+
 <script>
-let perfil='adulto',txtA='',txtP='';
-let hist=JSON.parse(localStorage.getItem('amxclv_hist')||'[]');
-let concAtual=250;
-const cfgA={
-  leve:    {l:'Infecção leve / moderada',mg:500,freq:3,int:'8/8h',dur:'7–10 dias'},
-  grave:   {l:'Infecção grave',mg:875,freq:2,int:'12/12h',dur:'10–14 dias'},
-  sinusite:{l:'Sinusite bacteriana',mg:500,freq:3,int:'8/8h',dur:'7–10 dias'},
-  otite:   {l:'Otite média aguda',mg:875,freq:2,int:'12/12h',dur:'10 dias'},
-  pneumonia:{l:'Pneumonia (PAC)',mg:875,freq:2,int:'12/12h',dur:'7–10 dias'},
-  pele:    {l:'Infecções de pele',mg:500,freq:3,int:'8/8h',dur:'7–14 dias'},
-  itu:     {l:'ITU não complicada',mg:500,freq:3,int:'8/8h',dur:'7–14 dias'},
+let perfil='adulto', concAmox=250, concClav=62.5;
+let txtA='', txtP='';
+let hist = JSON.parse(localStorage.getItem('amoxiclav_hist')||'[]');
+
+// ── CONFIGS ADULTO ──
+const cfgA = {
+  amig:    { l:'Amigdalite / tonsilite', regimes:[{id:'500_8h',  l:'500+125 mg — 3× ao dia (8/8h)', h:'1 comprimido 500+125 mg de 8 em 8 horas. Bula ANVISA. Duração: 7–10 dias.', t:'Padrão ANVISA'}] },
+  sinusite:{ l:'Sinusite bacteriana',    regimes:[{id:'500_8h',  l:'500+125 mg — 3× ao dia (8/8h)', h:'500+125 mg de 8 em 8 horas por 7–10 dias.', t:'Padrão ANVISA'}] },
+  otite_a: { l:'Otite média aguda',      regimes:[{id:'500_8h',  l:'500+125 mg — 3× ao dia (8/8h)', h:'500+125 mg de 8 em 8 horas por 10 dias.', t:'Padrão ANVISA'}] },
+  bronquite:{ l:'Bronquite aguda/crônica', regimes:[{id:'500_8h', l:'500+125 mg — 3× ao dia (8/8h)', h:'500+125 mg de 8 em 8 horas. Duração: 7 dias.', t:'Padrão ANVISA'}] },
+  pneumonia:{ l:'Broncopneumonia / pneumonia', regimes:[{id:'500_8h', l:'500+125 mg — 3× ao dia (8/8h)', h:'500+125 mg de 8 em 8 horas por 7–10 dias.', t:'Padrão ANVISA'}] },
+  itu:     { l:'ITU — cistite/uretrite/pielonefrite', regimes:[{id:'500_8h', l:'500+125 mg — 3× ao dia (8/8h)', h:'500+125 mg de 8 em 8 horas. Pielonefrite: 14 dias.', t:'Padrão ANVISA'}] },
+  pele:    { l:'Infecção de pele / celulite', regimes:[{id:'500_8h', l:'500+125 mg — 3× ao dia (8/8h)', h:'500+125 mg de 8 em 8 horas por 7–14 dias.', t:'Padrão ANVISA'}] },
+  osteo:   { l:'Osteomielite / artrite séptica', regimes:[{id:'500_8h', l:'500+125 mg — 3× ao dia (8/8h)', h:'500+125 mg de 8 em 8 horas. Duração prolongada conforme prescrição.', t:'Padrão ANVISA'}] },
+  renal_mod_a:{ l:'Insuf. renal moderada', regimes:[{id:'500_12h', l:'500+125 mg — 2× ao dia (12/12h)', h:'ClCr 10–30 mL/min: 1 comprimido de 12 em 12 horas. Bula ANVISA.', t:'Ajuste renal'}] },
+  renal_grav_a:{ l:'Insuf. renal grave', regimes:[{id:'nao_rec', l:'Comprimido 500 mg NÃO recomendado', h:'ClCr <10 mL/min: comprimidos 500+125 mg não recomendados. Usar suspensão com ajuste ou via parenteral.', t:'Contraindicado oral 500 mg'}] }
 };
-const cfgP={
-  p_leve:   {l:'Infecção leve',mgKgDia:25,freq:3,int:'8/8h',dur:'7–10 dias',max:500},
-  p_grave:  {l:'Infecção grave',mgKgDia:45,freq:3,int:'8/8h',dur:'10–14 dias',max:875},
-  p_otite:  {l:'Otite média aguda',mgKgDia:45,freq:3,int:'8/8h',dur:'10 dias',max:875},
-  p_pneumonia:{l:'Pneumonia',mgKgDia:45,freq:3,int:'8/8h',dur:'7–10 dias',max:875},
-  p_pele:   {l:'Infecções de pele',mgKgDia:25,freq:3,int:'8/8h',dur:'7–14 dias',max:500},
+
+// ── CONFIGS PED ──
+const cfgP = {
+  leve:    { l:'Infecção leve / moderada', sbp:false, regimes:[
+    {id:'20_8h', l:'20/5 mg/kg/dia — 3× ao dia (8/8h)', h:'Dose baixa ANVISA: 20/5 mg/kg/dia dividido de 8 em 8 horas. Resp. superior, pele, tecidos moles.', t:'ANVISA dose baixa'},
+    {id:'40_8h', l:'40/10 mg/kg/dia — 3× ao dia (8/8h)', h:'Dose moderada ANVISA: 40/10 mg/kg/dia dividido de 8 em 8 horas.', t:'ANVISA dose moderada'}
+  ]},
+  grave:   { l:'Otite / sinusite / broncopneumonia / ITU', sbp:false, regimes:[
+    {id:'40_8h', l:'40/10 mg/kg/dia — 3× ao dia (8/8h)', h:'Dose padrão para infecções graves: 40/10 mg/kg/dia de 8 em 8 horas. Bula ANVISA.', t:'ANVISA 40/10'},
+    {id:'60_8h', l:'60/15 mg/kg/dia — 3× ao dia (8/8h)', h:'Dose alta ANVISA: 60/15 mg/kg/dia de 8 em 8 horas. Otite, sinusite, broncopneumonia, ITU.', t:'ANVISA 60/15 dose alta'}
+  ]},
+  sbp_alta:{ l:'Otite/sinusite resistente — SBP', sbp:true, regimes:[
+    {id:'90_sbp', l:'80–90/amox mg/kg/dia — 2× ao dia ⭐', h:'Protocolo SBP dose alta: 80–90 mg/kg/dia de amoxicilina (+ clavulanato) de 12 em 12 horas. Indicado para resistência pneumocócica.', t:'SBP dose alta ⭐'}
+  ]},
+  ren_mod_p:{ l:'Insuf. renal moderada', sbp:false, regimes:[
+    {id:'r_mod', l:'18,75 mg/kg — 2× ao dia (12/12h)', h:'ClCr 10–30: 18,75 mg/kg de 12 em 12 horas. Máx: 2 doses de 625 mg/dia.', t:'Ajuste renal'}
+  ]},
+  ren_grav_p:{ l:'Insuf. renal grave', sbp:false, regimes:[
+    {id:'r_grav', l:'18,75 mg/kg — 1× ao dia', h:'ClCr <10: 18,75 mg/kg em dose única diária. Máx: 625 mg/dia.', t:'Ajuste renal grave'}
+  ]}
 };
-function hor(i){if(i==='8/8h')return '7h · 15h · 23h';if(i==='12/12h')return '7h · 19h';if(i==='6/6h')return '6h · 12h · 18h · 0h';if(i==='única'||i==='dose única')return 'dose única';return '1× ao dia';}
-function setConc(c){concAtual=c;}
-function mk(l,v,u,full){return `<div class="di${full?' full':''}"><div class="dil">${l}</div><div class="div">${v}<span class="diu">${u}</span></div></div>`;}
-function showR(id,dnc,rgm,grid,fArr,al){
-  document.getElementById('rd'+id).textContent=dnc;
-  document.getElementById('rr'+id).textContent=rgm;
+
+function C_amox(){ return concAmox/5; }
+function C_clav(){ return concClav/5; }
+function getFrasco(mgTotalAmox){
+  if(mgTotalAmox<=1000) return 'Frasco <strong>100 mL</strong> ('+concAmox+'+'+concClav+' mg/5mL)';
+  return 'Frascos <strong>100 mL × 2</strong> ('+concAmox+'+'+concClav+' mg/5mL)';
+}
+function di(label,val,unit,grande,full){
+  return `<div class="di${full?' full':''}"><div class="di-label">${label}</div><div class="di-val${grande?' g':''}">${val}<span class="di-unit">${unit}</span></div></div>`;
+}
+function setRatio(id,amox,clav){
+  document.getElementById('ratioAmox'+id).innerHTML=amox+'<span class="ratio-unit">mg</span>';
+  document.getElementById('ratioClav'+id).innerHTML=clav+'<span class="ratio-unit">mg</span>';
+  document.getElementById('rb'+id).style.display='grid';
+}
+function showResult(id,doenca,regime,grid,formulaArr,frascoAmox,alertas,txt){
+  document.getElementById('rd'+id).textContent=doenca;
+  document.getElementById('rr'+id).textContent=regime;
   document.getElementById('dg'+id).innerHTML=grid;
-  const fb=document.getElementById('fb'+id),fl=document.getElementById('fl'+id);
-  if(fArr&&fArr.length){fl.innerHTML=fArr.map(l=>`<div class="fln">${l}</div>`).join('');fb.style.display='block';}
-  else fb.style.display='none';
-  document.getElementById('al'+id).innerHTML=al||'';
-  document.getElementById('res'+id).classList.add('vis');
+  const fb=document.getElementById('fb'+id), fl=document.getElementById('fl'+id);
+  if(formulaArr&&formulaArr.length){fl.innerHTML=formulaArr.map(l=>`<div class="fl-line">${l}</div>`).join('');fb.style.display='block';}else fb.style.display='none';
+  const fr=document.getElementById('fr'+id), ft=document.getElementById('ft'+id);
+  if(frascoAmox){ft.innerHTML=getFrasco(frascoAmox);fr.style.display='flex';}else fr.style.display='none';
+  document.getElementById('al'+id).innerHTML=alertas||'';
+  document.getElementById('res'+id).classList.add('visible');
   document.getElementById('em'+id).style.display='none';
 }
-function hideR(id){document.getElementById('res'+id).classList.remove('vis');document.getElementById('em'+id).style.display='block';}
-function updA(){
-  const d=document.getElementById('dA').value,rh=document.getElementById('rhA');
-  hideR('A');txtA='';
-  if(!d){rh.classList.remove('vis');return;}
-  const c=cfgA[d],mgDia=c.mg*c.freq;
-  rh.textContent=c.l+' · '+c.mg+'mg de '+c.int+' · '+c.dur+' · Bula ANVISA';rh.classList.add('vis');
-  const grid=mk('Dose',c.mg,'mg')+mk('Freq.',c.freq+'×','ao dia')+mk('Intervalo',c.int,'')+mk('Duração',c.dur,'');
-  const fArr=[
-    `Dose: <strong>${c.mg} mg</strong> de ${c.int}`,
-    `Total diário: <strong>${mgDia} mg/dia</strong>`,
-    `⏱ Duração: <strong>${c.dur}</strong>`,
-    `🕐 Horários: <strong>${hor(c.int)}</strong>`,
-  ];
-  showR('A',c.l,c.int+' · '+c.dur+' · ANVISA',grid,fArr,'');
-  txtA=`AmoxiClavCalc — ${c.l}\n${c.mg}mg de ${c.int} · ${c.dur}\nTotal: ${mgDia}mg/dia\nHorários: ${hor(c.int)}\n\nNão substitui prescrição médica.`;
-  salvarH(c.l,c.dur,c.mg+'mg '+c.int);
+function hideResult(id){
+  document.getElementById('res'+id).classList.remove('visible');
+  document.getElementById('em'+id).style.display='block';
+  document.getElementById('rb'+id).style.display='none';
 }
-function updP(){
-  const rh=document.getElementById('rhP');
-  rh.textContent=document.getElementById('dP').selectedOptions[0]?.text||'';
-  rh.classList.add('vis');rh.style.display='block';calcP();
+
+// ── UI ──
+function setPerfil(p){
+  perfil=p;
+  document.getElementById('btnA').classList.toggle('ativo',p==='adulto');
+  document.getElementById('btnP').classList.toggle('ativo',p==='ped');
+  document.getElementById('fAdulto').style.display=p==='adulto'?'block':'none';
+  document.getElementById('fPed').style.display=p==='ped'?'block':'none';
+  document.getElementById('concBar').style.display=p==='ped'?'flex':'none';
+}
+function setConc(el,amox,clav){
+  document.querySelectorAll('.conc-btn').forEach(b=>b.classList.remove('ativo'));
+  el.classList.add('ativo'); concAmox=amox; concClav=clav; calcP();
+}
+function toggleDark(){
+  const d=document.documentElement;
+  const isDark=d.getAttribute('data-theme')==='dark';
+  isDark?d.removeAttribute('data-theme'):d.setAttribute('data-theme','dark');
+  localStorage.setItem('guia_theme',isDark?'light':'dark');
+}
+(function(){if(localStorage.getItem('guia_theme')==='dark')document.documentElement.setAttribute('data-theme','dark');})()
+function toggleTip(btn){
+  const b=document.getElementById('tipBox');
+  b.classList.toggle('visible');btn.classList.toggle('ativo');
+  if(b.classList.contains('visible')){document.addEventListener('click',function c(e){if(!e.target.closest('.tooltip-wrap')){b.classList.remove('visible');btn.classList.remove('ativo');document.removeEventListener('click',c);}});}
+}
+function irPara(p,btn){
+  document.querySelectorAll('.page').forEach(x=>x.classList.remove('ativa'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('ativo'));
+  document.getElementById(p).classList.add('ativa'); btn.classList.add('ativo');
+  if(p==='pageHist') renderH();
+}
+function showToast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2000);}
+function copiar(p){const t=p==='adulto'?txtA:txtP;if(!t)return;navigator.clipboard.writeText(t).then(()=>showToast('✓ Copiado!')).catch(()=>showToast('Use WhatsApp'));}
+function whats(p){const t=p==='adulto'?txtA:txtP;if(!t)return;window.open('https://wa.me/?text='+encodeURIComponent(t),'_blank');}
+function imprimir(p){
+  const t=p==='adulto'?txtA:txtP; if(!t)return;
+  const w=window.open('','_blank');
+  w.document.write(`<html><head><title>AmoxiClavCalc</title><style>body{font-family:Arial,sans-serif;padding:20px;max-width:400px}h2{color:#0F3460}pre{background:#f5f5f5;padding:12px;border-radius:8px;white-space:pre-wrap;font-size:13px}footer{margin-top:18px;font-size:10px;color:#888}</style>
+<meta property="og:type" content="website">
+<meta property="og:title" content="AmoxiClavCalc — Dosagem Adulto e Pediátrico">
+<meta property="og:description" content="Calculadora Amoxicilina + Clavulanato — Adulto e Pediátrico — GUIADOSE">
+<meta property="og:url" content="https://guiadose.vercel.app/">
+<meta property="og:image" content="https://guiadose.vercel.app/icons/icon-512.png">
+</head><body><h2>AmoxiClavCalc — Amoxicilina + Clavulanato</h2><pre>${t}</pre><footer>Desenvolvido por Rubiney Alves · Farmácia Clínica · Gestão Comercial · Tecnologia em Saúde<br>Não substitui prescrição médica · Bula ANVISA + Protocolos SBP</footer></body></html>`);
+  w.document.close();w.print();
+}
+function salvarH(doenca,reg,det){
+  hist.unshift({doenca,reg,det,hora:new Date().toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'})});
+  if(hist.length>20)hist=hist.slice(0,20);
+  localStorage.setItem('amoxiclav_hist',JSON.stringify(hist));
+}
+function renderH(){
+  const el=document.getElementById('histLista');
+  if(!hist.length){el.innerHTML='<div class="hist-vazio">Nenhum cálculo ainda.</div>';return;}
+  el.innerHTML=hist.map(h=>`<div class="hist-item"><div class="hi-top"><span class="hi-nome">${h.doenca}</span><span class="hi-hora">${h.hora}</span></div><div class="hi-det">${h.reg} · ${h.det}</div></div>`).join('');
+}
+function limparH(){hist=[];localStorage.removeItem('amoxiclav_hist');renderH();}
+
+// ── ADULTO ──
+function updRegA(){
+  const d=document.getElementById('dA').value, rw=document.getElementById('rwA'), rs=document.getElementById('regA');
+  hideResult('A'); txtA='';
+  if(!d){rw.style.display='none';return;}
+  const cfg=cfgA[d];
+  rs.innerHTML='<option value="">Selecione o regime...</option>'+cfg.regimes.map(r=>`<option value="${r.id}">${r.l}</option>`).join('');
+  rw.style.display='block'; document.getElementById('rhA').classList.remove('visible'); calcA();
+}
+function calcA(){
+  const d=document.getElementById('dA').value, reg=document.getElementById('regA').value;
+  const rh=document.getElementById('rhA');
+  if(!d||!reg){hideResult('A');return;}
+  const cfg=cfgA[d], ro=cfg.regimes.find(r=>r.id===reg);
+  rh.textContent=ro.h; rh.classList.add('visible');
+
+  if(reg==='nao_rec'){
+    showResult('A',cfg.l,ro.t,`<div class="di full"><div class="di-label">Não recomendado</div><div style="font-size:13px;color:rgba(255,255,255,0.8);margin-top:4px">${ro.h}</div></div>`,null,null,
+      `<div class="alert a-danger" style="background:rgba(185,28,28,0.2);color:#FCA5A5;border:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/></svg>Comprimido 500+125 mg contraindicado em insuf. renal grave. Usar suspensão com ajuste ou consultar prescritor.</div>`,
+      ''); return;
+  }
+  if(reg==='500_8h'){
+    const amox=500, clav=125;
+    setRatio('A',amox,clav);
+    showResult('A',cfg.l,ro.t+' · Amoxil® ANVISA',
+      di('Dose/tomada','1','comp. 500+125 mg',false,false)+di('Freq.','3×','ao dia',false,false)+di('Intervalo','8/8','h',false,false)+di('Máx. diário','3×500','mg amox',false,false),
+      [`Comprimido: <strong>500 mg amoxicilina + 125 mg clavulanato</strong>`,`Regime: de 8 em 8 horas · 3× ao dia`,`Máximo diário: 1500 mg amoxicilina + 375 mg clavulanato`],
+      null,null,`AmoxiClavCalc — ${cfg.l}\nRegime: ${ro.t}\nDose: 1 comprimido 500+125 mg de 8 em 8 horas\n\nNão substitui prescrição médica.`);
+    txtA=`AmoxiClavCalc — ${cfg.l}\nDose: 1 comprimido 500+125 mg de 8/8h\nMáx: 1500 mg amoxicilina/dia\n\nNão substitui prescrição médica.`;
+    salvarH(cfg.l,ro.t,'500+125 mg 3×/dia');
+    const _doA=document.getElementById('dA')?.value||''; mostrarDuracao(_doA,'durA');
+  } else if(reg==='500_12h'){
+    const amox=500, clav=125;
+    setRatio('A',amox,clav);
+    showResult('A',cfg.l,ro.t,
+      di('Dose/tomada','1','comp. 500+125 mg',false,false)+di('Freq.','2×','ao dia',false,false)+di('Intervalo','12/12','h',false,false)+di('Ajuste','Renal','moderado',false,false),
+      [`ClCr 10–30 mL/min: <strong>500+125 mg de 12 em 12 horas</strong>`,`Máximo: 2 comprimidos/dia`],
+      null,null,'');
+    txtA=`AmoxiClavCalc — Ajuste renal\n500+125 mg de 12/12h (ClCr 10–30)\n\nNão substitui prescrição médica.`;
+    salvarH(cfg.l,ro.t,'500+125 mg 2×/dia');
+    const _doA=document.getElementById('dA')?.value||''; mostrarDuracao(_doA,'durA');
+  }
+}
+
+// ── PED ──
+function updRegP(){
+  const d=document.getElementById('dP').value, rw=document.getElementById('rwP'), rs=document.getElementById('regP');
+  hideResult('P'); txtP='';
+  if(!d){rw.style.display='none';return;}
+  const cfg=cfgP[d];
+  rs.innerHTML='<option value="">Selecione o regime...</option>'+cfg.regimes.map(r=>`<option value="${r.id}">${r.l}</option>`).join('');
+  rw.style.display='block'; document.getElementById('rhP').classList.remove('visible'); calcP();
 }
 function calcP(){
-  const d=document.getElementById('dP').value,peso=parseFloat(document.getElementById('peso').value);
-  hideR('P');txtP='';
-  if(!d||isNaN(peso)||peso<=0)return;
-  if(peso<3){showR('P','Peso insuficiente','—',mk('Peso',peso,'kg',true),null,'<div class="al ad"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4m0 4h.01"/></svg>Peso abaixo de 3 kg. Consulte o pediatra.</div>');return;}
-  if(peso>=40){showR('P','≥40kg — usar dose adulta','—',mk('Peso',peso,'kg',true),null,'<div class="al ai"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg>Peso ≥40 kg: selecione o perfil Adulto.</div>');return;}
-  const c=cfgP[d],C=concAtual/5;
-  const mgDose=parseFloat(Math.min(peso*(c.mgKgDia/c.freq),c.max).toFixed(1));
-  const ml=parseFloat((mgDose/C).toFixed(2));
-  const mgDia=parseFloat((mgDose*c.freq).toFixed(1));
-  const grid=mk('Dose/tomada',mgDose,'mg')+mk('Volume',ml,'mL/dose')+mk('Freq.',c.freq+'×','ao dia')+mk('Duração',c.dur,'');
-  const fArr=[
-    `Peso: <strong>${peso} kg</strong>`,
-    `${c.mgKgDia}mg/kg/dia ÷ ${c.freq}× = ${(c.mgKgDia/c.freq).toFixed(1)}mg/kg/dose`,
-    `${(c.mgKgDia/c.freq).toFixed(1)} × ${peso} = <strong>${mgDose} mg/dose</strong> (máx ${c.max}mg)`,
-    `${mgDose} ÷ ${C} mg/mL = <strong>${ml} mL/dose</strong>`,
-    `Concentração: <strong>${concAtual}mg/5mL</strong>`,
-    `⏱ Duração: <strong>${c.dur}</strong>`,
-    `🕐 Horários: <strong>${hor(c.int)}</strong>`,
-  ];
-  showR('P',c.l,c.int+' · '+c.dur+' · ANVISA',grid,fArr,'');
-  txtP=`AmoxiClavCalc — ${c.l}\nPeso:${peso}kg · ${concAtual}mg/5mL\n${ml}mL de ${c.int} · ${c.dur}\nHorários: ${hor(c.int)}\n\nNão substitui prescrição médica.`;
-  salvarH(c.l,c.dur,ml+'mL '+c.int);
+  const d=document.getElementById('dP').value, reg=document.getElementById('regP').value;
+  const peso=parseFloat(document.getElementById('peso').value), rh=document.getElementById('rhP');
+  if(!d||!reg){hideResult('P');return;}
+  const cfg=cfgP[d], ro=cfg.regimes.find(r=>r.id===reg);
+  rh.textContent=ro.h; rh.classList.add('visible');
+  if(isNaN(peso)||peso<=0){hideResult('P');return;}
+  document.getElementById('rbP').style.display='none';
+
+  if(peso<3){
+    showResult('P',cfg.l,ro.t,`<div class="di full"><div class="di-label">Atenção</div><div style="font-size:13px;color:rgba(255,255,255,0.8);margin-top:4px">Peso abaixo de 3 kg.</div></div>`,null,null,
+      `<div class="alert a-danger" style="background:rgba(185,28,28,0.2);color:#FCA5A5;border:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/></svg>Peso abaixo de 3 kg — consulte o pediatra antes da dispensação.</div>`, '');
+    return;
+  }
+  if(peso>=40){
+    showResult('P','Acima de 40 kg','Usar dose adulta',`<div class="di full"><div class="di-label">Dose adulta</div><div style="font-size:13px;color:rgba(255,255,255,0.8);margin-top:4px">1 comprimido 500+125 mg de 8 em 8 horas.</div></div>`,null,null,null,'');
+    return;
+  }
+
+  const CA=C_amox(), CC=C_clav();
+  let grid='', fArr=[], frascoAmox=null, alertas='';
+
+  function calcDosePed(mgKgDia,freq){
+    const mgDiaAmox=parseFloat(Math.min(peso*mgKgDia,freq===3?1500:1000).toFixed(1));
+    const razao=concAmox/concClav;
+    const mgDiaClav=parseFloat((mgDiaAmox/razao).toFixed(1));
+    const mgDoseAmox=parseFloat(Math.min(mgDiaAmox/freq,500).toFixed(1));
+    const mgDoseClav=parseFloat((mgDoseAmox/razao).toFixed(1));
+    const mlDose=parseFloat((mgDoseAmox/CA).toFixed(2));
+    return{mgDiaAmox,mgDiaClav,mgDoseAmox,mgDoseClav,mlDose,freq};
+  }
+
+  if(reg==='20_8h'){
+    const r=calcDosePed(20,3);
+    setRatio('P',r.mgDoseAmox,r.mgDoseClav);
+    grid=di('Dose amox/dia',r.mgDiaAmox,'mg/dia',false,false)+di('Vol./dose',r.mlDose,'mL',true,false)+di('Dose/tomada',r.mgDoseAmox,'mg amox',false,false)+di('Freq.','3×','ao dia (8/8h)',false,false);
+    fArr=[`Peso: <strong>${peso} kg</strong>`,`Amox: 20 mg/kg × ${peso} = <strong>${r.mgDiaAmox} mg/dia</strong>`,`Dose/tomada: ${r.mgDiaAmox} ÷ 3 = <strong>${r.mgDoseAmox} mg</strong>`,`Vol.: ${r.mgDoseAmox} ÷ ${CA.toFixed(1)} = <strong>${r.mlDose} mL</strong>`,`Clav/tomada: <strong>${r.mgDoseClav} mg</strong> · Conc.: ${concAmox}+${concClav} mg/5mL`];
+    frascoAmox=r.mgDiaAmox*10;
+    txtP=`AmoxiClavCalc — ${cfg.l}\nPeso: ${peso} kg · ${ro.t}\nAmox: ${r.mgDiaAmox} mg/dia · ${r.mlDose} mL/dose (3× ao dia)\nClav: ${r.mgDiaClav} mg/dia\nConc.: ${concAmox}+${concClav} mg/5mL\n\nNão substitui prescrição médica.`;
+    salvarH(cfg.l,ro.t,`${r.mlDose} mL 3×/dia`);
+    const _doA=document.getElementById('dA')?.value||''; mostrarDuracao(_doA,'durA');
+  } else if(reg==='40_8h'){
+    const r=calcDosePed(40,3);
+    setRatio('P',r.mgDoseAmox,r.mgDoseClav);
+    grid=di('Dose amox/dia',r.mgDiaAmox,'mg/dia',false,false)+di('Vol./dose',r.mlDose,'mL',true,false)+di('Dose/tomada',r.mgDoseAmox,'mg amox',false,false)+di('Freq.','3×','ao dia (8/8h)',false,false);
+    fArr=[`Peso: <strong>${peso} kg</strong>`,`Amox: 40 mg/kg × ${peso} = <strong>${r.mgDiaAmox} mg/dia</strong>`,`Dose/tomada: ${r.mgDiaAmox} ÷ 3 = <strong>${r.mgDoseAmox} mg</strong>`,`Vol.: ${r.mgDoseAmox} ÷ ${CA.toFixed(1)} = <strong>${r.mlDose} mL</strong>`,`Clav/tomada: <strong>${r.mgDoseClav} mg</strong>`];
+    frascoAmox=r.mgDiaAmox*10;
+    txtP=`AmoxiClavCalc — ${cfg.l}\nPeso: ${peso} kg · ${ro.t}\nAmox: ${r.mgDiaAmox} mg/dia · ${r.mlDose} mL/dose (3×/dia)\nClav: ${r.mgDiaClav} mg/dia\nConc.: ${concAmox}+${concClav} mg/5mL\n\nNão substitui prescrição médica.`;
+    salvarH(cfg.l,ro.t,`${r.mlDose} mL 3×/dia`);
+    const _doA=document.getElementById('dA')?.value||''; mostrarDuracao(_doA,'durA');
+  } else if(reg==='60_8h'){
+    const r=calcDosePed(60,3);
+    setRatio('P',r.mgDoseAmox,r.mgDoseClav);
+    grid=di('Dose amox/dia',r.mgDiaAmox,'mg/dia',false,false)+di('Vol./dose',r.mlDose,'mL',true,false)+di('Dose/tomada',r.mgDoseAmox,'mg amox',false,false)+di('Freq.','3×','ao dia (8/8h)',false,false);
+    fArr=[`Peso: <strong>${peso} kg</strong>`,`Amox: 60 mg/kg × ${peso} = <strong>${r.mgDiaAmox} mg/dia</strong>`,`Dose/tomada: ${r.mgDiaAmox} ÷ 3 = <strong>${r.mgDoseAmox} mg</strong>`,`Vol.: ${r.mgDoseAmox} ÷ ${CA.toFixed(1)} = <strong>${r.mlDose} mL</strong>`,`Dose alta ANVISA · Clav/tomada: <strong>${r.mgDoseClav} mg</strong>`];
+    frascoAmox=r.mgDiaAmox*10;
+    alertas=`<div class="alert a-warn" style="background:rgba(201,168,76,0.12);color:#E8C97A;border:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4m0 4h.01"/></svg>Dose alta ANVISA: 60/15 mg/kg/dia. Crianças &lt;2 anos: sem dados para essa dose — consultar pediatra.</div>`;
+    txtP=`AmoxiClavCalc — ${cfg.l}\nPeso: ${peso} kg · ${ro.t}\nAmox: ${r.mgDiaAmox} mg/dia · ${r.mlDose} mL/dose (3×/dia)\nClav: ${r.mgDiaClav} mg/dia\nConc.: ${concAmox}+${concClav} mg/5mL\n\nNão substitui prescrição médica.`;
+    salvarH(cfg.l,ro.t,`${r.mlDose} mL 3×/dia (dose alta)`);
+    const _doA=document.getElementById('dA')?.value||''; mostrarDuracao(_doA,'durA');
+  } else if(reg==='90_sbp'){
+    const mgKg=85, mgDiaAmox=parseFloat(Math.min(peso*mgKg,4000).toFixed(1));
+    const razao=concAmox/concClav, mgDiaClav=parseFloat((mgDiaAmox/razao).toFixed(1));
+    const mgDoseAmox=parseFloat(Math.min(mgDiaAmox/2,1000).toFixed(1));
+    const mgDoseClav=parseFloat((mgDoseAmox/razao).toFixed(1));
+    const mlDose=parseFloat((mgDoseAmox/CA).toFixed(2));
+    setRatio('P',mgDoseAmox,mgDoseClav);
+    grid=di('Dose amox/dia',mgDiaAmox,'mg/dia',false,false)+di('Vol./dose',mlDose,'mL',true,false)+di('Dose/tomada',mgDoseAmox,'mg amox',false,false)+di('Freq.','2×','ao dia (12/12h)',false,false);
+    fArr=[`Peso: <strong>${peso} kg</strong>`,`SBP: 85 mg/kg × ${peso} = <strong>${mgDiaAmox} mg amox/dia</strong>`,`Dose/tomada: ${mgDiaAmox} ÷ 2 = <strong>${mgDoseAmox} mg</strong>`,`Vol.: ${mgDoseAmox} ÷ ${CA.toFixed(1)} = <strong>${mlDose} mL</strong>`,`Clav/tomada: <strong>${mgDoseClav} mg</strong> · SBP dose alta ⭐`];
+    frascoAmox=mgDiaAmox*10;
+    alertas=`<div class="alert a-success" style="background:rgba(26,127,90,0.15);color:#60C090;border:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Protocolo SBP dose alta — indicado para maior cobertura de pneumococo resistente. Frequência 12/12h.</div>`;
+    txtP=`AmoxiClavCalc — ${cfg.l} (SBP ⭐)\nPeso: ${peso} kg\nAmox: ${mgDiaAmox} mg/dia · ${mlDose} mL/dose (2×/dia · 12/12h)\nClav: ${mgDiaClav} mg/dia\nConc.: ${concAmox}+${concClav} mg/5mL\n\nProtocolo SBP. Não substitui prescrição médica.`;
+    salvarH(cfg.l,'SBP dose alta',`${mlDose} mL 2×/dia`);
+  } else if(reg==='r_mod'){
+    const mgDoseAmox=parseFloat(Math.min(peso*18.75*concAmox/(concAmox+concClav),500).toFixed(1));
+    const mgDoseClav=parseFloat((mgDoseAmox*(concClav/concAmox)).toFixed(1));
+    const mlDose=parseFloat((mgDoseAmox/CA).toFixed(2));
+    setRatio('P',mgDoseAmox,mgDoseClav);
+    grid=di('Dose/tomada',mgDoseAmox,'mg amox',false,false)+di('Volume',mlDose,'mL',true,false)+di('Freq.','2×','ao dia',false,false)+di('Ajuste','Renal','moderado',false,false);
+    fArr=[`18,75 mg/kg × ${peso} = dose total ajustada`,`Amox/dose: <strong>${mgDoseAmox} mg</strong> → <strong>${mlDose} mL</strong>`,`Clav/dose: <strong>${mgDoseClav} mg</strong>`,`Máx: 2 doses de 625 mg total/dia`];
+    txtP=`AmoxiClavCalc — Ajuste renal\nPeso: ${peso} kg · ${mlDose} mL 2×/dia\n\nNão substitui prescrição médica.`;
+    salvarH(cfg.l,'Ajuste renal mod.',`${mlDose} mL 2×/dia`);
+  } else if(reg==='r_grav'){
+    const mgDoseAmox=parseFloat(Math.min(peso*18.75*concAmox/(concAmox+concClav),500).toFixed(1));
+    const mgDoseClav=parseFloat((mgDoseAmox*(concClav/concAmox)).toFixed(1));
+    const mlDose=parseFloat((mgDoseAmox/CA).toFixed(2));
+    setRatio('P',mgDoseAmox,mgDoseClav);
+    grid=di('Dose/dia',mgDoseAmox,'mg amox',false,false)+di('Volume',mlDose,'mL',true,false)+di('Freq.','1×','ao dia',false,false)+di('Ajuste','Renal','grave',false,false);
+    fArr=[`Dose única diária: <strong>${mgDoseAmox} mg amox</strong> → <strong>${mlDose} mL</strong>`,`Clav/dose: <strong>${mgDoseClav} mg</strong>`,`Máx: 625 mg total/dia`];
+    txtP=`AmoxiClavCalc — Ajuste renal grave\nPeso: ${peso} kg · ${mlDose} mL 1×/dia\n\nNão substitui prescrição médica.`;
+    salvarH(cfg.l,'Ajuste renal grave',`${mlDose} mL 1×/dia`);
+  }
+
+  showResult('P',cfg.l,ro.t+(cfg.sbp?' · SBP ⭐':' · ANVISA')+' · '+concAmox+'+'+concClav+' mg/5mL',grid,fArr,frascoAmox,alertas,txtP);
 }
-function setPerfil(p){perfil=p;document.getElementById('btnA').classList.toggle('on',p==='adulto');document.getElementById('btnP').classList.toggle('on',p==='ped');document.getElementById('fA').style.display=p==='adulto'?'block':'none';document.getElementById('fP').style.display=p==='ped'?'block':'none';}
-function irP(p,btn){document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.tb').forEach(b=>b.classList.remove('on'));document.getElementById(p).classList.add('active');btn.classList.add('on');if(p==='pageHist')renderH();}
-function showToast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2000);}
-function cp(txt){if(!txt)return;navigator.clipboard.writeText(txt).then(()=>showToast('✓ Copiado!')).catch(()=>showToast('Use WhatsApp'));}
-function wa(txt){if(!txt)return;window.open('https://wa.me/?text='+encodeURIComponent(txt),'_blank');}
-function pr(titulo,txt){if(!txt)return;const w=window.open('','_blank');w.document.write(`<html><head><title>${titulo}</title><style>body{font-family:Arial,sans-serif;padding:20px;max-width:400px}h2{color:#0F3460}pre{background:#f5f5f5;padding:12px;border-radius:8px;white-space:pre-wrap;font-size:13px}footer{margin-top:18px;font-size:10px;color:#888}</style></head><body><h2>${titulo} — GUIADOSE</h2><pre>${txt}</pre><footer>Rubiney Alves · guiadose.vercel.app · Não substitui prescrição médica</footer></body></html>`);w.document.close();w.print();}
-function toggleDark(){const d=document.documentElement;d.getAttribute('data-theme')==='dark'?d.removeAttribute('data-theme'):d.setAttribute('data-theme','dark');}
-function toggleTip(btn){const b=document.getElementById('tipBox');b.classList.toggle('vis');if(b.classList.contains('vis')){document.addEventListener('click',function c(e){if(!e.target.closest('.tw')){b.classList.remove('vis');document.removeEventListener('click',c);}});}}
-function salvarH(d,r,det){hist.unshift({d,r,det,hora:new Date().toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'})});if(hist.length>20)hist=hist.slice(0,20);localStorage.setItem('amxclv_hist',JSON.stringify(hist));}
-function renderH(){const el=document.getElementById('histLista');if(!hist.length){el.innerHTML='<div class="hvz">Nenhum cálculo ainda.</div>';return;}el.innerHTML=hist.map(h=>`<div class="hi"><div class="hit"><span class="hn">${h.d}</span><span class="hhr">${h.hora}</span></div><div class="hd">${h.r} · ${h.det}</div></div>`).join('');}
-function limH(){hist=[];localStorage.removeItem('amxclv_hist');renderH();}
+
 if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));}
+
+// Durações por indicação — GUIADOSE
+const _durMap={'amig':'7–10 dias','sinusite':'7–10 dias','otite_a':'10 dias','bronquite':'7 dias','pneumonia':'7–10 dias','itu':'7–14 dias','pele':'7–14 dias','osteo':'4–6 semanas','renal_mod_a':'conf. prescrição','renal_grav_a':'conf. prescrição','leve':'7–10 dias','grave':'10 dias','sbp_alta':'10 dias'};
+
+
+// === GUIADOSE: Duração do tratamento ===
+function mostrarDuracao(idDoenca, idBadge) {
+  const dur = _durMap[idDoenca] || '';
+  const el = document.getElementById(idBadge);
+  if (!el) return;
+  if (dur) {
+    el.innerHTML = '<svg viewBox="0 0 24 24" style="width:13px;height:13px;fill:var(--gold);flex-shrink:0"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 13h-2V7h2v8zm0-10h-2V3h2v2z"/></svg> Duração: <strong>' + dur + '</strong>';
+    el.style.display = 'flex';
+  } else {
+    el.style.display = 'none';
+  }
+}
+function ocultarDuracao(idBadge) {
+  const el = document.getElementById(idBadge);
+  if (el) el.style.display = 'none';
+}
+
+
+// GUIADOSE: Adiciona duração à última linha da posologia
+function addDuracaoFormula(idDoenca, idFormula) {
+  const dur = _durMap[idDoenca] || '';
+  if (!dur) return;
+  const el = document.getElementById(idFormula);
+  if (!el) return;
+  // Verificar se duração já está na última linha
+  const lines = el.querySelectorAll('.formula-line, .fln');
+  if (lines.length > 0) {
+    const last = lines[lines.length - 1];
+    if (last.textContent.includes('Duração')) return;
+  }
+  const div = document.createElement('div');
+  div.className = lines.length > 0 ? lines[0].className : 'formula-line';
+  div.innerHTML = '⏱ Duração: <strong>' + dur + '</strong>';
+  el.appendChild(div);
+}
+
+
+// GUIADOSE: Horários sugeridos por intervalo
+function getHorarios(intervalo) {
+  const i = (intervalo||'').toLowerCase();
+  if (i.includes('6/6') || i.includes('6h')) return '6h · 12h · 18h · 0h';
+  if (i.includes('8/8') || i.includes('8h')) return '7h · 15h · 23h';
+  if (i.includes('12/12') || i.includes('12h')) return '7h · 19h';
+  if (i.includes('4/4') || i.includes('4h')) return '6h · 10h · 14h · 18h · 22h · 2h';
+  if (i.includes('noite') || i.includes('notur') || i.includes('deitar')) return '22h (ao deitar)';
+  if (i.includes('única') || i.includes('unica') || i.includes('1×')) return 'dose única';
+  return 'conforme prescrição';
+}
+function getDurHorarios(doencaId, intervaloTxt) {
+  const dur = (typeof _durMap !== 'undefined' ? _durMap[doencaId] : '') || '';
+  const hor = getHorarios(intervaloTxt);
+  return {dur, hor};
+}
+
 </script>
 </body>
 </html>
