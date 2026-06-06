@@ -79,6 +79,14 @@ select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/
 .acoes{display:flex;gap:7px;margin-bottom:10px}
 .ba{flex:1;padding:9px 5px;border-radius:7px;border:1px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.07);color:rgba(255,255,255,0.8);font-size:11px;font-family:var(--font);cursor:pointer;text-align:center;display:flex;flex-direction:column;align-items:center;gap:3px}
 .ba svg{width:17px;height:17px}
+.ba-bula{display:flex;align-items:center;justify-content:center;gap:7px;width:100%;padding:9px 12px;border-radius:7px;border:1px solid rgba(201,168,76,0.5);background:rgba(201,168,76,0.12);color:var(--gold2);font-size:11px;font-weight:600;font-family:var(--font);cursor:pointer;text-decoration:none;margin-bottom:10px}
+.ba-bula svg{width:15px;height:15px;flex-shrink:0}
+.bula-card{background:var(--white);border-radius:var(--radius-sm);border:1px solid var(--border);border-top:3px solid var(--gold);padding:14px;margin-bottom:10px}
+.bula-card-title{font-size:12px;font-weight:700;color:var(--text);margin-bottom:6px;display:flex;align-items:center;gap:6px}
+.bula-card-desc{font-size:11px;color:var(--text2);line-height:1.6;margin-bottom:10px}
+.bula-link{display:flex;align-items:center;gap:8px;padding:10px 12px;background:linear-gradient(135deg,var(--navy),var(--navy2));border-radius:8px;text-decoration:none;color:var(--gold2);font-size:12px;font-weight:600}
+.bula-link svg{width:16px;height:16px;flex-shrink:0}
+.bula-link-arr{margin-left:auto;font-size:13px;opacity:0.7}
 .empty-state{text-align:center;padding:28px 18px;color:var(--text3)}
 .empty-state svg{width:36px;height:36px;opacity:0.3;margin-bottom:10px}
 .empty-state p{font-size:13px}
@@ -200,6 +208,10 @@ select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/
       <button class="ba" onclick="wa(txtA)"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.118 1.524 5.845L0 24l6.324-1.501A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.882a9.875 9.875 0 01-5.022-1.368l-.361-.214-3.741.981.999-3.648-.235-.374A9.859 9.859 0 012.118 12C2.118 6.533 6.533 2.118 12 2.118c5.467 0 9.882 4.415 9.882 9.882 0 5.467-4.415 9.882-9.882 9.882z"/></svg>WhatsApp</button>
       <button class="ba" onclick="pr('AziCalc',txtA)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>Imprimir</button>
     </div>
+    <a href="https://consultas.anvisa.gov.br/#/bulario/q/?substancia=AZITROMICINA" target="_blank" rel="noopener" class="ba-bula">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      Bula ANVISA — Azitromicina (PDF) ↗
+    </a>
     <div id="alA"></div>
   </div>
   <div id="emA">
@@ -255,6 +267,10 @@ select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/
       <button class="ba" onclick="wa(txtP)"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.118 1.524 5.845L0 24l6.324-1.501A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.882a9.875 9.875 0 01-5.022-1.368l-.361-.214-3.741.981.999-3.648-.235-.374A9.859 9.859 0 012.118 12C2.118 6.533 6.533 2.118 12 2.118c5.467 0 9.882 4.415 9.882 9.882 0 5.467-4.415 9.882-9.882 9.882z"/></svg>WhatsApp</button>
       <button class="ba" onclick="pr('AziCalc',txtP)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>Imprimir</button>
     </div>
+    <a href="https://consultas.anvisa.gov.br/#/bulario/q/?substancia=AZITROMICINA" target="_blank" rel="noopener" class="ba-bula">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      Bula ANVISA — Azitromicina (PDF) ↗
+    </a>
     <div id="alP"></div>
   </div>
   <div id="emP">
@@ -263,6 +279,20 @@ select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/
       <p>Informe o peso e a indicação</p>
     </div>
   </div>
+</div>
+
+<!-- BULA CARD -->
+<div class="bula-card">
+  <div class="bula-card-title">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:15px;height:15px;color:var(--gold)"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+    Bula Oficial ANVISA
+  </div>
+  <div class="bula-card-desc">Acesse o Bulário Eletrônico da ANVISA para visualizar ou baixar a bula completa em PDF (Azitromicina di-hidratada).</div>
+  <a href="https://consultas.anvisa.gov.br/#/bulario/q/?substancia=AZITROMICINA" target="_blank" rel="noopener" class="bula-link">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+    Bulário ANVISA — Azitromicina
+    <span class="bula-link-arr">↗</span>
+  </a>
 </div>
 
 <!-- INDICAÇÕES -->
