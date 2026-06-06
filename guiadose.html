@@ -97,10 +97,14 @@ main{padding:12px 14px 80px}
 .pasta-body.open{display:block}
 
 /* ITEM DE MEDICAMENTO */
-.drug{display:flex;align-items:center;gap:7px;padding:7px 8px;border-radius:7px;cursor:pointer;text-decoration:none;transition:background 0.12s}
+.drug{display:flex;align-items:center;gap:7px;padding:7px 8px;border-radius:7px;cursor:pointer;text-decoration:none;transition:background 0.12s,border-left 0.12s}
 .drug:active{background:var(--surface2)}
 .drug.ativo-t:hover,.drug.ativo-t:active{background:var(--teal-bg)}
 .drug.ativo-b:hover,.drug.ativo-b:active{background:var(--blue-bg)}
+.drug.match.ativo-t{background:var(--teal-bg);border-left:3px solid var(--teal);border-radius:0 7px 7px 0;padding-left:6px}
+.drug.match.ativo-b{background:var(--blue-bg);border-left:3px solid var(--blue);border-radius:0 7px 7px 0;padding-left:6px}
+.drug.match.ativo-t .drug-nome{color:var(--teal);font-weight:700}
+.drug.match.ativo-b .drug-nome{color:var(--blue);font-weight:700}
 .drug-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0}
 .drug-dot.t{background:var(--teal)}
 .drug-dot.b{background:var(--blue)}
@@ -559,7 +563,7 @@ function buscar() {
 
   if (!q) {
     // Restaurar tudo
-    drugs.forEach(d  => d.classList.remove('hidden'));
+    drugs.forEach(d  => { d.classList.remove('hidden'); d.classList.remove('match'); });
     breves.forEach(b => b.classList.remove('hidden'));
     document.getElementById('emptyS').style.display = 'none';
     document.getElementById('colsMain').style.display = 'grid';
@@ -577,6 +581,7 @@ function buscar() {
     const dose = d.querySelector('.drug-dose')?.textContent.toLowerCase() || '';
     const ok   = tags.includes(q) || nome.includes(q) || dose.includes(q);
     d.classList.toggle('hidden', !ok);
+    d.classList.toggle('match', ok);
     if (ok) vis++;
   });
   breves.forEach(b => {
