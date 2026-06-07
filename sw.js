@@ -1,4 +1,4 @@
-const CACHE = 'guiadose-v1';
+const CACHE = 'guiadose-v2';
 const ASSETS = [
   '/',
   '/guiadose.html',
@@ -6,6 +6,7 @@ const ASSETS = [
   '/amoxiclav.html',
   '/ampicilina.html',
   '/ampicilina_sulbactam.html',
+  '/azitromicina.html',
   '/bactrim.html',
   '/cefaclor.html',
   '/cefadroxila.html',
